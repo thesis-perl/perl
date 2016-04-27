@@ -1,0 +1,22 @@
+{
+  "name": "thesis-perl",
+  "homepage": "https://github.com/Jwing28/perl",
+  "authors": [
+    "Jonathan Lee",
+    "Jeong Min Lee",
+    "Zoe Chen",
+    "Ani Stepanyan",
+    "Brandon Willis"
+  ],
+  "description": "a code tutoring app",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
