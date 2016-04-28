@@ -1,28 +1,47 @@
 var express = require('express');
 var app = express();
 var port = process.env.PORT || 8000;
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 var cors = require('cors');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
-app.use(express.static(__dirname + '/../client'));
 
+// Use body parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-app.post('/api/tutor_signup', function(req, res) {
 
-   console.log("signupTutor", req.body)
-   res.send("hiii");
+// cors
+app.use(cors());
 
-})
 
-app.post('/api/student_signup', function(req, res) {
+// Auth
+app.use(cookieParser());
+app.use(session({
+  secret: 'learn code',
+  resave: true,
+  saveUninitalized: false
+}))
 
-   console.log("signupStudent", req.body)
-   res.send("hiii");
+// Serve client files
+app.use(express.static(__dirname + '/../client'));
 
-})
+// Routes
+app.use('/api/student_signup', require('./routes/studentSignupRoute.js'));
+app.use('/api/student_login', require('./routes/studentLoginRoute.js'));
+
+
+// cors
+app.use(cors());
+
+// Routes
+app.use('/api/student_signup', require('./routes/studentSignupRoute.js'));
+app.use('/api/student_login', require('./routes/studentLoginRoute.js'));
+
 
 app.listen(port, function() {
   console.log('Listening on port ' + port);
