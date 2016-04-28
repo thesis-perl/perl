@@ -2,8 +2,9 @@
 
 /client/apiKeys.js
 
-/client/bower_components
 
 /server/db/dbconfig.js
 
 /server/node_modules
+
+/client/bower_components
