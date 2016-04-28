@@ -12,24 +12,22 @@ var LocalStrategy = require('passport-local').Strategy;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// cors
-app.use(cors());
-
-// Auth
-app.use(cookieParser());
-app.use(session({
-  secret: 'learn code',
-  resave: true,
-  saveUninitalized: false
-}))
-
-// Serve client files
-app.use(express.static(__dirname + '/../client'));
 
 
-// Routes
-app.use('/api/student_signup', require('./routes/studentSignupRoute.js'));
-app.use('/api/student_login', require('./routes/studentLoginRoute.js'));
+app.post('/api/tutor_signup', function(req, res) {
+
+   console.log("signupTutor", req.body)
+   res.send("hiii");
+
+})
+
+app.post('/api/student_signup', function(req, res) {
+
+   console.log("signupStudent", req.body)
+   res.send("hiii");
+
+})
+
 
 app.listen(port, function() {
   console.log('Listening on port ' + port);
