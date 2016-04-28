@@ -1,3 +1,5 @@
 .env
 
 /client/apiKeys.js
+
+/server/db/dbconfig.js
