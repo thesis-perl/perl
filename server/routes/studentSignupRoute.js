@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 // // load database module
-var knex = require('../db/db.js');
+var knex = require('../db/db').knex;
 
 router.get('/', function (req, res) {
   if(req.isAuthenticated()) {
@@ -16,10 +16,13 @@ router.post('/', function (req, res) {
   var user = req.body;
   console.log(user);
   var usernamePromise = null;
-  usernamePromise = knex.select('username').table('students');
-  // console.log('usernamePromise', usernamePromise);
-
-  return usernamePromise.then()
+  usernamePromise = knex('students').select('username');
+  return usernamePromise.then(function(result) {
+    console.log(result);
+    if(result) {
+      res.render('signup', )
+    }
+  })
 })
 
 // export router

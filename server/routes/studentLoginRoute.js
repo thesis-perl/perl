@@ -4,7 +4,7 @@ var passport = require('passport');
 var bcrypt = require('bcrypt-nodejs');
 
 // load database module
-var knex = require('../db/db.js');
+var knex = require('../db/db').knex;
 
 router.get('/', function(req, res) {
   var user = req.body;
