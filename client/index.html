@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <!-- Angular/CSS scripts -->
+    <link href="./styles/style.css" rel="stylesheet">
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <script src="./bower_components/angular-material/angular-material.min.js"></script>
+    <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <!-- your app's js -->
+    <script src="./app/app.js"></script>
+    <script src="./app/config.js"></script>
+    <script src="./app/services.js"></script>
+
+    <!-- Controllers -->
+    <script src="./auth/auth.js"></script>
+    <script src="./landing/landing.js"></script>
+    <script src="./session/session.js"></script>
+    <script src="./student/studentdashboard.js"></script>
+    <script src="./student/tutorfilter.js"></script>
+    <script src="./student/tutorprofile.js"></script>
+    <script src="./tutor/tutordashboard.js"></script>
+
+    <!-- Oauth -->
+
+    <!-- Firebase -->
+     <!-- <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script> -->
+    <!-- AngularFire -->
+     <!-- <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script> -->
+
+  </head>
+  <body ng-app="Perl">
+    <ui-view></ui-view>
+  </body>
+</html>
