@@ -20,7 +20,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     templateUrl: '../auth/signup.html',
     controller: 'authentication'
   })
-
+  
   .state('signin', {
     cache: false,
     url: '/signin',
