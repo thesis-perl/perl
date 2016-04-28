@@ -72,3 +72,7 @@ knex.schema.createTableIfNotExists('accepted', function(join) {
 }).then(function() {
  console.log('accepted join table created');
 });
+
+module.exports = {
+  knex: knex
+};
