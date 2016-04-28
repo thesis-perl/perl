@@ -3,3 +3,5 @@
 /client/apiKeys.js
 
 /server/db/dbconfig.js
+
+/server/node_modules
