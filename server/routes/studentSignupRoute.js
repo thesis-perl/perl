@@ -2,13 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 // // load database module
-<<<<<<< HEAD
-var knex = require('../db/db.js');
 
-router.post('/', function(req, res) {
-  var user = req.body;
-  console.log(user);
-=======
 var knex = require('../db/db').knex;
 
 router.get('/', function (req, res) {
@@ -27,10 +21,10 @@ router.post('/', function (req, res) {
   return usernamePromise.then(function(result) {
     console.log(result);
     if(result) {
-      res.render('signup', )
+      res.render('signup');
     }
   })
->>>>>>> bug/schema
+
 })
 
 // export router
