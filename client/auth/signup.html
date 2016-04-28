@@ -1,1 +1,60 @@
-<h1>signup</h1>
+<div id="signup">
+  <h1>Sign up</h1>
+    <form>
+      <!--tutor checkbox -->
+      <input type="checkbox" ng-model = 'tutorCheckBox'>
+      <label>tutor</label>
+    
+      <!--student checkbox -->
+      <input type="checkbox" ng-model = 'studentCheckBox'>
+      <label>student</label>
+      <br>
+
+      <!-- username input -->
+      <label for="password">username</label>
+      <input id="username" type="text" name="username" ng-model="username" class="validate" required>
+      <br>
+
+      <!-- password input --> 
+      <label for="password">password</label>
+      <input id="password" type="password" name="password" ng-model="password" class="validate" required>
+      
+      <br>
+      
+      <!-- location input -->
+      <label for="location">location</label>
+      <input id="location" type="text" name="location" ng-model="location"  class="validate" required>
+      <br>
+           
+      <!-- bio input -->
+      <label for="password">bio</label>
+      <input id="password" type="text" name="password" ng-model="bio"  class="validate" required>
+              
+       <!--list of subjects to teach/learn -->       
+      <h3> subjects</h3>
+       <!--javascript-->
+      <input type="checkbox" ng-model = 'javascriptCheckbox'>
+      <label>javascript</label>
+       <!--ruby -->
+      <input type="checkbox" ng-model = 'rubyCheckbox'>
+      <label>ruby</label>
+      <!--phython -->
+      <input type="checkbox" ng-model = 'pythonCheckbox'>
+      <label>python</label>
+      <br>
+       <!--signup button-->
+      <button id='signupBtn' ng-click = 'signup()' > signup</button>
+       <!--signup cance; button-->
+      <button id = 'cancelSignup'> cancel</button>
+
+          
+    </form>
+    <p ng-model='signuperr1'> {{signuperr1}} </p>
+    <p ng-model='signuperr2'> {{signuperr2}}</p>
+    <p ng-model ='signuperr3'> {{signuperr3}} </p>
+
+</div>
+
+
+
+
