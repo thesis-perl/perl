@@ -12,6 +12,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
+
+app.post('/api/tutor_signup', function(req, res) {
+
+   console.log("signupTutor", req.body)
+   res.send("hiii");
+
+})
+
+app.post('/api/student_signup', function(req, res) {
+
+   console.log("signupStudent", req.body)
+   res.send("hiii");
+
+})
+
 // cors
 app.use(cors());
 
