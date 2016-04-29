@@ -43,6 +43,13 @@ app.use('/api/student_signup', require('./routes/studentSignupRoute.js'));
 app.use('/api/student_login', require('./routes/studentLoginRoute.js'));
 
 
+app.post('/api/user_signin', function(req, res) {
+
+   console.log("User signed in", req.body)
+   res.send("hiii");
+
+})
+
 app.listen(port, function() {
   console.log('Listening on port ' + port);
 })
