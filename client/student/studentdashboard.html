@@ -1,9 +1,101 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-  StudentDashboard page
-</body>
-</html>
+<!-- Header -->
+<div layout="column">
+	<div ng-cloak>
+		<md-content>
+			<md-toolbar>
+				<div class="md-toolbar-tools" >
+<!-- logo -->
+					<h2>
+						<span>CodEducation</span>
+					</h2>
+					<span flex></span>
+<!-- menu button -->
+					<md-menu md-offset="0 50">
+						<md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
+							<md-icon md-svg-icon="../assests/list.svg"></md-icon>
+						</md-button>
+						<md-menu-content width="4">
+							<md-menu-item>
+								<md-button ng-click="">
+									<div>Find Tutors</div>
+								</md-button>
+							</md-menu-item>
+							<md-menu-item>
+								<md-button ng-click="">
+									<div>Profile</div>
+								</md-button>
+							</md-menu-item>
+							<md-menu-item>
+								<md-button ng-click="">
+									<div id="signOut">Sign Out</div>
+								</md-button>
+							</md-menu-item>
+						</md-menu-content>
+					</md-menu>
+				</div>
+			</md-toolbar>
+		</md-content>
+	</div><!-- close ng-cloak -->
+
+	<div class="container" layout="row" flex layout="vertical" layout-fill>
+		<!-- Sidenav -->
+		<div flex="20" style="background-color:#363B3F; height: 100vw; color: #ccc; text-align: center" layout-fill>
+			<br>
+			<center><img src="https://lh5.googleusercontent.com/-ZadaXoUTBfs/AAAAAAAAAAI/AAAAAAAAAGA/19US52OmBqc/photo.jpg" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%"></center>
+			<md-card-content>
+				<p>Zoe Chen</p>
+			</md-card-content>
+			<md-card-footer>
+				<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
+			</md-card-footer>
+			<md-card-footer>
+				<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus</p>
+			</md-card-footer>
+			<md-button class="md-accent">Find Tutors</md-button>
+		</div>
+	<!-- content -->
+	<div flex="80">
+		<md-content>
+			<h1>Dashboard</h1>
+			<md-tabs md-dynamic-height md-border-bottom>
+				<md-tab label="All Tutors">
+					<div layout="rows" style="height: 200px; border-bottom: 1px solid #eee">
+						<div layout="rows" style="height: 200px; border: 1px solid #eee">
+							<!-- image -->
+							<div flex="15" style="text-align: center; padding-top: 15px">
+							<img src="http://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
+							<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
+						</div>
+						<!-- bio -->
+						<div flex="85" >
+							<p>Johnathon Lee     <span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span></p>
+							<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus</p>
+							<p>
+								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Javascript</span>
+								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Node.js</span>
+								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">AngularJS</span>
+							</p>
+							<md-button style="background-color: orange">View Profile</md-button>
+							<md-button style="background-color: orange">Message</md-button>
+						</div>
+					</div>
+				</md-tab>
+				<md-tab label="Scheduled Tutors">
+					<md-content class="md-padding">
+						<h1 class="md-display-2">Tab Two</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla </p>
+					</md-content>
+				</md-tab>
+				<md-tab label="Tutors History">
+					<md-content class="md-padding">
+						<h1 class="md-display-2">Tab Three</h1>
+						<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+					</md-content>
+				</md-tab>
+			</md-tabs>
+		</md-content>
+		</div>
+	</div>
+</div>
+
+

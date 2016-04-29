@@ -1,10 +1,10 @@
-angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', 'Perl.session', 'Perl.studentDashboard', 'Perl.tutorFilter', 'Perl.tutorProfile', 'Perl.tutorDashboard', 'Perl.landing', 'ui.router'])
+angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', 'Perl.session', 'Perl.studentDashboard', 'Perl.tutorFilter', 'Perl.tutorProfile', 'Perl.tutorDashboard', 'Perl.landing', 'ui.router', 'ngMaterial'])
 
 .run(function () {
   //instances and constants to be injected here
 })
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
   $stateProvider
 
   .state('landing', {
@@ -65,4 +65,9 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/');
+
+  $mdThemingProvider.theme('default')
+    .primaryPalette('blue-grey')
+    .accentPalette('orange');
 });
+
