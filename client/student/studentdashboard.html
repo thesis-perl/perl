@@ -12,7 +12,7 @@
 <!-- menu button -->
 					<md-menu md-offset="0 50">
 						<md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
-							<md-icon md-svg-icon="../assests/list.svg"></md-icon>
+							<md-icon md-svg-icon="../assests/list.svg" style="color:white"></md-icon>
 						</md-button>
 						<md-menu-content width="4">
 							<md-menu-item>
@@ -49,18 +49,17 @@
 				<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
 			</md-card-footer>
 			<md-card-footer>
-				<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus</p>
 			</md-card-footer>
 			<md-button class="md-accent">Find Tutors</md-button>
 		</div>
 	<!-- content -->
 	<div flex="80">
 		<md-content>
-			<h1>Dashboard</h1>
+			<h1 style="color:#363B3F; padding-left:20px">Dashboard</h1>
 			<md-tabs md-dynamic-height md-border-bottom>
 				<md-tab label="All Tutors">
-					<div layout="rows" style="height: 200px; border-bottom: 1px solid #eee">
-						<div layout="rows" style="height: 200px; border: 1px solid #eee">
+					<div layout="rows" style="height: 180px; border-bottom: 1px solid #eee">
+						<div layout="rows" style="height: 180px; border: 1px solid #eee">
 							<!-- image -->
 							<div flex="15" style="text-align: center; padding-top: 15px">
 							<img src="http://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
@@ -68,15 +67,17 @@
 						</div>
 						<!-- bio -->
 						<div flex="85" >
-							<p>Johnathon Lee     <span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span></p>
-							<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus</p>
+							<p>Johnathon Lee     
+								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span>
+								<md-button style="border: 2px solid orange; float:right">View Profile</md-button>
+								<md-button style="border: 2px solid orange; float:right">Message</md-button>
+							</p>
+							<p style="margin-top: 20px; padding-right: 250px">Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus</p>
 							<p>
 								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Javascript</span>
 								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Node.js</span>
 								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">AngularJS</span>
-							</p>
-							<md-button style="background-color: orange">View Profile</md-button>
-							<md-button style="background-color: orange">Message</md-button>
+							</p>						
 						</div>
 					</div>
 				</md-tab>
