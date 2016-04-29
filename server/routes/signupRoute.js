@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
   if(req.isAuthenticated()) {
     res.redirect('/');
   } else {
-    res.redirect('/student_login');
+    res.redirect('/login');
   }
 })
 
@@ -17,7 +17,7 @@ router.post('/', function (req, res) {
   var user = req.body;
   console.log(user);
   var usernamePromise = null;
-  usernamePromise = knex('students').select('username');
+  usernamePromise = knex('users').select('username');
   return usernamePromise.then(function(result) {
     console.log(result);
     if(result) {
