@@ -1,3 +1,3 @@
-angular.module('Perl.studentDashboard', [])
+angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons'])
 
-.controller('studentDashboard',function(){})
+.controller('studentDashboard',function($mdMedia){})
