@@ -8,6 +8,7 @@ angular.module('Perl.services', [])
   //signup request for tutor user
   var postSignupTutor = function(userInfo) {
     $http.post('/api/tutor_signup', userInfo);
+
   };
 
   var postSigninUser = function (userInfo) {
@@ -19,6 +20,18 @@ angular.module('Perl.services', [])
     studentSignup: postSignupStudent,
     tutorSignup: postSignupTutor, 
   };
+
+
+})
+
+.factory('studentFactory', function($http) {
+	var getProfile = function(){
+
+	}
+	return {
+		getProfile: getProfile
+	}
+
 });
 
 
