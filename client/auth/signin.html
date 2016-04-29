@@ -1,1 +1,14 @@
-Signin Page
+<div class="signin">
+<section class="loginform">
+<table name="login" action="index_submit" method="get" accept-charset="utf-8">
+  <ul>
+    <li><label for="usermail">Username</label>
+    <input ng-model="signinUsername" name="username" placeholder="Username" required></li>
+    <li><label for="password">Password</label>
+    <input ng-model="signinPassword" name="password" placeholder="Password" required></li>
+    <li>
+    <input type="submit" ng-click="signin()" value="Login"></li>
+  </ul>
+</table>
+</section>
+</div>

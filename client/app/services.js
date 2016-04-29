@@ -1,33 +1,24 @@
 angular.module('Perl.services', [])
 .factory('authFactory', function($http){
-
-   //signin
-//  var postSignin = function(username, password) {
-//    var user = {
-//    	 username: username,
-//    	 password: password
-//    };
-//    $http.post('/signin', user);
-// };
-
   //signup request for student user
- var postSignupStudent = function(userInfo){
+  var postSignupStudent = function(userInfo) {
     return $http.post('/api/student_signup', userInfo);
-};
+  };
 
- //signup request for tutor user
- var postSignupTutor = function(userInfo){
+  //signup request for tutor user
+  var postSignupTutor = function(userInfo) {
     $http.post('/api/tutor_signup', userInfo);
-};
+  };
 
-
-return {
- 	//signin: postSignin,
- 	studentSignup: postSignupStudent,
- 	tutorSignup: postSignupTutor 
- };
-
-
+  var postSigninUser = function (userInfo) {
+    $http.post('/api/user_signin', userInfo);
+    console.log(userInfo);
+  };
+  return {
+    signin: postSigninUser,
+    studentSignup: postSignupStudent,
+    tutorSignup: postSignupTutor, 
+  };
 });
 
 
