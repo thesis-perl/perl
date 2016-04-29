@@ -4,25 +4,49 @@
 	  <md-content>
 	    <md-toolbar>
 	      <div class="md-toolbar-tools" >
+<!-- logo -->
 	        <h2>
 	          <span>CodEducation</span>
 	        </h2>
 	        <span flex></span>
-	        <md-button class="md-icon-button" aria-label="More">
-	          <ng-md-icon icon="send"></ng-md-icon>
-	        </md-button>
+
+<!-- navbar button -->
+ 		<md-menu md-offset="0 50">
+         <md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
+           <md-icon md-svg-icon="../assests/list.svg"></md-icon>
+         </md-button>
+         <md-menu-content width="4">
+           <md-menu-item>
+             <md-button ng-click="">
+               <div>Create New Board</div>
+             </md-button>
+           </md-menu-item>
+           <md-menu-item>
+             <md-button ng-click="">
+               <div>Profile</div>
+             </md-button>
+           </md-menu-item>
+           <md-menu-item>
+             <md-button ng-click="">
+               <div id="signOut">Sign Out</div>
+             </md-button>
+           </md-menu-item>
+         </md-menu-content>
+       </md-menu>
+
+
 
 	      </div>
 	    </md-toolbar>
 	  </md-content>
 	</div>
 
-<!-- Sidenav -->
 	<div class="container" layout="row" flex layout="vertical" layout-fill>
 
+<!-- Sidenav -->
 		<div flex="20" style="background-color:#363B3F; height: 100vw; color: #ccc; text-align: center" layout-fill>
 
-			<center><img src="http://www.american.edu/uploads/profiles/large/jonnel_clothier_profile.jpg" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%"></center>
+			<center><img src="https://lh5.googleusercontent.com/-ZadaXoUTBfs/AAAAAAAAAAI/AAAAAAAAAGA/19US52OmBqc/photo.jpg" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%"></center>
 			<md-card-content>
 			<p>Zoe Chen</p>
 			</md-card-content>
@@ -30,16 +54,57 @@
 			<p>Card footer</p>
 			</md-card-footer>
 
-			<md-button class="md-accent">Tutors in touch</md-button>
-			<md-button class="md-accent">Tutors scheduled</md-button>
-			<md-button class="md-accent">Tutors rejected</md-button>
+		
+			<md-button class="md-accent">Find Tutors</md-button>
 
 		</div>
 
-	  	<md-content flex style="background-color:#eee; height: 100vw" layout-fill>
+
+<!-- content -->
+	<div ng-cloak flex="80">
+
+	  <md-content>
+	  	<h1>Dashboard</h1>
+
+	    <md-tabs md-dynamic-height md-border-bottom>
+	      <md-tab label="All Tutors">
+	        <div layout="rows" style="height: 150px; border-radius: 10px; border: 1px solid #eee">
+	          	<div flex="15" style="text-align: center; padding-top: 15px">
+	          	 <img src="http://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
+				</div>
+	          	 <div flex="85" >
+	          	 	<p>Johnathon Lee</p>
+	          	 	<p>Bio</p>
+	          	 	<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus</p>
+	          	 </div>
+
+	          	
+	        </div>
+	      </md-tab>
+	      <md-tab label="Scheduled Tutors">
+	        <md-content class="md-padding">
+	          <h1 class="md-display-2">Tab Two</h1>
+	          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla </p>
+	         
+	        </md-content>
+	      </md-tab>
+	      <md-tab label="Tutors History">
+	        <md-content class="md-padding">
+	          <h1 class="md-display-2">Tab Three</h1>
+	          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+	        </md-content>
+	      </md-tab>
+	    </md-tabs>
+	  </md-content>
+	</div>
+
+
+
+
+<!-- 	  	<md-content flex style="background-color:#eee; height: 100vw" layout-fill>
 	  		<h1>Dashboard</h1>
 	  		<md-card>
-	  		 <img src="http://www.american.edu/uploads/profiles/large/jonnel_clothier_profile.jpg" class="md-card-image" class="md-card-image" style="width: 100px" alt="image caption">
+	  		 <img src="http://sammysouthallwebworks.co.uk/wp-content/uploads/2014/03/professional-profile-photography-worcestershire-01.jpg" class="md-card-image" class="md-card-image" style="width: 100px" alt="image caption">
 	  		 <md-card-content>
 	  		 </md-card-content>
 	  		 <md-card-footer>
@@ -47,7 +112,7 @@
 	  		 </md-card-footer>
 	  		</md-card>
 
-	  	</md-content>
+	  	</md-content> -->
 	</div>
 </div>
 

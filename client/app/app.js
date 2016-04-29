@@ -67,7 +67,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
   $urlRouterProvider.otherwise('/');
 
   $mdThemingProvider.theme('default')
-    .primaryPalette('grey')
-    .accentPalette('pink');
+    .primaryPalette('blue-grey')
+    .accentPalette('orange');
 });
 
