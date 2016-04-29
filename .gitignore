@@ -4,7 +4,7 @@
 
 
 /server/db/dbconfig.js
-
+/server/key.js
 /server/node_modules
 
 /client/bower_components

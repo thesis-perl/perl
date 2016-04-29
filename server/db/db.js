@@ -13,62 +13,42 @@ var knex = require('knex') ({
   }
 });
 
-knex.schema.createTableIfNotExists('tutors', function (tutor) {
-  tutor.increments('id').primary();
-  tutor.string('username').unique();
-  tutor.string('password').unique();
-  tutor.string('bio');
-  tutor.string('location');
-  tutor.integer('online');
+knex.schema.createTableIfNotExists('users', function (user) {
+  user.increments('id').primary();
+  user.string('username').unique();
+  user.string('password').unique();
+  user.string('bio');
+  user.string('location');
+  user.integer('online');
+  user.boolean('isTutor');
 }).then(function() {
   console.log('tutor table created');
 });
 
-knex.schema.createTableIfNotExists('students', function (student) {
-  student.increments('id').primary();
-  student.string('username').unique();
-  student.string('password').unique();
-  student.string('bio');
-  student.string('location');
-  student.integer('online');
-}).then(function() {
-  console.log('student table created');
-});
-
-knex.schema.createTableIfNotExists('languagestudent', function (langstud) {
-  langstud.integer('StudentID').unsigned();
-  langstud.integer('javascript');
-  langstud.integer('ruby');
-  langstud.integer('python');
-  langstud.foreign('StudentID').references('id').inTable('students');
-}).then(function() {
-  console.log('language student table created');
-});
-
-knex.schema.createTableIfNotExists('languagetutor', function (langtut) {
-  langtut.integer('TutorID').unsigned();
-  langtut.integer('javascript');
-  langtut.integer('ruby');
-  langtut.integer('python');
-  langtut.foreign('TutorID').references('id').inTable('tutors');
+knex.schema.createTableIfNotExists('languages', function (lang) {
+  lang.integer('UserId').unsigned();
+  lang.integer('javascript');
+  lang.integer('ruby');
+  lang.integer('python');
+  lang.foreign('UserId').references('id').inTable('users');
 }).then(function() {
   console.log('language student table created');
 });
 
 knex.schema.createTableIfNotExists('invited', function(join) {
- join.integer('TutorID').unsigned();
- join.integer('StudentID').unsigned();
- join.foreign('TutorID').references('id').inTable('tutors');
- join.foreign('StudentID').references('id').inTable('students');
+ join.integer('UID1').unsigned();
+ join.integer('UID2').unsigned();
+ join.foreign('UID1').references('id').inTable('users');
+ join.foreign('UID2').references('id').inTable('users');
 }).then(function() {
  console.log('invited join table created');
 });
 
 knex.schema.createTableIfNotExists('accepted', function(join) {
- join.integer('TutorID').unsigned();
- join.integer('StudentID').unsigned();
- join.foreign('TutorID').references('id').inTable('tutors');
- join.foreign('StudentID').references('id').inTable('students');
+ join.integer('UID1').unsigned();
+ join.integer('UID2').unsigned();
+ join.foreign('UID1').references('id').inTable('users');
+ join.foreign('UID2').references('id').inTable('users');
 }).then(function() {
  console.log('accepted join table created');
 });
