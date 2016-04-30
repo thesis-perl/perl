@@ -50,7 +50,165 @@ label {
 }
 
 
+
+
+
+li {
+  list-style-type: none;
+}
+
+
+.logOutBtn {
+  width: 200px;
+  height: 130px;
+  position: absolute;
+  top: 0px;
+  font-size: 30px;
+  color: #F5B22F !important;
+  right: 0px;
+}
+
+.logOutText {
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  top:35%;
+  font-size: 30px;
+}
+
+.input {
+  
+  margin: auto;
+  width: 100%;
+  padding: 10px;
+}
+
+
+
+}
+
+.body {
+
+font-family: sans-serif;
+position: relative;
+margin-top: 0;
+}
+
+
+
+/*.signoutBtn {
+ 
+ position: relative;
+ right: -550px;
+ top: -90px;
+ border-color: purple;
+   border: 0;
+  border-radius: 0;
+ 
+  position: relative;
+  overflow: hidden;
+  
+  
+  border-radius: 3px;
+
+}
+
+.signoutBtn:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: $purple;
+    z-index: -1;
+    transition: width 150ms ease-in-out;
+  }
+  
+  .signoutBtn:hover {
+    color: #fff;
+
+}*/
+
+.signUp, .signIn {
+
+  width: 30%;
+  color: white;
+  background-color: #363B3F;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
+.signIn h1, .signUp h1 {
+  padding-bottom: 10px;
+  font-size: 200%;
+  text-align: center;
+  margin-top: 10px;
+}
+.signIn h2, .signUp h2 {
+  text-align: center;
+  color:#5e5c6d; 
+  margin-top: 50px;
+}
+
+.signUp h3 {
+  margin: 0 0 15px;
+}
+ .signUp label, .signIn label {
+  color: white;
+}
+.signUp p {
+margin-top: -30px;
+}
+#signUpbtn, #cancelSignup, #signInbtn, #cancelSigin {
+  background-color: #4d4d4d ;
+  color: white;
+  width: 100px;
+  padding: 0;
+  margin: 30px;
+  margin-left: 60px;
+}
+
+.form {
+
+  margin-top: 70px;
+}
+.enter {
+
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  background-color: #5e5c6d;
+  margin-bottom: 20px;
+}
+
+.signuplink {
+  display: inline-block;
+  margin-left: 225px;
+  margin-right: 225px;
+
+}
+
+.topBar{
+
+  background-color: #5e5c6d;
+  
+}
+
+.topBar h2 {
+  color: #e0e0eb;
+  text-align: center;
+
+}
+
 /*********  Student Dashboard  ************/
 md-icon svg {
   fill: orange;
 }
+
+

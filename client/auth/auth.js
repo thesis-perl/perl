@@ -1,10 +1,12 @@
-angular.module('Perl.authentication', [])
+angular.module('Perl.authentication', ['ngMaterial'])
 
 .controller('authentication',function($scope, authFactory){
    //signup a user
   $scope.signup = function() {
   	
     var userInfo = {
+      tutor: $scope.userChecked($scope.tutorCheckBox), 
+      student: $scope.userChecked($scope.studentCheckBox), 
    	  username: $scope.username,
       password: $scope.password,
       location: $scope.location,
@@ -14,33 +16,27 @@ angular.module('Perl.authentication', [])
       python: $scope.subjectChecked($scope.pythonCheckbox)
     };
 
-    //signin up as a tutor
-    if($scope.tutorCheckBox === true && $scope.studentCheckBox === undefined) {
-       if($scope.javascriptCheckbox === undefined && $scope.rubyCheckbox === undefined && $scope.pythonCheckbox === undefined) {
-          $scope.signuperr3 = 'please select at least one subject';
-       }
-       else {
-         console.log('singning up as a tutor')
-         $scope.signupTutor(userInfo);
-       }
-    }
-	  //signing up as a student 
-    else if($scope.studentCheckBox === true && $scope.tutorCheckBox === undefined) {
-       if($scope.javascriptCheckbox === undefined && $scope.rubyCheckbox === undefined && $scope.pythonCheckbox === undefined) {
-          $scope.signuperr3 = 'please select at least one subject';
-       } 
-       else {
-    	  console.log('singning up as a student');
-    	  $scope.signupStudent(userInfo);
-       }
-    }
+
     //handling case when both student and tutor boxes are checked
-    else if($scope.studentCheckBox === true && $scope.tutorCheckBox === true) {
-    	console.log('err, both student and tutor boxes checked')
+    if($scope.studentCheckBox === true && $scope.tutorCheckBox === true) {
+      console.log('err, both student and tutor boxes checked')
       $scope.signuperr1 = 'you can only sign up either as a student or a tuitor';
     
     } 
-    //handling case when neither of student and tutor boxes is checked
+    //signin up a user
+    else if($scope.tutorCheckBox === true || $scope.studentCheckBox === true) {
+       if($scope.javascriptCheckbox === undefined && $scope.rubyCheckbox === undefined && $scope.pythonCheckbox === undefined) {
+          $scope.signuperr3 = 'please select at least one subject';
+         
+       }
+       else {
+        console.log(' signin up a user info', userInfo)
+         $scope.signupUser(userInfo);
+          
+       }
+    }
+	 
+  //handling case when neither of student and tutor boxes is checked
     else if($scope.studentCheckBox === undefined && $scope.tutorCheckBox === undefined) {
     	console.log('err, nor student neither tutor boxes checked')
       $scope.signuperr2 = 'please select if you are a tuitor or a student';
@@ -54,19 +50,15 @@ angular.module('Perl.authentication', [])
       username: $scope.signinUsername,
       password: $scope.signinPassword
     };
-    console.log('auth.js: in signin: userInfo: ', $scope.signinUsername);
+    console.log('auth.js: in signin: userInfo: ', userInfo);
     $scope.signinUser(userInfo);
   }
 
-  //tutor signup helper
-  $scope.signupTutor = function(info) {
-    authFactory.studentSignup(info);
+  // signup helper
+  $scope.signupUser = function(info) {
+    authFactory.signup(info);
   };
-  //student signup helper
-  $scope.signupStudent = function(info) {
-   authFactory.tutorSignup(info);
-  };
-
+ 
   //user signin helper
   $scope.signinUser = function(info) {
     authFactory.signin(info);
@@ -81,6 +73,15 @@ angular.module('Perl.authentication', [])
       return 0;
     }
   };
+
+  $scope.userChecked = function(check) {
+    if(check === true) {
+      return true;
+    }
+    if(check===undefined) {
+      return false;
+    }
+  }
 
 }) // end of authcontroller
 
