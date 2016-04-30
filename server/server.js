@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var db = require('./db/db').knex;
 var bcrypt = require('bcrypt');
+var nodecrypt = require('bcrypt-nodejs');
 var FirebaseTokenGenerator = require('firebase-token-generator');
 
 var key = require('./key');
@@ -32,53 +33,31 @@ app.post('/api/login', function(req, res) {
     if (resolve) {
       db('users').where('username', user.username)
       .then(function(data) {
-        bcrypt.compare(user.password, data[0].password, function(err, result) {
-          console.log(user.password);
-          console.log(data[0].password);
+        console.log('user password', user.password);
+        console.log('data password', data[0].password);
+        nodecrypt.compare(user.password, data[0].password, function(err, result) {
           if (err) {
-            res.sendStatus(401);
+            console.log('in err', err);
+            res.send(401);
           } else {
-            console.log(data)
-            var stringUID = user.username;
-            var token = tokenGenerator.createToken({ uid: stringUID, some: "arbitrary", data: "here"});
-            res.send({token: token});
+            if(result) {
+              console.log(data[0])
+              console.log(user)
+              var stringUID = user.username;
+              var token = tokenGenerator.createToken({ uid: stringUID });
+              res.send({token: token});
+            } else {
+              res.send("password don't match");
+            }
           }
         })
+      }).then(function(data) {
         resolve(data);
       })
     }
   })
 })
 
-var saltRounds = 10;
-
-app.post('/api/signup', function(req, res) {
-  console.log(req.body);
-  var userPWbeforeEncrypt = req.body.password;
-  var user = req.body.username;
-  var hashedPW;
-  var userNameTaken = false;
-
-  return new Promise(function(resolve) {
-    if(resolve) {
-      db('users').where({username: user})
-      .then(function(data) {
-        if(data.length === 0) {
-          console.log("I have a user named: ", data);
-          bcrypt.hash(userPWbeforeEncrypt, saltRounds, function(err, hash) {
-            if(err) {
-              console.log(err);
-            } else {
-              db('users').insert({username: user, password: hash, location: req.body.location, bio: req.body.bio})
-              console.log("this is my req", req.body);
-            }
-          })
-        }
-        resolve(data);
-      })
-    }
-  })
-})
 
 // cors
 app.use(cors());
