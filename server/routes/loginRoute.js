@@ -5,9 +5,7 @@ var FirebaseTokenGenerator = require('firebase-token-generator');
 var key = require('../key');
 var tokenGenerator = new FirebaseTokenGenerator(key.fireSecret);
 
-
 // load database module
-
 var db = require('../db/db').knex;
 
 router.post('/', function(req, res) {
