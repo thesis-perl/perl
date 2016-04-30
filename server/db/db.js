@@ -20,7 +20,8 @@ knex.schema.createTableIfNotExists('users', function (user) {
   user.string('bio');
   user.string('location');
   user.integer('online');
-  user.boolean('isTutor');
+  user.integer('isTutor');
+  user.integer('isStudent');
 }).then(function() {
   console.log('tutor table created');
 });
