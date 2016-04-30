@@ -52,9 +52,14 @@
          <label>python</label>
       </md-checkbox>
     <br> 
+
+    <!--upload photo -->
+    <div>
+         <input type = "file" file-model = "myFile"/>
+    </div>
     
     <!--signup button-->
-    <md-button type="submit" class="input" id='signUpbtn' ng-click = 'signup()'> signup</md-button>
+    <md-button type="submit" class="input" id='signUpbtn' ng-click = 'signup(); uploadFile()'> signup</md-button>
        <!--signup cance; button-->
     <md-button type="submit" class="input" id = 'cancelSignup'> cancel</md-button>
   </form>

@@ -12,9 +12,29 @@ angular.module('Perl.services', [])
     $http.post('/api/student_login', userInfo);
   
   };
+
+
+  var uploadFileToUrl = function(file, uploadUrl){
+     var fd = new FormData();
+     fd.append('file', file);
+  
+     $http.post(uploadUrl, fd, {
+        transformRequest: angular.identity,
+        headers: {'Content-Type': undefined}
+     })
+  
+     .success(function(){
+     })
+  
+     .error(function(){
+     });
+  }
+
+
   return {
     signin: postSigninUser,
-    signup: postSignupUser
+    signup: postSignupUser,
+    uploadFileToUrl: uploadFileToUrl
   };
 
 
