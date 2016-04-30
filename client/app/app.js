@@ -1,4 +1,4 @@
-angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', 'Perl.session', 'Perl.studentDashboard', 'Perl.tutorFilter', 'Perl.tutorProfile', 'Perl.tutorDashboard', 'Perl.landing', 'ui.router', 'ngMaterial'])
+angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', 'Perl.session', 'Perl.studentDashboard', 'Perl.tutorFilter', 'Perl.tutorProfile', 'Perl.tutorDashboard', 'Perl.landing', 'ui.router', 'ngMaterial', 'firebase'])
 
 .run(function () {
   //instances and constants to be injected here

@@ -27,11 +27,13 @@ router.post('/', function(req, res) {
           bcrypt.hash(userPWbeforeEncrypt, saltRounds, function(err, hash) {
             db('users').insert({username: user, password: hash, isTutor: req.body.tutor, isStudent: req.body.student, location: req.body.location, bio: req.body.bio, javascript: req.body.javascript, ruby: req.body.ruby, python: req.body.python})
             .then(function(data) {
-              console.log("this is my data", data);
-              var stringUID = data[0].toString();
-              var token = tokenGenerator.createToken({ uid: stringUID});
-              res.send({token: token});
-              console.log(token);
+              db('users').where('username', user)
+              .then(function(data) {
+                console.log("this is my inner data", data);
+                var stringUID = data[0].id.toString();
+                var token = tokenGenerator.createToken({uid: stringUID});
+                res.send({token: token, isTutor: data[0].isTutor, isStudent: data[0].isStudent});
+              })
             })
           })
         } else {

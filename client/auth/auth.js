@@ -1,10 +1,18 @@
+<<<<<<< Updated upstream
 angular.module('Perl.authentication', ['ngMaterial'])
 
 .controller('authentication',function($scope, authFactory){
+=======
+angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
+
+.controller('authentication', ['$scope', 'authFactory', '$state', '$firebaseAuth', function($scope, authFactory, $state, $firebaseAuth){
+>>>>>>> Stashed changes
   AWS.config.update({accessKeyId: accessKeyId, secretAccessKey: secretAccessKey});;
   AWS.config.region = 'us-east-1';
   var bucket = new AWS.S3({params: {Bucket: 'perlproject'}});
 
+  $scope.ref = new Firebase("https://perl-thesis.firebaseio.com/");
+  $scope.auth = $firebaseAuth($scope.ref);
 
   $scope.uploadFile = function(){
     var file = $scope.myFile;
@@ -24,7 +32,7 @@ angular.module('Perl.authentication', ['ngMaterial'])
     var userInfo = {
       tutor: $scope.userChecked($scope.tutorCheckBox),
       student: $scope.userChecked($scope.studentCheckBox),
-   	  username: $scope.username,
+      username: $scope.username,
       password: $scope.password,
       location: $scope.location,
       bio: $scope.bio,
@@ -41,20 +49,19 @@ angular.module('Perl.authentication', ['ngMaterial'])
     }
     //signin up a user
     else if($scope.tutorCheckBox === true || $scope.studentCheckBox === true) {
-       if($scope.javascriptCheckbox === undefined && $scope.rubyCheckbox === undefined && $scope.pythonCheckbox === undefined) {
-          $scope.signuperr3 = 'please select at least one subject';
+      if($scope.javascriptCheckbox === undefined && $scope.rubyCheckbox === undefined && $scope.pythonCheckbox === undefined) {
+        $scope.signuperr3 = 'please select at least one subject';
 
-       }
-       else {
+      }
+      else {
         console.log(' signing up a user', userInfo)
-         $scope.signupUser(userInfo);
-
-       }
+        $scope.signupUser(userInfo);
+      }
     }
 
-  //handling case when neither of student and tutor boxes is checked
+    //handling case when neither of student and tutor boxes is checked
     else if($scope.studentCheckBox === undefined && $scope.tutorCheckBox === undefined) {
-    	console.log('err, nor student neither tutor boxes checked')
+      console.log('err, nor student neither tutor boxes checked')
       $scope.signuperr2 = 'please select if you are a tuitor or a student';
 
     }
@@ -73,7 +80,21 @@ angular.module('Perl.authentication', ['ngMaterial'])
 
   // signup helper
   $scope.signupUser = function(info) {
+<<<<<<< Updated upstream
     authFactory.signup(info);
+=======
+    authFactory.signup(info).then(function(data){
+      console.log("signup user receiving this data: ", data);
+      $scope.ref.authWithCustomToken(token, function(error, authData) {
+        if(data.data.isStudent === 1) {
+          $state.go('studentDashboard')
+        }
+        else if (data.data.isTutor === 1){
+          $state.go('tutorDashboard')
+        }
+      });
+    });
+>>>>>>> Stashed changes
   };
 
   //user signin helper
