@@ -5,7 +5,7 @@ angular.module('Perl.authentication', ['ngMaterial'])
   AWS.config.region = 'us-east-1';
   var bucket = new AWS.S3({params: {Bucket: 'perlproject'}});
 
-  
+
   $scope.uploadFile = function(){
     var file = $scope.myFile;
     var prefix = Date.now()

@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var bcrypt = require('bcrypt-nodejs');
-var nodecrypt = require('bcrypt-nodejs');
+var bcrypt = require('bcrypt');
 var FirebaseTokenGenerator = require('firebase-token-generator');
 var key = require('../key');
 var tokenGenerator = new FirebaseTokenGenerator(key.fireSecret);
@@ -19,7 +18,7 @@ router.post('/', function(req, res) {
       .then(function(data) {
         console.log('user password', user.password);
         console.log('data password', data[0].password);
-        nodecrypt.compare(user.password, data[0].password, function(err, result) {
+        bcrypt.compare(user.password, data[0].password, function(err, result) {
           if (err) {
             console.log('in err', err);
             res.send(401);

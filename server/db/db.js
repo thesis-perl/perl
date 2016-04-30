@@ -22,18 +22,11 @@ knex.schema.createTableIfNotExists('users', function (user) {
   user.integer('online');
   user.integer('isTutor');
   user.integer('isStudent');
+  user.integer('javascript');
+  user.integer('ruby');
+  user.integer('python');
 }).then(function() {
   console.log('tutor table created');
-});
-
-knex.schema.createTableIfNotExists('languages', function (lang) {
-  lang.integer('UserId').unsigned();
-  lang.integer('javascript');
-  lang.integer('ruby');
-  lang.integer('python');
-  lang.foreign('UserId').references('id').inTable('users');
-}).then(function() {
-  console.log('language student table created');
 });
 
 knex.schema.createTableIfNotExists('invited', function(join) {
