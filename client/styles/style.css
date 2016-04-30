@@ -211,4 +211,22 @@ md-icon svg {
   fill: orange;
 }
 
+/*********  Tutor Dashboard  ************/
+
+
+.subjectItem {
+  float: left;
+  margin: 5px;
+
+}
+
+.sessions {
+  margin-bottom: 10px;
+
+
+}
+.profile {
+  margin-left: 100px;
+}
+
 
