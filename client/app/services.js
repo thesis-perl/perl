@@ -49,9 +49,6 @@ angular.module('Perl.services', [])
 		getProfile: getProfile
 	}
 
-<<<<<<< Updated upstream
-});
-=======
 })
 .factory('tutorFactory', function($http){
   var getScheduledSessions = function() {
@@ -94,4 +91,4 @@ angular.module('Perl.services', [])
 })
 
 
->>>>>>> Stashed changes
+
