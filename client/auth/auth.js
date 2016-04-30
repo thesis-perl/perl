@@ -30,7 +30,7 @@ angular.module('Perl.authentication', ['ngMaterial'])
          
        }
        else {
-        console.log(' signin up a user info', userInfo)
+        console.log(' signing up a user', userInfo)
          $scope.signupUser(userInfo);
           
        }
