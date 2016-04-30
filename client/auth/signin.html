@@ -1,14 +1,24 @@
-<div class="signin">
-<section class="loginform">
-<table name="login" action="index_submit" method="get" accept-charset="utf-8">
-  <ul>
-    <li><label for="usermail">Username</label>
-    <input ng-model="signinUsername" name="username" placeholder="Username" required></li>
-    <li><label for="password">Password</label>
-    <input ng-model="signinPassword" name="password" placeholder="Password" required></li>
-    <li>
-    <input type="submit" ng-click="signin()" value="Login"></li>
-  </ul>
-</table>
-</section>
+
+<div class='body'>
+<div class="signIn" id='signin'>
+<h1> sign in </h1>
+<form>
+  <md-input-container class="input">
+    <label for="username">username</label>
+    <input ng-model="signinUsername" name="username" required></li>
+  </md-input-container> 
+
+  <md-input-container class="input">
+    <label for="password">Password</label>
+    <input ng-model="signinPassword" name="password"  required></li>
+  </md-input-container> 
+
+  <md-button type="submit" ng-click="signin()" value="Login" id ='signInbtn'> sign in </md-button>
+  <md-button type="submit" class="input" id = 'cancelSigin'> cancel</md-button>
+ 
+</form>
 </div>
+</div>
+
+
+
