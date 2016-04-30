@@ -23,14 +23,14 @@ app.use(cors());
 // Serve client files
 app.use(express.static(__dirname + '/../client'));
 
-// Bcrypting stuffs
-var saltRounds = 10;
-var notSignedUp = false;
-
 // API Routing
 app.use('/api/login', require('./routes/loginRoute.js'));
 app.use('/api/signup', require('./routes/signupRoute.js'));
-
+app.use('/api/invited', require('./routes/inviteTutorRoute.js'));
+app.use('/api/accepted', require('./routes/acceptStudentRoute.js'));
+app.use('/api/student_dashboard', require('./routes/studentDashboardRoute.js'));
+// app.use('/api/tutor_dashboard', require('./routes/tutorDashboardRoute.js'));
+app.use('/api/filter_tutor', require('./routes/filterTutorRoute.js'));
 
 // cors
 app.use(cors());

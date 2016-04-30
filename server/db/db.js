@@ -20,8 +20,8 @@ knex.schema.createTableIfNotExists('users', function (user) {
   user.string('bio');
   user.string('location');
   user.integer('online');
-  user.integer('isTutor');
-  user.integer('isStudent');
+  user.integer('istutor');
+  user.integer('isstudent');
   user.integer('javascript');
   user.integer('ruby');
   user.integer('python');
@@ -29,22 +29,15 @@ knex.schema.createTableIfNotExists('users', function (user) {
   console.log('tutor table created');
 });
 
-knex.schema.createTableIfNotExists('invited', function(join) {
- join.integer('UID1').unsigned();
- join.integer('UID2').unsigned();
- join.foreign('UID1').references('id').inTable('users');
- join.foreign('UID2').references('id').inTable('users');
+knex.schema.createTableIfNotExists('studentutor', function(join) {
+  join.increments('ID').primary();
+  join.integer('UID1').unsigned();
+  join.integer('UID2').unsigned();
+  join.integer('status');
+  join.foreign('UID1').references('id').inTable('users');
+  join.foreign('UID2').references('id').inTable('users');
 }).then(function() {
  console.log('invited join table created');
-});
-
-knex.schema.createTableIfNotExists('accepted', function(join) {
- join.integer('UID1').unsigned();
- join.integer('UID2').unsigned();
- join.foreign('UID1').references('id').inTable('users');
- join.foreign('UID2').references('id').inTable('users');
-}).then(function() {
- console.log('accepted join table created');
 });
 
 module.exports = {
