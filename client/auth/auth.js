@@ -1,7 +1,24 @@
 angular.module('Perl.authentication', ['ngMaterial'])
 
 .controller('authentication',function($scope, authFactory){
-   //signup a user
+  AWS.config.update({accessKeyId: accessKeyId, secretAccessKey: secretAccessKey});;
+  AWS.config.region = 'us-east-1';
+  var bucket = new AWS.S3({params: {Bucket: 'perlproject'}});
+
+  
+  $scope.uploadFile = function(){
+    var file = $scope.myFile;
+    var prefix = Date.now()
+    if(file) {
+      var params = {Key: prefix+file.name, ContentType: file.type, Body: file};
+      bucket.upload(params, function(err, data) {
+        if(err) console.log(err)
+        console.log('data', data)
+        //data.key is the photo file name
+      });
+    }
+  };
+
   $scope.signup = function() {
 
     var userInfo = {
@@ -15,7 +32,6 @@ angular.module('Perl.authentication', ['ngMaterial'])
       ruby: $scope.subjectChecked($scope.rubyCheckbox),
       python: $scope.subjectChecked($scope.pythonCheckbox)
     };
-
 
     //handling case when both student and tutor boxes are checked
     if($scope.studentCheckBox === true && $scope.tutorCheckBox === true) {
@@ -40,6 +56,7 @@ angular.module('Perl.authentication', ['ngMaterial'])
     else if($scope.studentCheckBox === undefined && $scope.tutorCheckBox === undefined) {
     	console.log('err, nor student neither tutor boxes checked')
       $scope.signuperr2 = 'please select if you are a tuitor or a student';
+
     }
   };
 
