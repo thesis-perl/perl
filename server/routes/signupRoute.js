@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var bcrypt = require('bcrypt-nodejs');
+var bcrypt = require('bcrypt');
 var nodecrypt = require('bcrypt-nodejs');
 var FirebaseTokenGenerator = require('firebase-token-generator');
 var key = require('../key');
@@ -30,7 +30,7 @@ router.post('/', function(req, res) {
         if(data.length === 0) {
           console.log("I don't have a user with the username:", user);
           bcrypt.hash(userPWbeforeEncrypt, saltRounds, function(err, hash) {
-            db('users').insert({username: user, password: hash, isTutor: req.body.tutor, isStudent: req.body.student, location: req.body.location, bio: req.body.bio})
+            db('users').insert({username: user, password: hash, isTutor: req.body.tutor, isStudent: req.body.student, location: req.body.location, bio: req.body.bio, javascript: req.body.javascript, ruby: req.body.ruby, python: req.body.python})
             .then(function(data) {
               console.log("this is my data", data);
               var stringUID = data[0].toString();
