@@ -27,6 +27,9 @@ app.use(express.static(__dirname + '/../client'));
 // app.use('/api/signup', require('./routes/signupRoute.js'));
 // app.use('/api/login', require('./routes/loginRoute.js'));
 
+var saltRounds = 10;
+var notSignedUp = false;
+
 app.post('/api/login', function(req, res) {
   var user = req.body;
   return new Promise(function(resolve) {
@@ -59,10 +62,41 @@ app.post('/api/login', function(req, res) {
 })
 
 
+app.post('/api/signup', function(req, res) {
+  console.log(req.body);
+  var userPWbeforeEncrypt = req.body.password;
+  var user = req.body.username;
+  var hashedPW;
+  var userNameTaken = false;
+
+  return new Promise (function(resolve) {
+    if(resolve) {
+      db('users').where({username: user})
+      .then(function(data) {
+        if(data.length === 0) {
+          console.log("I don't have a user with the username:", user);
+          bcrypt.hash(userPWbeforeEncrypt, saltRounds, function(err, hash) {
+            db('users').insert({username: user, password: hash, isTutor: req.body.tutor, isStudent: req.body.student, location: req.body.location, bio: req.body.bio})
+            .then(function(data) {
+              console.log("this is my data", data);
+              var stringUID = data[0].toString();
+              var token = tokenGenerator.createToken({ uid: stringUID});
+              res.send({token: token});
+              console.log(token);
+            })
+          })
+        }
+      })
+    } else {
+      console.log("This username is taken!");
+      res.send(userNameTaken);
+    }
+  })
+});
+
 // cors
 app.use(cors());
 
-
 app.listen(port, function() {
   console.log('Listening on port ' + port);
-})
+});
