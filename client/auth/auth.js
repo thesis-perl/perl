@@ -1,12 +1,7 @@
-<<<<<<< Updated upstream
-angular.module('Perl.authentication', ['ngMaterial'])
 
-.controller('authentication',function($scope, authFactory){
-=======
 angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
 
 .controller('authentication', ['$scope', 'authFactory', '$state', '$firebaseAuth', function($scope, authFactory, $state, $firebaseAuth){
->>>>>>> Stashed changes
   AWS.config.update({accessKeyId: accessKeyId, secretAccessKey: secretAccessKey});;
   AWS.config.region = 'us-east-1';
   var bucket = new AWS.S3({params: {Bucket: 'perlproject'}});
