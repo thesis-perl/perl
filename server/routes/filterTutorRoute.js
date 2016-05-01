@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
     if (resolve) {
       db('users').where({ isTutor: 1})
       .then(function(data) {
-        res.send(data);
+        res.send({id: data[0].id, username: data[0].username, bio: data[0].bio, location: data[0].location, imgurl: data[0].imgurl, javascript: data[0].javascript, ruby: data[0].ruby, python: data[0].python});
       })
     }
   })

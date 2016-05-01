@@ -21,8 +21,8 @@ knex.schema.createTableIfNotExists('users', function (user) {
   user.string('location');
   user.string('imgurl');
   user.integer('online');
-  user.integer('istutor');
-  user.integer('isstudent');
+  user.integer('isTutor');
+  user.integer('isStudent');
   user.integer('javascript');
   user.integer('ruby');
   user.integer('python');

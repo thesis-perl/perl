@@ -6,7 +6,9 @@ var db = require('../db/db').knex;
 
 router.post('/', function(req, res) {
   console.log(req.body);
+  // student id
   var uid1 = req.body.uid1;
+  // tutor id
   var uid2 = req.body.uid2;
   return new Promise (function(resolve) {
     if (resolve) {
