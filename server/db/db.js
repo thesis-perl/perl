@@ -19,6 +19,7 @@ knex.schema.createTableIfNotExists('users', function (user) {
   user.string('password').unique();
   user.string('bio');
   user.string('location');
+  user.string('imgurl');
   user.integer('online');
   user.integer('istutor');
   user.integer('isstudent');

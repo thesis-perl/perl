@@ -32,7 +32,7 @@ router.post('/', function(req, res) {
                 console.log("this is my inner data", data);
                 var stringUID = data[0].id.toString();
                 var token = tokenGenerator.createToken({uid: stringUID});
-                res.send({token: token, isTutor: data[0].isTutor, isStudent: data[0].isStudent});
+                res.send({token: token, id: data[0].id, isTutor: data[0].isTutor, isStudent: data[0].isStudent});
               })
             })
           })
