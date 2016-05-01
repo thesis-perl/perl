@@ -1,0 +1,26 @@
+{
+  "name": "thesis-pearl",
+  "version": "1.0.0",
+  "description": "Real-time Code Tutoring Platform",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Brandon Willis, Jeong Min Lee, Ani Stefeyan, Jonathan Lee, Zoe Chen",
+  "license": "MIT",
+  "dependencies": {
+    "angularfire": "^1.2.0",
+    "bcrypt": "^0.8.6",
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
+    "cookieparser": "^0.1.0",
+    "cors": "^2.7.1",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "firebase": "^2.4.2",
+    "firebase-token-generator": "^2.0.0",
+    "knex": "^0.10.0",
+    "mysql": "^2.10.2"
+  }
+}

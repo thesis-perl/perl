@@ -1,0 +1,12 @@
+.env
+
+/client/apiKeys.js
+
+
+/server/db/dbconfig.js
+/server/key.js
+/server/node_modules
+
+/client/bower_components
+
+npm-debug.log

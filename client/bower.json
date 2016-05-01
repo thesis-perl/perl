@@ -1,0 +1,29 @@
+{
+  "name": "thesis-perl",
+  "homepage": "https://github.com/Jwing28/perl",
+  "authors": [
+    "Jonathan Lee",
+    "Jeong Min Lee",
+    "Zoe Chen",
+    "Ani Stepanyan",
+    "Brandon Willis"
+  ],
+  "description": "a code tutoring app",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-ui-router": "ui-router#^0.2.18",
+    "angular-material": "^1.0.8",
+    "angular-material-icons": "^0.7.0",
+    "firebase": "^2.4.2"
+  }
+}
