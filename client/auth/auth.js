@@ -75,9 +75,6 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
 
   // signup helper
   $scope.signupUser = function(info) {
-<<<<<<< Updated upstream
-    authFactory.signup(info);
-=======
     authFactory.signup(info).then(function(data){
       console.log("signup user receiving this data: ", data);
       $scope.ref.authWithCustomToken(token, function(error, authData) {
@@ -89,7 +86,6 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
         }
       });
     });
->>>>>>> Stashed changes
   };
 
   //user signin helper
