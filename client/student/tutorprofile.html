@@ -1,9 +1,196 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-  TutorProfile page
-</body>
-</html>
+<!-- Header -->
+<div layout="column">
+  <div ng-cloak>
+    <md-content>
+      <md-toolbar>
+        <div class="md-toolbar-tools" >
+<!-- logo -->
+          <h2>
+            <span>CodEducation</span>
+          </h2>
+          <span flex></span>
+<!-- menu button -->
+          <md-menu md-offset="0 50">
+            <md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
+              <md-icon md-svg-icon="../assests/list.svg"></md-icon>
+            </md-button>
+            <md-menu-content width="4">
+              <md-menu-item>
+                <md-button ng-click="">
+                  <div>Find Tutors</div>
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="">
+                  <div>Profile</div>
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="">
+                  <div id="signOut">Sign Out</div>
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </div>
+      </md-toolbar>
+    </md-content>
+  </div><!-- close ng-cloak -->
+
+  <div class="container" layout="row" flex layout="vertical" layout-fill>
+    <!-- Sidenav -->
+    <div flex="20" style="background-color:#363B3F; height: 100vw; color: #ccc; text-align: center" layout-fill>
+      <br>
+      <center><img src="https://lh5.googleusercontent.com/-ZadaXoUTBfs/AAAAAAAAAAI/AAAAAAAAAGA/19US52OmBqc/photo.jpg" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%"></center>
+      <md-card-content>
+        <p>Zoe Chen</p>
+      </md-card-content>
+      <md-card-footer>
+        <p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
+      </md-card-footer>
+      <md-card-footer>
+        <p>Hi I'm Zoe Chen! I love backboneJS! If you are interested in learning this please setup a 
+        tutoring session with me. Outside of coding I like to travel and try new restaurants.
+        </p>
+      </md-card-footer>
+      <!-- <md-button class="md-accent">Find Tutors</md-button> -->
+    </div>
+  <!-- content -->
+  <div flex="80">
+    <md-content>
+      <h1>Tutor Profile</h1>
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Potential Session">
+          <md-content class="md-padding">
+            <h1 class="md-display-2">Session Requests</h1>
+            <p>Need help learning something? Select a date and time and request a session!</p>
+
+        <md-content flex layout="row" layout-align="center">
+          <md-content flex="50">
+            <div flex="85" >
+              <p>Tutor:</p>  
+              <p>Jonathan Lee</p>     
+                <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>  
+                <br>
+                <br>           
+                <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Javascript</span>
+                <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Node.js</span>
+                <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">AngularJS</span>      
+                <br>
+                <br>
+              <md-content layout="column" flex ng-controller="tutorProfile">    
+                <div>
+                <div class="dateTimeContent">
+                  <md-button class="md-raised md-warn" ng-click="showTimePicker($event)" aria-label="show picker">Time</md-button>
+                  <p>
+                    {{ currentTime | date:'HH:mm' }}
+                  </p>
+                </div>
+
+                <div class="dateTimeContent">
+                  <md-button class="md-raised md-warn" ng-click="showDatePicker($event)" aria-label="show picker">Date</md-button>
+                  <p>
+                    {{ currentDate | date:'shortDate' }}
+                  </p>
+                </div>
+                </div>
+                <div class="requestSession">
+                  <md-button style="background-color: orange">Request Session</md-button>
+                </div>
+              </md-content>
+
+            </div>            
+            </md-content>
+          </md-content>            
+          </md-content>
+        </md-tab>
+        <md-tab label="Session History">
+          <md-content class="md-padding">
+            <h1 class="md-display-2">Previous Sessions</h1>
+            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+
+        <md-content flex layout="row" layout-align="center">
+          <md-content flex="50">
+            <div flex="85" >
+              <p>Tutor:</p>  
+              <p>Jonathan Lee</p>     
+                <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>  
+                <br>           
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Javascript</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Node.js</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">AngularJS</span>
+              <p>Tutor:</p>  
+              <p>Jonathan Lee</p>     
+                <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>  
+                <br>           
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Javascript</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Node.js</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">AngularJS</span>
+              <p>Tutor:</p>  
+              <p>Nathan Lee</p>     
+                <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>  
+                <br>           
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Javascript</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Node.js</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">AngularJS</span>
+              <p>Tutor:</p>  
+              <p>Lee Lee</p>     
+                <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>  
+                <br>           
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Javascript</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Node.js</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">AngularJS</span>
+              <p>Tutor:</p>  
+              <p>Lee Lee</p>     
+                <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>  
+                <br>           
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Javascript</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Node.js</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">AngularJS</span>
+              <p>Tutor:</p>  
+              <p>Lee Lee</p>     
+                <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>  
+                <br>           
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Javascript</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Node.js</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">AngularJS</span>
+              <p>Tutor:</p>  
+              <p>Lee Lee</p>     
+                <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>  
+                <br>           
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Javascript</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Node.js</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">AngularJS</span>
+              <p>Tutor:</p>  
+              <p>Lee Lee</p>     
+                <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>  
+                <br>           
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Javascript</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Node.js</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">AngularJS</span>
+              <p>Tutor:</p>  
+              <p>Lee Lee</p>     
+                <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>  
+                <br>           
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Javascript</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Node.js</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">AngularJS</span>
+              <p>Tutor:</p>  
+              <p>Lee Lee</p>     
+                <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>  
+                <br>           
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Javascript</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">Node.js</span>
+                <span class="languages" style="background-color:#ccc; padding: -20px 5px; border-radius: 5px;">AngularJS</span>  
+            </div>            
+            </md-content>
+          </md-content>            
+          </md-content>
+        </md-tab>        
+      </md-tabs>
+    </md-content>
+    </div>
+  </div>
+</div>
+
+
