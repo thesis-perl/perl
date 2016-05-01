@@ -1,1 +1,11 @@
-Landing Page
+
+<span moment-picker="ctrl.component">
+    {{ ctrl.component || 'Click here to select a date' }}
+</span>
+
+
+<input class="form-control"
+       ng-model="ctrl.input"
+       ng-model-options="{ updateOn: 'blur' }"
+       placeholder="Select a date and time"
+       moment-picker="ctrl.input">

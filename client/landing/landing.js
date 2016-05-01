@@ -1,3 +1,8 @@
-angular.module('Perl.landing', [])
+angular.module('Perl.landing', [
+	"moment-picker"
+])
 
-.controller('landing',function(){})
+
+.controller("landing", function(){
+
+})

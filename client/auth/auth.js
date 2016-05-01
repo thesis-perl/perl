@@ -12,6 +12,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   $scope.uploadFile = function(){
     var file = $scope.myFile;
     var prefix = Date.now()
+    console.log('in uploadFile file is', file)
     if(file) {
       var params = {Key: prefix+file.name, ContentType: file.type, Body: file};
       bucket.upload(params, function(err, data) {
@@ -23,7 +24,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   };
 
   $scope.signup = function() {
-
+   console.log('in signup')
     var userInfo = {
       tutor: $scope.userChecked($scope.tutorCheckBox),
       student: $scope.userChecked($scope.studentCheckBox),
