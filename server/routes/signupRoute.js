@@ -12,7 +12,6 @@ var notSignedUp = false;
 
 
 router.post('/', function(req, res) {
-  console.log(req.body);
   var userPWbeforeEncrypt = req.body.password;
   var user = req.body.username;
   var hashedPW;
@@ -21,16 +20,14 @@ router.post('/', function(req, res) {
   db('users').where({username: user})
   .then(function(data) {
     if(data.length === 0) {
-      console.log("I don't have a user with the username:", user);
       bcrypt.hash(userPWbeforeEncrypt, saltRounds, function(err, hash) {
         db('users').insert({username: user, password: hash, isTutor: req.body.tutor, isStudent: req.body.student, location: req.body.location, bio: req.body.bio, javascript: req.body.javascript, ruby: req.body.ruby, python: req.body.python})
         .then(function(data) {
           db('users').where('username', user)
           .then(function(data) {
-            console.log("this is my inner data", data);
             var stringUID = data[0].id.toString();
             var token = tokenGenerator.createToken({uid: stringUID});
-            res.send({token: token, id: data[0].id, isTutor: data[0].isTutor, isStudent: data[0].isStudent});
+            res.send({token: token, id: data[0].id, username: data[0].username, bio: data[0].bio, location: data[0].location, imgurl: data[0].imgurl, isTutor: data[0].isTutor, isStudent: data[0].isStudent, javascript: data[0].javascript, ruby: data[0].ruby, python: data[0].python});
           })
         })
       })
