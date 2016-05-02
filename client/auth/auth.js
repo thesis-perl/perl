@@ -1,4 +1,3 @@
-
 angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
 
 .controller('authentication', ['$scope', 'authFactory', '$state', '$firebaseAuth', function($scope, authFactory, $state, $firebaseAuth){
@@ -28,7 +27,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   $scope.signup = function(image) {
 
 
-   console.log('in signup')
+    console.log('in signup')
     var userInfo = {
       tutor: $scope.userChecked($scope.tutorCheckBox),
       student: $scope.userChecked($scope.studentCheckBox),
@@ -136,18 +135,17 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
 
 
 .directive('fileModel', ['$parse', function ($parse) {
-        return {
-            restrict: 'A',
-            link: function(scope, element, attrs) {
-                var model = $parse(attrs.fileModel);
-                var modelSetter = model.assign;
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+      var model = $parse(attrs.fileModel);
+      var modelSetter = model.assign;
 
-                element.bind('change', function(){
-                    scope.$apply(function(){
-                        modelSetter(scope, element[0].files[0]);
-                    });
-                });
-            }
-        };
-    }]);
-
+      element.bind('change', function(){
+        scope.$apply(function(){
+          modelSetter(scope, element[0].files[0]);
+        });
+      });
+    }
+  };
+}]);
