@@ -26,7 +26,7 @@ router.post('/', function(req, res) {
               console.log(user);
               var stringUID = user.username;
               var token = tokenGenerator.createToken({ uid: stringUID });
-              res.send({token: token, id: data[0].id});
+              res.send({token: token, id: data[0].id, isTutor: data[0].isTutor, isStudent: data[0].isStudent});
             } else {
               res.send("password don't match");
             }

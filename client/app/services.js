@@ -10,8 +10,8 @@ angular.module('Perl.services', [])
  //user sigin request
   var postSigninUser = function (userInfo) {
 
-    return $http.post('/api/student_login', userInfo);
-  
+    return $http.post('/api/signin', userInfo);
+
   };
 
 
@@ -56,9 +56,9 @@ angular.module('Perl.services', [])
 
     //testing with dummy data
     var obj = {
-        sessions: [{student: 'Ani Steffanie', date: '06-13-2016', time: '8pm-9pm', bio: 'I am journalist aiming to learn programming', location: 'North Hollywood', subjects: ['javascript', 'Angular']}, 
-                      {student: 'Celine Dion', date: '09-23-2016', time: '6pm-8pm', bio: 'I left my signing career and want to be an engineer', location: 'Las Vegas',  subjects: ['javascript', 'Angular']} 
-                      ]   
+        sessions: [{student: 'Ani Steffanie', date: '06-13-2016', time: '8pm-9pm', bio: 'I am journalist aiming to learn programming', location: 'North Hollywood', subjects: ['javascript', 'Angular']},
+                      {student: 'Celine Dion', date: '09-23-2016', time: '6pm-8pm', bio: 'I left my signing career and want to be an engineer', location: 'Las Vegas',  subjects: ['javascript', 'Angular']}
+                      ]
     };
 
     return obj;
@@ -69,11 +69,11 @@ angular.module('Perl.services', [])
 
     //testing with dummy data
       var obj = {
-       invitations: [{student: 'Tom Hanks', date: '08-02-2016', time: '8pm-9pm', bio: 'No one wants to give me roles in movies, so I want to become a programmer', location: 'Hollywood', subjects: ['javascript', 'Angular']}, 
-                      {student: 'Pamela Anderson', date: '09-23-2016', time: '10pm-11pm', bio: 'I wanna code with you. It will be fun', location: 'Beverly Hills',  subjects: ['javascript', 'Angular']} 
-                    ]   
+       invitations: [{student: 'Tom Hanks', date: '08-02-2016', time: '8pm-9pm', bio: 'No one wants to give me roles in movies, so I want to become a programmer', location: 'Hollywood', subjects: ['javascript', 'Angular']},
+                      {student: 'Pamela Anderson', date: '09-23-2016', time: '10pm-11pm', bio: 'I wanna code with you. It will be fun', location: 'Beverly Hills',  subjects: ['javascript', 'Angular']}
+                    ]
       }
-      
+
     return obj;
   };
 
@@ -89,6 +89,3 @@ angular.module('Perl.services', [])
 
 
 })
-
-
-
