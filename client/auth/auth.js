@@ -84,6 +84,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   $scope.signupUser = function(info) {
     authFactory.signup(info).then(function(data){
       console.log("signup user receiving this data: ", data);
+      authFactory.id = data.data.id;
       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
           $state.go('studentDashboard');
@@ -98,7 +99,8 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   //user signin helper
   $scope.signinUser = function(info) {
     authFactory.signin(info).then(function(data) {
-      console.log("signin user receiving this data: ", data);
+      authFactory.id = data.data.id;
+      console.log("in signin authFactoryid", authFactory.id);
       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
           $state.go('studentDashboard');
