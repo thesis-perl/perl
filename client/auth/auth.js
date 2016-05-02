@@ -21,7 +21,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
         //data.key is the photo file name
         $scope.signup(data.Location);
       });
-    }  
+    }
   };
 
   $scope.signup = function(image) {
