@@ -1,4 +1,4 @@
-angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons'])
+angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase'])
 
 .controller('studentDashboard',function($mdMedia, $scope, $state, studentFactory, authFactory){
 	$scope.invitedTutors;
