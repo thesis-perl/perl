@@ -18,29 +18,25 @@ router.post('/', function(req, res) {
   var hashedPW;
   var userNameTaken = false;
 
-  return new Promise(function(resolve) {
-    if(resolve) {
-      db('users').where({username: user})
-      .then(function(data) {
-        if(data.length === 0) {
-          console.log("I don't have a user with the username:", user);
-          bcrypt.hash(userPWbeforeEncrypt, saltRounds, function(err, hash) {
-            db('users').insert({username: user, password: hash, isTutor: req.body.tutor, isStudent: req.body.student, location: req.body.location, bio: req.body.bio, javascript: req.body.javascript, ruby: req.body.ruby, python: req.body.python})
-            .then(function(data) {
-              db('users').where('username', user)
-              .then(function(data) {
-                console.log("this is my inner data", data);
-                var stringUID = data[0].id.toString();
-                var token = tokenGenerator.createToken({uid: stringUID});
-                res.send({token: token, id: data[0].id, isTutor: data[0].isTutor, isStudent: data[0].isStudent});
-              })
-            })
+  db('users').where({username: user})
+  .then(function(data) {
+    if(data.length === 0) {
+      console.log("I don't have a user with the username:", user);
+      bcrypt.hash(userPWbeforeEncrypt, saltRounds, function(err, hash) {
+        db('users').insert({username: user, password: hash, isTutor: req.body.tutor, isStudent: req.body.student, location: req.body.location, bio: req.body.bio, javascript: req.body.javascript, ruby: req.body.ruby, python: req.body.python})
+        .then(function(data) {
+          db('users').where('username', user)
+          .then(function(data) {
+            console.log("this is my inner data", data);
+            var stringUID = data[0].id.toString();
+            var token = tokenGenerator.createToken({uid: stringUID});
+            res.send({token: token, id: data[0].id, isTutor: data[0].isTutor, isStudent: data[0].isStudent});
           })
-        } else {
-          console.log("This username is taken!");
-          res.send(userNameTaken);
-        }
+        })
       })
+    } else {
+      console.log("This username is taken!");
+      res.send(userNameTaken);
     }
   })
 });

@@ -10,32 +10,29 @@ var db = require('../db/db').knex;
 
 router.post('/', function(req, res) {
   var user = req.body;
-  return new Promise(function(resolve) {
-    if (resolve) {
-      db('users').where('username', user.username)
-      .then(function(data) {
-        console.log('user password', user.password);
-        console.log('data password', data[0].password);
-        bcrypt.compare(user.password, data[0].password, function(err, result) {
-          if (err) {
-            console.log('in err', err);
-            res.send(401);
-          } else {
-            if(result) {
-              console.log(data[0]);
-              console.log(user);
-              var stringUID = user.username;
-              var token = tokenGenerator.createToken({ uid: stringUID });
-              res.send({token: token, id: data[0].id, isTutor: data[0].isTutor, isStudent: data[0].isStudent});
-            } else {
-              res.send("password don't match");
-            }
-          }
-        })
-      }).then(function(data) {
-        resolve(data);
-      })
-    }
+
+  db('users').where('username', user.username)
+  .then(function(data) {
+    console.log('user password', user.password);
+    console.log('data password', data[0].password);
+    bcrypt.compare(user.password, data[0].password, function(err, result) {
+      if (err) {
+        console.log('in err', err);
+        res.send(401);
+      } else {
+        if(result) {
+          console.log(data[0]);
+          console.log(user);
+          var stringUID = user.username;
+          var token = tokenGenerator.createToken({ uid: stringUID });
+          res.send({token: token, id: data[0].id, isTutor: data[0].isTutor, isStudent: data[0].isStudent});
+        } else {
+          res.send("password don't match");
+        }
+      }
+    })
+  }).then(function(data) {
+    resolve(data);
   })
 });
 
