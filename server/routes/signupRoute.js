@@ -16,12 +16,11 @@ router.post('/', function(req, res) {
   var user = req.body.username;
   var hashedPW;
   var userNameTaken = false;
-
   db('users').where({username: user})
   .then(function(data) {
     if(data.length === 0) {
       bcrypt.hash(userPWbeforeEncrypt, saltRounds, function(err, hash) {
-        db('users').insert({username: user, password: hash, isTutor: req.body.tutor, isStudent: req.body.student, location: req.body.location, bio: req.body.bio, javascript: req.body.javascript, ruby: req.body.ruby, python: req.body.python})
+        db('users').insert({username: user, password: hash, isTutor: req.body.tutor, isStudent: req.body.student, location: req.body.location, imgurl: req.body.imgurl, bio: req.body.bio, javascript: req.body.javascript, ruby: req.body.ruby, python: req.body.python})
         .then(function(data) {
           db('users').where('username', user)
           .then(function(data) {
