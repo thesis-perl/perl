@@ -1,9 +1,11 @@
 angular.module('Perl.services', [])
 .factory('authFactory', function($http){
   //user signup request
+  var id;
+
   var postSignupUser = function(userInfo) {
+    console.log(userInfo)
     return $http.post('/api/signup', userInfo);
-    console.log('signin in a user', userInfo);
   };
 
 
@@ -15,27 +17,28 @@ angular.module('Perl.services', [])
   };
 
 
-  var uploadFileToUrl = function(file, uploadUrl){
-     var fd = new FormData();
-     fd.append('file', file);
+  // var uploadFileToUrl = function(file, uploadUrl){
+  //    var fd = new FormData();
+  //    fd.append('file', file);
 
-     $http.post(uploadUrl, fd, {
-        transformRequest: angular.identity,
-        headers: {'Content-Type': undefined}
-     })
+  //    $http.post(uploadUrl, fd, {
+  //       transformRequest: angular.identity,
+  //       headers: {'Content-Type': undefined}
+  //    })
 
-     .success(function(){
-     })
+  //    .success(function(){
+  //    })
 
-     .error(function(){
-     });
-  }
+  //    .error(function(){
+  //    });
+  // }
 
 
   return {
+    id: id,
     signin: postSigninUser,
-    signup: postSignupUser,
-    uploadFileToUrl: uploadFileToUrl
+    signup: postSignupUser
+    // uploadFileToUrl: uploadFileToUrl
   };
 
 
