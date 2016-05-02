@@ -10,14 +10,11 @@ router.post('/', function(req, res) {
   var uid1 = req.body.uid1;
   // tutor id
   var uid2 = req.body.uid2;
-  return new Promise (function(resolve) {
-    if (resolve) {
-      db('studentutor').insert({UID1: uid1, UID2: uid2, status: 1})
-      .then(function(data) {
-        console.log(data);
-        res.send(data);
-      })
-    }
+
+  db('studentutor').insert({UID1: uid1, UID2: uid2, status: 1})
+  .then(function(data) {
+    console.log(data);
+    res.send(data);
   })
 })
 
