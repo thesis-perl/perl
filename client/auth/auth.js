@@ -19,23 +19,29 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
         if(err) console.log(err)
         console.log('data', data)
         //data.key is the photo file name
+        $scope.signup(data.Location);
       });
     }
   };
 
-  $scope.signup = function() {
+  $scope.signup = function(image) {
+    
+
    console.log('in signup')
     var userInfo = {
       tutor: $scope.userChecked($scope.tutorCheckBox),
       student: $scope.userChecked($scope.studentCheckBox),
       username: $scope.username,
       password: $scope.password,
+      fullname: $scope.fullname,
       location: $scope.location,
       bio: $scope.bio,
+      imageurl: image,
       javascript: $scope.subjectChecked($scope.javascriptCheckbox),
       ruby: $scope.subjectChecked($scope.rubyCheckbox),
       python: $scope.subjectChecked($scope.pythonCheckbox)
     };
+    console.log("signup this user", userInfo)
 
     //handling case when both student and tutor boxes are checked
     if($scope.studentCheckBox === true && $scope.tutorCheckBox === true) {
@@ -125,6 +131,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
 
 }]) // end of authcontroller
 
+
 .directive('fileModel', ['$parse', function ($parse) {
         return {
             restrict: 'A',
@@ -140,3 +147,4 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
             }
         };
     }]);
+
