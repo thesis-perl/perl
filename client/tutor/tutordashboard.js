@@ -26,16 +26,13 @@ angular.module('Perl.tutorDashboard', [])
 
   //tutor rejects student's invitation
   $scope.rejectInvitation = function(){};
-  
+
   //tutor starts session
    $scope.startSession = function() {};
-  
+
   //tutor calcels session
   $scope.cancelSession = function() {};
 
 
 
 })// end of tutordashboard controller
-
-
-
