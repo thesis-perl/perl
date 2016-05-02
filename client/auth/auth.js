@@ -80,18 +80,28 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
       console.log("signup user receiving this data: ", data);
       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
-          $state.go('studentDashboard')
+          $state.go('studentDashboard');
         }
         else if (data.data.isTutor === 1){
-          $state.go('tutorDashboard')
+          $state.go('tutorDashboard');
         }
-      });
+      })
     });
   };
 
   //user signin helper
   $scope.signinUser = function(info) {
-    authFactory.signin(info);
+    authFactory.signin(info).then(function(data) {
+      console.log("signin user receiving this data: ", data);
+      $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
+        if(data.data.isStudent === 1) {
+          $state.go('studentDashboard');
+        }
+        else if (data.data.isTutor === 1) {
+          $state.go('tutorDashboard');
+        }
+      })
+    });
   }
 
   //helper to convert subject checked status to 1 and unchecked status to 0

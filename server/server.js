@@ -24,7 +24,7 @@ app.use(cors());
 app.use(express.static(__dirname + '/../client'));
 
 // API Routing
-app.use('/api/login', require('./routes/loginRoute.js'));
+app.use('/api/signin', require('./routes/signinRoute.js'));
 app.use('/api/signup', require('./routes/signupRoute.js'));
 app.use('/api/invited', require('./routes/inviteTutorRoute.js'));
 app.use('/api/accepted', require('./routes/acceptStudentRoute.js'));
