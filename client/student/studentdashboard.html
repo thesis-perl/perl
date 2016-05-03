@@ -61,15 +61,10 @@
 			<h1 style="color:#363B3F; padding-left:20px">Dashboard</h1>
 			<md-tabs md-dynamic-height md-border-bottom>
 				<md-tab label="Invited Tutors">
-<<<<<<< HEAD
-					<div layout="rows" style="height: 180px; border-bottom: 1px solid #eee" >
-						<div ng-if="!tutors.length">Currently, there is no invited tutors. Find one now!</div>
-						<div layout="rows" style="height: 180px; border: 1px solid #eee" ng-if="tutors.length" ng-repeat="tutor in tutors">
-=======
+
 					<div layout="rows">
 						<div ng-if="!invitedTutors.length">Currently, there is no invited tutors. Find one now!</div>
 						<div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-if="invitedTutors.length" ng-repeat="tutor in invitedTutors">
->>>>>>> feat/tutorsSlides
 							<!-- image -->
 							<div flex="15" style="text-align: center; padding-top: 15px">
 							<img src="http://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
