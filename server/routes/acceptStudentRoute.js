@@ -13,7 +13,7 @@ router.put('/', function(req, res) {
     status: 2
   })
   .then(function(data){
-    res.send(data);
+    res.sendStatus(data);
   })
 })
 
