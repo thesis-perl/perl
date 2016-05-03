@@ -25,13 +25,18 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons'])
   }
 
   $scope.findTutors = function() {
-  	$state.go('tutorFilter')
+  	$state.go('tutorFilter');
   }
 
   $scope.viewProfile = function(id) {
   	$state.go('/tutorProfile/:id')
   }
 
+  $scope.cancelInvitation = function(id) {
+  	//make cancel in services
+  	// studentFactory.cancel(id);
+  	$state.reload();
+  }
 
   $scope.getInvitedTutors();
   $scope.getAcceptedTutors();
