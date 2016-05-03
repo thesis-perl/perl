@@ -42,25 +42,26 @@ angular.module('Perl.services', [])
 })
 
 .factory('studentFactory', function($http) {
-	var getTutorInfo = function(id){
+	var getInvitedTutors = function(id) {
     return $http.get('/api/student_dashboard/invited', { headers: { 'id': id } });
-    // .then(function(data) {
-    //   console.log('tutor in services', data.data)
-    //   data.data;
-    // })
 	};
 
-  var getAllTutors = function() {
-    $http.get('/api/')
+  var getAcceptedTutors = function(id) {
+    return $http.get('/api/student_dashboard/accepted', { headers: { 'id': id } });
   }
 
 	return {
-		getTutorInfo: getTutorInfo,
-    getAllTutors: getAllTutors
+		getInvitedTutors: getInvitedTutors,
+    getAcceptedTutors: getAcceptedTutors
 	}
 
 })
 .factory('tutorFactory', function($http){
+  //zoe put it here to search all tutors
+  var getAllTutors = function() {
+    return $http.get('/api/filter_tutor');
+  }
+
   var getScheduledSessions = function() {
    //return $http.get('api/tutor_dashboard/accepted');
 
@@ -99,6 +100,7 @@ angular.module('Perl.services', [])
   var cancelSession = function(tutorId, sudentId) {};
 
  return {
+     getAllTutors: getAllTutors,
      scheduledSessions: getScheduledSessions,
      invitations: getInvitations,
      acceptInvite: acceptInvitation, 

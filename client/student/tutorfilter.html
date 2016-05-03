@@ -65,24 +65,24 @@
 
 	<!-- tutors list -->
 	<div layout-padding style="margin: 10px; height: 50px" layout="rows">
-		<div layout="rows" style="height: 180px; border: 1px solid #eee">
+		<div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-repeat="tutor in tutors">
 			<!-- image -->
 			<div flex="15" style="text-align: center; padding-top: 15px">
-			<img src="http://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
-			<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
+			<img src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption" alt="image caption">
+			<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{tutor.location}}</p>
 		</div>
 		<!-- bio -->
 		<div flex="85" >
-			<p>Johnathon Lee     
+			<p>{{tutor.fullname}}    
 				<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span>
-				<md-button style="border: 2px solid orange; float:right">View Profile</md-button>
+				<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none">View Profile</a></md-button>
 				<md-button style="border: 2px solid orange; float:right">Message</md-button>
 			</p>
-			<p style="margin-top: 20px; padding-right: 250px">Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus</p>
+			<p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
 			<p>
-				<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Javascript</span>
-				<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Node.js</span>
-				<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">AngularJS</span>
+				<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.javascript = 1">Javascript</span>
+				<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.python = 1">Python</span>
+				<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.ruby = 1">Ruby</span>
 			</p>						
 		</div>
 	</div>
