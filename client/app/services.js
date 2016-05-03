@@ -50,9 +50,14 @@ angular.module('Perl.services', [])
     return $http.get('/api/student_dashboard/accepted', { headers: { 'id': id } });
   }
 
+  var getInfo = function (tutorInfo) {
+    return $http.get('/api/filter_tutor/info',{ headers: { 'id': tutorInfo.tutorId }});
+  }; 
+
 	return {
 		getInvitedTutors: getInvitedTutors,
-    getAcceptedTutors: getAcceptedTutors
+    getAcceptedTutors: getAcceptedTutors,
+    getTutorInfo: getInfo
 	}
 
 })
@@ -73,7 +78,7 @@ angular.module('Perl.services', [])
       };
 
     return obj;
-  };
+  }; 
 
   var getInvitations = function() {
     //return $http.get('api/tutor_dashboard/invited');
