@@ -14,6 +14,7 @@ angular.module('Perl.tutorDashboard', [])
 
 .controller('tutorDashboard',function($scope, tutorFactory, $rootScope, authFactory){
   var currentObject = localStorage.getItem("userInfo");
+  console.log('tutor', JSON.parse(currentObject))
   var currentUserId = JSON.parse(currentObject).id
 
   //tutor accepts student's invitation
