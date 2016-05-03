@@ -9,6 +9,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   $scope.ref = new Firebase("https://perl-thesis.firebaseio.com/");
   $scope.auth = $firebaseAuth($scope.ref);
 
+
   $scope.uploadFile = function(){
     var file = $scope.myFile;
     var prefix = Date.now()
@@ -25,7 +26,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   };
 
   $scope.signup = function(image) {
-    
+
 
    console.log('in signup')
     var userInfo = {
@@ -36,7 +37,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
       fullname: $scope.fullname,
       location: $scope.location,
       bio: $scope.bio,
-      imgurl: image,
+      imageurl: image,
       javascript: $scope.subjectChecked($scope.javascriptCheckbox),
       ruby: $scope.subjectChecked($scope.rubyCheckbox),
       python: $scope.subjectChecked($scope.pythonCheckbox)
@@ -84,7 +85,8 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   $scope.signupUser = function(info) {
     authFactory.signup(info).then(function(data){
       console.log("signup user receiving this data: ", data);
-      authFactory.id = data.data.id;
+      console.log("token: ", typeof data.data);
+      console.log("token type: ", typeof data.data.token);
       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
           $state.go('studentDashboard');
@@ -99,8 +101,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   //user signin helper
   $scope.signinUser = function(info) {
     authFactory.signin(info).then(function(data) {
-      authFactory.id = data.data.id;
-      console.log("in signin authFactoryid", authFactory.id);
+      console.log("signin user receiving this data: ", data);
       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
           $state.go('studentDashboard');
