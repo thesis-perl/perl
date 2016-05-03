@@ -54,10 +54,16 @@ angular.module('Perl.services', [])
     return $http.get('/api/filter_tutor/info',{ headers: { 'id': tutorInfo.tutorId }});
   };
 
+  var cancelInvitation = function (sid, tid) {
+    return $http.delete('/api/reject_invite', { headers: { 'sid': sid, 'tid': tid }});
+  }
+
+
 	return {
 		getInvitedTutors: getInvitedTutors,
     getAcceptedTutors: getAcceptedTutors,
-    getTutorInfo: getInfo
+    getTutorInfo: getInfo,
+    cancelInvitation: cancelInvitation
 	}
 
 })
