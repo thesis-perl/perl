@@ -2,14 +2,14 @@
 <div id="signup" class='signUp'>
   <h1>sign up</h1>
     <form>
-      
+
       <!--tutor checkbox -->
       <md-checkbox class = 'check' ng-model = 'tutorCheckBox'>  <label>tutor</label></md-checkbox>
-      
+
       <!--student checkbox -->
       <md-checkbox ng-model = 'studentCheckBox'> <label> student</label> </md-checkbox>
       <br>
-     
+
      <!-- username input -->
       <md-input-container class="input">
         <label for="username">username</label>
@@ -25,27 +25,27 @@
       </md-input-container>
       <br>
 
-      <!-- password input --> 
+      <!-- password input -->
       <md-input-container class="input">
         <label for="password">password</label>
          <input id="password" type="password" name="password" ng-model="password" class="validate" required>
       </md-input-container>
       <br>
-      
+
       <!-- location input -->
       <md-input-container class="input">
         <label for="location">location</label>
         <input id="location" type="text" name="location" ng-model="location"  class="validate" required>
       </md-input-container>
       <br>
-           
+
       <!-- bio input -->
       <md-input-container class="input">
         <label for="password">bio</label>
         <input id="password" type="text" name="password" ng-model="bio"  class="validate" required>
       </md-input-container>
-              
-       <!--list of subjects to teach/learn -->       
+
+       <!--list of subjects to teach/learn -->
       <h3> subjects</h3>
        <!--javascript-->
       <md-checkbox ng-model = 'javascriptCheckbox'>
@@ -59,13 +59,13 @@
       <md-checkbox ng-model = 'pythonCheckbox'>
          <label>python</label>
       </md-checkbox>
-    <br> 
+    <br>
 
     <!--upload photo -->
     <div>
          <input type = "file" file-model = "myFile"/>
     </div>
-    
+
     <!--signup button-->
     <md-button type="submit" class="input" id='signUpbtn' ng-click = 'uploadFile()'> signup</md-button>
        <!--signup cance; button-->
@@ -77,7 +77,3 @@
 
 </div>
 </div>
-
-
-
-

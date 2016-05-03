@@ -1,13 +1,9 @@
-
 angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
 
-.controller('authentication', ['$scope', 'authFactory', '$state', '$firebaseAuth', function($scope, authFactory, $state, $firebaseAuth){
+.controller('authentication', ['$scope','authFactory', '$state', '$firebaseAuth', function($scope, authFactory, $state, $rootScope, $firebaseAuth){
   AWS.config.update({accessKeyId: accessKeyId, secretAccessKey: secretAccessKey});
   AWS.config.region = 'us-east-1';
   var bucket = new AWS.S3({params: {Bucket: 'perlproject'}});
-
-  $scope.ref = new Firebase("https://perl-thesis.firebaseio.com/");
-  $scope.auth = $firebaseAuth($scope.ref);
 
 
   $scope.uploadFile = function(){
@@ -28,7 +24,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   $scope.signup = function(image) {
 
 
-   console.log('in signup')
+    console.log('in signup')
     var userInfo = {
       tutor: $scope.userChecked($scope.tutorCheckBox),
       student: $scope.userChecked($scope.studentCheckBox),
@@ -136,18 +132,17 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
 
 
 .directive('fileModel', ['$parse', function ($parse) {
-        return {
-            restrict: 'A',
-            link: function(scope, element, attrs) {
-                var model = $parse(attrs.fileModel);
-                var modelSetter = model.assign;
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+      var model = $parse(attrs.fileModel);
+      var modelSetter = model.assign;
 
-                element.bind('change', function(){
-                    scope.$apply(function(){
-                        modelSetter(scope, element[0].files[0]);
-                    });
-                });
-            }
-        };
-    }]);
-
+      element.bind('change', function(){
+        scope.$apply(function(){
+          modelSetter(scope, element[0].files[0]);
+        });
+      });
+    }
+  };
+}]);
