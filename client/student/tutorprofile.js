@@ -5,7 +5,7 @@ angular.module('Perl.tutorProfile', [
     "ngMessages",
     "mdPickers"])
 
-.controller('tutorProfile', ['$scope', '$mdpDatePicker', '$mdpTimePicker' ,function($scope, $mdpDatePicker, $mdpTimePicker){
+.controller('tutorProfile', ['$scope', '$mdpDatePicker', '$mdpTimePicker', '$stateParams',function($scope, $mdpDatePicker, $mdpTimePicker, $stateParams){
   $scope.showDatePicker = function(ev) {
     $mdpDatePicker($scope.currentDate, {
       targetEvent: ev
@@ -28,7 +28,10 @@ angular.module('Perl.tutorProfile', [
 
   $scope.requestSession = function(){
     
-  };    
+  };  
+
+  console.log('params', $stateParams.id)  //tutor's id
+
 }]);
 
 
