@@ -42,12 +42,17 @@ angular.module('Perl.services', [])
 })
 
 .factory('studentFactory', function($http) {
-	var getTutorInfo = function(id){
+	var getInvitedTutors = function(id) {
     return $http.get('/api/student_dashboard/invited', { headers: { 'id': id } });
 	};
 
+  var getAcceptedTutors = function(id) {
+    return $http.get('/api/student_dashboard/accepted', { headers: { 'id': id } });
+  }
+
 	return {
-		getTutorInfo: getTutorInfo
+		getInvitedTutors: getInvitedTutors,
+    getAcceptedTutors: getAcceptedTutors
 	}
 
 })

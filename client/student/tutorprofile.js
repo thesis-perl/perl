@@ -31,6 +31,7 @@ angular.module('Perl.tutorProfile', [
   };  
 
   console.log('params', $stateParams.id)  //tutor's id
+
 }]);
 
 
