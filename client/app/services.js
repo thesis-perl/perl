@@ -43,7 +43,11 @@ angular.module('Perl.services', [])
 
 .factory('studentFactory', function($http) {
 	var getTutorInfo = function(id){
-    $http.post('/api/student_dashboard/invited')
+    return $http.get('/api/student_dashboard/invited', { headers: { 'id': id } });
+    // .then(function(data) {
+    //   console.log('tutor in services', data.data)
+    //   data.data;
+    // })
 	};
 
   var getAllTutors = function() {

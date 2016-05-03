@@ -37,7 +37,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
       fullname: $scope.fullname,
       location: $scope.location,
       bio: $scope.bio,
-      imageurl: image,
+      imgurl: image,
       javascript: $scope.subjectChecked($scope.javascriptCheckbox),
       ruby: $scope.subjectChecked($scope.rubyCheckbox),
       python: $scope.subjectChecked($scope.pythonCheckbox)
