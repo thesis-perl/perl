@@ -28,6 +28,8 @@ app.use('/api/signin', require('./routes/signinRoute.js'));
 app.use('/api/signup', require('./routes/signupRoute.js'));
 app.use('/api/invite_tutor', require('./routes/inviteTutorRoute.js'));
 app.use('/api/accept_student', require('./routes/acceptStudentRoute.js'));
+app.use('/api/cancel_invite', require('./routes/inviteTutorRoute.js'));
+app.use('/api/reject', require('./routes/rejectInviteRoute.js'));
 app.use('/api/student_dashboard', require('./routes/studentDashboardRoute.js'));
 app.use('/api/tutor_dashboard', require('./routes/tutorDashboardRoute.js'));
 app.use('/api/filter_tutor', require('./routes/filterTutorRoute.js'));

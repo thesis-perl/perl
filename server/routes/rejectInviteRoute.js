@@ -10,7 +10,7 @@ router.put('/', function(req, res) {
 
   db('studentutor').where({sid: sid, tid: tid})
   .update({
-    status: 2
+    status: 3
   })
   .then(function(data){
     res.sendStatus(data);
