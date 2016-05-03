@@ -38,16 +38,7 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons'])
   	$state.reload();
   }
 
-<<<<<<< HEAD
-  $scope.viewProfile = function(id) {
-  	$state.go('/tutorProfile/:id')
-  }
-
-
-  $scope.getTutorInfo();
-=======
   $scope.getInvitedTutors();
   $scope.getAcceptedTutors();
->>>>>>> feat/tutorsSlides
 
 })
