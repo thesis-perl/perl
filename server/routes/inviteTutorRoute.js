@@ -19,9 +19,9 @@ router.post('/', function(req, res) {
 })
 
 router.delete('/', function(req, res) {
-  console.log(req.body);
-  var sid = req.body.sid;
-  var tid = req.body.tid;
+  console.log('req', req.headers);
+  var sid = req.headers.sid;
+  var tid = req.headers.tid;
 
   db('studentutor').where({sid: sid, tid: tid}).del()
   .then(function() {
