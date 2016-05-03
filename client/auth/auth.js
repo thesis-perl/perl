@@ -85,8 +85,12 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   $scope.signupUser = function(info) {
     authFactory.signup(info).then(function(data){
       console.log("signup user receiving this data: ", data);
+
       console.log("token: ", typeof data.data);
       console.log("token type: ", typeof data.data.token);
+      //authFactory.id = data.data.id;
+      localStorage.setItem('userInfo', JSON.stringify(data.data))
+      console.log("is it a string: ", typeof data.data.token)
       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
           $state.go('studentDashboard');

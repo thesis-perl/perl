@@ -5,39 +5,36 @@ angular.module('Perl.tutorDashboard', [])
 .run(function(tutorFactory, $rootScope){
     //using dummy data to test
     var scheduledData = tutorFactory.scheduledSessions();
-    
     $rootScope.sessions = scheduledData.sessions;
 
     //using dummy data to test
     var invitationList = tutorFactory.invitations();
-    $rootScope.invitations = invitationList.invitations;
+   $rootScope.invitations = invitationList.invitations;
 })
 
-.controller('tutorDashboard',function($scope, tutorFactory, $rootScope){
+.controller('tutorDashboard',function($scope, tutorFactory, $rootScope, authFactory){
+  var currentObject = localStorage.getItem("userInfo");
+  var currentUserId = JSON.parse(currentObject).id
+
+  //tutor accepts student's invitation
   $scope.acceptInvitation = function(){
-     //id1 is going to be the current tutor's id stored in localStorage, this.id is the id of rejected student
-    //tutorFactory.acceptInvite(id1, this.id);
-    console.log(this.item.id);
-   
-    
+    console.log('tutorId', currentUserId)
+    console.log('studentId', this.item.id)
+    tutorFactory.acceptInvite(currentUserId, this.item.id);
   };
-  $scope.rejectInvitation = function(){
-    //id1 is going to be the current tutor's id stored in localStorage, this.id is the id of rejected student
-    tutorFactory.rejectInvitation(id1, this.id)
-  	console.log('invitation rejected');
-    console.log(this.item)
-  }
-  $scope.startSession = function() {
-    console.log('starting session');
-  }
 
-  $scope.cancelSession = function() {
-  	console.log('canceled Sesssion')
-  }
+  //tutor rejects student's invitation
+  $scope.rejectInvitation = function(){};
+  
+  //tutor starts session
+   $scope.startSession = function() {};
+  
+  //tutor calcels session
+  $scope.cancelSession = function() {};
 
 
 
-})
+})// end of tutordashboard controller
 
 
 
