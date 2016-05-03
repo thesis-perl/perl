@@ -33,6 +33,10 @@ angular.module('Perl.tutorDashboard', [])
   //tutor calcels session
   $scope.cancelSession = function() {};
 
+  $scope.signOutUser = function() {
+    $rootScope.ref.unauth();
+    $state.go('signin');
+  }
 
 
 })// end of tutordashboard controller

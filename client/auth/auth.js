@@ -1,6 +1,6 @@
 angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
 
-.controller('authentication', ['$scope', 'authFactory', '$state', '$firebaseAuth', function($scope, authFactory, $state, $firebaseAuth){
+.controller('authentication', ['$scope','authFactory', '$state', '$firebaseAuth', function($scope, authFactory, $state, $rootScope, $firebaseAuth){
   AWS.config.update({accessKeyId: accessKeyId, secretAccessKey: secretAccessKey});
   AWS.config.region = 'us-east-1';
   var bucket = new AWS.S3({params: {Bucket: 'perlproject'}});
@@ -98,7 +98,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
     authFactory.signin(info).then(function(data) {
       localStorage.setItem('userinfo', JSON.stringify(data.data));
       console.log("in signin authFactoryid", authFactory.id);
-      $rootScope.ref.authWithCustomToken(data.data.token, function(error, authData) {
+      $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
           $state.go('studentDashboard');
         }

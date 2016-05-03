@@ -15,14 +15,14 @@
 							<md-icon md-svg-icon="../assests/list.svg" style="color:white"></md-icon>
 						</md-button>
 						<md-menu-content width="4">
-							
+
 							<md-menu-item>
 								<md-button ng-click="">
 									<div>Profile</div>
 								</md-button>
 							</md-menu-item>
 							<md-menu-item>
-								<md-button ng-click="">
+								<md-button ng-click="signOutUser()">
 									<div id="signOut">Sign Out</div>
 								</md-button>
 							</md-menu-item>
@@ -44,7 +44,7 @@
 			<md-card-footer>
 				<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
 			</md-card-footer>
-			
+
 		</div>
 	<!-- content -->
 	<div flex="80">
@@ -53,11 +53,11 @@
 			<md-tabs md-dynamic-height md-border-bottom>
 				<md-tab label="Session Invitations">
 					<md-content class="md-padding">
-					  		
+
 				       <div layout="rows" style="border-bottom: 1px solid #eee">
 						 <!--  generating invitation list -->
-                       <ul> 
- 						  <li ng-repeat = 'item in invitations' class='sessions'>  
+                       <ul>
+ 						  <li ng-repeat = 'item in invitations' class='sessions'>
 							<div layout="rows" style="height: 180px; border: 1px solid #eee">
 							  <!-- image -->
 							  <div flex="15" style="text-align: center; padding-top: 15px">
@@ -65,21 +65,21 @@
 							    	<!--location -->
 							    <p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{item.location}}</p>
 						      </div>
-						
+
 						<!-- info about student and session -->
 						    <div flex="85" class='profile' >
-							   <p>{{item.student}}   
+							   <p>{{item.student}}
 								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
 								<md-button style="border: 2px solid orange; float:right" ng-click='acceptInvitation()'>accept</md-button>
 								<md-button style="border: 2px solid orange; float:right" ng-click='rejectInvitation()'>reject</md-button>
 								<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
 							    <p> date: {{item.date}}  | time: {{item.time}}</p>
-					
+
 						    <ul>
 						       <li ng-repeat = 'subject in item.subjects' class='subjectItem'><span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">{{subject}}</span> </li>
-								
+
 						    </ul>
-												
+
 						     </div>
 					      </div>
 
@@ -90,11 +90,11 @@
 
 				<md-tab label="Scheduled Sessions"> <!-- start of scheduled sessions tab-->
 					<md-content class="md-padding">
-					  		
+
 				       <div layout="rows" style="border-bottom: 1px solid #eee">
 						 <!--  generating shceduled student/session list -->
-                       <ul> 
- 						  <li ng-repeat = 'item in sessions' class='sessions'>  
+                       <ul>
+ 						  <li ng-repeat = 'item in sessions' class='sessions'>
 							<div layout="rows" style="height: 180px; border: 1px solid #eee">
 							  <!-- image -->
 							  <div flex="15" style="text-align: center; padding-top: 15px">
@@ -102,21 +102,21 @@
 							    	<!--location -->
 							    <p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{item.location}}</p>
 						      </div>
-						
+
 						<!-- info about student and session -->
 						    <div flex="85" class='profile' >
-							   <p>{{item.student}}   
+							   <p>{{item.student}}
 								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
 								<md-button style="border: 2px solid orange; float:right" ng-click='cancelSession()'>cancel</md-button>
 								<md-button style="border: 2px solid orange; float:right" ng-click='startSession()'>start</md-button>
 								<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
 							    <p> date: {{item.date}}  | time: {{item.time}}</p>
-					
+
 						    <ul>
 						       <li ng-repeat = 'subject in item.subjects' class='subjectItem'><span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">{{subject}}</span> </li>
-								
+
 						    </ul>
-												
+
 						     </div>
 					      </div>
 
@@ -135,5 +135,3 @@
 		</div>
 	</div>
 </div>
-
-
