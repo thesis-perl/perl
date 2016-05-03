@@ -5,10 +5,10 @@ var router = express.Router();
 var db = require('../db/db').knex;
 
 router.put('/', function(req, res) {
-  var uid1 = req.body.uid1;
-  var uid2 = req.body.uid2;
+  var sid = req.body.sid;
+  var tid = req.body.tid;
 
-  db('studentutor').where({UID1: uid1, UID2: uid2})
+  db('studentutor').where({sid: sid, tid: tid})
   .update({
     status: 2
   })

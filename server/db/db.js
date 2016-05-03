@@ -32,11 +32,11 @@ knex.schema.createTableIfNotExists('users', function (user) {
 
 knex.schema.createTableIfNotExists('studentutor', function(join) {
   join.increments('ID').primary();
-  join.integer('UID1').unsigned();
-  join.integer('UID2').unsigned();
+  join.integer('sid').unsigned();
+  join.integer('tid').unsigned();
   join.integer('status');
-  join.foreign('UID1').references('id').inTable('users');
-  join.foreign('UID2').references('id').inTable('users');
+  join.foreign('sid').references('id').inTable('users');
+  join.foreign('tid').references('id').inTable('users');
 }).then(function() {
  console.log('invited join table created');
 });
