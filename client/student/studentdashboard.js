@@ -1,20 +1,24 @@
 angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons'])
 
-.controller('studentDashboard',function($mdMedia, $scope, studentFactory, authFactory){
-	$scope.studentName;
-	$scope.studentLocation;
-	$scope.studentBio;
+.controller('studentDashboard',function($mdMedia, $scope, $state, studentFactory, authFactory){
+	$scope.tutors;
+  $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
 
-	console.log('in stduentda', authFactory.id);
+  console.log('userinfo', $scope.userinfo);
 
-	// $scope.getStudentProfile = function() {
-	// 	studentFactory.getProfile()
-	// 	.then(function(data){
-	// 		$scope.studentName = data.studentName;
-	// 		$scope.studentLocaiton = data.studentLocaiton;
-	// 		$scope.studentBio = data.studentBio;
-	// 	});
-	// }
+  $scope.getTutorInfo = function() {
+  	console.log('inside get Tutorinfo id', $scope.userinfo.id);
+  	studentFactory.getTutorInfo($scope.userinfo.id)
+  	.then(function(data){
+  		console.log('tutors', data.data)
+  		$scope.tutors = data.data;
+  	})
+  }
 
-	// $scope.getStudentProfile();
+  $scope.findTutors = function() {
+  	$state.go('tutorFilter')
+  }
+
+  $scope.getTutorInfo();
+
 })

@@ -41,24 +41,25 @@
 		<!-- Sidenav -->
 		<div flex="20" style="background-color:#363B3F; height: 100vw; color: #ccc; text-align: center" layout-fill>
 			<br>
-			<center><img src="https://lh5.googleusercontent.com/-ZadaXoUTBfs/AAAAAAAAAAI/AAAAAAAAAGA/19US52OmBqc/photo.jpg" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%"></center>
+			<center><img src="{{userinfo.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%"></center>
 			<md-card-content>
-				<p>Zoe Chen</p>
+				<p>{{userinfo.fullname}}</p>
 			</md-card-content>
 			<md-card-footer>
-				<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
+				<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{userinfo.location}}</p>
 			</md-card-footer>
 			<md-card-footer>
+				<p>{{userinfo.bio}}</p>
 			</md-card-footer>
-			<md-button class="md-accent">Find Tutors</md-button>
+			<md-button class="md-accent" ng-click="findTutors()">Find Tutors</md-button>
 		</div>
 	<!-- content -->
 	<div flex="80">
 		<md-content>
 			<h1 style="color:#363B3F; padding-left:20px">Dashboard</h1>
 			<md-tabs md-dynamic-height md-border-bottom>
-				<md-tab label="All Tutors">
-					<div layout="rows" style="height: 180px; border-bottom: 1px solid #eee">
+				<md-tab label="Invited Tutors">
+					<div layout="rows" style="height: 180px; border-bottom: 1px solid #eee" ng-repeat="tutor in tutors">
 						<div layout="rows" style="height: 180px; border: 1px solid #eee">
 							<!-- image -->
 							<div flex="15" style="text-align: center; padding-top: 15px">
@@ -67,16 +68,16 @@
 						</div>
 						<!-- bio -->
 						<div flex="85" >
-							<p>Johnathon Lee     
+							<p>{{tutor.fullname}}    
 								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span>
 								<md-button style="border: 2px solid orange; float:right">View Profile</md-button>
 								<md-button style="border: 2px solid orange; float:right">Message</md-button>
 							</p>
-							<p style="margin-top: 20px; padding-right: 250px">Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus</p>
+							<p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
 							<p>
-								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Javascript</span>
-								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Node.js</span>
-								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">AngularJS</span>
+								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.javascript = 1">Javascript</span>
+								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.python = 1">Python</span>
+								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.ruby = 1">Ruby</span>
 							</p>						
 						</div>
 					</div>

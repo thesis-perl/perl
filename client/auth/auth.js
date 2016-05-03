@@ -37,7 +37,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
       fullname: $scope.fullname,
       location: $scope.location,
       bio: $scope.bio,
-      imageurl: image,
+      imgurl: image,
       javascript: $scope.subjectChecked($scope.javascriptCheckbox),
       ruby: $scope.subjectChecked($scope.rubyCheckbox),
       python: $scope.subjectChecked($scope.pythonCheckbox)
@@ -85,12 +85,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   $scope.signupUser = function(info) {
     authFactory.signup(info).then(function(data){
       console.log("signup user receiving this data: ", data);
-
-      console.log("token: ", typeof data.data);
-      console.log("token type: ", typeof data.data.token);
-      //authFactory.id = data.data.id;
-      localStorage.setItem('userInfo', JSON.stringify(data.data))
-      console.log("is it a string: ", typeof data.data.token)
+      localStorage.setItem('userinfo', JSON.stringify(data.data));
       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
           $state.go('studentDashboard');
@@ -105,7 +100,8 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   //user signin helper
   $scope.signinUser = function(info) {
     authFactory.signin(info).then(function(data) {
-      console.log("signin user receiving this data: ", data);
+      localStorage.setItem('userinfo', JSON.stringify(data.data));
+      console.log("in signin authFactoryid", authFactory.id);
       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
           $state.go('studentDashboard');
