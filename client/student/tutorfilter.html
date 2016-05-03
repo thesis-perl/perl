@@ -75,7 +75,7 @@
 		<div flex="85" >
 			<p>{{tutor.fullname}}    
 				<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span>
-				<md-button style="border: 2px solid orange; float:right">View Profile</md-button>
+				<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})">View Profile</a></md-button>
 				<md-button style="border: 2px solid orange; float:right">Message</md-button>
 			</p>
 			<p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
