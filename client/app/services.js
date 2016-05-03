@@ -1,10 +1,8 @@
 angular.module('Perl.services', [])
 .factory('authFactory', function($http){
   //user signup request
-  var id;
 
   var postSignupUser = function(userInfo) {
-    console.log(userInfo)
     return $http.post('/api/signup', userInfo);
   };
 
@@ -35,7 +33,6 @@ angular.module('Perl.services', [])
 
 
   return {
-    id: id,
     signin: postSigninUser,
     signup: postSignupUser
     // uploadFileToUrl: uploadFileToUrl
@@ -45,11 +42,17 @@ angular.module('Perl.services', [])
 })
 
 .factory('studentFactory', function($http) {
-	var getProfile = function(){
-
+	var getTutorInfo = function(id){
+    $http.post('/api/student_dashboard/invited')
 	};
+
+  var getAllTutors = function() {
+    $http.get('/api/')
+  }
+
 	return {
-		getProfile: getProfile
+		getTutorInfo: getTutorInfo,
+    getAllTutors: getAllTutors
 	}
 
 })

@@ -41,23 +41,24 @@
 		<!-- Sidenav -->
 		<div flex="20" style="background-color:#363B3F; height: 100vw; color: #ccc; text-align: center" layout-fill>
 			<br>
-			<center><img src="https://lh5.googleusercontent.com/-ZadaXoUTBfs/AAAAAAAAAAI/AAAAAAAAAGA/19US52OmBqc/photo.jpg" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%"></center>
+			<center><img src="{{userinfo.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%"></center>
 			<md-card-content>
-				<p>Zoe Chen</p>
+				<p>{{userinfo.fullname}}</p>
 			</md-card-content>
 			<md-card-footer>
-				<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
+				<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{userinfo.location}}</p>
 			</md-card-footer>
 			<md-card-footer>
+				<p>{{userinfo.bio}}</p>
 			</md-card-footer>
-			<md-button class="md-accent">Find Tutors</md-button>
+			<md-button class="md-accent" ng-click="findTutors()">Find Tutors</md-button>
 		</div>
 	<!-- content -->
 	<div flex="80">
 		<md-content>
 			<h1 style="color:#363B3F; padding-left:20px">Dashboard</h1>
 			<md-tabs md-dynamic-height md-border-bottom>
-				<md-tab label="All Tutors">
+				<md-tab label="Invited Tutors">
 					<div layout="rows" style="height: 180px; border-bottom: 1px solid #eee">
 						<div layout="rows" style="height: 180px; border: 1px solid #eee">
 							<!-- image -->
