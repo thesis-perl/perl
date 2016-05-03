@@ -22,7 +22,7 @@ router.get('/invited', function(req, res) {
         })
       }
     } else {
-      res.send("No tutors invited");
+      res.send(null);
     }
   })
 })
@@ -46,7 +46,7 @@ router.get('/accepted', function(req, res) {
         })
       }
     } else {
-      res.send("No tutors accepted");
+      res.send(null);
     }
   })
 })
