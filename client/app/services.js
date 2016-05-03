@@ -52,7 +52,7 @@ angular.module('Perl.services', [])
 
   var getInfo = function (tutorInfo) {
     return $http.get('/api/filter_tutor/info',{ headers: { 'id': tutorInfo.tutorId }});
-  }; 
+  };
 
 	return {
 		getInvitedTutors: getInvitedTutors,
@@ -72,13 +72,13 @@ angular.module('Perl.services', [])
 
     //testing with dummy data
      var obj = {
-       sessions: [{id: 2, student: 'Ani Steffanie', date: '06-13-2016', time: '8pm-9pm', bio: 'I am journalist aiming to learn programming', location: 'North Hollywood', subjects: ['javascript', 'Angular']}, 
-                  {id: 1, student: 'Celine Dion', date: '09-23-2016', time: '6pm-8pm', bio: 'I left my signing career and want to be an engineer', location: 'Las Vegas',  subjects: ['javascript', 'Angular']} 
+       sessions: [{id: 2, student: 'Ani Steffanie', date: '06-13-2016', time: '8pm-9pm', bio: 'I am journalist aiming to learn programming', location: 'North Hollywood', subjects: ['javascript', 'Angular']},
+                  {id: 1, student: 'Celine Dion', date: '09-23-2016', time: '6pm-8pm', bio: 'I left my signing career and want to be an engineer', location: 'Las Vegas',  subjects: ['javascript', 'Angular']}
                   ]
       };
 
     return obj;
-  }; 
+  };
 
   var getInvitations = function() {
     //return $http.get('api/tutor_dashboard/invited');
@@ -108,7 +108,7 @@ angular.module('Perl.services', [])
      getAllTutors: getAllTutors,
      scheduledSessions: getScheduledSessions,
      invitations: getInvitations,
-     acceptInvite: acceptInvitation, 
+     acceptInvite: acceptInvitation,
      reject: rejectInvitation,
      cancelSession: cancelSession
   }

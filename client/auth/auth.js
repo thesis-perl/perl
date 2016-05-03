@@ -5,9 +5,6 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   AWS.config.region = 'us-east-1';
   var bucket = new AWS.S3({params: {Bucket: 'perlproject'}});
 
-  $scope.ref = new Firebase("https://perl-thesis.firebaseio.com/");
-  $scope.auth = $firebaseAuth($scope.ref);
-
 
   $scope.uploadFile = function(){
     var file = $scope.myFile;
@@ -101,7 +98,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
     authFactory.signin(info).then(function(data) {
       localStorage.setItem('userinfo', JSON.stringify(data.data));
       console.log("in signin authFactoryid", authFactory.id);
-      $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
+      $rootScope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
           $state.go('studentDashboard');
         }
