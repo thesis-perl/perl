@@ -79,33 +79,20 @@ angular.module('Perl.services', [])
     return $http.get('/api/filter_tutor');
   }
 
+
   var findTutorsByLanguage = function(language) {
     //make a http call
   }
 
-  var getScheduledSessions = function() {
-   //return $http.get('api/tutor_dashboard/accepted');
+ 
+  var getScheduledSessions = function(id) {
+   return $http.get('api/tutor_dashboard/accepted',  { headers: {'id': id }});
+  }; 
 
-    //testing with dummy data
-     var obj = {
-       sessions: [{id: 2, student: 'Ani Steffanie', date: '06-13-2016', time: '8pm-9pm', bio: 'I am journalist aiming to learn programming', location: 'North Hollywood', subjects: ['javascript', 'Angular']},
-                  {id: 1, student: 'Celine Dion', date: '09-23-2016', time: '6pm-8pm', bio: 'I left my signing career and want to be an engineer', location: 'Las Vegas',  subjects: ['javascript', 'Angular']}
-                  ]
-      };
 
-    return obj;
-  };
-
-  var getInvitations = function() {
-    //return $http.get('api/tutor_dashboard/invited');
-    //testing with dummy data
-    var obj = {
-      invitations: [{id: 3, student: 'Tom Hanks', date: '08-02-2016', time: '8pm-9pm', bio: 'No one wants to give me roles in movies, so I want to become a programmer', location: 'Hollywood', subjects: ['javascript', 'Angular']},
-                      {id: 4, student: 'Pamela Anderson', date: '09-23-2016', time: '10pm-11pm', bio: 'I wanna code with you. It will be fun', location: 'Beverly Hills',  subjects: ['javascript', 'Angular']}
-                    ]
-    };
-
-    return obj;
+  var getInvitations = function(id) {
+    return $http.get('api/tutor_dashboard/invited', { headers: {'id': id }});
+   
   };
 
   var acceptInvitation = function(tutorId, sudentId) {
@@ -114,13 +101,28 @@ angular.module('Perl.services', [])
       sid: sudentId
     };
     $http.put('api/accept_student', ids)
+    
   };
 
-  var rejectInvitation = function(tutorId, sudentId) {};
+  var rejectInvitation = function(tutorId, sudentId) {
+     var ids = {
+     tid: tutorId,
+     sid: sudentId
+    };
+    console.log('in reject service', ids)
+    $http.delete('api/reject_invite', ids);
 
-  var cancelSession = function(tutorId, sudentId) {};
+  };
 
- return {
+  var cancelSession = function(tutorId, sudentId) {
+    var ids = {
+      tid: tutorId,
+      sid: sudentId
+    };
+    $http.put('api/cancel_session', ids)
+  };
+  
+  return {
      getAllTutors: getAllTutors,
      scheduledSessions: getScheduledSessions,
      invitations: getInvitations,

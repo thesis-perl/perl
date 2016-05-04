@@ -4,39 +4,65 @@ angular.module('Perl.tutorDashboard', [])
 })
 .run(function(tutorFactory, $rootScope){
     //using dummy data to test
-    var scheduledData = tutorFactory.scheduledSessions();
-    $rootScope.sessions = scheduledData.sessions;
 
-    //using dummy data to test
-    var invitationList = tutorFactory.invitations();
-   $rootScope.invitations = invitationList.invitations;
+    
 })
 
-.controller('tutorDashboard',function($scope, tutorFactory, $rootScope, authFactory){
-  var currentObject = localStorage.getItem("userInfo");
-  console.log('tutor', JSON.parse(currentObject))
+.controller('tutorDashboard',function($scope, tutorFactory, $rootScope, authFactory, $state){
+
+  var userId = JSON.parse(localStorage.getItem('userinfo')).id;
+
+  tutorFactory.invitations(userId).then(function(data){
+    if(data.data.length===0) {
+      $scope.noInvite = "you currently don't have any invitation"
+    }
+    $scope.invitations = data.data;
+
+  });
+    
+  tutorFactory.scheduledSessions(userId).then(function(data){
+        console.log('scheduled', data.data)
+    $scope.sessions = data.data;
+
+    });   
+    
+  tutorFactory.scheduledSessions(userId).then(function(data){
+   
+    if(data.data.length===0) {
+      $scope.noSession = "you currently don't have any scheduled session"
+    }    
+    $scope.sessions = data.data;
+
+    });   
+    
+  $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
+  var currentObject = localStorage.getItem("userinfo");
   var currentUserId = JSON.parse(currentObject).id
 
   //tutor accepts student's invitation
   $scope.acceptInvitation = function(){
-    console.log('tutorId', currentUserId)
-    console.log('studentId', this.item.id)
     tutorFactory.acceptInvite(currentUserId, this.item.id);
   };
 
   //tutor rejects student's invitation
-  $scope.rejectInvitation = function(){};
-
+  $scope.rejectInvitation = function(){
+    console.log("reject", currentUserId, this.item.id)
+    tutorFactory.reject(currentUserId, this.item.id)
+  };
+  
   //tutor starts session
-   $scope.startSession = function() {};
-
+  $scope.startSession = function() {};
+  
   //tutor calcels session
-  $scope.cancelSession = function() {};
+  $scope.cancelSession = function() {
+   //tutorFactory.cancelSession(currentUserId, this.item.id)
+   // console.log(currentUserId);
+    //console.log(this.item.id);
+  };
 
-  $scope.signOutUser = function() {
-    $rootScope.ref.unauth();
-    $state.go('signin');
-  }
 
 
 })// end of tutordashboard controller
+
+
+

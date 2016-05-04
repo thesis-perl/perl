@@ -67,13 +67,11 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   };
 
   $scope.signin = function()  {
-    console.log('in signin');
-    //sign in as user (tutor or student)
+   //sign in as user (tutor or student)
     var userInfo = {
       username: $scope.signinUsername,
       password: $scope.signinPassword
     };
-    console.log('auth.js: in signin: userInfo: ', userInfo);
     $scope.signinUser(userInfo);
   }
 
