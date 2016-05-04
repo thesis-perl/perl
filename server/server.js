@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 var port = process.env.PORT || 8000;
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -11,7 +13,8 @@ var FirebaseTokenGenerator = require('firebase-token-generator');
 var key = require('./key');
 var tokenGenerator = new FirebaseTokenGenerator(key.fireSecret);
 
-
+// set up our socket server
+require('./socket/socket')(io);
 
 // Use body parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,6 +40,6 @@ app.use('/api/filter_tutor', require('./routes/filterTutorRoute.js'));
 // cors
 app.use(cors());
 
-app.listen(port, function() {
+http.listen(port, function() {
   console.log('Listening on port ' + port);
 });

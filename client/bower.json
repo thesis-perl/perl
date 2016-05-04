@@ -24,6 +24,8 @@
     "angular-ui-router": "ui-router#^0.2.18",
     "angular-material": "^1.0.8",
     "angular-material-icons": "^0.7.0",
-    "firebase": "^2.4.2"
+    "firebase": "^2.4.2",
+    "socket.io": "^1.4.6",
+    "socket.io-client": "^1.4.6"
   }
 }
