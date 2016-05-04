@@ -42,6 +42,10 @@ angular.module('Perl.services', [])
 })
 
 .factory('studentFactory', function($http) {
+  var inviteTutor = function (sid, tid) {
+    return $http.post('/api/invite_tutor', { 'sid': sid, 'tid': tid })
+  }
+
 	var getInvitedTutors = function(id) {
     return $http.get('/api/student_dashboard/invited', { headers: { 'id': id } });
 	};
