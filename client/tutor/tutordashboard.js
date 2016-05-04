@@ -46,9 +46,10 @@ angular.module('Perl.tutorDashboard', [])
 
   //tutor calcels session
   $scope.cancelSession = function() {
-   //tutorFactory.cancelSession(currentUserId, this.item.id)
-   // console.log(currentUserId);
-    //console.log(this.item.id);
+   tutorFactory.cancelSession(currentUserId, this.item.id)
+   console.log('tutor', currentUserId);
+    console.log('student', this.item.id);
+    $state.reload();
   };
 
 
