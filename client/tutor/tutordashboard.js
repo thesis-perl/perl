@@ -5,7 +5,7 @@ angular.module('Perl.tutorDashboard', [])
 .run(function(tutorFactory, $rootScope){
     //using dummy data to test
 
-    
+
 })
 
 .controller('tutorDashboard',function($scope, tutorFactory, $rootScope, authFactory, $state){
@@ -19,22 +19,22 @@ angular.module('Perl.tutorDashboard', [])
     $scope.invitations = data.data;
 
   });
-    
+
   tutorFactory.scheduledSessions(userId).then(function(data){
         console.log('scheduled', data.data)
     $scope.sessions = data.data;
 
-    });   
-    
+    });
+
   tutorFactory.scheduledSessions(userId).then(function(data){
-   
+
     if(data.data.length===0) {
       $scope.noSession = "you currently don't have any scheduled session"
-    }    
+    }
     $scope.sessions = data.data;
 
-    });   
-    
+    });
+
   $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
   var currentObject = localStorage.getItem("userinfo");
   var currentUserId = JSON.parse(currentObject).id
@@ -49,10 +49,10 @@ angular.module('Perl.tutorDashboard', [])
     console.log("reject", currentUserId, this.item.id)
     tutorFactory.reject(currentUserId, this.item.id)
   };
-  
+
   //tutor starts session
   $scope.startSession = function() {};
-  
+
   //tutor calcels session
   $scope.cancelSession = function() {
    //tutorFactory.cancelSession(currentUserId, this.item.id)
@@ -60,9 +60,4 @@ angular.module('Perl.tutorDashboard', [])
     //console.log(this.item.id);
   };
 
-
-
 })// end of tutordashboard controller
-
-
-
