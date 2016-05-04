@@ -94,10 +94,10 @@ angular.module('Perl.services', [])
    
   };
 
-  var acceptInvitation = function(tutorId, sudentId) {
+  var acceptInvitation = function(tutorId, studentId) {
     var ids = {
       tid: tutorId,
-      sid: sudentId
+      sid: studentId
     };
     $http.put('api/accept_student', ids)
     
@@ -107,12 +107,8 @@ angular.module('Perl.services', [])
     $http.delete('api/reject_invite',  {headers: { 'tid': tutorId, 'sid': studentId }});
   };
 
-  var cancelSession = function(tutorId, sudentId) {
-    var ids = {
-      tid: tutorId,
-      sid: sudentId
-    };
-    $http.put('api/cancel_session', ids)
+  var cancelSession = function(tutorId, studentId) {
+    $http.put('/api/cancel_session', {'tid': tutorId, 'sid': studentId});
   };
   
   return {
