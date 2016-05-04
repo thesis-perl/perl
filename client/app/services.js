@@ -103,14 +103,8 @@ angular.module('Perl.services', [])
     
   };
 
-  var rejectInvitation = function(tutorId, sudentId) {
-     var ids = {
-     tid: tutorId,
-     sid: sudentId
-    };
-    console.log('in reject service', ids)
-    $http.delete('api/reject_invite', ids);
-
+  var rejectInvitation = function(tutorId, studentId) {
+    $http.delete('api/reject_invite',  {headers: { 'tid': tutorId, 'sid': studentId }});
   };
 
   var cancelSession = function(tutorId, sudentId) {
