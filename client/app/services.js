@@ -50,7 +50,8 @@ angular.module('Perl.services', [])
     return $http.get('/api/student_dashboard/accepted', { headers: { 'id': id } });
   }
 
-  var getInfo = function (tutorInfo) {
+  var getTutorInfo = function (tutorInfo) {
+    console.log('inside getInfo',tutorInfo);
     return $http.get('/api/filter_tutor/info',{ headers: { 'id': tutorInfo.tutorId }});
   };
 
@@ -58,16 +59,14 @@ angular.module('Perl.services', [])
     return $http.delete('/api/reject_invite', { headers: { 'sid': sid, 'tid': tid }});
   }
 
-
   var cancelSession = function (sid, tid) {
     return $http.put('/api/cancel_session', { 'sid': sid, 'tid': tid })
   }
 
-
 	return {
 		getInvitedTutors: getInvitedTutors,
     getAcceptedTutors: getAcceptedTutors,
-    getTutorInfo: getInfo,
+    getTutorInfo: getTutorInfo,
     cancelInvitation: cancelInvitation,
     cancelSession: cancelSession
 	}
