@@ -50,5 +50,4 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase'])
   $scope.getInvitedTutors();
   $scope.getAcceptedTutors();
 
-
 })
