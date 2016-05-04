@@ -10,7 +10,8 @@ router.post('/', function(req, res) {
   var sid = req.body.sid;
   // tutor id
   var tid = req.body.tid;
-
+  console.log('sid',sid);
+  console.log('tid',tid);
   db('studentutor').insert({sid: sid, tid: tid, status: 1})
   .then(function(data) {
     console.log(data);
