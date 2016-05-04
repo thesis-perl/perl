@@ -7,6 +7,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
   console.log($rootScope.authObj)
   $rootScope.checkAuthentication = function() {
     $rootScope.authObj.$onAuth(function(authData) {
+      console.log('authdata', authData);
       if(authData) {
         console.log("we have auth data yay :", authData);
       } else {
