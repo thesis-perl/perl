@@ -22,10 +22,8 @@ angular.module('Perl.services', ['btford.socket-io'])
 
 })
 
-.factory('studentFactory', function($rootScope, $http) {
-  var getTutorId = function(tid) {
-    $rootScope.tid = tid;
-  }
+
+.factory('studentFactory', function($http) {
 
   var inviteTutor = function (sid, tid) {
     return $http.post('/api/invite_tutor', { 'sid': sid, 'tid': tid })
