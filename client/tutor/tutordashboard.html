@@ -15,14 +15,10 @@
 							<md-icon md-svg-icon="../assests/list.svg" style="color:white"></md-icon>
 						</md-button>
 						<md-menu-content width="4">
-
+							
+							
 							<md-menu-item>
 								<md-button ng-click="">
-									<div>Profile</div>
-								</md-button>
-							</md-menu-item>
-							<md-menu-item>
-								<md-button ng-click="signOutUser()">
 									<div id="signOut">Sign Out</div>
 								</md-button>
 							</md-menu-item>
@@ -37,49 +33,52 @@
 		<!-- Sidenav -->
 		<div flex="20" style="background-color:#363B3F; height: 100vw; color: #ccc; text-align: center" layout-fill>
 			<br>
-			<center><img src="http://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption"></center>
+			<center><img src="{{userinfo.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption"></center>
 			<md-card-content>
-				<p>Johnathon Lee</p>
+				<p>{{userinfo.fullname}}</p>
 			</md-card-content>
 			<md-card-footer>
-				<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
+				<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{userinfo.location}}</p>
 			</md-card-footer>
-
+			<md-card-footer>
+				<p>{{userinfo.bio}}</p>
+			</md-card-footer>
+			
 		</div>
 	<!-- content -->
 	<div flex="80">
 		<md-content>
-			<h1 style="color:#363B3F; padding-left:20px">Dashboard</h1>
+			<h1 style="color:#363B3F; padding-left:20px"> Tutor Dashboard</h1>
 			<md-tabs md-dynamic-height md-border-bottom>
 				<md-tab label="Session Invitations">
 					<md-content class="md-padding">
-
+					<p ng-model='noInvite'>{{noInvite}}<p>
+					  		
 				       <div layout="rows" style="border-bottom: 1px solid #eee">
 						 <!--  generating invitation list -->
-                       <ul>
- 						  <li ng-repeat = 'item in invitations' class='sessions'>
+                       <ul> 
+ 						  <li ng-repeat = 'item in invitations' class='sessions'>  
 							<div layout="rows" style="height: 180px; border: 1px solid #eee">
 							  <!-- image -->
 							  <div flex="15" style="text-align: center; padding-top: 15px">
-							    <img src="https://lh5.googleusercontent.com/-ZadaXoUTBfs/AAAAAAAAAAI/AAAAAAAAAGA/19US52OmBqc/photo.jpg" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
+							    <img src="{{item.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
 							    	<!--location -->
 							    <p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{item.location}}</p>
 						      </div>
-
+						
 						<!-- info about student and session -->
 						    <div flex="85" class='profile' >
-							   <p>{{item.student}}
+							   <p>{{item.fullname}}   
 								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
 								<md-button style="border: 2px solid orange; float:right" ng-click='acceptInvitation()'>accept</md-button>
 								<md-button style="border: 2px solid orange; float:right" ng-click='rejectInvitation()'>reject</md-button>
 								<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
 							    <p> date: {{item.date}}  | time: {{item.time}}</p>
-
-						    <ul>
-						       <li ng-repeat = 'subject in item.subjects' class='subjectItem'><span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">{{subject}}</span> </li>
-
-						    </ul>
-
+					
+						        <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.javascript = 1">Javascript</span>
+							  <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.python = 1">Python</span>
+							  <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.ruby = 1">Ruby</span>
+												
 						     </div>
 					      </div>
 
@@ -90,33 +89,35 @@
 
 				<md-tab label="Scheduled Sessions"> <!-- start of scheduled sessions tab-->
 					<md-content class="md-padding">
-
+					  <p ng-model='noSession'>{{noSession}}<p>
 				       <div layout="rows" style="border-bottom: 1px solid #eee">
 						 <!--  generating shceduled student/session list -->
-                       <ul>
- 						  <li ng-repeat = 'item in sessions' class='sessions'>
+                       <ul> 
+ 						  <li ng-repeat = 'item in sessions' class='sessions'>  
 							<div layout="rows" style="height: 180px; border: 1px solid #eee">
 							  <!-- image -->
 							  <div flex="15" style="text-align: center; padding-top: 15px">
-							    <img src="https://lh5.googleusercontent.com/-ZadaXoUTBfs/AAAAAAAAAAI/AAAAAAAAAGA/19US52OmBqc/photo.jpg" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
+							    <img src="{{item.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
 							    	<!--location -->
 							    <p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{item.location}}</p>
 						      </div>
-
+						
 						<!-- info about student and session -->
 						    <div flex="85" class='profile' >
-							   <p>{{item.student}}
+							   <p>{{item.fullname}}   
 								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
 								<md-button style="border: 2px solid orange; float:right" ng-click='cancelSession()'>cancel</md-button>
 								<md-button style="border: 2px solid orange; float:right" ng-click='startSession()'>start</md-button>
 								<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
 							    <p> date: {{item.date}}  | time: {{item.time}}</p>
-
-						    <ul>
-						       <li ng-repeat = 'subject in item.subjects' class='subjectItem'><span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">{{subject}}</span> </li>
-
-						    </ul>
-
+					
+					
+						       <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.javascript = 1">Javascript</span>
+							  <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.python = 1">Python</span>
+							  <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.ruby = 1">Ruby</span>
+								
+						  
+												
 						     </div>
 					      </div>
 
@@ -135,3 +136,5 @@
 		</div>
 	</div>
 </div>
+
+

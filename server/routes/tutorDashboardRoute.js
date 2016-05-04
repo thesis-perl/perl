@@ -13,7 +13,7 @@ router.get('/invited', function(req, res) {
       for (var i=0; i<data.length; i++) {
         db('users').where({ id: data[i].sid })
         .then(function(data){
-          temp.push({id: data[0].id, username: data[0].username, fullname: data[0].fullname, bio: data[0].bio, location: data[0].loation, imgurl: data[0].imgurl, isTutor: data[0].isTutor, isStudent: data[0].isStudent, javascript: data[0].javascript, ruby: data[0].ruby, python: data[0].python});
+          temp.push({id: data[0].id, username: data[0].username, fullname: data[0].fullname, bio: data[0].bio, location: data[0].location, imgurl: data[0].imgurl, isTutor: data[0].isTutor, isStudent: data[0].isStudent, javascript: data[0].javascript, ruby: data[0].ruby, python: data[0].python});
         })
         .then(function(){
           if (temp.length === data.length) {
