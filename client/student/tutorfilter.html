@@ -21,7 +21,7 @@
 							 	</md-button>
 							</md-menu-item>
     	        <md-menu-item>
-    	          <md-button ng-click="">
+    	          <md-button ng-click="signOutUser()">
     	            <div id="signOut">Sign Out</div>
     	          </md-button>
     	        </md-menu-item>
@@ -53,7 +53,7 @@
 		</div>
 		<!-- bio -->
 		<div flex="85" >
-			<p>{{tutor.fullname}}    
+			<p>{{tutor.fullname}}
 				<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red" ng-click></ng-md-icon><ng-md-icon icon="favorite" size="18px" style="fill:red"></ng-md-icon></span>
 				<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none; color: #222">View Profile</a></md-button>
 				<md-button style="border: 2px solid orange; float:right">Message</md-button>
@@ -63,7 +63,7 @@
 				<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.javascript = 1">Javascript</span>
 				<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.python = 1">Python</span>
 				<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.ruby = 1">Ruby</span>
-			</p>						
+			</p>
 		</div>
 	</div>
 </div>

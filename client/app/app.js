@@ -4,7 +4,6 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
   //instances and constants to be injected here
   $rootScope.ref = new Firebase("https://perl-thesis.firebaseio.com/");
   $rootScope.authObj = $firebaseAuth($rootScope.ref);
-  console.log($rootScope.authObj)
   $rootScope.checkAuthentication = function() {
     $rootScope.authObj.$onAuth(function(authData) {
       console.log('authdata', authData);
@@ -23,6 +22,10 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     }
     // event.preventDefault();
   })
+  $rootScope.signOutUser = function() {
+    $rootScope.ref.unauth();
+		$state.go('signin');
+	}
 })
 
 .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {

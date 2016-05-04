@@ -16,14 +16,14 @@ angular.module('Perl.tutorDashboard', [])
     }
     $scope.invitations = data.data;
   });
-    
+
   tutorFactory.scheduledSessions(userId).then(function(data){
    if(data.data.length===0) {
       $scope.noSession = "you currently don't have any scheduled session"
-    }    
+    }
     $scope.sessions = data.data;
-  });   
-    
+  });
+
   $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
   var currentObject = localStorage.getItem("userinfo");
   var currentUserId = JSON.parse(currentObject).id
@@ -40,10 +40,10 @@ angular.module('Perl.tutorDashboard', [])
     tutorFactory.reject(currentUserId, this.item.id)
     $state.reload();
   };
-  
+
   //tutor starts session
   $scope.startSession = function() {};
-  
+
   //tutor calcels session
   $scope.cancelSession = function() {
    //tutorFactory.cancelSession(currentUserId, this.item.id)
@@ -54,6 +54,3 @@ angular.module('Perl.tutorDashboard', [])
 
 
 })// end of tutordashboard controller
-
-
-
