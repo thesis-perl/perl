@@ -17,7 +17,7 @@
             <md-menu-content width="4">
               <md-menu-item>
                 <md-button ng-click="redirectTutorDashboard()">
-                  <div>Find Tutors</div>
+                  <div>Student Dashboard</div>
                 </md-button>
               </md-menu-item>
               <md-menu-item>
@@ -37,39 +37,33 @@
     </md-content>
   </div><!-- close ng-cloak -->
 
-  <div class="container" layout="row" flex layout="vertical" layout-fill>
+  <div class="container" layout="row" layout-align="center" flex layout="vertical" layout-fill>
     <!-- Sidenav -->
   <!-- content -->
   <div flex="80">
     <md-content ng-controller="tutorProfile">
-
-      <div id="tutorImg">
-        <img src="http://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
-      </div>
-
-      <div id="tutorInfo">
-        <h3 ng-model="name">Hi! My name is {{name}}</h3>
-        <h3 ng-model="bio">{{bio}}</h3>
-        <h3 ng-model="loc">{{loc}}</h3>
-      </div>
-
       <md-tabs md-dynamic-height md-border-bottom>
         <md-tab label="Potential Session">
-          <md-content class="md-padding">
-            <h1 class="md-display-2">Session Requests</h1>
-            <p>Need help learning something? Select a date and time and request a session!</p>
-
+          <md-content class="md-padding">     
+            <h1 class="md-display-2">Request tutor</h1>
         <md-content flex layout="row" layout-align="center">
           <md-content flex="50">
             <div flex="85" >
-              <p>Tutor:</p>  
-              <p>Jonathan Lee</p>     
-                <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>  
+              <div id="tutorImg">
+                <img src="{{img}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
+              </div>     
+              <div id="tutorInfo">
+                <h3 ng-model="name">Hi! My name is {{name}}</h3>
+                <h3 ng-model="bio">{{bio}}</h3>
+                <h3 ng-model="loc">{{loc}}</h3>
+              </div>
                 <br>
                 <br>           
-                <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Javascript</span>
-                <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Node.js</span>
-                <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">AngularJS</span>      
+                <p>
+                  <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.javascript = 1">Javascript</span>
+                  <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.python = 1">Python</span>
+                  <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.ruby = 1">Ruby</span>
+                </p> 
                 <br>
                 <br>
               <md-content layout="column" flex ng-controller="tutorProfile">    
@@ -80,7 +74,6 @@
                     {{ currentTime | date:'HH:mm' }}
                   </p>
                 </div>
-
                 <div class="dateTimeContent">
                   <md-button class="md-raised md-warn" ng-click="showDatePicker($event)" aria-label="show picker">Date</md-button>
                   <p>
@@ -92,7 +85,6 @@
                   <md-button style="background-color: orange" ng-click="requestSession()">Request Session</md-button>
                 </div>
               </md-content>
-
             </div>            
             </md-content>
           </md-content>            

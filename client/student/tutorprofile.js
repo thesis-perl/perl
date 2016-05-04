@@ -10,13 +10,14 @@ angular.module('Perl.tutorProfile', [
   var tutorInfo = {
     tutorId: $stateParams.id
   }
+
   studentFactory.getTutorInfo(tutorInfo).then(function(data){
     var tutor = data.data;      
     
     $scope.name = tutor.fullname;
     $scope.bio = tutor.bio;
     $scope.loc = tutor.location;
-
+    $scope.img = tutor.imgurl;
     //name, bio, location
   });
 
@@ -25,7 +26,7 @@ angular.module('Perl.tutorProfile', [
       targetEvent: ev
     }).then(function(selectedDate) {
       $scope.currentDate = selectedDate;
-    });;
+    });
   };
   
   $scope.filterDate = function(date) {
@@ -37,7 +38,7 @@ angular.module('Perl.tutorProfile', [
       targetEvent: ev
     }).then(function(selectedDate) {
       $scope.currentTime = selectedDate;
-    });;
+    });
   };
 
   $scope.redirectTutorDashboard = function() {
@@ -46,9 +47,7 @@ angular.module('Perl.tutorProfile', [
   }
 
   $scope.requestSession = function(){  
-  var studentInfo = JSON.parse(localStorage.getItem('userInfo'));
-  console.log(JSON.parse(localStorage.getItem('userInfo')).id);
-
+    var studentInfo = JSON.parse(localStorage.getItem('userInfo')).id;
     // var dateTime = $scope.currentDate.toString();
     // var date = dateTime.split("").slice(0,15).join(""); //ex. Mon May 02 2016
     // var time = dateTime.split("").slice(16,21).join(""); //15:22
@@ -56,17 +55,14 @@ angular.module('Perl.tutorProfile', [
     //   date: date,
     //   time: time
     // }
-
-  if(!studentInfo.id){
-    console.log('student not signed in')
-  }
-
+    if(!studentInfo){
+      console.log('student not signed in')
+    }
     //LATER FOR WHEN FLAG INVITED IN DB
-    // studentFactory.getTutorInfo(tutorInfo).then(function(data){
-    //   console.log('Session requested, data received',data);
-    // });     
+    studentFactory.postInvite(tutorInfo.tutorId, studentInfo).then(function(data){
+      console.log('Session requested, data received',data);
+    }).catch(function(err){console.log('error',error)});     
   };    
-
 }]);
 
 

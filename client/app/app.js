@@ -78,7 +78,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
 
   .state('tutorProfile', {
     cache: false,
-    url: '/tutorProfile',
+    url: '/tutorProfile/:id',
     templateUrl: '../student/tutorProfile.html',
     controller: 'tutorProfile',
     authenticate: true
