@@ -8,7 +8,7 @@ angular.module('Perl.tutorProfile', [
 .controller('tutorProfile', ['$scope', '$mdpDatePicker', '$mdpTimePicker', '$stateParams', '$location', 'studentFactory' ,function($scope, $mdpDatePicker, $mdpTimePicker, $stateParams, $location, studentFactory){
 
   var tutorInfo = {
-    tutorId: $stateParams.id
+    tutorId: parseInt($stateParams.id)
   }
 
   studentFactory.getTutorInfo(tutorInfo).then(function(data){
@@ -47,7 +47,7 @@ angular.module('Perl.tutorProfile', [
   }
 
   $scope.requestSession = function(){  
-    var studentInfo = JSON.parse(localStorage.getItem('userInfo')).id;
+    var studentInfo = JSON.parse(localStorage.getItem('userinfo')).id;
     // var dateTime = $scope.currentDate.toString();
     // var date = dateTime.split("").slice(0,15).join(""); //ex. Mon May 02 2016
     // var time = dateTime.split("").slice(16,21).join(""); //15:22
@@ -63,7 +63,7 @@ angular.module('Perl.tutorProfile', [
     
     studentFactory.postInvite(studentInfo,tutorInfo.tutorId).then(function(data){
       console.log('Session requested, data received',data);
-    }).catch(function(err){console.log('error',error)});     
+    }).catch(function(error){console.log('error',error)});     
   };    
 }]);
 
