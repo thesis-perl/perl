@@ -39,6 +39,14 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase'])
   	$state.reload();
   }
 
+
+  $scope.cancelSession = function(id) {
+    studentFactory.cancelSession($scope.userinfo.id, id);
+
+    $state.reload();
+  }
+
+
   $scope.getInvitedTutors();
   $scope.getAcceptedTutors();
 
