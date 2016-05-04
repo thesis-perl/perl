@@ -26,7 +26,7 @@
                 </md-button>
               </md-menu-item>
               <md-menu-item>
-                <md-button ng-click="">
+                <md-button ng-click="signOutUser()">
                   <div id="signOut">Sign Out</div>
                 </md-button>
               </md-menu-item>
@@ -44,21 +44,22 @@
     <md-content ng-controller="tutorProfile">
       <md-tabs md-dynamic-height md-border-bottom>
         <md-tab label="Potential Session">
-          <md-content class="md-padding">     
+          <md-content class="md-padding">
             <h1 class="md-display-2">Request tutor</h1>
         <md-content flex layout="row" layout-align="center">
           <md-content flex="50">
             <div flex="85" >
+<<<<<<< Updated upstream
               <div id="tutorImg">
                 <img src="{{img}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
-              </div>     
+              </div>
               <div id="tutorInfo">
                 <h3 ng-model="name">Hi! My name is {{name}}</h3>
                 <h3 ng-model="bio">{{bio}}</h3>
                 <h3 ng-model="loc">{{loc}}</h3>
               </div>
                 <br>
-                <br>           
+                <br>
                 <p>
                   <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.javascript = 1">Javascript</span>
                   <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.python = 1">Python</span>
@@ -66,7 +67,7 @@
                 </p> 
                 <br>
                 <br>
-              <md-content layout="column" flex ng-controller="tutorProfile">    
+              <md-content layout="column" flex ng-controller="tutorProfile">
                 <div>
                 <div class="dateTimeContent">
                   <md-button class="md-raised md-warn" ng-click="showTimePicker($event)" aria-label="show picker">Time</md-button>
@@ -85,15 +86,18 @@
                   <md-button style="background-color: orange" ng-click="requestSession()">Request Session</md-button>
                 </div>
               </md-content>
-            </div>            
+<<<<<<< Updated upstream
+            </div>
+=======
+
+            </div>
+>>>>>>> Stashed changes
             </md-content>
-          </md-content>            
           </md-content>
-        </md-tab>       
+          </md-content>
+        </md-tab>
       </md-tabs>
     </md-content>
     </div>
   </div>
 </div>
-
-
