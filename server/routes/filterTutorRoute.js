@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
   .then(function(data) {
     var temp = [];
     for (var i=0; i<data.length; i++) {
-      temp.push({id: data[0].id, fullname: data[0].fullname, username: data[0].username, bio: data[0].bio, location: data[0].location, imgurl: data[0].imgurl, javascript: data[0].javascript, ruby: data[0].ruby, python: data[0].python})
+      temp.push({id: data[i].id, fullname: data[i].fullname, username: data[i].username, bio: data[i].bio, location: data[i].location, imgurl: data[i].imgurl, javascript: data[i].javascript, ruby: data[i].ruby, python: data[i].python})
     }
     res.send(temp);
   })
