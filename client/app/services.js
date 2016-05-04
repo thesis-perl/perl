@@ -58,12 +58,17 @@ angular.module('Perl.services', [])
     return $http.delete('/api/reject_invite', { headers: { 'sid': sid, 'tid': tid }});
   }
 
+  var cancelSession = function (sid, tid) {
+    return $http.put('/api/cancel_session', { 'sid': sid, 'tid': tid })
+  }
+
 
 	return {
 		getInvitedTutors: getInvitedTutors,
     getAcceptedTutors: getAcceptedTutors,
     getTutorInfo: getInfo,
-    cancelInvitation: cancelInvitation
+    cancelInvitation: cancelInvitation,
+    cancelSession: cancelSession
 	}
 
 })
