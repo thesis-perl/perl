@@ -14,16 +14,11 @@
     	      <md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
     	        <md-icon md-svg-icon="../assests/list.svg"></md-icon>
     	      </md-button>
-    	      <md-menu-content width="4">
+    	      <md-menu-content width="2">
 							<md-menu-item>
 							 	<md-button ng-click="">
-							  <div>My dashboard</div>
+							  <div><a ui-sref="studentDashboard" style="text-decoration: none; color: #222">My dashboard</a></div>
 							 	</md-button>
-							</md-menu-item>
-							<md-menu-item>
-							 <md-button ng-click="">
-							   <div>Profile</div>
-							 </md-button>
 							</md-menu-item>
     	        <md-menu-item>
     	          <md-button ng-click="">
@@ -40,42 +35,27 @@
 	<!-- searchbar -->
 	<div layout="column" ng-cloak>
 	  <md-content class="md-padding">
-	    <form ng-submit="$event.preventDefault()">
-	      <md-autocomplete
-	          ng-disabled="isDisabled"
-	          md-no-cache="ctrl.noCache"
-	          md-selected-item="ctrl.selectedItem"
-	          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-	          md-search-text="ctrl.searchText"
-	          md-selected-item-change="ctrl.selectedItemChange(item)"
-	          md-items="item in ctrl.querySearch(ctrl.searchText)"
-	          md-item-text="item.display"
-	          md-min-length="0"
-	          placeholder="What is your favorite language?">
-	        <md-item-template>
-	          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
-	        </md-item-template>
-	        <md-not-found>
-	          No tutors were found.
-	        </md-not-found>
-	      </md-autocomplete>
+	    <form ng-submit="findTutorsByLanguage()">
+	    	<md-content>
+	    		<input ng-model="language" style="width: 99%; height: 35px; border-bottom: 1px solid #eee; background-color:#FAFAFA" placeholder="What language do you want to learn?">
+	    	</md-content>
 	    </form>
 	  </md-content>
 	</div>
 
 	<!-- tutors list -->
-	<div layout-padding style="margin: 10px; height: 50px" layout="rows">
+	<div layout-padding layout="column">
 		<div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-repeat="tutor in tutors">
 			<!-- image -->
 			<div flex="15" style="text-align: center; padding-top: 15px">
-			<img src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption" alt="image caption">
+			<img ng-src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption" alt="image caption">
 			<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{tutor.location}}</p>
 		</div>
 		<!-- bio -->
 		<div flex="85" >
 			<p>{{tutor.fullname}}    
-				<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span>
-				<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none">View Profile</a></md-button>
+				<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red" ng-click></ng-md-icon><ng-md-icon icon="favorite" size="18px" style="fill:red"></ng-md-icon></span>
+				<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none; color: #222">View Profile</a></md-button>
 				<md-button style="border: 2px solid orange; float:right">Message</md-button>
 			</p>
 			<p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>

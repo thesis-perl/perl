@@ -67,6 +67,10 @@ angular.module('Perl.services', [])
     return $http.get('/api/filter_tutor');
   }
 
+  var findTutorsByLanguage = function(language) {
+    //make a http call
+  }
+
   var getScheduledSessions = function() {
    //return $http.get('api/tutor_dashboard/accepted');
 
@@ -110,7 +114,8 @@ angular.module('Perl.services', [])
      invitations: getInvitations,
      acceptInvite: acceptInvitation,
      reject: rejectInvitation,
-     cancelSession: cancelSession
+     cancelSession: cancelSession,
+     findTutorsByLanguage: findTutorsByLanguage
   }
 
 

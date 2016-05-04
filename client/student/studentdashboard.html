@@ -14,15 +14,10 @@
 						<md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
 							<md-icon md-svg-icon="../assests/list.svg" style="color:white"></md-icon>
 						</md-button>
-						<md-menu-content width="4">
+						<md-menu-content width="2">
 							<md-menu-item>
 								<md-button ng-click="">
-									<div>Find Tutors</div>
-								</md-button>
-							</md-menu-item>
-							<md-menu-item>
-								<md-button ng-click="">
-									<div>Profile</div>
+									<div><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Find Tutors</a></div>
 								</md-button>
 							</md-menu-item>
 							<md-menu-item>
@@ -42,7 +37,7 @@
 		<div flex="20" style="background-color:#363B3F; height: 100vw; color: #ccc; text-align: center" layout-fill>
 			<br>
 			<br>
-			<center><img src="{{userinfo.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%"></center>
+			<center><img ng-src="{{userinfo.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%"></center>
 			<md-card-content>
 				<p>{{userinfo.fullname}}</p>
 			</md-card-content>
@@ -63,11 +58,14 @@
 				<md-tab label="Invited Tutors">
 
 					<div layout="column">
-						<div ng-if="!invitedTutors.length">Currently, there is no invited tutors. Find one now!</div>
+						<div style="text-align: center; margin: 30px; font-size: 1.2em">
+							<div style="margin: 30px">You haven't invited any tutor yet!</div>
+							<md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
+						</div>
 						<div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-if="invitedTutors.length" ng-repeat="tutor in invitedTutors" flex="100">
 							<!-- image -->
 							<div flex="15" style="text-align: center; padding-top: 15px">
-							<img src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
+							<img ng-src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
 							<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
 						</div>
 						<!-- bio -->
@@ -87,8 +85,11 @@
 					</div>
 				</md-tab>
 				<md-tab label="Scheduled Tutors">
-					<div layout="rows">
-						<div ng-if="!acceptedTutors.length">Currently, there is no accepted tutors. Find one now!</div>
+					<div layout="column">
+						<div style="text-align: center; margin: 30px; font-size: 1.2em">
+							<div style="margin: 30px">You haven't scheduled any tutor yet!</div>
+							<md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
+						</div>
 						<div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-if="acceptedTutors.length" ng-repeat="tutor in acceptedTutors">
 							<!-- image -->
 							<div flex="15" style="text-align: center; padding-top: 15px">
