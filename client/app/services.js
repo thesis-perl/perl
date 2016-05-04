@@ -63,12 +63,18 @@ angular.module('Perl.services', [])
     return $http.put('/api/cancel_session', { 'sid': sid, 'tid': tid })
   }
 
+  var postInvite = function (sid, tid) {
+    console.log(sid,tid);
+    return $http.post('/api/invite_tutor', { 'sid': sid, 'tid': tid });  
+  }
+
 	return {
 		getInvitedTutors: getInvitedTutors,
     getAcceptedTutors: getAcceptedTutors,
     getTutorInfo: getTutorInfo,
     cancelInvitation: cancelInvitation,
-    cancelSession: cancelSession
+    cancelSession: cancelSession,
+    postInvite: postInvite
 	}
 
 })

@@ -55,11 +55,13 @@ angular.module('Perl.tutorProfile', [
     //   date: date,
     //   time: time
     // }
+    console.log('studentInfo in requestSession', studentInfo);
     if(!studentInfo){
       console.log('student not signed in')
     }
     //LATER FOR WHEN FLAG INVITED IN DB
-    studentFactory.postInvite(tutorInfo.tutorId, studentInfo).then(function(data){
+    
+    studentFactory.postInvite(studentInfo,tutorInfo.tutorId).then(function(data){
       console.log('Session requested, data received',data);
     }).catch(function(err){console.log('error',error)});     
   };    
