@@ -6,7 +6,6 @@ angular.module('Perl.tutorProfile', [
     "mdPickers"])
 
 .controller('tutorProfile', ['$scope', '$mdpDatePicker', '$mdpTimePicker', '$stateParams', '$location', 'studentFactory' ,function($scope, $mdpDatePicker, $mdpTimePicker, $stateParams, $location, studentFactory){
-  $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
 
   var tutorInfo = {
     tutorId: parseInt($stateParams.id)
@@ -47,10 +46,9 @@ angular.module('Perl.tutorProfile', [
     // $location.url('./studentdashboard.html');
   }
 
-  $scope.requestSession = function(id){
-    console.log($scope.userinfo);
-    studentFactory.inviteTutor($scope.userinfo, id);
 
+  $scope.requestSession = function(){
+    var studentInfo = JSON.parse(localStorage.getItem('userInfo')).id;
 
     // var dateTime = $scope.currentDate.toString();
     // var date = dateTime.split("").slice(0,15).join(""); //ex. Mon May 02 2016
@@ -59,19 +57,12 @@ angular.module('Perl.tutorProfile', [
     //   date: date,
     //   time: time
     // }
-
-
-  // if(!studentInfo.id){
-  //   console.log('student not signed in')
-  // }
-
+    if(!studentInfo){
+      console.log('student not signed in')
+    }
     //LATER FOR WHEN FLAG INVITED IN DB
-    // studentFactory.getTutorInfo(tutorInfo).then(function(data){
-    //   console.log('Session requested, data received',data);
-    // });
+    studentFactory.postInvite(tutorInfo.tutorId, studentInfo).then(function(data){
+      console.log('Session requested, data received',data);
+    }).catch(function(err){console.log('error',error)});
   };
-
-
 }]);
-
-
