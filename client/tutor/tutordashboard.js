@@ -11,16 +11,20 @@ angular.module('Perl.tutorDashboard', [])
 .controller('tutorDashboard',function($scope, tutorFactory, $rootScope, authFactory, $state){
 
   var userId = JSON.parse(localStorage.getItem('userinfo')).id;
-   
 
   tutorFactory.invitations(userId).then(function(data){
     if(data.data.length===0) {
       $scope.noInvite = "you currently don't have any invitation"
     }
     $scope.invitations = data.data;
-    console.log(data);
 
   });
+    
+  tutorFactory.scheduledSessions(userId).then(function(data){
+        console.log('scheduled', data.data)
+    $scope.sessions = data.data;
+
+    });   
     
   tutorFactory.scheduledSessions(userId).then(function(data){
    
@@ -42,6 +46,7 @@ angular.module('Perl.tutorDashboard', [])
 
   //tutor rejects student's invitation
   $scope.rejectInvitation = function(){
+    console.log("reject", currentUserId, this.item.id)
     tutorFactory.reject(currentUserId, this.item.id)
   };
   

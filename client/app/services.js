@@ -109,6 +109,7 @@ angular.module('Perl.services', [])
      tid: tutorId,
      sid: sudentId
     };
+    console.log('in reject service', ids)
     $http.delete('api/reject_invite', ids);
 
   };
