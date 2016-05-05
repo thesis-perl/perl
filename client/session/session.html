@@ -1,6 +1,16 @@
+<div ui-codemirror="{
+      lineNumbers: true,
+      theme:'twilight',
+      lineWrapping : true,
+      mode: 'xml'
+    }" ng-model="sharedCode">{{sharedCode}}</div>
+
+
+
 <h1>Angular Chatter</h1>
 
 <div class='container'>
+<input ng-model="hello">
   <div>
     You are known as: <span ng-bind="nickName"></span>.<br/>Change your nickname with <code>/nick [yourNewNick]</code>
     <div class='row'>

@@ -1,4 +1,4 @@
-angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', 'Perl.session', 'Perl.studentDashboard', 'Perl.tutorFilter', 'Perl.tutorProfile', 'Perl.tutorDashboard', 'Perl.landing', 'ui.router', 'ngMaterial', 'firebase', 'btford.socket-io'])
+angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', 'Perl.session', 'Perl.studentDashboard', 'Perl.tutorFilter', 'Perl.tutorProfile', 'Perl.tutorDashboard', 'Perl.landing', 'ui.router', 'ngMaterial', 'firebase', 'btford.socket-io', 'ui.codemirror'])
 
 .run(function ($state, $firebase,$rootScope,$location,$window,$firebase,$firebaseAuth) {
   //instances and constants to be injected here
