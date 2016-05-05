@@ -22,7 +22,11 @@ angular.module('Perl.services', ['btford.socket-io'])
 
 })
 
-.factory('studentFactory', function($http) {
+.factory('studentFactory', function($rootScope, $http) {
+  var getTutorId = function(tid) {
+    $rootScope.tid = tid;
+  }
+
   var inviteTutor = function (sid, tid) {
     return $http.post('/api/invite_tutor', { 'sid': sid, 'tid': tid })
   }
@@ -50,10 +54,11 @@ angular.module('Perl.services', ['btford.socket-io'])
 
   var postInvite = function (sid, tid) {
     console.log(sid,tid);
-    return $http.post('/api/invite_tutor', { 'sid': sid, 'tid': tid });  
+    return $http.post('/api/invite_tutor', { 'sid': sid, 'tid': tid });
   }
 
 	return {
+    getTutorId: getTutorId,
 		getInvitedTutors: getInvitedTutors,
     getAcceptedTutors: getAcceptedTutors,
     getTutorInfo: getTutorInfo,
@@ -74,15 +79,15 @@ angular.module('Perl.services', ['btford.socket-io'])
     //make a http call
   }
 
- 
+
   var getScheduledSessions = function(id) {
    return $http.get('api/tutor_dashboard/accepted',  { headers: {'id': id }});
-  }; 
+  };
 
 
   var getInvitations = function(id) {
     return $http.get('api/tutor_dashboard/invited', { headers: {'id': id }});
-   
+
   };
 
   var acceptInvitation = function(tutorId, studentId) {
@@ -91,7 +96,7 @@ angular.module('Perl.services', ['btford.socket-io'])
       sid: studentId
     };
     $http.put('api/accept_student', ids)
-    
+
   };
 
   var rejectInvitation = function(tutorId, studentId) {
@@ -101,7 +106,7 @@ angular.module('Perl.services', ['btford.socket-io'])
   var cancelSession = function(tutorId, studentId) {
     $http.put('/api/cancel_session', {'tid': tutorId, 'sid': studentId});
   };
-  
+
   return {
      getAllTutors: getAllTutors,
      scheduledSessions: getScheduledSessions,
