@@ -18,7 +18,7 @@
 
 
 							<md-menu-item>
-								<md-button ng-click="">
+								<md-button ng-click="signOutUser()">
 									<div id="signOut">Sign Out</div>
 								</md-button>
 							</md-menu-item>
@@ -108,6 +108,7 @@
 							   <p>{{item.fullname}}
 								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
 								<md-button style="border: 2px solid orange; float:right" ng-click='cancelSession()'>cancel</md-button>
+								<md-button style="border: 2px solid orange; float:right" ng-click="showChat(); getStudentId(item.id)">Chat</md-button>
 								<md-button style="border: 2px solid orange; float:right" ng-click='startSession()'>start</md-button>
 								<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
 							    <p> date: {{item.date}}  | time: {{item.time}}</p>
@@ -137,5 +138,3 @@
 		</div>
 	</div>
 </div>
-
-

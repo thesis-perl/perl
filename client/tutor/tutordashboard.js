@@ -44,13 +44,21 @@ angular.module('Perl.tutorDashboard', [])
   //tutor starts session
   $scope.startSession = function() {};
 
-  //tutor calcels session
+  //tutor cancels session
   $scope.cancelSession = function() {
    tutorFactory.cancelSession(currentUserId, this.item.id)
    console.log('tutor', currentUserId);
     console.log('student', this.item.id);
     $state.reload();
   };
+
+  $scope.getStudentId = function(sid) {
+    tutorFactory.getStudentId(sid);
+  }
+
+  $scope.showChat = function(id) {
+    $state.go('chat');
+  }
 
 
 
