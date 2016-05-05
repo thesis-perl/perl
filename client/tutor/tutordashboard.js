@@ -3,9 +3,12 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
 
 })
 .run(function(tutorFactory, $rootScope){
+ 
 })
 
+
 .controller('tutorDashboard',function($scope, tutorFactory, $rootScope, authFactory, $state, $mdDialog, $mdMedia){
+
 
   var userId = JSON.parse(localStorage.getItem('userinfo')).id;
 
@@ -42,15 +45,23 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
 
 
   tutorFactory.invitations(userId).then(function(data){
+
+ 
     if(data.data.length===0) {
       $scope.noInvite = "you currently don't have any invitation"
+
     }
+  
     $scope.invitations = data.data;
+    console.log('invitations', data)
+
+  
   });
 
   tutorFactory.scheduledSessions(userId).then(function(data){
    if(data.data.length===0) {
       $scope.noSession = "you currently don't have any scheduled session"
+
     }
     $scope.sessions = data.data;
   });
@@ -74,8 +85,9 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
 
   //tutor starts session
   $scope.startSession = function() {
-    
+      $state.go('session');
   };
+
 
   //tutor cancels session
   $scope.cancelSession = function() {

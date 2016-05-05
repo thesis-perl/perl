@@ -5,7 +5,7 @@ var router = express.Router();
 var db = require('../db/db').knex;
 
 router.get('/invited', function(req, res) {
-  var id = req.headers.id;
+ var id = req.headers.id;
   var temp = [];
   db('studentutor').where({ tid: id }).andWhere({ status: 1 })
   .then(function(data) {

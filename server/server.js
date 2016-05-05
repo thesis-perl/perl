@@ -13,12 +13,15 @@ var FirebaseTokenGenerator = require('firebase-token-generator');
 var key = require('./key');
 var tokenGenerator = new FirebaseTokenGenerator(key.fireSecret);
 
+
+
 // set up our socket server
 require('./socket/socket')(io);
 
 // Use body parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 
 // cors
 app.use(cors());
@@ -39,6 +42,7 @@ app.use('/api/filter_tutor', require('./routes/filterTutorRoute.js'));
 
 // cors
 app.use(cors());
+
 
 http.listen(port, function() {
   console.log('Listening on port ' + port);

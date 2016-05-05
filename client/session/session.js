@@ -1,4 +1,4 @@
-angular.module('Perl.session', ['btford.socket-io'])
+angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror'])
 
 .controller('session',function($log, $scope, perlSocket, $stateParams, $state){
 	var user = JSON.parse(localStorage.getItem('userinfo'));
@@ -7,7 +7,9 @@ angular.module('Perl.session', ['btford.socket-io'])
 		link = user.id + "/" + $stateParams.link;
 	} else {
 		link = $stateParams.link + "/" + user.id;
-	}
+  }
+
+
 	var name = JSON.parse(localStorage.getItem('userinfo')).fullname;
 	console.log('name', link);
 
@@ -28,6 +30,7 @@ angular.module('Perl.session', ['btford.socket-io'])
       $scope.needToChange = true;
   });
 
+
   $scope.$on('socket:joined', function(event, data) {
   	$scope.hint = "You joined " + data;
   })
@@ -43,4 +46,23 @@ angular.module('Perl.session', ['btford.socket-io'])
   		$state.go('tutorDashboard');
   	}
   }
+
+  ///////language options
+  $scope.modes = ['Choose', 'Javascript', 'Python', 'Ruby'];
+  $scope.mode = $scope.modes[0];
+  $scope.cmOption = {
+     lineNumbers: true,
+     indentWithTabs: true,
+     onLoad : function(_cm){
+       $scope.modeChanged = function(){
+        _cm.setOption("mode", $scope.mode.toLowerCase());
+      };
+    }
+  };
+/////  
+
 });
+
+
+
+
