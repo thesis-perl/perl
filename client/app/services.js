@@ -129,5 +129,7 @@ angular.module('Perl.services', ['btford.socket-io'])
 .factory('perlSocket', function(socketFactory) {
   var socket = socketFactory();
   socket.forward('broadcast');
+  socket.forward('joined');
+
   return socket;
 });
