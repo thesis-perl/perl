@@ -107,7 +107,7 @@
 							   <p>{{item.fullname}}   
 								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
 								<md-button style="border: 2px solid orange; float:right" ng-click='cancelSession()'>cancel</md-button>
-								<md-button style="border: 2px solid orange; float:right" ng-click='startSession()'>start</md-button>
+								<md-button style="border: 2px solid orange; float:right"><a ui-sref="session({link: item.id})">start</a></md-button>
 								<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
 							    <p> date: {{item.date}}  | time: {{item.time}}</p>
 					
@@ -116,8 +116,6 @@
 							  <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.python = 1">Python</span>
 							  <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.ruby = 1">Ruby</span>
 								
-						  
-												
 						     </div>
 					      </div>
 

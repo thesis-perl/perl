@@ -42,7 +42,9 @@ angular.module('Perl.tutorDashboard', [])
   };
 
   //tutor starts session
-  $scope.startSession = function() {};
+  $scope.startSession = function() {
+    
+  };
 
   //tutor calcels session
   $scope.cancelSession = function() {

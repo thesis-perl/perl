@@ -8,7 +8,6 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     $rootScope.authObj.$onAuth(function(authData) {
       console.log('authdata', authData);
       if(authData) {
-        console.log("we have auth data yay :", authData);
       } else {
         // event.preventDefault();
         $state.go('signin');
@@ -57,7 +56,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
 
   .state('session', {
     cache: false,
-    url: '/session',
+    url: '/session/:link',
     templateUrl: '../session/session.html',
     controller: 'session',
     authenticate: true
