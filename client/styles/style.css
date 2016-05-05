@@ -36,7 +36,7 @@ label {
     margin-right: 10px;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 3px;
-    box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 
+    box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.1),
                 0px 1px 0px 0px rgba(250, 250, 250, 0.5) ;
 }
 .loginform input[type=submit] {
@@ -85,7 +85,7 @@ li {
 }
 
 .input {
-  
+
   margin: auto;
   width: 100%;
   padding: 10px;
@@ -105,18 +105,18 @@ margin-top: 0;
 
 
 /*.signoutBtn {
- 
+
  position: relative;
  right: -550px;
  top: -90px;
  border-color: purple;
    border: 0;
   border-radius: 0;
- 
+
   position: relative;
   overflow: hidden;
-  
-  
+
+
   border-radius: 3px;
 
 }
@@ -134,7 +134,7 @@ margin-top: 0;
     z-index: -1;
     transition: width 150ms ease-in-out;
   }
-  
+
   .signoutBtn:hover {
     color: #fff;
 
@@ -160,7 +160,7 @@ margin-top: 0;
 }
 .signIn h2, .signUp h2 {
   text-align: center;
-  color:#5e5c6d; 
+  color:#5e5c6d;
   margin-top: 50px;
 }
 
@@ -205,7 +205,7 @@ margin-top: -30px;
 .topBar{
 
   background-color: #5e5c6d;
-  
+
 }
 
 .topBar h2 {
@@ -218,6 +218,24 @@ margin-top: -30px;
 md-icon svg {
   fill: orange;
 }
+
+.dialogdemoBasicUsage #popupContainer {
+  position: relative; }
+
+.dialogdemoBasicUsage .footer {
+  width: 100%;
+  text-align: center;
+  margin-left: 20px; }
+
+.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
+  font-size: 0.8em;
+  margin-top: 50px; }
+
+.dialogdemoBasicUsage button {
+  width: 200px; }
+
+.dialogdemoBasicUsage div#status {
+  color: #c60008; }
 
 /*********  Tutor Dashboard  ************/
 
@@ -237,7 +255,7 @@ md-icon svg {
   margin-left: 100px;
 }
 
-.content { 
+.content {
       width: 100px;
     height: auto;
     margin: 10px auto;

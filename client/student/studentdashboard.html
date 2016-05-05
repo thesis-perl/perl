@@ -101,7 +101,9 @@
 							<p>{{tutor.fullname}}
 								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span>
 								<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none">View Profile</a></md-button>
-								<md-button style="border: 2px solid orange; float:right" ng-click="showChat(); getTutorId(tutor.id)">Chat</md-button>
+						    <md-button class="md-primary md-raised" ng-click="showAdvanced($event); getTutorId(tutor.id)">
+						      Chat
+						    </md-button>
 								<md-button style="border: 2px solid orange; float:right" ng-click="cancelSession(tutor.id)">Cancel</md-button>
 							</p>
 							<p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
