@@ -1,0 +1,17 @@
+<div>
+  <div>
+    <div>
+      <h1>Chatroom with *insert tutor</h1>
+    </div>
+    <div>
+      <ul>
+        <li ng-repeat="msg in messages">
+          <strong>{{msg.from}}: </strong>{{msg.body}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <input ng-model="msg" ng-keydown="newMessage($event)" type="text" id="messageInput"  placeholder="Type a message...">
+  </div>
+</div>
