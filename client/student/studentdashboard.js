@@ -1,6 +1,6 @@
 angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase'])
 
-.controller('studentDashboard',function($mdMedia, $scope, $state, $rootScope, studentFactory, authFactory){
+.controller('studentDashboard',function($mdMedia, $scope, $state, $rootScope, studentFactory, authFactory, $mdDialog){
 	$scope.invitedTutors;
   $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
 
