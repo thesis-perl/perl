@@ -109,6 +109,12 @@ angular.module('Perl.services', ['btford.socket-io'])
   var rejectInvitation = function(tutorId, studentId) {
     $http.delete('api/reject_invite',  {headers: { 'tid': tutorId, 'sid': studentId }});
   };
+   
+   var startSession = function(code){
+   
+      //return $http.get('/startsession', {headers: {'code': code}})
+
+   };
 
   var cancelSession = function(tutorId, studentId) {
     $http.put('/api/cancel_session', {'tid': tutorId, 'sid': studentId});
@@ -122,7 +128,8 @@ angular.module('Perl.services', ['btford.socket-io'])
      acceptInvite: acceptInvitation,
      reject: rejectInvitation,
      cancelSession: cancelSession,
-     findTutorsByLanguage: findTutorsByLanguage
+     findTutorsByLanguage: findTutorsByLanguage,
+     startSession: startSession
   }
 })
 

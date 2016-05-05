@@ -1,9 +1,13 @@
-<div ui-codemirror="{
-      lineNumbers: true,
-      theme:'twilight',
-      lineWrapping : true,
-      mode: 'xml'
-    }" ng-model="sharedCode">{{sharedCode}}</div>
-<div>{{hint}}</div>
 
-<md-button ng-click="endSession()">End Session</md-button>
+<section>
+<div ui-codemirror="cmOption" ng-model="sharedCode">{{sharedCode}}</div>
+
+
+<span> Languages </span> : <select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select>
+
+<div>{{hint}}</div>
+ <md-button ng-click="endSession()">End Session</md-button>
+
+
+</section>
+

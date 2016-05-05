@@ -1,9 +1,9 @@
 module.exports = function (io) {
   io.on('connection', function (socket) {
     console.log('in socket')
+    console.log('handshake', socket.handshake);
     socket.broadcast.emit('user connected');
     socket.on('code changed', function(data) {
-      console.log('socket.room', socket.room)
       io.sockets.in(socket.room).emit('broadcast', data);
     });
 
