@@ -47,10 +47,8 @@ angular.module('Perl.tutorProfile', [
   }
 
 
-
   $scope.requestSession = function(){
-    var studentInfo = JSON.parse(localStorage.getItem('userInfo')).id;
-
+    var studentInfo = JSON.parse(localStorage.getItem('userinfo')).id;
 
     // var dateTime = $scope.currentDate.toString();
     // var date = dateTime.split("").slice(0,15).join(""); //ex. Mon May 02 2016
@@ -64,9 +62,10 @@ angular.module('Perl.tutorProfile', [
     }
     //LATER FOR WHEN FLAG INVITED IN DB
 
-    studentFactory.postInvite(tutorInfo.tutorId, studentInfo).then(function(data){
+
+    studentFactory.postInvite(studentInfo,tutorInfo.tutorId).then(function(data){
       console.log('Session requested, data received',data);
-    }).catch(function(err){console.log('error',error)});
+    }).catch(function(error){console.log('error',error)});
   };
 
 }]);
