@@ -1,6 +1,6 @@
 angular.module('Perl.tutorFilter', [])
 
-.controller('tutorFilter',function($scope, tutorFactory){
+.controller('tutorFilter',function($scope, tutorFactory, studentFactory){
 
 	$scope.selectedItem;
 	$scope.language;

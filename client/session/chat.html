@@ -1,10 +1,10 @@
-<div>
+<div class="chatRoom">
   <div>
     <div>
       <h1>Chatroom with {{otherName}}</h1>
     </div>
     <div>
-      <ul>
+      <ul class="chatMsg">
         <li ng-repeat="msg in messages">
           <strong>{{msg.from}}: </strong>{{msg.body}}
         </li>
