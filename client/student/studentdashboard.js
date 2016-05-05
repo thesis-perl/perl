@@ -1,8 +1,39 @@
-angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase'])
+angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'ngMessages', 'material.svgAssetsCache'])
 
-.controller('studentDashboard',function($mdMedia, $scope, $state, $rootScope, studentFactory, authFactory, $mdDialog){
+.controller('studentDashboard',function($mdMedia, $mdDialog, $scope, $state, $rootScope, studentFactory, authFactory, $mdDialog){
 	$scope.invitedTutors;
   $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
+
+  // Chat popup Modal
+  $scope.status = '  ';
+  $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+
+  $scope.showAdvanced = function(ev) {
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+
+    $mdDialog.show({
+      controller: 'chat',
+      templateUrl: '../session/chat.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: useFullScreen
+    })
+    .then(function(answer) {
+      $scope.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      $scope.status = 'You cancelled the dialog.';
+    });
+
+
+
+    $scope.$watch(function() {
+      return $mdMedia('xs') || $mdMedia('sm');
+    }, function(wantsFullScreen) {
+      $scope.customFullscreen = (wantsFullScreen === true);
+    });
+
+  };
 
   console.log('userinfo', $scope.userinfo);
 
