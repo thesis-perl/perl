@@ -1,16 +1,46 @@
 angular.module('Perl.session', ['btford.socket-io'])
 
-.controller('session',function($log, $scope, perlSocket){
-	$scope.needToChange = false;
-	if(!$scope.needToChange) {
-		$scope.$watch('sharedCode', function(){
-			var name = JSON.parse(localStorage.getItem('userinfo')).fullname;
-			perlSocket.emit('code changed', $scope.sharedCode);
-		})
+.controller('session',function($log, $scope, perlSocket, $stateParams, $state){
+	var user = JSON.parse(localStorage.getItem('userinfo'));
+	var link;
+	if(user.isTutor === 0) {
+		link = user.id + "/" + $stateParams.link;
+	} else {
+		link = $stateParams.link + "/" + user.id;
 	}
+	var name = JSON.parse(localStorage.getItem('userinfo')).fullname;
+	console.log('name', link);
+
+	perlSocket.on('connect', function(){
+		perlSocket.emit('join', link);
+	})
+
+	perlSocket.on('disconnect', function(){
+		console.log(name + 'disconnect')
+	})
+
+	$scope.$watch('sharedCode', function(){
+		perlSocket.emit('code changed', {name: name, code: $scope.sharedCode});
+	});
+
   $scope.$on('socket:broadcast', function(event, data) {
-    $log.debug('got a message ani', event.name, data);
-      $scope.sharedCode = data;
+      $scope.sharedCode = data.code;
       $scope.needToChange = true;
   });
+
+  $scope.$on('socket:joined', function(event, data) {
+  	$scope.hint = "You joined " + data;
+  })
+
+  $scope.endSession = function() {
+  	console.log("test")
+
+  	perlSocket.emit('endSession');
+  	
+  	if(user.isTutor === 0) {
+  		$state.go('studentDashboard');
+  	} else {
+  		$state.go('tutorDashboard');
+  	}
+  }
 });
