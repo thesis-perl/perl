@@ -11,6 +11,8 @@ angular.module('Perl.tutorProfile', [
     tutorId: parseInt($stateParams.id)
   }
 
+  console.log("my tutorId: ", tutorInfo.tutorId)
+
   studentFactory.getTutorInfo(tutorInfo).then(function(data){
     var tutor = data.data;
 

@@ -4,12 +4,12 @@
 		<md-content>
 			<md-toolbar>
 				<div class="md-toolbar-tools" >
-<!-- logo -->
+					<!-- logo -->
 					<h2>
 						<span>CodEducation</span>
 					</h2>
 					<span flex></span>
-<!-- menu button -->
+					<!-- menu button -->
 					<md-menu md-offset="0 50">
 						<md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
 							<md-icon md-svg-icon="../assests/list.svg" style="color:white"></md-icon>
@@ -45,96 +45,97 @@
 			</md-card-footer>
 
 		</div>
-	<!-- content -->
-	<div flex="80">
-		<md-content>
-			<h1 style="color:#363B3F; padding-left:20px"> Tutor Dashboard</h1>
-			<md-tabs md-dynamic-height md-border-bottom>
-				<md-tab label="Session Invitations">
-					<md-content class="md-padding">
-					<p ng-model='noInvite'>{{noInvite}}<p>
+		<!-- content -->
+		<div flex="80">
+			<md-content>
+				<h1 style="color:#363B3F; padding-left:20px"> Tutor Dashboard</h1>
+				<md-tabs md-dynamic-height md-border-bottom>
+					<md-tab label="Session Invitations">
+						<md-content class="md-padding">
+							<p ng-model='noInvite'>{{noInvite}}<p>
 
-				       <div layout="rows" style="border-bottom: 1px solid #eee">
-						 <!--  generating invitation list -->
-                       <ul>
- 						  <li ng-repeat = 'item in invitations' class='sessions'>
-							<div layout="rows" style="height: 180px; border: 1px solid #eee">
-							  <!-- image -->
-							  <div flex="15" style="text-align: center; padding-top: 15px">
-							    <img src="{{item.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
-							    	<!--location -->
-							    <p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{item.location}}</p>
-						      </div>
+								<div layout="rows" style="border-bottom: 1px solid #eee">
+									<!--  generating invitation list -->
+									<ul>
+										<li ng-repeat = 'item in invitations' class='sessions'>
+											<div layout="rows" style="height: 180px; border: 1px solid #eee">
+												<!-- image -->
+												<div flex="15" style="text-align: center; padding-top: 15px">
+													<img src="{{item.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
+													<!--location -->
+													<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{item.location}}</p>
+												</div>
 
-						<!-- info about student and session -->
-						    <div flex="85" class='profile' >
-							   <p>{{item.fullname}}
-								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
-								<md-button style="border: 2px solid orange; float:right" ng-click='acceptInvitation()'>accept</md-button>
-								<md-button style="border: 2px solid orange; float:right" ng-click='rejectInvitation()'>reject</md-button>
-								<md-button style="border: 2px solid orange; float:right" ng-click="showChat(); getTutorId(tutor.id)">Chat</md-button>
-								<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
-							    <p> date: {{item.date}}  | time: {{item.time}}</p>
+												<!-- info about student and session -->
+												<div flex="85" class='profile' >
+													<p>{{item.fullname}}
+														<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
+														<md-button style="border: 2px solid orange; float:right" ng-click='acceptInvitation()'>accept</md-button>
+														<md-button style="border: 2px solid orange; float:right" ng-click='rejectInvitation()'>reject</md-button>
+														<md-button style="border: 2px solid orange; float:right" ng-click="showChat(); getTutorId(tutor.id)">Chat</md-button>
+														<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
+														<p> date: {{item.date}}  | time: {{item.time}}</p>
 
-						        <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.javascript = 1">Javascript</span>
-							  <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.python = 1">Python</span>
-							  <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.ruby = 1">Ruby</span>
+														<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.javascript = 1">Javascript</span>
+														<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.python = 1">Python</span>
+														<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.ruby = 1">Ruby</span>
 
-						     </div>
-					      </div>
+													</div>
+												</div>
 
-                      </li>	 <!--end of ng-repeat-->
-	                </ul>
-                 </md-content>
-				</md-tab>
+											</li>	 <!--end of ng-repeat-->
+										</ul>
+									</md-content>
+								</md-tab>
 
-				<md-tab label="Scheduled Sessions"> <!-- start of scheduled sessions tab-->
-					<md-content class="md-padding">
-					  <p ng-model='noSession'>{{noSession}}<p>
-				       <div layout="rows" style="border-bottom: 1px solid #eee">
-						 <!--  generating shceduled student/session list -->
-                       <ul>
- 						  <li ng-repeat = 'item in sessions' class='sessions'>
-							<div layout="rows" style="height: 180px; border: 1px solid #eee">
-							  <!-- image -->
-							  <div flex="15" style="text-align: center; padding-top: 15px">
-							    <img src="{{item.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
-							    	<!--location -->
-							    <p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{item.location}}</p>
-						      </div>
+								<md-tab label="Scheduled Sessions"> <!-- start of scheduled sessions tab-->
+									<md-content class="md-padding">
+										<p ng-model='noSession'>{{noSession}}<p>
+											<div layout="rows" style="border-bottom: 1px solid #eee">
+												<!--  generating shceduled student/session list -->
+												<ul>
+													<li ng-repeat = 'item in sessions' class='sessions'>
+														<div layout="rows" style="height: 180px; border: 1px solid #eee">
+															<!-- image -->
+															<div flex="15" style="text-align: center; padding-top: 15px">
+																<img src="{{item.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
+																<!--location -->
+																<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{item.location}}</p>
+															</div>
 
-						<!-- info about student and session -->
-						    <div flex="85" class='profile' >
-							   <p>{{item.fullname}}
-								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
-								<md-button style="border: 2px solid orange; float:right" ng-click='cancelSession()'>cancel</md-button>
-								<md-button style="border: 2px solid orange; float:right" ng-click="showChat(); getStudentId(item.id)">Chat</md-button>
-								<md-button style="border: 2px solid orange; float:right" ng-click='startSession()'>start</md-button>
-								<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
-							    <p> date: {{item.date}}  | time: {{item.time}}</p>
-
-
-						       <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.javascript = 1">Javascript</span>
-							  <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.python = 1">Python</span>
-							  <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.ruby = 1">Ruby</span>
+															<!-- info about student and session -->
+															<div flex="85" class='profile' >
+																<p>{{item.fullname}}
+																	{{item.id}}
+																	<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
+																	<md-button style="border: 2px solid orange; float:right" ng-click='cancelSession()'>cancel</md-button>
+																	<md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getStudentId(item.id)">Chat</md-button>
+																	<md-button style="border: 2px solid orange; float:right" ng-click='startSession()'>start</md-button>
+																	<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
+																	<p> date: {{item.date}}  | time: {{item.time}}</p>
 
 
+																	<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.javascript = 1">Javascript</span>
+																	<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.python = 1">Python</span>
+																	<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.ruby = 1">Ruby</span>
 
-						     </div>
-					      </div>
 
-                      </li>	 <!--end of ng-repeat-->
-	                </ul>
-                 </md-content>
-			 </md-tab> <!-- end of scheduled  sessions tab-->
-				<md-tab label="Session History">
-					<md-content class="md-padding">
-						<h1 class="md-display-2">Tab Three</h1>
-						<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-					</md-content>
-				</md-tab>
-			</md-tabs>
-		</md-content>
-		</div>
-	</div>
-</div>
+
+																</div>
+															</div>
+
+														</li>	 <!--end of ng-repeat-->
+													</ul>
+												</md-content>
+											</md-tab> <!-- end of scheduled  sessions tab-->
+											<md-tab label="Session History">
+												<md-content class="md-padding">
+													<h1 class="md-display-2">Tab Three</h1>
+													<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+												</md-content>
+											</md-tab>
+										</md-tabs>
+									</md-content>
+								</div>
+							</div>
+						</div>

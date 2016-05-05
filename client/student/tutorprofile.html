@@ -4,12 +4,12 @@
     <md-content>
       <md-toolbar>
         <div class="md-toolbar-tools" >
-<!-- logo -->
+          <!-- logo -->
           <h2>
             <span>CodEducation</span>
           </h2>
           <span flex></span>
-<!-- menu button -->
+          <!-- menu button -->
           <md-menu md-offset="0 50">
             <md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
               <md-icon md-svg-icon="../assests/list.svg"></md-icon>
@@ -39,56 +39,57 @@
 
   <div class="container" layout="row" layout-align="center" flex layout="vertical" layout-fill>
     <!-- Sidenav -->
-  <!-- content -->
-  <div flex="80">
-    <md-content ng-controller="tutorProfile">
-      <md-tabs md-dynamic-height md-border-bottom>
-        <md-tab label="Potential Session">
-          <md-content class="md-padding">
-            <h1 class="md-display-2">Request tutor</h1>
-        <md-content flex layout="row" layout-align="center">
-          <md-content flex="50">
-            <div flex="85" >
+    <!-- content -->
+    <div flex="80">
+      <md-content ng-controller="tutorProfile">
+        <md-tabs md-dynamic-height md-border-bottom>
+          <md-tab label="Potential Session">
+            <md-content class="md-padding">
+              <h1 class="md-display-2">Request tutor</h1>
+              <md-content flex layout="row" layout-align="center">
+                <md-content flex="50">
+                  <div flex="85" >
+                    <img ng-src="{{img}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
+                    <p>Tutor:</p>
+                    <p>{{name}}</p>
+                    <p style="margin-top: 20px; padding-right: 250px">{{bio}}</p>
+                    <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>
+                    <br>
+                    <br>
+                    <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Javascript</span>
+                    <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Node.js</span>
+                    <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">AngularJS</span>
+                    <br>
+                    <br>
+                    <md-content layout="column" flex ng-controller="tutorProfile">
+                      <div>
+                        <div class="dateTimeContent">
+                          <md-button class="md-raised md-warn" ng-click="showTimePicker($event)" aria-label="show picker">Time</md-button>
+                          <p>
+                            {{ currentTime | date:'HH:mm' }}
+                          </p>
+                        </div>
+                        <div class="dateTimeContent">
+                          <md-button class="md-raised md-warn" ng-click="showDatePicker($event)" aria-label="show picker">Date</md-button>
+                          <p>
+                            {{ currentDate | date:'shortDate' }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="requestSession">
+                        <md-button style="background-color: orange" ng-click="requestSession()">Request Session</md-button>
+                      </div>
+                    </md-content>
 
-              <p>Tutor:</p>
-              <p>Jonathan Lee</p>
-                <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>
-                <br>
-                <br>
-                <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Javascript</span>
-                <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Node.js</span>
-                <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">AngularJS</span>
-                <br>
-                <br>
-              <md-content layout="column" flex ng-controller="tutorProfile">
-                <div>
-                <div class="dateTimeContent">
-                  <md-button class="md-raised md-warn" ng-click="showTimePicker($event)" aria-label="show picker">Time</md-button>
-                  <p>
-                    {{ currentTime | date:'HH:mm' }}
-                  </p>
-                </div>
-                <div class="dateTimeContent">
-                  <md-button class="md-raised md-warn" ng-click="showDatePicker($event)" aria-label="show picker">Date</md-button>
-                  <p>
-                    {{ currentDate | date:'shortDate' }}
-                  </p>
-                </div>
-                </div>
-                <div class="requestSession">
-                  <md-button style="background-color: orange" ng-click="requestSession()">Request Session</md-button>
-                </div>
+
+                  </div>
+
+                </md-content>
               </md-content>
-
-
-            </div>
-
             </md-content>
-          </md-content>
-          </md-content>
-        </md-tab>
-      </md-tabs>
-    </md-content>
+          </md-tab>
+        </md-tabs>
+      </md-content>
     </div>
   </div>
 </div>

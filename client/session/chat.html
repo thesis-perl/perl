@@ -1,10 +1,10 @@
-<div>
+<div class="chatRoom">
   <div>
     <div>
-      <h1>Chatroom with {{otherName}}</h1>
+      <h1>Chatroom</h1>
     </div>
     <div>
-      <ul>
+      <ul class="chatMsg">
         <li ng-repeat="msg in messages">
           <strong>{{msg.from}}: </strong>{{msg.body}}
         </li>
@@ -12,6 +12,6 @@
     </div>
   </div>
   <div>
-    <input ng-model="msg" ng-keydown="newMessage($event)" type="text" id="messageInput"  placeholder="Type a message...">
+    <input ng-model="msg" ng-keydown="newMessage($event)" type="text" id="messageInput" class="inputBox" placeholder="Type a message...">
   </div>
 </div>
