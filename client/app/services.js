@@ -70,8 +70,13 @@ angular.module('Perl.services', ['btford.socket-io'])
 	}
 
 })
-.factory('tutorFactory', function($http){
+.factory('tutorFactory', function($http, $rootScope){
   //zoe put it here to search all tutors
+  var getStudentId = function(sid) {
+    $rootScope.sid = sid;
+    console.log("tutorfactory sid:",$rootScope.sid);
+  }
+
   var getAllTutors = function() {
     return $http.get('/api/filter_tutor');
   }
@@ -110,6 +115,7 @@ angular.module('Perl.services', ['btford.socket-io'])
   };
 
   return {
+     getStudentId: getStudentId,
      getAllTutors: getAllTutors,
      scheduledSessions: getScheduledSessions,
      invitations: getInvitations,
