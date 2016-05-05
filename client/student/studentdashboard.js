@@ -46,6 +46,14 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase'])
     $state.reload();
   }
 
+  $scope.getTutorId = function(tid) {
+    studentFactory.getTutorId(tid);
+  }
+
+  $scope.showChat = function(id) {
+    $state.go('chat');
+  }
+
 
   $scope.getInvitedTutors();
   $scope.getAcceptedTutors();
