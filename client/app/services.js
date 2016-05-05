@@ -1,4 +1,4 @@
-angular.module('Perl.services', [])
+angular.module('Perl.services', ['btford.socket-io'])
 .factory('authFactory', function($http){
   //user signup request
 
@@ -14,28 +14,9 @@ angular.module('Perl.services', [])
 
   };
 
-
-  // var uploadFileToUrl = function(file, uploadUrl){
-  //    var fd = new FormData();
-  //    fd.append('file', file);
-
-  //    $http.post(uploadUrl, fd, {
-  //       transformRequest: angular.identity,
-  //       headers: {'Content-Type': undefined}
-  //    })
-
-  //    .success(function(){
-  //    })
-
-  //    .error(function(){
-  //    });
-  // }
-
-
   return {
     signin: postSigninUser,
     signup: postSignupUser
-    // uploadFileToUrl: uploadFileToUrl
   };
 
 
@@ -126,6 +107,10 @@ angular.module('Perl.services', [])
      cancelSession: cancelSession,
      findTutorsByLanguage: findTutorsByLanguage
   }
-
-
 })
+
+.factory('perlSocket', function(socketFactory) {
+  var socket = socketFactory();
+  socket.forward('broadcast');
+  return socket;
+});
