@@ -1,4 +1,4 @@
-angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', 'Perl.session', 'Perl.studentDashboard', 'Perl.tutorFilter', 'Perl.chat', 'Perl.tutorProfile', 'Perl.tutorDashboard', 'Perl.landing', 'ui.router', 'ngMaterial', 'firebase', 'btford.socket-io', 'ui.codemirror'])
+angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', 'Perl.session', 'Perl.studentDashboard', 'Perl.tutorFilter', 'Perl.chat', 'Perl.video', 'Perl.tutorProfile', 'Perl.tutorDashboard', 'Perl.landing', 'ui.router', 'ngMaterial', 'firebase', 'btford.socket-io', 'ui.codemirror'])
 
 .run(function ($state, $firebase,$rootScope,$location,$window,$firebase,$firebaseAuth) {
   //instances and constants to be injected here
@@ -99,6 +99,14 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     url: '/chat',
     templateUrl: '../session/chat.html',
     controller: 'chat',
+    authenticate: true
+  })
+
+  .state('video', {
+    cache: false,
+    url:'/video',
+    templateUrl: '../session/video.html',
+    controller: 'video',
     authenticate: true
   })
 
