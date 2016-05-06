@@ -130,6 +130,8 @@ angular.module('Perl.services', ['btford.socket-io'])
   var socket = socketFactory();
   socket.forward('broadcast');
   socket.forward('joined');
+  socket.forward('typing');
+  socket.forward('untyping');
 
   return socket;
 });

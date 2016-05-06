@@ -3,7 +3,8 @@
       theme:'twilight',
       lineWrapping : true,
       mode: 'xml'
-    }" ng-model="sharedCode">{{sharedCode}}</div>
+    }" ng-model="sharedCode" ng-keydown="typingUpdate()">{{sharedCode}}</div>
 <div>{{hint}}</div>
+<div>{{typing}}</div>
 
 <md-button ng-click="endSession()">End Session</md-button>
