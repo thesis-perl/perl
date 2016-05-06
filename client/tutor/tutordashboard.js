@@ -84,9 +84,9 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
   };
 
   //tutor starts session
-  $scope.startSession = function() {
-      $state.go('session');
-  };
+  // $scope.startSession = function() {
+  //     $state.go('session');
+  // };
 
 
   //tutor cancels session
