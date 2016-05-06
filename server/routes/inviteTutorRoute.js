@@ -12,10 +12,17 @@ router.post('/', function(req, res) {
   var tid = req.body.tid;
   console.log('sid',sid);
   console.log('tid',tid);
-  db('studentutor').insert({sid: sid, tid: tid, status: 1})
+  db('studentutor').where({sid: sid, tid: tid})
   .then(function(data) {
-    console.log(data);
-    res.send(data);
+    if(!data[0]) {
+      db('studentutor').insert({sid: sid, tid: tid, fav: 0, status: 1})
+      .then(function(data) {
+        console.log(data);
+        res.send(data);
+      })
+    } else {
+      console.log('already invited');
+    }
   })
 })
 

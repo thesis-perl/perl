@@ -1,13 +1,11 @@
 angular.module('Perl.video', ['firebase'])
 
-.controller('video',function($scope){
+.controller('video',function($scope, $state){
   var room;
   var members;
   var localStream
 
   onBistriConferenceReady = function () {
-
-
     // test if the browser is WebRTC compatible
     if ( !bc.isCompatible() ) {
         // if the browser is not compatible, display an alert
@@ -15,7 +13,6 @@ angular.module('Perl.video', ['firebase'])
         // then stop the script execution
         return;
     }
-
 
     bc.init( {
       "appId": bistriAppId,
@@ -55,10 +52,13 @@ angular.module('Perl.video', ['firebase'])
             // insert the local webcam stream into div#video_container node
             bc.attachStream( stream, q( "#video_container" ), { mirror: true } );
             // then, for every single members present in the room ...
+
             for ( var i=0, max=members.length; i<max; i++ ) {
                 // ... request a call
+                console.log('member', members[i]);
                 bc.call( members[ i ].id, room, { "stream": stream } );
             }
+
         } );
     } );
 
@@ -121,16 +121,25 @@ angular.module('Perl.video', ['firebase'])
     q( "#quit" ).addEventListener( "click", quitConference );
 
     // open a new session on the server
-    bc.connect();
+    // new Promise(function(){
+      bc.connect();
+    // })
+    // .then(function(data) {
+    //   console.log('.then');
+    //   bc.joinRoom("2")
+    // })
+      joinConference();
   }
 
 
     // when button "Join Conference Room" has been clicked
   var joinConference = function (){
-      var roomToJoin = q( "#room_field" ).value;
+      // var roomToJoin = q( "#room_field" ).value;
+      var roomToJoin = "3";
       // if "Conference Name" field is not empty ...
       if( roomToJoin ){
           // ... join the room
+          console.log(bc.joinRoom);
           bc.joinRoom( roomToJoin );
       }
       else{
@@ -150,6 +159,7 @@ angular.module('Perl.video', ['firebase'])
       // for all nodes matching the query ".pane"
       for( var i=0, max=panes.length; i<max; i++ ){
           // hide all nodes except the one to show
+          console.log(panes[i]);
           panes[ i ].style.display = panes[ i ].id == id ? "block" : "none";
       };
   }
@@ -159,7 +169,14 @@ angular.module('Perl.video', ['firebase'])
       return document.querySelector( query );
   }
 
-  onBistriConferenceReady();
-  // });
+  // var p1 = new Promise(function() {
+    onBistriConferenceReady()
+  // })
+  //   p1.then(function(data) {
+  //     console.log('data', data)
+  //     // bc.joinRoom("2");
+  //     joinConference();
+  //   })
+  // // });
 
 });
