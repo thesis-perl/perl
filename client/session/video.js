@@ -135,7 +135,7 @@ angular.module('Perl.video', ['firebase'])
     // when button "Join Conference Room" has been clicked
   var joinConference = function (){
       // var roomToJoin = q( "#room_field" ).value;
-      var roomToJoin = "3";
+      var roomToJoin = "4";
       // if "Conference Name" field is not empty ...
       if( roomToJoin ){
           // ... join the room
@@ -159,6 +159,7 @@ angular.module('Perl.video', ['firebase'])
       // for all nodes matching the query ".pane"
       for( var i=0, max=panes.length; i<max; i++ ){
           // hide all nodes except the one to show
+          console.log(panes[i]);
           panes[ i ].style.display = panes[ i ].id == id ? "block" : "none";
       };
   }
