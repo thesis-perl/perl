@@ -135,7 +135,7 @@ angular.module('Perl.video', ['firebase'])
     // when button "Join Conference Room" has been clicked
   var joinConference = function (){
       // var roomToJoin = q( "#room_field" ).value;
-      var roomToJoin = "4";
+      var roomToJoin = "3";
       // if "Conference Name" field is not empty ...
       if( roomToJoin ){
           // ... join the room

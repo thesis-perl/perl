@@ -33,6 +33,8 @@ app.use(express.static(__dirname + '/../client'));
 app.use('/api/signin', require('./routes/signinRoute.js'));
 app.use('/api/signup', require('./routes/signupRoute.js'));
 app.use('/api/invite_tutor', require('./routes/inviteTutorRoute.js'));
+app.use('/api/fav_tutor', require('./routes/favTutorRoute.js'));
+app.use('/api/unfavorite', require('./routes/unfavRoute.js'));
 app.use('/api/accept_student', require('./routes/acceptStudentRoute.js'));
 app.use('/api/reject_invite', require('./routes/inviteTutorRoute.js'));
 app.use('/api/cancel_session', require('./routes/rejectInviteRoute.js'));

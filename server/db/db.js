@@ -20,12 +20,13 @@ knex.schema.createTableIfNotExists('users', function (user) {
   user.string('bio');
   user.string('location');
   user.string('imgurl');
-  user.integer('online');
-  user.integer('isTutor');
-  user.integer('isStudent');
-  user.integer('javascript');
-  user.integer('ruby');
-  user.integer('python');
+  user.binary('online');
+  user.binary('isTutor');
+  user.binary('isStudent');
+  user.binary('javascript');
+  user.binary('ruby');
+  user.binary('python');
+  // for all binary, 0: false, 1: true
 }).then(function() {
   console.log('tutor table created');
 });
@@ -34,7 +35,10 @@ knex.schema.createTableIfNotExists('studentutor', function(join) {
   join.increments('ID').primary();
   join.integer('sid').unsigned();
   join.integer('tid').unsigned();
-  join.integer('status');
+  join.binary('status');
+  // 0: favorited, but neither invited nor accepted, 1: invited, 2: accepted
+  join.binary('fav');
+  // 0: not favorited 1: favorited
   join.foreign('sid').references('id').inTable('users');
   join.foreign('tid').references('id').inTable('users');
 }).then(function() {

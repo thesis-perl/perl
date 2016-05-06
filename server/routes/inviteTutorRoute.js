@@ -15,7 +15,7 @@ router.post('/', function(req, res) {
   db('studentutor').where({sid: sid, tid: tid})
   .then(function(data) {
     if(!data[0]) {
-      db('studentutor').insert({sid: sid, tid: tid, status: 1})
+      db('studentutor').insert({sid: sid, tid: tid, fav: 0, status: 1})
       .then(function(data) {
         console.log(data);
         res.send(data);
