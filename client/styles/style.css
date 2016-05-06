@@ -490,6 +490,7 @@ select {
 .pane {
     margin: 20px;
     text-align: center;
+    width: 450px;
 }
 
 video {
