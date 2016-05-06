@@ -305,11 +305,11 @@ md-icon svg {
   height: 400px
 }
 div.CodeMirror-sizer{
-  height: 500px !important;
+  height: 440px !important;
 }
 
 div.CodeMirror.cm-s-default {
-  height: 580px !important;
+  height: 440px !important;
   width: 55%;
 }
 
