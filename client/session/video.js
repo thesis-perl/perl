@@ -1,15 +1,13 @@
 angular.module('Perl.video', ['firebase'])
 
 .controller('video',function($scope){
-  // var bc = require(['https://api.bistri.com/bistri.conference.min.js'], function(bc){
-
-  // console.log(bc);
   var room;
   var members;
-  var localStream;
+  var localStream
 
   onBistriConferenceReady = function () {
-    console.log('video loaded');
+
+
     // test if the browser is WebRTC compatible
     if ( !bc.isCompatible() ) {
         // if the browser is not compatible, display an alert
@@ -18,20 +16,22 @@ angular.module('Perl.video', ['firebase'])
         return;
     }
 
-    // initialize API client with application keys
-    // if you don't have your own, you can get them at:
-    // https://api.developers.bistri.com/login
+
     bc.init( {
       "appId": bistriAppId,
       "appKey": bistriAppKey
     });
 
-    /* Set events handler */
 
-    // when local user is connected to the server
     bc.signaling.bind( "onConnected", function () {
-        // show pane with id "pane_1"
-        showPanel( "pane_1" );
+      // show pane with id "pane_1"
+      showPanel( "pane_1" );
+    });
+
+    bc.signaling.bind( "onError", function ( error ) {
+      // display an alert message
+      alert( error.text + " (" + error.code + ")" );
+
     } );
 
     // when an error occured on the server side
@@ -124,6 +124,7 @@ angular.module('Perl.video', ['firebase'])
     bc.connect();
   }
 
+
     // when button "Join Conference Room" has been clicked
   var joinConference = function (){
       var roomToJoin = q( "#room_field" ).value;
@@ -160,4 +161,5 @@ angular.module('Perl.video', ['firebase'])
 
   onBistriConferenceReady();
   // });
+
 });
