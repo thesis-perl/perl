@@ -1,5 +1,7 @@
 <div id='session'>
-<p class='room'>{{hint}}</p>
+<md-toast>
+</md-toast>
+<br>
 <!--code editor-->
 <div ui-codemirror="cmOption" ng-model="sharedCode" ng-keydown="typingUpdate()" id='codeDiv'>{{sharedCode}}</div>
 
@@ -10,8 +12,7 @@
 <br>
 <br>
 
-<div>Hint: {{hint}}</div>
-<div>Who is typing: {{typing}}</div>
+<div>{{typing}}</div>
 <br>
 <div class='sessionFooter'>
 <span class='languages'> choose language  <select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select></span> 
