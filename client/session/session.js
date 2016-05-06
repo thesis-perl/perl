@@ -1,8 +1,9 @@
 angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror'])
 
-.controller('session',function($log, $scope, perlSocket, $stateParams, $state){
+.controller('session',function($log, $scope, perlSocket, $stateParams, $state, sessionFactory){
 	var typing = false;
 	var lastTypingTime;
+
 
 	var user = JSON.parse(localStorage.getItem('userinfo'));
 	var link;
@@ -98,7 +99,7 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror'])
   	}
   }
 
-  ///////language options
+  //language options
   $scope.modes = ['Javascript', 'Python', 'Ruby'];
   $scope.mode = $scope.modes[0];
   $scope.cmOption = {
@@ -110,7 +111,26 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror'])
       };
     }
   };
-/////  
+
+ //saving the lesson code in the database
+  $scope.saveCodeInDatabase = function() {
+      console.log('i',  user.id)
+      console.log('other', Number($stateParams.link))
+      console.log(user);
+    
+    if (user.isTutor ===1) {
+     sessionFactory.saveCodeDB(user.id, Number($stateParams.link), $scope.sharedCode)
+    }
+    else if(user.isStudent ===1) {
+     sessionFactory.saveCodeDB(Number($stateParams.link), user.id, $scope.sharedCode)
+    }
+  };
+ 
+ //donwload code on local 
+ $scope.downloadCode = function() {
+  document.location = 'data:Application/octet-stream,' + encodeURIComponent($scope.sharedCode);
+
+ };
 
 });
 

@@ -323,12 +323,13 @@ div.CodeMirror.cm-s-default {
 
 
 }
-#endsessionBtn {
+#endsessionBtn, #downloadCodeBtn, #saveCodeBtn {
  background-color: #1f1f14;
  padding-left: 5px;
  padding-right: 5px;
  font-size: 13px;
  color: orange;
+ margin-right: 20px;
 
 }
 .CodeMirror-scroll {

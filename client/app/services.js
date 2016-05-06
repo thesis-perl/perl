@@ -141,4 +141,23 @@ angular.module('Perl.services', ['btford.socket-io'])
   socket.forward('untyping');
 
   return socket;
-});
+})
+.factory('sessionFactory', function($http) {
+    //saving session/lesson code in database
+  var saveCodeDB = function(tutorId, studentId, code){
+    var sessionInfo = {
+      tid: tutorId,
+      sid: studentId,
+      code: code
+    };
+
+    console.log('getting code info', sessionInfo)
+    $http.post('save_code', sessionInfo);
+  };
+  
+
+  return {
+    saveCodeDB: saveCodeDB
+  }
+
+})
