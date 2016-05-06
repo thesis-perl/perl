@@ -48,7 +48,7 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror'])
   }
 
   ///////language options
-  $scope.modes = ['Choose', 'Javascript', 'Python', 'Ruby'];
+  $scope.modes = ['Javascript', 'Python', 'Ruby'];
   $scope.mode = $scope.modes[0];
   $scope.cmOption = {
      lineNumbers: true,
