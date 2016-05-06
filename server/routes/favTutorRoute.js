@@ -7,10 +7,16 @@ var db = require('../db/db').knex;
 router.post('/', function(req, res) {
   var sid = req.body.sid;
   var tid = req.body.tid;
-
-  db('studentutor').insert({sid: sid, tid: tid, fav: 1, status: 0})
-  .then(function(data){
-    res.sendStatus(sid + " favorited " + tid);
+  db('studentutor').where({sid: sid, tid: tid})
+  .then(function(data) {
+    if (!data[0]) {
+      db('studentutor').insert({sid: sid, tid: tid, fav: 1, status: 0})
+      .then(function(data){
+        res.sendStatus(sid + " favorited " + tid);
+      })
+    } else {
+      res.sendStatus("Already joined");
+    }
   })
 })
 
@@ -21,7 +27,7 @@ router.put('/', function(req, res) {
   db('studentutor').where({sid: sid, tid: tid})
   .update({fav: 1})
   .then(function(data){
-    console.log(sid + " updated " + tid + "to be favorite");
+    res.sendStatus(sid + " updated " + tid + "to be favorite");
   })
 })
 
