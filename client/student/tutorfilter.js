@@ -5,6 +5,8 @@ angular.module('Perl.tutorFilter', [])
 	$scope.selectedItem;
 	$scope.language;
 	$scope.tutors = [];
+	var user = JSON.parse(localStorage.getItem('userinfo'));
+
 
 
 	//need to send data of array of all tutors
@@ -17,12 +19,20 @@ angular.module('Perl.tutorFilter', [])
 		});
 	}
 
-	$scope.findTutorsByLanguage = function() {
+	$scope.findTutorsByLanguage = function(language) {
 		//make http call
-		tutorFactory.findTutorsByLanguage($scope.language)
+		tutorFactory.findTutorsByLanguage(language)
 		.then(function(data){
 			$scope.tutors = data.data;
 		});
+	}
+
+	$scope.addFavorite = function(tid) {
+		tutorFactory.addFavorite(user.id, tid);
+	}
+
+	$scope.deleteFavorite = function(tid) {
+		tutorFactory.deleteFavorite(user.id, tid);
 	}
 
 	$scope.getAllTutors();

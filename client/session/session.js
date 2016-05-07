@@ -54,7 +54,7 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
          typing = false;
          console.log('see if it happen', $scope.typing)
        }
-     }, 400);
+     }, 800);
   }
 
   $scope.endSession = function() {
