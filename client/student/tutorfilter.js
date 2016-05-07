@@ -14,8 +14,6 @@ angular.module('Perl.tutorFilter', [])
 	$scope.getAllTutors = function() {
 		tutorFactory.getAllTutors(user.id)
 		.then(function(data){
-
-			console.log('tutors', data.data)
 			$scope.tutors = data.data;
 		});
 	}
@@ -33,7 +31,6 @@ angular.module('Perl.tutorFilter', [])
 	}
 
 	$scope.deleteFavorite = function(tid) {
-		console.log('tid', tid)
 		tutorFactory.deleteFavorite(user.id, tid);
 	}
 
