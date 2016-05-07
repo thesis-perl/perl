@@ -77,8 +77,8 @@ angular.module('Perl.services', ['btford.socket-io'])
     console.log("tutorfactory sid:",$rootScope.sid);
   }
 
-  var getAllTutors = function() {
-    return $http.get('/api/filter_tutor');
+  var getAllTutors = function(sid) {
+   return $http.get('/api/filter_tutor', { headers: {'sid': sid}})
   }
 
 
@@ -125,6 +125,10 @@ angular.module('Perl.services', ['btford.socket-io'])
     return $http.post('/api/fav_tutor', {'tid': tid, 'sid': sid});
   }
 
+  var deleteFavorite = function(sid, tid) {
+    return $http.put('/api/unfavorite', {'tid': tid, 'sid': sid});
+  }
+
   return {
      getStudentId: getStudentId,
      getAllTutors: getAllTutors,
@@ -135,7 +139,8 @@ angular.module('Perl.services', ['btford.socket-io'])
      cancelSession: cancelSession,
      findTutorsByLanguage: findTutorsByLanguage,
      startSession: startSession,
-     addFavorite: addFavorite
+     addFavorite: addFavorite,
+     deleteFavorite: deleteFavorite
   }
 })
 

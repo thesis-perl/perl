@@ -12,10 +12,11 @@ angular.module('Perl.tutorFilter', [])
 	//need to send data of array of all tutors
 	//need to send tutors fullname
 	$scope.getAllTutors = function() {
-		tutorFactory.getAllTutors()
+		tutorFactory.getAllTutors(user.id)
 		.then(function(data){
+
+			console.log('tutors', data.data)
 			$scope.tutors = data.data;
-			console.log('tutors', $scope.tutors)
 		});
 	}
 
@@ -28,11 +29,11 @@ angular.module('Perl.tutorFilter', [])
 	}
 
 	$scope.addFavorite = function(tid) {
-		console.log('tid', tid)
 		tutorFactory.addFavorite(user.id, tid);
 	}
 
 	$scope.deleteFavorite = function(tid) {
+		console.log('tid', tid)
 		tutorFactory.deleteFavorite(user.id, tid);
 	}
 
