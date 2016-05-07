@@ -359,15 +359,16 @@ md-icon svg {
 
 #codeDiv {
 
-  height: 450px;
+  height: 550px;
 }
 div.CodeMirror-sizer{
   height: 550px !important;
+  width:50%;
 }
 
 div.CodeMirror.cm-s-default {
   height: 550px !important;
-  width: 55%;
+  width: 100%;
 }
 
 
@@ -467,9 +468,9 @@ select {
 /*border: 1px solid black;*/
  width: 550px;
  height: 450px;
- float: right;
- position: relative;
- top: -350px;
+ /*float: right;
+ position: relative;*/
+ /*top: -350px;*/
  right: 30px;
 }
 .sessionBody {
