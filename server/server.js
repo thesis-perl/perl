@@ -41,6 +41,7 @@ app.use('/api/cancel_session', require('./routes/rejectInviteRoute.js'));
 app.use('/api/student_dashboard', require('./routes/studentDashboardRoute.js'));
 app.use('/api/tutor_dashboard', require('./routes/tutorDashboardRoute.js'));
 app.use('/api/filter_tutor', require('./routes/filterTutorRoute.js'));
+app.use('/api/cancel_history', require('./routes/cancelSessionRoute.js'));
 
 // cors
 app.use(cors());
