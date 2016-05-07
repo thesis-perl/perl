@@ -5,7 +5,7 @@ angular.module('Perl.tutorProfile', [
     "ngMessages",
     "mdPickers"])
 
-.controller('tutorProfile', ['$scope', '$mdpDatePicker', '$mdpTimePicker', '$stateParams', '$location', 'studentFactory' ,function($scope, $mdpDatePicker, $mdpTimePicker, $stateParams, $location, studentFactory){
+.controller('tutorProfile', ['$scope', '$mdpDatePicker', '$mdpTimePicker', '$stateParams', '$location', 'studentFactory', '$state',function($scope, $mdpDatePicker, $mdpTimePicker, $stateParams, $location, studentFactory, $state){
 
   var tutorInfo = {
     tutorId: parseInt($stateParams.id)
@@ -61,6 +61,7 @@ angular.module('Perl.tutorProfile', [
 
     studentFactory.postInvite(studentInfo,tutorInfo.tutorId).then(function(data){
       console.log('Session requested, data received',data);
+      $state.go('studentDashboard');
     }).catch(function(error){console.log('error',error)});
   };
 
