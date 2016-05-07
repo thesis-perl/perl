@@ -6,6 +6,7 @@ var db = require('../db/db').knex;
 
 router.post('/', function(req, res) {
 
+
   var sid = req.body.sid;
   var tid = req.body.tid;
   db('studentutor').where({sid: sid, tid: tid})
@@ -24,7 +25,6 @@ router.post('/', function(req, res) {
     }
   })
 })
-
 
 // export router
 module.exports = router;
