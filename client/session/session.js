@@ -97,7 +97,6 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
  //donwload code on local 
  $scope.downloadCode = function() {
   document.location = 'data:Application/octet-stream,' + encodeURIComponent($scope.sharedCode);
-
  };
 
   // pop up hint when a user joined.

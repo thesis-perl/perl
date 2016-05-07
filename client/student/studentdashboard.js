@@ -1,7 +1,10 @@
 angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'ngMessages', 'material.svgAssetsCache'])
 
-.controller('studentDashboard',function($mdMedia, $mdDialog, $scope, $state, $rootScope, studentFactory, authFactory){
+.controller('studentDashboard',function($mdMedia, $mdDialog, $scope, $state, $rootScope, studentFactory, authFactory, tutorFactory){
 	$scope.invitedTutors;
+  $scope.acceptedTutors;
+  $scope.cancelledTutors;
+  $scope.finishedTutors;
   $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
 
   // Chat popup Modal
@@ -25,8 +28,6 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
       $scope.status = 'You cancelled the dialog.';
     });
 
-
-
     $scope.$watch(function() {
       return $mdMedia('xs') || $mdMedia('sm');
     }, function(wantsFullScreen) {
@@ -35,16 +36,12 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
 
   };
 
-  console.log('userinfo', $scope.userinfo);
 
   $scope.getInvitedTutors = function() {
   	console.log('inside get Tutorinfo id', $scope.userinfo.id);
   	studentFactory.getInvitedTutors($scope.userinfo.id)
   	.then(function(data){
-  		console.log('tutors', data.data)
   		$scope.invitedTutors = data.data;
-  		//need to send null instead of "no invited tutor" when there is no tutor.
-  		// $scope.tutors = null;
   	})
   }
 
@@ -53,6 +50,20 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
   	.then(function(data){
   		$scope.acceptedTutors = data.data;
   	})
+  }
+
+  $scope.getCancelledTutors = function() {
+    studentFactory.getCancelledTutors($scope.userinfo.id)
+    .then(function(data) {
+      $scope.cancelledTutors = data.data;
+    })
+  }
+
+  $scope.getFinishedTutors = function() {
+    studentFactory.getFinishedTutors($scope.userinfo.id)
+    .then(function(data) {
+      $scope.finishedTutors = data.data;
+    })
   }
 
   $scope.findTutors = function() {
@@ -85,8 +96,16 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
     $state.go('chat');
   }
 
+  $scope.addFavorite = function(tid) {
+    tutorFactory.addFavorite($scope.userinfo.id, tid);
+  }
+
+  $scope.deleteFavorite = function(tid) {
+    tutorFactory.deleteFavorite($scope.userinfo.id, tid);
+  }
 
   $scope.getInvitedTutors();
   $scope.getAcceptedTutors();
-
+  $scope.getCancelledTutors();
+  $scope.getFinishedTutors();
 })

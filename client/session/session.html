@@ -1,4 +1,5 @@
 <div id='session'>
+<div class='sessionBody'>
 <md-toast>
 </md-toast>
 <br>
@@ -8,14 +9,16 @@
 
 
 <section class = 'videoDiv'> VIDEO </section>
-
 <br>
 <br>
-
-<div>{{typing}}</div>
 <br>
+<br>
+<br>
+<p class='typing'>{{typing}}</p>
+<br>
+</div>
 <div class='sessionFooter'>
-<span class='languages'> choose language  <select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select></span> 
+<span class='chooselanguage'> choose language  <select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select></span> 
 <md-button id='endsessionBtn' type='submit' ng-click="endSession()">end eession</md-button>
 <md-button id='saveCodeBtn' type='submit' ng-click="saveCodeInDatabase()">save</md-button>
 <md-button id='downloadCodeBtn' type='submit' ng-click="downloadCode()">download</md-button>
