@@ -1,3 +1,59 @@
+/*landing page */
+
+div.landing.ng-scope{
+  background-image: url('../assests/F15.jpg');
+  background-size: 100%;
+  height: 800px;
+
+
+
+}
+
+.ourLogo {
+width: 170px;
+position: absolute;
+top: 10px;
+left: 30px;
+
+}
+
+#landingPage h1 {
+
+  position: absolute;
+  top: 250px;
+  left: 470px;
+  font-size: 80px;
+  font-family: Helvetica;
+  color:  #cc3300;
+}
+#landingPage h1 span {
+ color: #262626;
+ font-size: 130px;
+
+}
+#landingPage p {
+  position: absolute;
+  left: 370px;
+  top: 450px;
+  font-size: 27px;
+  font-weight: bold;
+  
+}
+
+.landSignin {
+  position: absolute;
+  top: 10px;
+  left: 1200px;
+   
+}
+
+.landSignup {
+  position: absolute;
+  top: 10px;
+  left: 1200px;
+}
+
+
 .tutorInfo{
   display: inline-block;
 }
@@ -165,6 +221,7 @@ margin-top: 0;
 }
 
 .signUp h3 {
+
   margin: 0 0 15px;
 }
  .signUp label, .signIn label {
@@ -302,20 +359,18 @@ md-icon svg {
  
 #codeDiv {
 
-  height: 400px
+  height: 450px;
 }
 div.CodeMirror-sizer{
-  height: 440px !important;
+  height: 550px !important;
 }
 
 div.CodeMirror.cm-s-default {
-  height: 440px !important;
+  height: 550px !important;
   width: 55%;
 }
 
-.languages {
- margin-left: 30px;
-}
+
 
 .session {
   display: block;
@@ -323,15 +378,27 @@ div.CodeMirror.cm-s-default {
 
 
 }
+
+p.room.ng-binding {
+
+  margin-bottom: 0 !important;
+}
 #endsessionBtn, #downloadCodeBtn, #saveCodeBtn {
  background-color: #1f1f14;
  padding-left: 5px;
  padding-right: 5px;
  font-size: 13px;
- color: orange;
+ color:rgb(255,171,64);
  margin-right: 20px;
 
 }
+#endsessionBtn:hover, #downloadCodeBtn:hover, #saveCodeBtn:hover  {
+ background-color: rgb(255,171,64);
+color: #1f1f14;
+
+
+}
+
 .CodeMirror-scroll {
   margin: 30px !important;
   border: 1px solid #ccc;
@@ -378,16 +445,23 @@ select {
   margin-left: 30px;
 }
 
-.languages {
+/*.languages {
+  color: white;
+ 
+  background-color: #595F65 !important;
+}*/
+.chooselanguage {
   background-color: #1f1f14;
   padding: 8px;
-  color: orange;
+  color: rgb(255,171,64);
   border-radius: 3px;
+  margin-left: 30px;
 }
 .sessionFooter {
 
-  border: 5px solid orange;
+  border: 5px solid rgb(255,171,64);
   padding-bottom: -10px;
+  margin-top: 50px;
 }
 .videoDiv {
 border: 1px solid black;
@@ -398,8 +472,15 @@ border: 1px solid black;
  top: -350px;
  right: 30px;
 }
+.sessionBody {
 
+}
+.typing {
 
+  position: fixed;
+
+  margin: 30px;
+}
 
 
 

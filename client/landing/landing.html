@@ -1,21 +1,15 @@
-<!-- 
-<span moment-picker="ctrl.component">
-    {{ ctrl.component || 'Click here to select a date' }}
-</span>
+<div id='landingPage'>
+  <div class="landing" ng-controller="landing">
+    <img class='ourLogo' src="../assests/logo3.png">
+    <md-button  ng-click='redirectSignin()' class='landSignin'> sign in </md-button>
+    <md-button ng-click='redirectSignup()'class='landSignup'> sign up </md-button>
 
 
-<input class="form-control"
-       ng-model="ctrl.input"
-       ng-model-options="{ updateOn: 'blur' }"
-       placeholder="Select a date and time"
-       moment-picker="ctrl.input"> -->
+    <h1> Learn to Cod<span>i</span>fy </h1>
+    <p> One-on-one tutoring to take you to the next level in programming</p>
+  </div>
+</div>
 
-
-<body ng-app="landing">
-  <div class="landing" ng-controller="landing" ng-style="landingImage"></div>
-  <button>Sign In </button>
-  <button>Sign Up</button>
-</body>
 
 
 
