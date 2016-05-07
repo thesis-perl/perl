@@ -1,26 +1,29 @@
 <div id='session'>
-<div class='sessionBody'>
-<md-toast>
-</md-toast>
-<br>
-<!--code editor-->
-<div ui-codemirror="cmOption" ng-model="sharedCode" ng-keydown="typingUpdate()" id='codeDiv'>{{sharedCode}}</div>
+  <div class='sessionBody'>
+    <md-toast>
+    </md-toast>
+    <br>
+    <!--code editor-->
+    <div ui-codemirror="cmOption" ng-model="sharedCode" ng-keydown="typingUpdate()" id='codeDiv'>{{sharedCode}}</div>
 
 
 
-<section class = 'videoDiv'> VIDEO </section>
-<br>
-<br>
-<br>
-<br>
-<br>
-<p class='typing'>{{typing}}</p>
-<br>
-</div>
-<div class='sessionFooter'>
-<span class='chooselanguage'> choose language  <select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select></span> 
-<md-button id='endsessionBtn' type='submit' ng-click="endSession()">end eession</md-button>
-<md-button id='saveCodeBtn' type='submit' ng-click="saveCodeInDatabase()">save</md-button>
-<md-button id='downloadCodeBtn' type='submit' ng-click="downloadCode()">download</md-button>
-</div>
+    <section>
+      <div ui-view class="videoDiv"></div>
+      <a ui-sref="session.video" style="border: 1px solid black; float: right">Start Video Chat</a>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class='typing'>{{typing}}</p>
+    <br>
+  </div>
+  <div class='sessionFooter'>
+    <span class='chooselanguage'> choose language  <select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select></span>
+    <md-button id='endsessionBtn' type='submit' ng-click="endSession()">end eession</md-button>
+    <md-button id='saveCodeBtn' type='submit' ng-click="saveCodeInDatabase()">save</md-button>
+    <md-button id='downloadCodeBtn' type='submit' ng-click="downloadCode()">download</md-button>
+  </div>
 </div>
