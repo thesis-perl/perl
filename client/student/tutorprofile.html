@@ -16,8 +16,8 @@
             </md-button>
             <md-menu-content width="4">
               <md-menu-item>
-                <md-button ng-click="redirectTutorDashboard()">
-                  <div>Student Dashboard</div>
+                <md-button ng-click="">
+                  <div><a ui-sref="studentDashboard" style="text-decoration: none; color: #222">Student dashboard</a></div>
                 </md-button>
               </md-menu-item>
               <md-menu-item>
@@ -77,13 +77,11 @@
                         </div>
                       </div>
                       <div class="requestSession">
-                        <md-button style="background-color: orange" ng-click="requestSession()">Request Session</md-button>
+                        <md-button style="background-color: orange" ng-click="requestSession()" ui-sref="studentDashboard">Request Session
+                        </md-button>
                       </div>
                     </md-content>
-
-
                   </div>
-
                 </md-content>
               </md-content>
             </md-content>

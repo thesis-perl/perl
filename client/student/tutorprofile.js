@@ -43,12 +43,6 @@ angular.module('Perl.tutorProfile', [
     });
   };
 
-  $scope.redirectTutorDashboard = function() {
-    console.log('in redirectTutorDashboard')
-    // $location.url('./studentdashboard.html');
-  }
-
-
   $scope.requestSession = function(){
     var studentInfo = JSON.parse(localStorage.getItem('userinfo')).id;
 
