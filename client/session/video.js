@@ -50,7 +50,7 @@ angular.module('Perl.video', ['firebase'])
             // show pane with id "pane_2"
             showPanel( "pane_2" );
             // insert the local webcam stream into div#video_container node
-            bc.attachStream( stream, q( "#video_container" ), { mirror: true } );
+            // bc.attachStream( stream, q( "#video_container" ), { mirror: true } );
             // then, for every single members present in the room ...
 
             for ( var i=0, max=members.length; i<max; i++ ) {
@@ -159,7 +159,6 @@ angular.module('Perl.video', ['firebase'])
       // for all nodes matching the query ".pane"
       for( var i=0, max=panes.length; i<max; i++ ){
           // hide all nodes except the one to show
-          console.log(panes[i]);
           panes[ i ].style.display = panes[ i ].id == id ? "block" : "none";
       };
   }

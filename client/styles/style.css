@@ -37,14 +37,14 @@ left: 30px;
   top: 450px;
   font-size: 27px;
   font-weight: bold;
-  
+
 }
 
 .landSignin {
   position: absolute;
   top: 10px;
   left: 1200px;
-   
+
 }
 
 .landSignup {
@@ -356,18 +356,19 @@ md-icon svg {
 
 /*session room */
 
- 
+
 #codeDiv {
 
-  height: 450px;
+  height: 550px;
 }
 div.CodeMirror-sizer{
   height: 550px !important;
+  width:50%;
 }
 
 div.CodeMirror.cm-s-default {
   height: 550px !important;
-  width: 55%;
+  width: 100%;
 }
 
 
@@ -424,7 +425,7 @@ select {
     background-image: url(../images/select-arrow.png), -webkit-linear-gradient(top, #E5E5E5, #F4F4F4); /* For Chrome and Safari */
     background-image: url(../images/select-arrow.png), -moz-linear-gradient(top, #E5E5E5, #F4F4F4); /* For old Fx (3.6 to 15) */
     background-image: url(../images/select-arrow.png), -ms-linear-gradient(top, #E5E5E5, #F4F4F4); /* For pre-releases of IE 10*/
-    background-image: url(../images/select-arrow.png), -o-linear-gradient(top, #E5E5E5, #F4F4F4); /* For old Opera (11.1 to 12.0) */ 
+    background-image: url(../images/select-arrow.png), -o-linear-gradient(top, #E5E5E5, #F4F4F4); /* For old Opera (11.1 to 12.0) */
     background-image: url(../images/select-arrow.png), linear-gradient(to bottom, #E5E5E5, #F4F4F4); /* Standard syntax; must be last */
     background-position: center right;
     background-repeat: no-repeat;
@@ -447,7 +448,7 @@ select {
 
 /*.languages {
   color: white;
- 
+
   background-color: #595F65 !important;
 }*/
 .chooselanguage {
@@ -464,12 +465,12 @@ select {
   margin-top: 50px;
 }
 .videoDiv {
-border: 1px solid black;
+/*border: 1px solid black;*/
  width: 550px;
  height: 450px;
- float: right;
- position: relative;
- top: -350px;
+ /*float: right;
+ position: relative;*/
+ /*top: -350px;*/
  right: 30px;
 }
 .sessionBody {
@@ -490,6 +491,7 @@ border: 1px solid black;
 .pane {
     margin: 20px;
     text-align: center;
+    width: 450px;
 }
 
 video {

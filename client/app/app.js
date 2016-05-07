@@ -102,7 +102,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     authenticate: true
   })
 
-  .state('video', {
+  .state('session.video', {
     cache: false,
     url:'/video',
     templateUrl: '../session/video.html',
