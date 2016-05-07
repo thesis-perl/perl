@@ -4,20 +4,21 @@ var router = express.Router();
 // load database module
 var db = require('../db/db').knex;
 
-// router.get('/', function(req, res) {
-//   db('users').where({ isTutor: 1})
-//   .then(function(data) {
-//     var temp = [];
-//     for (var i=0; i<data.length; i++) {
-//       temp.push({id: data[i].id, fullname: data[i].fullname, username: data[i].username, bio: data[i].bio, location: data[i].location, imgurl: data[i].imgurl, javascript: data[i].javascript, ruby: data[i].ruby, python: data[i].python})
-//     }
-//     res.send(temp);
-//   })
-// })
 router.get('/', function(req, res) {
   console.log('sid', req.headers.sid)
-  db.select('*').from('studentutor').where('sid', req.headers.sid).rightOuterJoin('users', 'studentutor.tid', 'users.id')
+  db.select('*').from('users').where('isTutor', 1).leftOuterJoin('studentutor', function(){
+    this.on('users.id', "=", 'studentutor.tid')
+  })
   .then(function(data){
+    console.log('req', req.headers.sid)
+    console.log('in filtertutour', data)
+    for(var i = 0; i < data.length; i++) {
+      if(data[i].fav == 1 && data[i].sid == req.headers.sid) {
+        data[i].fav = 1;
+      } else {
+        data[i].fav = 0;
+      }
+    }
     res.send(data);
   })
 })
