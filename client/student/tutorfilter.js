@@ -28,6 +28,7 @@ angular.module('Perl.tutorFilter', [])
 	}
 
 	$scope.addFavorite = function(tid) {
+		console.log('tid', tid)
 		tutorFactory.addFavorite(user.id, tid);
 	}
 

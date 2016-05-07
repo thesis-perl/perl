@@ -121,6 +121,10 @@ angular.module('Perl.services', ['btford.socket-io'])
     $http.put('/api/cancel_session', {'tid': tutorId, 'sid': studentId});
   };
 
+  var addFavorite = function(sid, tid) {
+    return $http.post('/api/fav_tutor', {'tid': tid, 'sid': sid});
+  }
+
   return {
      getStudentId: getStudentId,
      getAllTutors: getAllTutors,
@@ -130,7 +134,8 @@ angular.module('Perl.services', ['btford.socket-io'])
      reject: rejectInvitation,
      cancelSession: cancelSession,
      findTutorsByLanguage: findTutorsByLanguage,
-     startSession: startSession
+     startSession: startSession,
+     addFavorite: addFavorite
   }
 })
 
