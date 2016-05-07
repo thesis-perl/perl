@@ -10,8 +10,6 @@ router.get('/', function(req, res) {
     this.on('users.id', "=", 'studentutor.tid')
   })
   .then(function(data){
-    console.log('req', req.headers.sid)
-    console.log('in filtertutour', data)
     for(var i = 0; i < data.length; i++) {
       if(data[i].fav == 1 && data[i].sid == req.headers.sid) {
         data[i].fav = 1;
