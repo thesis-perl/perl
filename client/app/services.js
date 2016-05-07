@@ -46,7 +46,7 @@ angular.module('Perl.services', ['btford.socket-io'])
   }
 
   var getFinishedTutors = function(id) {
-    return $http.get('/api/student_dashboard/finished', { headers: { 'id': id } });   
+    return $http.get('/api/student_dashboard/finished', { headers: { 'id': id } });
   }
 
   var getTutorInfo = function (tutorInfo) {
@@ -97,16 +97,23 @@ angular.module('Perl.services', ['btford.socket-io'])
     // return $http.get()
   }
 
-
-  var getScheduledSessions = function(id) {
-   return $http.get('api/tutor_dashboard/accepted',  { headers: {'id': id }});
-  };
-
-
-  var getInvitations = function(id) {
-    return $http.get('api/tutor_dashboard/invited', { headers: {'id': id }});
+  var getInvitedStudents = function(id) {
+    return $http.get('/api/tutor_dashboard/invited', { headers: {'id': id }});
 
   };
+
+  var getAcceptedStudents = function(id) {
+   return $http.get('/api/tutor_dashboard/accepted',  { headers: {'id': id }});
+  };
+
+  var getCancelledStudents = function(id) {
+    return $http.get('/api/tutor_dashboard/cancelled', { headers: { 'id': id } });
+  }
+
+  var getFinishedStudents = function(id) {
+    return $http.get('/api/tutor_dashboard/finished', { headers: { 'id': id } });
+  }
+
 
   var acceptInvitation = function(tutorId, studentId) {
     var ids = {
@@ -120,9 +127,9 @@ angular.module('Perl.services', ['btford.socket-io'])
   var rejectInvitation = function(tutorId, studentId) {
     $http.delete('api/reject_invite',  {headers: { 'tid': tutorId, 'sid': studentId }});
   };
-   
+
    var startSession = function(code){
-   
+
       //return $http.get('/startsession', {headers: {'code': code}})
 
    };
@@ -139,11 +146,14 @@ angular.module('Perl.services', ['btford.socket-io'])
     return $http.put('/api/unfavorite', {'tid': tid, 'sid': sid});
   }
 
+
   return {
      getStudentId: getStudentId,
      getAllTutors: getAllTutors,
-     scheduledSessions: getScheduledSessions,
-     invitations: getInvitations,
+     getInvitedStudents: getInvitedStudents,
+     getAcceptedStudents: getAcceptedStudents,
+     getCancelledStudents: getCancelledStudents,
+     getFinishedStudents: getFinishedStudents,
      acceptInvite: acceptInvitation,
      reject: rejectInvitation,
      cancelSession: cancelSession,
@@ -175,7 +185,7 @@ angular.module('Perl.services', ['btford.socket-io'])
     console.log('getting code info', sessionInfo)
     $http.post('save_code', sessionInfo);
   };
-  
+
 
   return {
     saveCodeDB: saveCodeDB

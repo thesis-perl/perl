@@ -3,18 +3,25 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
 
 })
 .run(function(tutorFactory, $rootScope){
- 
+
 })
 
 
 .controller('tutorDashboard',function($scope, tutorFactory, $rootScope, authFactory, $state, $mdDialog, $mdMedia){
 
 
-  var userId = JSON.parse(localStorage.getItem('userinfo')).id;
+  // $scope.userId = JSON.parse(localStorage.getItem('userinfo')).id;
+  $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
 
   // Chat popup Modal
   $scope.status = '  ';
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+
+  $scope.invitedStudents;
+  $scope.acceptedStudents;
+  $scope.cancelledStudents;
+  $scope.finishedStudents;
+
 
   $scope.showAdvanced = function(ev) {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
@@ -43,30 +50,7 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
 
   };
 
-
-  tutorFactory.invitations(userId).then(function(data){
-
- 
-    if(data.data.length===0) {
-      $scope.noInvite = "you currently don't have any invitation"
-
-    }
-  
-    $scope.invitations = data.data;
-    console.log('invitations', data)
-
-  
-  });
-
-  tutorFactory.scheduledSessions(userId).then(function(data){
-   if(data.data.length===0) {
-      $scope.noSession = "you currently don't have any scheduled session"
-
-    }
-    $scope.sessions = data.data;
-  });
-
-  $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
+  // $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
   var currentObject = localStorage.getItem("userinfo");
   var currentUserId = JSON.parse(currentObject).id
 
@@ -105,6 +89,44 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
     $state.go('chat');
   }
 
+  $scope.getInvitedStudents = function(id) {
+    console.log($scope.userinfo.id);
+    tutorFactory.getInvitedStudents($scope.userinfo.id)
+    .then(function(data) {
+      console.log('invited data', data);
+      $scope.invitedStudents = data.data;
+      console.log('invitedStudents', $scope.invitedStudents);
+    })
+  };
 
+  $scope.getAcceptedStudents = function(id) {
+    tutorFactory.getAcceptedStudents($scope.userinfo.id)
+    .then(function(data) {
+      console.log('accepted data', data);
+      $scope.acceptedStudents = data.data;
+    })
+  };
+
+  $scope.getCancelledStudents = function(id) {
+    tutorFactory.getCancelledStudents($scope.userinfo.id)
+    .then(function(data) {
+      console.log('cancelled data', data);
+      $scope.cancelledStudents = data.data;
+    })
+  };
+
+  $scope.getFinishedStudents = function(id) {
+    tutorFactory.getFinishedStudents($scope.userinfo.id)
+    .then(function(data) {
+      console.log('finished data', data);
+      $scope.finishedStudents = data.data;
+    })
+  };
+
+
+  $scope.getInvitedStudents();
+  $scope.getAcceptedStudents();
+  $scope.getCancelledStudents();
+  $scope.getFinishedStudents();
 
 })// end of tutordashboard controller

@@ -56,7 +56,10 @@
 								<div layout="rows" style="border-bottom: 1px solid #eee">
 									<!--  generating invitation list -->
 									<ul>
-										<li ng-repeat = 'item in invitations' class='sessions'>
+										<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!invitedStudents.length">
+											<div style="margin: 30px">You don't have any invitation yet!</div>
+										</div>
+										<li ng-repeat = 'item in invitedStudents' class='sessions'>
 											<div layout="rows" style="height: 180px; border: 1px solid #eee">
 												<!-- image -->
 												<div flex="15" style="text-align: center; padding-top: 15px">
@@ -93,7 +96,10 @@
 											<div layout="rows" style="border-bottom: 1px solid #eee">
 												<!--  generating shceduled student/session list -->
 												<ul>
-													<li ng-repeat = 'item in sessions' class='sessions'>
+													<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!acceptedStudents.length">
+														<div style="margin: 30px">You don't have any scheduled session yet!</div>
+													</div>
+													<li ng-repeat = 'item in acceptedStudents' class='sessions'>
 														<div layout="rows" style="height: 180px; border: 1px solid #eee">
 															<!-- image -->
 															<div flex="15" style="text-align: center; padding-top: 15px">
@@ -127,12 +133,88 @@
 													</ul>
 												</md-content>
 											</md-tab> <!-- end of scheduled  sessions tab-->
-											<md-tab label="Session History">
-												<md-content class="md-padding">
-													<h1 class="md-display-2">Tab Three</h1>
-													<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-												</md-content>
-											</md-tab>
+
+									<md-tab label="Cancelled Sessions"> <!-- start of cancelled sessions tab-->
+										<md-content class="md-padding">
+											<p ng-model='noSession'>{{noSession}}<p>
+												<div layout="rows" style="border-bottom: 1px solid #eee">
+													<!--  generating shceduled student/session list -->
+													<ul>
+													<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!cancelledStudents.length">
+														<div style="margin: 30px">You don't have any cancelled session yet!</div>
+													</div>
+														<li ng-repeat = 'item in cancelledStudents' class='sessions'>
+															<div layout="rows" style="height: 180px; border: 1px solid #eee">
+																<!-- image -->
+																<div flex="15" style="text-align: center; padding-top: 15px">
+																	<img src="{{item.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
+																	<!--location -->
+																	<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{item.location}}</p>
+																</div>
+
+																<!-- info about student and session -->
+																<div flex="85" class='profile' >
+																	<p>{{item.fullname}}
+																		{{item.id}}
+																		<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
+																		<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
+																		<p> date: {{item.date}}  | time: {{item.time}}</p>
+
+
+																		<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.javascript === 1">Javascript</span>
+																		<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.python === 1">Python</span>
+																		<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.ruby === 1">Ruby</span>
+
+
+
+																	</div>
+																</div>
+
+															</li>	 <!--end of ng-repeat-->
+														</ul>
+													</md-content>
+												</md-tab> <!-- end of canceled  sessions tab-->
+
+									<md-tab label="Finished Sessions"> <!-- start of finished sessions tab-->
+										<md-content class="md-padding">
+											<p ng-model='noSession'>{{noSession}}<p>
+												<div layout="rows" style="border-bottom: 1px solid #eee">
+													<!--  generating shceduled student/session list -->
+													<ul>
+														<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!finishedStudents.length">
+															<div style="margin: 30px">You don't have any finished session yet!</div>
+														</div>
+														<li ng-repeat = 'item in finishedStudents' class='sessions'>
+															<div layout="rows" style="height: 180px; border: 1px solid #eee">
+																<!-- image -->
+																<div flex="15" style="text-align: center; padding-top: 15px">
+																	<img src="{{item.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
+																	<!--location -->
+																	<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{item.location}}</p>
+																</div>
+
+																<!-- info about student and session -->
+																<div flex="85" class='profile' >
+																	<p>{{item.fullname}}
+																		{{item.id}}
+																		<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
+																		<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
+																		<p> date: {{item.date}}  | time: {{item.time}}</p>
+
+
+																		<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.javascript === 1">Javascript</span>
+																		<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.python === 1">Python</span>
+																		<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.ruby === 1">Ruby</span>
+
+
+
+																	</div>
+																</div>
+
+															</li>	 <!--end of ng-repeat-->
+														</ul>
+													</md-content>
+												</md-tab> <!-- end of finished  sessions tab-->
 										</md-tabs>
 									</md-content>
 								</div>

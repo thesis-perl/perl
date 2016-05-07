@@ -19,6 +19,28 @@ router.put('/', function(req, res) {
   })
 })
 
+router.get('/student', function(req, res) {
+  var sid = req.headers.sid;
+
+  db('studentutor').where({sid: sid, status: 3}).leftOuterJoin('users', function() {
+    this.on('users.id', "=", 'studentutor.tid')
+  })
+  .then(function(data) {
+    res.send(data);
+  })
+})
+
+router.get('/tutor', function(req, res) {
+  var tid = req.headers.tid;
+
+  db('studentutor').where({tid: tid, status: 3}).leftOuterJoin('users', function() {
+    this.on('users.id', "=", 'studentutor.sid')
+  })
+  .then(function(data) {
+    res.send(data);
+  })
+})
+
 // export router
 module.exports = router;
 
