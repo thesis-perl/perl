@@ -160,8 +160,8 @@ angular.module('Perl.services', ['btford.socket-io'])
      findTutorsByLanguage: findTutorsByLanguage,
      startSession: startSession,
      addFavorite: addFavorite,
-     deleteFavorite: deleteFavorite
-  }
+     deleteFavorite: deleteFavorite, 
+    }
 })
 
 .factory('perlSocket', function(socketFactory) {
