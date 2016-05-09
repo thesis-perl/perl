@@ -77,8 +77,10 @@
                         </div>
                       </div>
                       <div class="requestSession">
-                        <md-button style="background-color: orange" ng-click="requestSession(currentTime, currentDate)">Request Session
-           s             </md-button>
+                        <md-button style="background-color: orange" ng-disabled="isDisabledRequest" ng-click="requestSession()">Request Session
+                        </md-button>
+                        <md-button style="background-color: green" ng-hide="hidden" ng-disabled="isDisabledStart" ng-click="startSession()"><a ui-sref="session({link: tutor.id})" style="text-decoration: none">Start Session</a>
+                        </md-button>                        
                       </div>
                     </md-content>
                   </div>

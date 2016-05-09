@@ -54,6 +54,10 @@ angular.module('Perl.services', ['btford.socket-io'])
     return $http.get('/api/filter_tutor/info',{ headers: { 'tid': tutorInfo.tutorId, 'sid': sid }});
   };
 
+  var getStatus = function(sid,tid) {
+    return $http.get('/api/invite_tutor', { 'sid': sid, 'tid': tid });
+  }
+
   var cancelInvitation = function (sid, tid) {
     return $http.delete('/api/reject_invite', { headers: { 'sid': sid, 'tid': tid }});
   }
@@ -74,6 +78,7 @@ angular.module('Perl.services', ['btford.socket-io'])
     getCancelledTutors: getCancelledTutors,
     getFinishedTutors: getFinishedTutors,
     getTutorInfo: getTutorInfo,
+    getStatus: getStatus,
     cancelInvitation: cancelInvitation,
     cancelSession: cancelSession,
     postInvite: postInvite
