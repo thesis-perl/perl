@@ -1,10 +1,9 @@
 angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'ngMessages', 'material.svgAssetsCache'])
 
 .controller('studentDashboard',function($mdMedia, $mdDialog, $scope, $state, $rootScope, studentFactory, authFactory, tutorFactory){
-	$scope.invitedTutors;
-  $scope.acceptedTutors;
-  $scope.cancelledTutors;
-  $scope.finishedTutors;
+	$scope.invitedTutors = [];
+  $scope.acceptedTutors = [];
+  $scope.tutorHistory = [];
   $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
 
   // Chat popup Modal
@@ -41,7 +40,17 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
   	console.log('inside get Tutorinfo id', $scope.userinfo.id);
   	studentFactory.getInvitedTutors($scope.userinfo.id)
   	.then(function(data){
-  		$scope.invitedTutors = data.data;
+      console.log('all tutors', data.data)
+      for(var i = 0; i < data.data.length; i++) {
+        if(data.data[i].status == 1) {
+          $scope.invitedTutors.push(data.data[i]);
+        } else if(data.data[i].status == 2) {
+          $scope.acceptedTutors.push(data.data[i]);
+        } else {
+          $scope.tutorHistory.push(data.data[i]);
+        }
+      }
+      console.log('tutorHistory', $scope.tutorHistory)
   	})
   }
 

@@ -61,8 +61,10 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 		perlSocket.emit('endSession');
 
 		if(user.isTutor === 0) {
+			sessionFactory.endSession(user.id, $stateParams.link);
 			$state.go('studentDashboard');
 		} else {
+			sessionFactory.endSession($stateParams.link, user.id);
 			$state.go('tutorDashboard');
 		}
 	}

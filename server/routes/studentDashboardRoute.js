@@ -8,7 +8,7 @@ router.get('/invited', function(req, res) {
   var id = req.headers.id;
   var temp = [];
 
-  db('studentutor').where({ sid: id }).andWhere({ status: 1 })
+  db('studentutor').where({ sid: id }).whereNot({ status: 0 })
   .leftJoin('users', 'users.id', 'studentutor.tid')
   .then(function(data){
     for(var i = 0; i < data.length; i++) {
