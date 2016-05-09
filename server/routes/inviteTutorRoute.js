@@ -17,8 +17,11 @@ router.post('/', function(req, res) {
     if(!data[0]) {
       db('studentutor').insert({sid: sid, tid: tid, fav: 0, status: 1})
       .then(function(data) {
-        console.log(data);
-        res.send(data);
+        db('studentutor').where({id: data[0]})
+        .then(function(data) {
+          console.log(data);
+          res.send(data);
+        })
       })
     } else {
       console.log('already invited', data[0].status, typeof data[0].status);
