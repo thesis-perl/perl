@@ -25,9 +25,14 @@ router.get('/', function(req, res) {
 module.exports = router;
 
 router.get('/info', function(req, res) {
-  var id = req.headers.id;
-  console.log('id ', id);
-  db('users').where({ id: id})
+  console.log(req.headers)
+  var tid = req.headers.tid;
+  var sid = req.headers.sid;
+  console.log('tid ', tid);
+  db('users').where({id: tid})
+  // .leftOuterJoin('studentutor', function() {
+  //   this.on('users.id', "=", 'studentutor.tid')
+  // })
   .then(function(data) {
     console.log('filtertutourroute data',data);
     res.send({id: data[0].id, fullname: data[0].fullname, username: data[0].username, bio: data[0].bio, location: data[0].location, imgurl: data[0].imgurl, javascript: data[0].javascript, ruby: data[0].ruby, python: data[0].python})
