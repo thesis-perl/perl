@@ -8,7 +8,7 @@
 					<h2>
 						<span>CodEducation</span>
 					</h2>
-					<span flex></span>+
+					<span flex></span>
 					<!-- menu button -->
 					<md-menu md-offset="0 50">
 						<md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
@@ -131,7 +131,7 @@
 						<div flex="85" >
 							<p>{{tutor.fullname}}
 								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red" ng-if="tutor.fav == 0" ng-click="tutor.fav = !tutor.fav; addFavorite(tutor.id)"></ng-md-icon><ng-md-icon icon="favorite" size="18px" style="fill:red" ng-if="tutor.fav == 1" ng-click="tutor.fav = !tutor.fav; deleteFavorite(tutor.id)"></ng-md-icon></span>
-								<span ng-if="tutor.status == 5">Rejected</span><span ng-if="tutor.status == 3">Cancelled</span><span ng-if="tutor.status == 4">Ended</span>
+								<span ng-if="tutor.status == 5" style="background: red; color: white; padding: 5px; margin-left: 10px;border-radius: 5px">Rejected</span><span ng-if="tutor.status == 3" style="background: orange; color: white; padding: 5px; margin-left: 10px;border-radius: 5px">Cancelled</span><span ng-if="tutor.status == 4" style="background: grey; color: white; padding: 5px; padding-left: 15px; padding-right: 15px; margin-left: 10px;border-radius: 5px">Ended</span>
 								<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none">View Profile</a></md-button>
 						    <md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getTutorId(tutor.id)">Chat</md-button>
 							</p>

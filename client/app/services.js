@@ -33,8 +33,8 @@ angular.module('Perl.services', ['btford.socket-io'])
     return $http.post('/api/invite_tutor', { 'sid': sid, 'tid': tid })
   }
 
-	var getInvitedTutors = function(id) {
-    return $http.get('/api/student_dashboard/invited', { headers: { 'id': id } });
+	var getAllStatusTutors = function(id) {
+    return $http.get('/api/student_dashboard/', { headers: { 'id': id } });
 	};
 
   var getAcceptedTutors = function(id) {
@@ -69,7 +69,7 @@ angular.module('Perl.services', ['btford.socket-io'])
 
 	return {
     getTutorId: getTutorId,
-		getInvitedTutors: getInvitedTutors,
+		getAllStatusTutors: getAllStatusTutors,
     getAcceptedTutors: getAcceptedTutors,
     getCancelledTutors: getCancelledTutors,
     getFinishedTutors: getFinishedTutors,
