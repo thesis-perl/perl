@@ -1,5 +1,5 @@
 <div id='session'>
-  <div class='sessionHeader'  style="text-align: center">
+  <div class='sessionHeader'>
     <h1>Session Header</h1>
   </div>
   <div class='sessionBody'>
@@ -27,7 +27,7 @@
     <br>
     <br>
     <br>
-    <div class='sessionFooter' style="clear: both;">
+    <div class='sessionFooter'>
       <span class='chooselanguage'> Choose Language  <select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select></span>
       <md-button id='endsessionBtn' type='submit' ng-click="endSession()"> End Session </md-button>
       <md-button id='saveCodeBtn' type='submit' ng-click="saveCodeInDatabase()"> Save </md-button>
