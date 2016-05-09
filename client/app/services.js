@@ -190,9 +190,15 @@ angular.module('Perl.services', ['btford.socket-io'])
     $http.post('save_code', sessionInfo);
   };
 
+  var endSession = function(sid, tid) {
+    console.log('in service endSession')
+    return $http.put('/api/end_seesion', {'tid': tid, 'sid': sid});
+  }
+
 
   return {
-    saveCodeDB: saveCodeDB
+    saveCodeDB: saveCodeDB,
+    endSession: endSession
   }
 
 })
