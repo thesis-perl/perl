@@ -245,7 +245,7 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 	// when button "Join Conference Room" has been clicked
 	var joinConference = function (){
 		// var roomToJoin = q( "#room_field" ).value;
-		var roomToJoin = "3";
+		var roomToJoin = "28";
 		// if "Conference Name" field is not empty ...
 		if( roomToJoin ){
 			// ... join the room
@@ -279,5 +279,5 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 	}
 
 	onBistriConferenceReady()
-	
+
 });
