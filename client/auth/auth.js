@@ -62,17 +62,9 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
       }
     // }
   };
-//$scope.signuperr = '';
+ 
   $scope.signup = function(image) {
-
-     
-    console.log('in signup')
-    console.log('student', $scope.studentCheckBox);
-    console.log('tutor', $scope.tutorCheckBox);
-    console.log('js', $scope.javascript)
-    console.log('ph', $scope.python)
-    console.log('rb', $scope.ruby)
-     var userInfo = {
+      var userInfo = {
               tutor: $scope.userChecked($scope.tutorCheckBox),
               student: $scope.userChecked($scope.studentCheckBox),
               username: $scope.username,
@@ -91,24 +83,24 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
     //handling case when both student and tutor boxes are checked
     if($scope.studentCheckBox === true && $scope.tutorCheckBox === true) {
           console.log('err, both student and tutor boxes checked')
-          $scope.signuperr4 = 'you can only sign up either as a student or a tuitor';
+          $scope.signuperror = 'you can only sign up either as a student or a tuitor';
 
     }
     //handling case when neither of student and tutor boxes is checked
     else if($scope.userChecked($scope.studentCheckBox) === 0 && $scope.userChecked($scope.tutorCheckBox) ===0) {
       console.log('err, nor student neither tutor boxes checked')
-      $scope.signuperr = 'please select if you are a tuitor or a student';
+      $scope.signuperror = 'please select if you are a tuitor or a student';
 
     }
    
     //signing up a user
     else if($scope.tutorCheckBox === true || $scope.studentCheckBox === true) {
           if($scope.subjectChecked($scope.javascriptCheckbox) === 0 && $scope.subjectChecked($scope.rubyCheckbox) === 0 && $scope.subjectChecked($scope.pythonCheckbox) === 0) {
-              $scope.signuperr2 = 'please select at least one subject';
+              $scope.signuperror= 'please select at least one subject';
               console.log('no language selected');
           }
           else if($scope.username===undefined || $scope.fullname===undefined || $scope.password===undefined || $scope.bio===undefined || $scope.location === undefined) {
-              $scope.signuperr3 = 'all fields must be filled in';
+              $scope.signuperror = 'all fields must be filled in';
                console.log('fields empty')
           }
           else {

@@ -38,14 +38,15 @@ router.post('/', function(req, res) {
   })
 })
 
-router.delete('/', function(req, res) {
-  console.log('req', req.headers);
-  var sid = req.headers.sid;
-  var tid = req.headers.tid;
-
-  db('studentutor').where({sid: sid, tid: tid}).del()
-  .then(function() {
-    res.send("deleted");
+router.put('/', function(req, res) {
+  var sid = req.body.sid;
+  var tid = req.body.tid;
+  db('studentutor').where({sid: sid, tid: tid})
+  .update({
+    status: 5
+  })
+  .then(function(data){
+  res.sendStatus(data);
   })
 })
 
