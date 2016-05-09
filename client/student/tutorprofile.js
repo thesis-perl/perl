@@ -10,10 +10,11 @@ angular.module('Perl.tutorProfile', [
   var tutorInfo = {
     tutorId: parseInt($stateParams.id)
   }
+  $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
 
   console.log("my tutorId: ", tutorInfo.tutorId)
 
-  studentFactory.getTutorInfo(tutorInfo).then(function(data){
+  studentFactory.getTutorInfo(tutorInfo, $scope.userinfo.id).then(function(data){
     var tutor = data.data;
 
     $scope.name = tutor.fullname;
