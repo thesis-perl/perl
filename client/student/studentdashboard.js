@@ -36,9 +36,9 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
   };
 
 
-  $scope.getInvitedTutors = function() {
+  $scope.getAllStatusTutors = function() {
   	console.log('inside get Tutorinfo id', $scope.userinfo.id);
-  	studentFactory.getInvitedTutors($scope.userinfo.id)
+  	studentFactory.getAllStatusTutors($scope.userinfo.id)
   	.then(function(data){
       console.log('all tutors', data.data)
       for(var i = 0; i < data.data.length; i++) {
@@ -54,26 +54,26 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
   	})
   }
 
-  $scope.getAcceptedTutors = function() {
-  	studentFactory.getAcceptedTutors($scope.userinfo.id)
-  	.then(function(data){
-  		$scope.acceptedTutors = data.data;
-  	})
-  }
+  // $scope.getAcceptedTutors = function() {
+  // 	studentFactory.getAcceptedTutors($scope.userinfo.id)
+  // 	.then(function(data){
+  // 		$scope.acceptedTutors = data.data;
+  // 	})
+  // }
 
-  $scope.getCancelledTutors = function() {
-    studentFactory.getCancelledTutors($scope.userinfo.id)
-    .then(function(data) {
-      $scope.cancelledTutors = data.data;
-    })
-  }
+  // $scope.getCancelledTutors = function() {
+  //   studentFactory.getCancelledTutors($scope.userinfo.id)
+  //   .then(function(data) {
+  //     $scope.cancelledTutors = data.data;
+  //   })
+  // }
 
-  $scope.getFinishedTutors = function() {
-    studentFactory.getFinishedTutors($scope.userinfo.id)
-    .then(function(data) {
-      $scope.finishedTutors = data.data;
-    })
-  }
+  // $scope.getFinishedTutors = function() {
+  //   studentFactory.getFinishedTutors($scope.userinfo.id)
+  //   .then(function(data) {
+  //     $scope.finishedTutors = data.data;
+  //   })
+  // }
 
   $scope.findTutors = function() {
   	$state.go('tutorFilter');
@@ -106,6 +106,7 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
   }
 
   $scope.addFavorite = function(tid) {
+    console.log($scope.userinfo.id, tid);
     tutorFactory.addFavorite($scope.userinfo.id, tid);
   }
 
@@ -113,8 +114,8 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
     tutorFactory.deleteFavorite($scope.userinfo.id, tid);
   }
 
-  $scope.getInvitedTutors();
-  $scope.getAcceptedTutors();
-  $scope.getCancelledTutors();
-  $scope.getFinishedTutors();
+  $scope.getAllStatusTutors();
+  // $scope.getAcceptedTutors();
+  // $scope.getCancelledTutors();
+  // $scope.getFinishedTutors();
 })

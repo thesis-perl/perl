@@ -10,14 +10,38 @@ router.get('/', function(req, res) {
     this.on('users.id', "=", 'studentutor.tid')
   })
   .then(function(data){
+    var result = [];
     for(var i = 0; i < data.length; i++) {
-      if(data[i].fav == 1 && data[i].sid == req.headers.sid) {
-        data[i].fav = 1;
+      if(data[i].tid === null) {
+        result.push(data[i]);
       } else {
-        data[i].fav = 0;
+        var repeat = 0;
+        for(var j = 0; j < result.length; j++) {
+          if(data[i].tid === result[j].tid) {
+            repeat = 1;
+          }
+        }
+        if(repeat === 0) {
+          result.push(data[i]);
+        }
       }
     }
-    res.send(data);
+
+    for(var k = 0; k < data.length; k++) {
+      if(data[k].sid == req.headers.sid) {
+        for(var q = 0; q < result.length; q++) {
+          if(result[q].tid === data[k].tid) {
+            result[q].fav = data[k].fav;
+          }
+        }
+      }
+    }
+    
+    for(var i = 0; i < result.length; i++) {
+      result[i].fav = result[i].fav || 0;
+    }
+
+    res.send(result);
   })
 })
 
@@ -48,3 +72,4 @@ router.get('/info', function(req, res) {
     }
   })
 })
+
