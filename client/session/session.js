@@ -163,7 +163,7 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 				// bc.attachStream( stream, q( "#video_container" ), { mirror: true } );
 				// then, for every single members present in the room ...
 
-				for ( var i=0, max=members.length; i<max; i++ ) {
+				for ( var i=0; i<1; i++ ) {
 					// ... request a call
 					console.log('member', members[i]);
 					bc.call( members[ i ].id, room, { "stream": stream } );
@@ -230,26 +230,18 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 		// bind function "quitConference" to button "Quit Conference Room"
 		q( "#quit" ).addEventListener( "click", quitConference );
 
-		// open a new session on the server
-		// new Promise(function(){
 		bc.connect();
-		// })
-		// .then(function(data) {
-		//   console.log('.then');
-		//   bc.joinRoom("2")
-		// })
+
 		joinConference();
 	}
 
 
 	// when button "Join Conference Room" has been clicked
 	var joinConference = function (){
-		// var roomToJoin = q( "#room_field" ).value;
-		var roomToJoin = "3";
+		var roomToJoin = "28";
 		// if "Conference Name" field is not empty ...
 		if( roomToJoin ){
-			// ... join the room
-			console.log(bc.joinRoom);
+			// ... join the room;
 			bc.joinRoom( roomToJoin );
 		}
 		else{
@@ -279,5 +271,5 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 	}
 
 	onBistriConferenceReady()
-	
+
 });
