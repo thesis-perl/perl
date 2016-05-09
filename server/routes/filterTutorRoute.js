@@ -37,13 +37,13 @@ router.get('/info', function(req, res) {
 
   .then(function(data) {
     if (!data[0]) {
-      console.log('no data');
       db('users').where({id: tid})
       .then(function(data) {
+        console.log('new filtertutourroute data',data);
         res.send({id: data[0].id, fullname: data[0].fullname, username: data[0].username, bio: data[0].bio, location: data[0].location, imgurl: data[0].imgurl, javascript: data[0].javascript, ruby: data[0].ruby, python: data[0].python})
       })
     } else {
-      console.log('filtertutourroute data',data);
+      console.log('existing filtertutourroute data',data);
       res.send({id: data[0].id, fullname: data[0].fullname, username: data[0].username, bio: data[0].bio, location: data[0].location, imgurl: data[0].imgurl, javascript: data[0].javascript, ruby: data[0].ruby, python: data[0].python, status: data[0].status})
     }
   })
