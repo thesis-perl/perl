@@ -1,4 +1,4 @@
-<div id='session'>
+<div id='session' data-ng-init="loadVideo()">
   <div class='sessionHeader'>
     <h1>Session Header</h1>
   </div>
@@ -6,7 +6,6 @@
     <md-toast>
     </md-toast>
     <br>
-    <!--code editor-->
     <div class="codeDiv">
       <div ui-codemirror="cmOption" ng-model="sharedCode" ng-keydown="typingUpdate()" id='codeDiv'>{{sharedCode}}</div>
       <p class='typing'>{{typing}}</p>
@@ -14,13 +13,32 @@
     <br>
     <br>
     <div class="videoChatContainer">
-      <div class="videoChat">
-        <div class="pane" id="pane_1" style="display: none">
-          <input type="button" value="Join Conference Room" id="join" class="btn btn-info btn-default btn-block">
+      <div>
+        <div class="videoChat">
+          <div class="pane" id="pane_1" style="display: none">
+            <input type="button" value="Join Conference Room" id="join" class="btn btn-info btn-default btn-block">
+          </div>
+          <div class="pane" id="pane_2" style="display: none">
+            <div id="video_container"></div>
+            <input type="button" value="Quit Conference Room" id="quit" class="btn btn-danger btn-default btn-block">
+          </div>
         </div>
-        <div class="pane" id="pane_2" style="display: none">
-          <div id="video_container"></div>
-          <input type="button" value="Quit Conference Room" id="quit" class="btn btn-danger btn-default btn-block">
+      </div>
+      <div class="chatRoom">
+        <div>
+          <div>
+            <h1>Chatroom</h1>
+          </div>
+          <div>
+            <ul class="chatMsg">
+              <li ng-repeat="msg in messages">
+                <strong>{{msg.from}}: </strong>{{msg.body}}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <input ng-model="msg" ng-keydown="newMessage($event)" type="text" id="messageInput" class="inputBox" placeholder="Type a message...">
         </div>
       </div>
     </div>
