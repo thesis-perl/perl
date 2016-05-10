@@ -51,7 +51,7 @@ angular.module('Perl.services', ['btford.socket-io'])
   };
 
   var cancelInvitation = function (sid, tid) {
-    return $http.delete('/api/reject_invite', { headers: { 'sid': sid, 'tid': tid }});
+    return $http.put('/api/cancel_session', { 'sid': sid, 'tid': tid });
   }
 
   var cancelSession = function (sid, tid) {
