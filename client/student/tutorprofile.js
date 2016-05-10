@@ -16,7 +16,7 @@ angular.module('Perl.tutorProfile', [
   }
   $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
 
-  //renders tutor's information 
+  //renders tutor's information
   studentFactory.getTutorInfo(tutorInfo, $scope.userinfo.id).then(function(data){
     var tutor = data.data;
 
@@ -29,9 +29,9 @@ angular.module('Perl.tutorProfile', [
     if($scope.studentTutorStatus === 1){
       $mdToast.show(
          $mdToast.simple()
-            .textContent('You already invited the tutor! Please wait for them to respond.')                       
+            .textContent('You already invited the tutor! Please wait for them to respond.')
             .hideDelay(5000)
-      );  
+      );
     //request session disabled
     $scope.isDisabledRequest = true;
 
@@ -40,7 +40,7 @@ angular.module('Perl.tutorProfile', [
       $scope.hidden = false;
       //disable request session button
       $scope.isDisabledRequest = true;
-    }//otherwise, request session button is simply shown    
+    }//otherwise, request session button is simply shown
   });
 
   $scope.showDatePicker = function(ev) {
@@ -74,7 +74,7 @@ angular.module('Perl.tutorProfile', [
       time: time
     }
 
-    studentFactory.postInvite(studentId,tutorInfo.tutorId).then(function(data){
+    studentFactory.postInvite(studentId,tutorInfo.tutorId, date, time).then(function(data){
         $state.go('studentDashboard');
     }).catch(function(error){console.log('error',error)});
 

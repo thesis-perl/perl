@@ -45,8 +45,6 @@ router.get('/', function(req, res) {
   })
 })
 
-// export router
-module.exports = router;
 
 router.get('/info', function(req, res) {
   console.log(req.headers)
@@ -71,3 +69,11 @@ router.get('/info', function(req, res) {
   })
 })
 
+router.get('/search_language', function(req, res) {
+  var language = new RegExp(req.headers.language, "i");
+  console.log(language);
+  res.sendStatus(language);
+})
+
+// export router
+module.exports = router;
