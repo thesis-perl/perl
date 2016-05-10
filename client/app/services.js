@@ -58,9 +58,9 @@ angular.module('Perl.services', ['btford.socket-io'])
     return $http.put('/api/cancel_session', { 'sid': sid, 'tid': tid })
   }
 
-  var postInvite = function (sid, tid) {
+  var postInvite = function (sid, tid, date, time) {
     console.log(sid,tid);
-    return $http.post('/api/invite_tutor', { 'sid': sid, 'tid': tid });
+    return $http.post('/api/invite_tutor', { 'sid': sid, 'tid': tid, 'date': date, 'time': time});
   }
 
   return {
