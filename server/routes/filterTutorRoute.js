@@ -70,9 +70,30 @@ router.get('/info', function(req, res) {
 })
 
 router.get('/search_language', function(req, res) {
-  var language = new RegExp(req.headers.language, "i");
-  console.log(language);
-  res.sendStatus(language);
+  var language = req.headers.language.toLowerCase()
+  if (language === 'javascript') {
+    db('users').where({isTutor: 1, javascript: 1})
+    .then(function(data){
+      console.log(data);
+      res.send(data);
+    })
+  }
+
+  if (language === 'ruby') {
+    db('users').where({isTutor: 1, ruby: 1})
+    .then(function(data){
+      console.log(data);
+      res.send(data);
+    })
+  }
+
+  if (language === 'python') {
+    db('users').where({isTutor: 1, python: 1})
+    .then(function(data){
+      console.log(data);
+      res.send(data);
+    })
+  }
 })
 
 // export router
