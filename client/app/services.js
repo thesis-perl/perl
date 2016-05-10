@@ -89,8 +89,7 @@ angular.module('Perl.services', ['btford.socket-io'])
 
 
   var findTutorsByLanguage = function(language) {
-    //make a http call
-    // return $http.get()
+    return $http.get('/api/filter_tutor/search_language', { headers: {'language': language}})
   }
 
   var getInvitedStudents = function(id) {
