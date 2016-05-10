@@ -4,7 +4,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   AWS.config.update({accessKeyId: accessKeyId, secretAccessKey: secretAccessKey});
   AWS.config.region = 'us-east-1';
   var bucket = new AWS.S3({params: {Bucket: 'perlproject'}});
-  
+
   //helper to convert subject checked status to 1 and unchecked status to 0
   $scope.subjectChecked = function(check) {
     if(check === true) {
@@ -24,12 +24,13 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
       return 0;
     }
   }
-  
+
     // signup helper
   $scope.signupUser = function(info) {
     authFactory.signup(info).then(function(data){
       console.log("signup user receiving this data: ", data);
       localStorage.setItem('userinfo', JSON.stringify(data.data));
+      console.log($scope.ref);
       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
           $state.go('studentDashboard');
@@ -62,7 +63,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
       }
     // }
   };
- 
+
   $scope.signup = function(image) {
       var userInfo = {
               tutor: $scope.userChecked($scope.tutorCheckBox),
@@ -77,8 +78,8 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
               ruby: $scope.subjectChecked($scope.rubyCheckbox),
               python: $scope.subjectChecked($scope.pythonCheckbox)
             };
-      console.log('userinfo', userInfo)      
-    
+      console.log('userinfo', userInfo)
+
 
     //handling case when both student and tutor boxes are checked
     if($scope.studentCheckBox === true && $scope.tutorCheckBox === true) {
@@ -92,7 +93,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
       $scope.signuperror = 'please select if you are a tuitor or a student';
 
     }
-   
+
     //signing up a user
     else if($scope.tutorCheckBox === true || $scope.studentCheckBox === true) {
           if($scope.subjectChecked($scope.javascriptCheckbox) === 0 && $scope.subjectChecked($scope.rubyCheckbox) === 0 && $scope.subjectChecked($scope.pythonCheckbox) === 0) {
@@ -104,13 +105,13 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
                console.log('fields empty')
           }
           else {
-           
+
             console.log(' signing up a user', userInfo);
             $scope.signupUser(userInfo);
-           
-          }  
+
+          }
     }
-   
+
   };
 
   $scope.signin = function()  {
@@ -129,6 +130,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
     authFactory.signin(info).then(function(data) {
       localStorage.setItem('userinfo', JSON.stringify(data.data));
       // console.log("in signin authFactoryid", authFactory.id);
+      console.log($scope.ref);
       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
           $state.go('studentDashboard');
@@ -140,7 +142,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
     });
   }
 
-  
+
 
 }]) // end of authcontroller
 
