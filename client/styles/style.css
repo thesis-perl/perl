@@ -359,6 +359,34 @@ md-icon svg {
   width: 440px;
 }
 
+.chatRoomSession {
+  border: 1px solid black;
+  width: 500px;
+  height: 400px;
+  margin-top: 50px;
+  position: relative;
+}
+
+.chatRoomSession h1 {
+  text-align: center;
+}
+
+.messageSession {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.inputBoxSession {
+  width: 496px;
+}
+
+/*.chatMsg{
+  width: 400px;
+  height: 250px;
+  overflow: auto;
+}*/
+
 /*session room */
 
 
@@ -399,8 +427,8 @@ p.room.ng-binding {
   width: 40%;
   height: 700px;
   right: 0;
-  top: 90px;
-  position: absolute;
+  top: -30px
+  position: relative;
 }
 
 .video_container {
