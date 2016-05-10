@@ -121,7 +121,9 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
     $scope.signinUser(userInfo);
   }
 
-
+  $scope.cancel = function () {
+    $state.go('landing');
+  }
 
   //user signin helper
   $scope.signinUser = function(info) {
