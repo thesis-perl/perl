@@ -27,7 +27,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
 	}
 })
 
-.config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdDateLocaleProvider) {
   $stateProvider
 
   .state('landing', {
@@ -116,4 +116,8 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
   $mdThemingProvider.theme('default')
   .primaryPalette('blue-grey')
   .accentPalette('orange');
+
+  $mdDateLocaleProvider.formatDate = function(date) {
+    return moment(date).format('YYYY-MM-DD');
+  };
 });
