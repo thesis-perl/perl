@@ -82,6 +82,10 @@ router.get('/info', function(req, res) {
 
 router.get('/search_language', function(req, res) {
   var language = req.headers.language.toLowerCase()
+  if (language === null) {
+
+  }
+
   if (language === 'javascript') {
     db('users').where({isTutor: 1, javascript: 1})
     .then(function(data){
