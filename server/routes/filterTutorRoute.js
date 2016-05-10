@@ -36,7 +36,7 @@ router.get('/', function(req, res) {
         }
       }
     }
-    
+
     for(var i = 0; i < result.length; i++) {
       result[i].fav = result[i].fav || 0;
     }
@@ -54,8 +54,6 @@ router.get('/info', function(req, res) {
   var sid = req.headers.sid;
   console.log('tid ', tid);
   console.log('sid ', sid);
-  db('users').where({id: tid})
-  db.select('*').from('users').where('id', tid)
   db('studentutor').where({sid: sid, tid: tid})
   .rightOuterJoin('users', 'users.id', 'studentutor.tid')
 

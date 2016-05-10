@@ -10,12 +10,14 @@ router.post('/', function(req, res) {
   var sid = req.body.sid;
   // tutor id
   var tid = req.body.tid;
+  var time = req.body.time;
+  var date = req.body.date;
   console.log('sid',sid);
   console.log('tid',tid);
   db('studentutor').where({sid: sid, tid: tid})
   .then(function(data) {
     if(!data[0]) {
-      db('studentutor').insert({sid: sid, tid: tid, fav: 0, status: 1})
+      db('studentutor').insert({sid: sid, tid: tid, time: time, date: date, fav: 0, status: 1})
       .then(function(data) {
         db('studentutor').where({id: data[0]})
         .then(function(data) {

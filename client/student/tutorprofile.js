@@ -44,23 +44,30 @@ angular.module('Perl.tutorProfile', [
     });
   };
 
-  $scope.requestSession = function(){
+  $scope.requestSession = function(time, date){
+    // console.log('timedate', time, date);
     var studentInfo = JSON.parse(localStorage.getItem('userinfo')).id;
 
-    // var dateTime = $scope.currentDate.toString();
-    // var date = dateTime.split("").slice(0,15).join(""); //ex. Mon May 02 2016
-    // var time = dateTime.split("").slice(16,21).join(""); //15:22
-    // var sessionInfo = {
-    //   date: date,
-    //   time: time
-    // }
+    var apptDate = $scope.currentDate.toString();
+    var apptTime = $scope.currentTime.toString();
+
+    var date = moment(apptDate.split("").slice(0,15).join("")).format('YYYY-MM-DD'); //ex. Mon May 02 2016
+    var time = apptTime.split("").slice(16,21).join(""); //15:22
+
+    console.log('date, time', date, time);
+
+    var sessionInfo = {
+      date: date,
+      time: time
+    }
+
     if(!studentInfo){
       console.log('student not signed in')
     }
     //LATER FOR WHEN FLAG INVITED IN DB
 
 
-    studentFactory.postInvite(studentInfo,tutorInfo.tutorId).then(function(data){
+    studentFactory.postInvite(studentInfo, tutorInfo.tutorId, time, date).then(function(data){
       console.log('Session requested, data received',data);
       $state.go('studentDashboard');
     }).catch(function(error){console.log('error',error)});
