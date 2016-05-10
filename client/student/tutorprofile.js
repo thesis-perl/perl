@@ -6,6 +6,8 @@ angular.module('Perl.tutorProfile', [
     "mdPickers"])
 
 .controller('tutorProfile', ['$scope', '$mdpDatePicker', '$mdpTimePicker', '$stateParams', '$location', 'studentFactory', '$state', '$mdToast',function($scope, $mdpDatePicker, $mdpTimePicker, $stateParams, $location, studentFactory, $state, $mdToast){
+  //stores status between student and this tutor
+  $scope.studentTutorStatus = "";
   //hides start session button
   $scope.hidden = true;
 
@@ -14,6 +16,7 @@ angular.module('Perl.tutorProfile', [
   }
   $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
 
+  //renders tutor's information 
   studentFactory.getTutorInfo(tutorInfo, $scope.userinfo.id).then(function(data){
     var tutor = data.data;
 
@@ -60,22 +63,20 @@ angular.module('Perl.tutorProfile', [
     });
   };
 
-  $scope.requestSession = function(time, date){
-    var studentInfo = JSON.parse(localStorage.getItem('userinfo')).id;
+  $scope.requestSession = function(){
+    var studentId = JSON.parse(localStorage.getItem('userinfo')).id;
 
-    var apptDate = $scope.currentDate.toString();
-    var apptTime = $scope.currentTime.toString();
-
-    var date = moment(apptDate.split("").slice(0,15).join("")).format('YYYY-MM-DD'); //ex. Mon May 02 2016
-    var time = apptTime.split("").slice(16,21).join(""); //15:22
-
+    var dateTime = $scope.currentDate.toString();
+    var date = dateTime.split("").slice(0,15).join(""); //ex. Mon May 02 2016
+    var time = dateTime.split("").slice(16,21).join(""); //15:22
     var sessionInfo = {
       date: date,
       time: time
     }
 
-    studentFactory.postInvite(studentInfo, tutorInfo.tutorId, time, date).then(function(data){
+    studentFactory.postInvite(studentId,tutorInfo.tutorId).then(function(data){
         $state.go('studentDashboard');
-    }).catch(function(error){ console.log('error',error) });
+    }).catch(function(error){console.log('error',error)});
+
   };
 }]);
