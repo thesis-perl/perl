@@ -10,6 +10,7 @@ router.get('/', function(req, res) {
     this.on('users.id', "=", 'studentutor.tid')
   })
   .then(function(data){
+    //remove all the repeated tutors from query
     var result = [];
     for(var i = 0; i < data.length; i++) {
       if(data[i].tid === null) {
@@ -26,20 +27,30 @@ router.get('/', function(req, res) {
         }
       }
     }
-
+    console.log('data', data)
+    console.log('result', result)
     for(var k = 0; k < data.length; k++) {
       if(data[k].sid == req.headers.sid) {
         for(var q = 0; q < result.length; q++) {
           if(result[q].tid === data[k].tid) {
             result[q].fav = data[k].fav;
+            result[q].sid = data[k].sid;
           }
         }
       }
     }
 
     for(var i = 0; i < result.length; i++) {
-      result[i].fav = result[i].fav || 0;
+      if(result[i].fav == 1 && result[i].sid == req.headers.sid) {
+        result[i].fav = 1;
+      } else {
+        result[i].fav = 0;
+      }
     }
+
+    // for(var i = 0; i < result.length; i++) {
+    //   result[i].fav = result[i].fav || 0;
+    // }
 
     res.send(result);
   })
