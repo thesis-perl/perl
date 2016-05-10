@@ -33,20 +33,19 @@ angular.module('Perl.services', ['btford.socket-io'])
     return $http.get('/api/student_dashboard/', { headers: { 'id': id } });
   };
 
-  var getAcceptedTutors = function(id) {
-    return $http.get('/api/student_dashboard/accepted', { headers: { 'id': id } });
-  }
+  // var getAcceptedTutors = function(id) {
+  //   return $http.get('/api/student_dashboard/accepted', { headers: { 'id': id } });
+  // }
 
-  var getCancelledTutors = function(id) {
-    return $http.get('/api/student_dashboard/cancelled', { headers: { 'id': id } });
-  }
+  // var getCancelledTutors = function(id) {
+  //   return $http.get('/api/student_dashboard/cancelled', { headers: { 'id': id } });
+  // }
 
-  var getFinishedTutors = function(id) {
-    return $http.get('/api/student_dashboard/finished', { headers: { 'id': id } });
-  }
+  // var getFinishedTutors = function(id) {
+  //   return $http.get('/api/student_dashboard/finished', { headers: { 'id': id } });
+  // }
 
   var getTutorInfo = function (tutorInfo, sid) {
-    console.log('inside getInfo',tutorInfo);
     return $http.get('/api/filter_tutor/info',{ headers: { 'tid': tutorInfo.tutorId, 'sid': sid }});
   };
 
@@ -59,16 +58,15 @@ angular.module('Perl.services', ['btford.socket-io'])
   }
 
   var postInvite = function (sid, tid, date, time) {
-    console.log(sid,tid);
     return $http.post('/api/invite_tutor', { 'sid': sid, 'tid': tid, 'date': date, 'time': time});
   }
 
   return {
     getTutorId: getTutorId,
     getAllStatusTutors: getAllStatusTutors,
-    getAcceptedTutors: getAcceptedTutors,
-    getCancelledTutors: getCancelledTutors,
-    getFinishedTutors: getFinishedTutors,
+    // getAcceptedTutors: getAcceptedTutors,
+    // getCancelledTutors: getCancelledTutors,
+    // getFinishedTutors: getFinishedTutors,
     getTutorInfo: getTutorInfo,
     cancelInvitation: cancelInvitation,
     cancelSession: cancelSession,
@@ -77,7 +75,7 @@ angular.module('Perl.services', ['btford.socket-io'])
 
 })
 .factory('tutorFactory', function($http, $rootScope){
-  //zoe put it here to search all tutors
+
   var getStudentId = function(sid) {
     $rootScope.sid = sid;
     console.log("tutorfactory sid:",$rootScope.sid);
@@ -127,11 +125,11 @@ angular.module('Perl.services', ['btford.socket-io'])
     $http.put('api/reject_invite', ids);
   };
 
-  var startSession = function(code){
+  // var startSession = function(code){
 
-    //return $http.get('/startsession', {headers: {'code': code}})
+  //   //return $http.get('/startsession', {headers: {'code': code}})
 
-  };
+  // };
 
   var cancelSession = function(tutorId, studentId) {
     $http.put('/api/cancel_session', {'tid': tutorId, 'sid': studentId});
@@ -157,7 +155,7 @@ angular.module('Perl.services', ['btford.socket-io'])
     reject: rejectInvitation,
     cancelSession: cancelSession,
     findTutorsByLanguage: findTutorsByLanguage,
-    startSession: startSession,
+    // startSession: startSession,
     addFavorite: addFavorite,
     deleteFavorite: deleteFavorite,
   }
@@ -172,6 +170,7 @@ angular.module('Perl.services', ['btford.socket-io'])
 
   return socket;
 })
+
 .factory('sessionFactory', function($http) {
   //saving session/lesson code in database
   var saveCodeDB = function(tutorId, studentId, code){
