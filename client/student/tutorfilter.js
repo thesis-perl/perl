@@ -22,7 +22,7 @@ angular.module('Perl.tutorFilter', [])
 
 	$scope.findTutorsByLanguage = function(language) {
 		//make http call
-		tutorFactory.findTutorsByLanguage(language)
+		tutorFactory.findTutorsByLanguage(user.id, language)
 		.then(function(data){
 			console.log('searched tutors', data.data);
 			$scope.tutors = data.data;

@@ -81,9 +81,15 @@ router.get('/info', function(req, res) {
 })
 
 router.get('/search_language', function(req, res) {
-  var language = req.headers.language.toLowerCase()
-  if (language === null) {
-
+  var sid = req.headers.sid;
+  var language = req.headers.language.toLowerCase();
+  if (language === undefined) {
+    db('studentutor').where({sid: sid}).leftOuterJoin('users', 'users.id', 'studentutor.sid')
+    .where({isTutor: 1})
+    .then(function(data){
+      console.log(data);
+      res.send(data);
+    })
   }
 
   if (language === 'javascript') {
