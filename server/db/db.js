@@ -40,6 +40,8 @@ knex.schema.createTableIfNotExists('studentutor', function(join) {
   // 0: favorited, but neither invited nor accepted, 1: invited, 2: accepted
   join.integer('fav');
   // 0: not favorited 1: favorited
+  join.date('date');
+  join.time('time');
   join.foreign('sid').references('id').inTable('users');
   join.foreign('tid').references('id').inTable('users');
 }).then(function() {
