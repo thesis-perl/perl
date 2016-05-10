@@ -45,22 +45,20 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   $scope.uploadFile = function(){
     console.log('in uploadFile');
     var file = $scope.myFile;
-    // if($scope.myFile === undefined) {
-    //   $scope.signuperr = 'please provide a photo';
-    // }
-    // else {
+
     var prefix = Date.now()
-    //console.log('in uploadFile file is', file)
-      if(file) {
-        var params = {Key: prefix+file.name, ContentType: file.type, Body: file};
-          bucket.upload(params, function(err, data) {
-            if(err)  console.log(err)
-             console.log('data', data)
-            //data.key is the photo file name
-            $scope.signup(data.Location);
-          });
-      }
-    // }
+
+    if(file) {
+      var params = {Key: prefix+file.name, ContentType: file.type, Body: file};
+        bucket.upload(params, function(err, data) {
+          if(err)  console.log(err)
+           console.log('data', data)
+          //data.key is the photo file name
+          $scope.signup(data.Location);
+        });
+    } else {
+      $scope.signup('https://s3.amazonaws.com/perlproject/default.jpg');
+    }
   };
  
   $scope.signup = function(image) {

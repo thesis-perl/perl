@@ -50,7 +50,6 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
           $scope.tutorHistory.push(data.data[i]);
         }
       }
-      console.log('tutorHistory', $scope.tutorHistory)
   	})
   }
 
