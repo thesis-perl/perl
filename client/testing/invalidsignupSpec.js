@@ -2,7 +2,11 @@ describe('SignUp', function() {
   it('should not let user sign up if missing field(s)', function() {
     // navigates to the sign in page
     browser.ignoreSynchronization = true;
-    browser.get('http://localhost:8000/#/signup');
+    //start at landing page
+    browser.get('http://localhost:8000/#/');
+
+    //select signup to load signup modal overlay
+    element(by.css('.landSignup')).click();
 
     // fills in username but not password
     element(by.model('username')).sendKeys('wingz');
@@ -14,7 +18,7 @@ describe('SignUp', function() {
     element(by.id('signUpbtn')).click();
 
     // pause to allow easier visualization of test
-    browser.sleep(2000);
+    browser.sleep(4000);
 
     //since we cannot sigup, lets cancel and go back to landing page
     element(by.id('cancelSignup')).click();

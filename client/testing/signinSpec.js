@@ -4,7 +4,7 @@ describe('Login', function() {
     browser.ignoreSynchronization = true;
     browser.get('http://localhost:8000/#/signin');
 
-    // fills in the sign in form fields
+    // fills in the sign in form fields (user is a student)
     element(by.model('signinUsername')).sendKeys('fish');
     element(by.model('signinPassword')).sendKeys('fish');
 

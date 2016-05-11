@@ -2,13 +2,20 @@ describe('Sign up', function() {
   it('allow sign up as student and take to student dashboard', function() {
     // navigates to the sign in page
     browser.ignoreSynchronization = true;
-    browser.get('http://localhost:8000/#/signup');
+    //start at landing page
+    browser.get('http://localhost:8000/#/');
+
+    // pause to allow easier visualization of test
+    browser.sleep(3000);    
+
+    //select signup to load signup modal overlay
+    element(by.css('.landSignup')).click();
 
     // fills in username but not password
     element(by.model('tutorCheckBox')).click();
-    element(by.model('username')).sendKeys('winter');
-    element(by.model('fullname')).sendKeys('Santa');
-    element(by.model('password')).sendKeys('ho ho ho');
+    element(by.model('username')).sendKeys('winter GRINCH');
+    element(by.model('fullname')).sendKeys('Santa CLAUS');
+    element(by.model('password')).sendKeys('ho ho ho HO');
     element(by.model('location')).sendKeys('North Pole');
     element(by.model('bio')).sendKeys('I like fish and javascript');
     element(by.model('location')).sendKeys('hello');
