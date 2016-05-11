@@ -17,16 +17,22 @@ angular.module('Perl.tutorFilter', [])
 
 			console.log('tutors', data.data)
 			$scope.tutors = data.data;
-		});
-	}
 
-	$scope.findTutorsByLanguage = function(language) {
-		//make http call
-		tutorFactory.findTutorsByLanguage(user.id, language)
-		.then(function(data){
-			console.log('searched tutors', data.data);
-			$scope.tutors = data.data;
+			for (var i=0; i<$scope.tutors.length; i++) {
+				if($scope.tutors[i].javascript === 1) {
+					$scope.tutors[i].javascript = 'javascript'
+				}
+
+				if($scope.tutors[i].ruby === 1) {
+					$scope.tutors[i].ruby = 'ruby'
+				}
+
+				if($scope.tutors[i].python === 1) {
+					$scope.tutors[i].python = 'python'
+				}
+			}
 		});
+
 	}
 
 	$scope.addFavorite = function(tid) {
