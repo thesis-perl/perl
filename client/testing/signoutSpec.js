@@ -1,5 +1,5 @@
 describe('Login ', function() {
-  it('should successfully sign a user in', function() {
+  it('should successfully sign a user out', function() {
     // navigates to the sign in page
     browser.ignoreSynchronization = true;
     browser.get('http://localhost:8000/#/signin');
