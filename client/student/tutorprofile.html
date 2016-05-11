@@ -6,15 +6,16 @@
         <div class="md-toolbar-tools" >
           <!-- logo -->
           <h2>
-            <span>CodEducation</span>
+            <span>Codify</span>
           </h2>
           <span flex></span>
+          <span style="font-size: .8em">Welcome, {{userinfo.fullname}}!</span>
           <!-- menu button -->
           <md-menu md-offset="0 50">
             <md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
               <md-icon md-svg-icon="../assests/list.svg"></md-icon>
             </md-button>
-            <md-menu-content width="4">
+            <md-menu-content width="2">
               <md-menu-item>
                 <md-button ng-click="">
                   <div><a ui-sref="studentDashboard" style="text-decoration: none; color: #222">Student dashboard</a></div>

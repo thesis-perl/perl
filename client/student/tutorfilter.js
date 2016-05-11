@@ -2,10 +2,11 @@ angular.module('Perl.tutorFilter', [])
 
 .controller('tutorFilter',function($scope, tutorFactory, studentFactory){
 
+	var user = JSON.parse(localStorage.getItem('userinfo'));
 	$scope.selectedItem;
 	$scope.language;
 	$scope.tutors = [];
-	var user = JSON.parse(localStorage.getItem('userinfo'));
+	$scope.userinfo = user;
 
 
 
