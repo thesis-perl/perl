@@ -120,10 +120,10 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 	$scope.newChat = new Firebase($rootScope.ref + "chat/" + $rootScope.studentTutor);
 	$scope.messages = new $firebaseArray($scope.newChat);
 
-	console.log($scope.messages);
+	console.log($scope.newChat);
 	$scope.newMessage = function(event) {
 		if(event.keyCode === 13 && $scope.msg) {
-			var username = $rootScope.myUsername;
+			var username = user.fullname;
 			console.log("chat message sent: ", $scope.msg)
 			$scope.messages.$add({from: username, body: $scope.msg});
 			$scope.msg = "";
