@@ -169,7 +169,7 @@ angular.module('Perl.services', ['btford.socket-io'])
   return socket;
 })
 
-.factory('sessionFactory', function($http) {
+.factory('sessionFactory', function($http, $rootScope) {
   //saving session/lesson code in database
   var saveCodeDB = function(tutorId, studentId, code){
     var sessionInfo = {
@@ -312,7 +312,8 @@ angular.module('Perl.services', ['btford.socket-io'])
 
   // when button "Join Conference Room" has been clicked
   var joinConference = function (){
-    var roomToJoin = "28";
+    var stringName = String($rootScope.studentTutor);
+    var roomToJoin = stringName;
     // if "Conference Name" field is not empty ...
     if( roomToJoin ){
       // ... join the room;
