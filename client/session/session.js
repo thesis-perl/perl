@@ -1,13 +1,13 @@
 angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial', 'material.svgAssetsCache' , 'ngMessages'])
 
 .controller('session',function($log, $scope, perlSocket, $stateParams, $state, $rootScope, sessionFactory, $mdToast, $firebaseArray, $firebaseAuth, $firebaseObject){
-	var typing = false;
+    var typing = false;
 
 
 	var user = JSON.parse(localStorage.getItem('userinfo'));
+	$scope.user = user;
 	var link;
-
-	if(user.isTutor === 0) {
+    if(user.isTutor === 0) {
 		link = user.id + "/" + $stateParams.link;
 	} else {
 		link = $stateParams.link + "/" + user.id;

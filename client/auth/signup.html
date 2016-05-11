@@ -67,13 +67,15 @@
     </div>
 
     <!--signup button-->
-    <md-button type="submit" class="input" id='signUpbtn' ng-click = 'uploadFile()'> signup</md-button>
-       <!--signup cance; button-->
-    <md-button type="submit" class="input" id = 'cancelSignup' ng-click="cancel()"> cancel</md-button>
+
+    <md-button type="submit"  class="input" id='signUpbtn' ng-click = 'uploadFile()'> sign up</md-button>
+    <md-button  class="input" id = 'cancelSignup' ng-click='hide()'> cancel </md-button>
+    
+
   </form>
   <br>
-  
-<p ng-model='signuperror' style="color: red"> {{signuperror}} </p>
+  <p class='signinhere'>  Already have an account? Sign in <span ng-click='hide(); showsignin()'> here! </span> </p> 
+  <p ng-model='signuperror' style="color: red"> {{signuperror}} </p>
   
 
 

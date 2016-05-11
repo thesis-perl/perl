@@ -1,8 +1,8 @@
 <div id='landingPage'>
   <div class="landing" ng-controller="landing">
     <img class='ourLogo' src="../assests/logo3.png">
-    <md-button  ng-click='redirectSignin()' class='landSignin'> sign in </md-button>
-    <md-button ng-click='redirectSignup()'class='landSignup'> sign up </md-button>
+    <md-button  ng-controller='authentication' ng-click='showsignin()' class='landSignin'> sign in </md-button>
+    <md-button ng-controller = 'authentication' ng-click='showsignup()'class='landSignup'> sign up </md-button>
 
 
     <h1> Learn to Cod<span>i</span>fy </h1>

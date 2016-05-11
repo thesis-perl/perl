@@ -10,7 +10,6 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
 .controller('tutorDashboard',function($scope, tutorFactory, $rootScope, authFactory, $state, $mdDialog, $mdMedia){
 
 
-  // $scope.userId = JSON.parse(localStorage.getItem('userinfo')).id;
   $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
 
   // Chat popup Modal
@@ -50,7 +49,6 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
 
   };
 
-  // $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
   var currentObject = localStorage.getItem("userinfo");
   var currentUserId = JSON.parse(currentObject).id
 
@@ -62,17 +60,11 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
 
   //tutor rejects student's invitation
   $scope.rejectInvitation = function(){
-    //console.log("reject", currentUserId, this.item.id)
     tutorFactory.reject(currentUserId, this.item.id)
     $state.reload();
   };
 
-  //tutor starts session
-  // $scope.startSession = function() {
-  //     $state.go('session');
-  // };
-
-
+ 
   //tutor cancels session
   $scope.cancelSession = function() {
    tutorFactory.cancelSession(currentUserId, this.item.id)
