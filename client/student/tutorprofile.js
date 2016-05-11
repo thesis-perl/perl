@@ -65,14 +65,18 @@ angular.module('Perl.tutorProfile', [
 
   $scope.requestSession = function(){
     var studentId = JSON.parse(localStorage.getItem('userinfo')).id;
+    var apptDate = $scope.currentDate.toString();
+    var apptTime = $scope.currentTime.toString();
 
-    var dateTime = $scope.currentDate.toString();
-    var date = dateTime.split("").slice(0,15).join(""); //ex. Mon May 02 2016
-    var time = dateTime.split("").slice(16,21).join(""); //15:22
+    var date = moment(apptDate.split("").slice(0,15).join("")).format('YYYY-MM-DD'); //ex. Mon May 02 2016
+    var time = apptTime.split("").slice(16,21).join(""); //15:22
+
     var sessionInfo = {
       date: date,
       time: time
     }
+
+    console.log('date, time', date, time);
 
     studentFactory.postInvite(studentId,tutorInfo.tutorId, date, time).then(function(data){
         $state.go('studentDashboard');
