@@ -415,14 +415,18 @@ overflow: auto;
 div.CodeMirror-sizer{
   height: 550px !important;
   width:100% !important;
+
+  /*margin-left: 60px !important;*/
+
 }
 
 div.CodeMirror.cm-s-default {
   border-radius: 3px;
   height: 650px !important;
-  width: 60% !important;
-  margin-left: 220px;
+  width: 100% !important;
+  /*margin-left: 220px;*/
   position: inherit;
+  display: inline-block;
 }
 
 div.CodeMirror-hscrollbar {
@@ -431,6 +435,7 @@ div.CodeMirror-hscrollbar {
 
 div.CodeMirror-scroll {
   height: 90% !important;
+  margin: 0 !important;
 }
 
 p.room.ng-binding {
