@@ -1,9 +1,10 @@
 angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
 
-.controller('authentication', ['$scope','authFactory', '$state', '$firebaseAuth', function($scope, authFactory, $state, $rootScope, $firebaseAuth){
+.controller('authentication',  function($scope, authFactory, $state, $rootScope, $mdDialog, $mdMedia, $firebaseAuth){
   AWS.config.update({accessKeyId: accessKeyId, secretAccessKey: secretAccessKey});
   AWS.config.region = 'us-east-1';
   var bucket = new AWS.S3({params: {Bucket: 'perlproject'}});
+  $scope.ref = new Firebase("https://perl-thesis.firebaseio.com/");
 
   //helper to convert subject checked status to 1 and unchecked status to 0
   $scope.subjectChecked = function(check) {
@@ -30,13 +31,12 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
     authFactory.signup(info).then(function(data){
       console.log("signup user receiving this data: ", data);
       localStorage.setItem('userinfo', JSON.stringify(data.data));
-      console.log($scope.ref);
       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
           $state.go('studentDashboard');
         }
         else if (data.data.isTutor === 1){
-          $state.go('tutorDashboard');
+         $state.go('tutorDashboard');
         }
       })
     });
@@ -63,18 +63,18 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   };
 
   $scope.signup = function(image) {
-      var userInfo = {
-              tutor: $scope.userChecked($scope.tutorCheckBox),
-              student: $scope.userChecked($scope.studentCheckBox),
-              username: $scope.username,
-              password: $scope.password,
-              fullname: $scope.fullname,
-              location: $scope.location,
-              bio: $scope.bio,
-              imgurl: image,
-              javascript: $scope.subjectChecked($scope.javascriptCheckbox),
-              ruby: $scope.subjectChecked($scope.rubyCheckbox),
-              python: $scope.subjectChecked($scope.pythonCheckbox)
+    var userInfo = {
+      tutor: $scope.userChecked($scope.tutorCheckBox),
+      student: $scope.userChecked($scope.studentCheckBox),
+      username: $scope.username,
+      password: $scope.password,
+      fullname: $scope.fullname,
+      location: $scope.location,
+      bio: $scope.bio,
+      imgurl: image,
+      javascript: $scope.subjectChecked($scope.javascriptCheckbox),
+      ruby: $scope.subjectChecked($scope.rubyCheckbox),
+      python: $scope.subjectChecked($scope.pythonCheckbox)
             };
       console.log('userinfo', userInfo)
 
@@ -106,12 +106,12 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
 
             console.log(' signing up a user', userInfo);
             $scope.signupUser(userInfo);
-
-          }
+            $scope.hide();
+        }
     }
+};
 
-  };
-
+ 
   $scope.signin = function()  {
    //sign in as user (tutor or student)
     var userInfo = {
@@ -126,25 +126,58 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
   }
 
   //user signin helper
-  $scope.signinUser = function(info) {
+    $scope.signinUser = function(info) {
     authFactory.signin(info).then(function(data) {
-      localStorage.setItem('userinfo', JSON.stringify(data.data));
-      // console.log("in signin authFactoryid", authFactory.id);
-      console.log($scope.ref);
-      $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
-        if(data.data.isStudent === 1) {
+    localStorage.setItem('userinfo', JSON.stringify(data.data));
+    $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
+       if(data.data.isStudent === 1) {
           $state.go('studentDashboard');
         }
         else if (data.data.isTutor === 1) {
-          $state.go('tutorDashboard');
+            $state.go('tutorDashboard');
+
         }
+        
       })
+    
     });
   }
+ 
+ //make signin and a signup a box popping up on the landing page
+  $scope.status = '  ';
+  $scope.customFullscreen = $mdMedia('ls') || $mdMedia('sm');
+
+  $scope.showsignup= function(ev) {
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+    $mdDialog.show({
+      controller: 'authentication',
+      templateUrl: '../auth/signup.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: useFullScreen
+     });
+  }
+
+  $scope.showsignin= function(ev) {
+    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+    $mdDialog.show({
+      controller: 'authentication',
+      templateUrl: '../auth/signin.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: useFullScreen
+    })
+   }
+
+   $scope.hide  = function() {
+    $mdDialog.hide();
+ }
 
 
+}) // end of authcontroller
 
-}]) // end of authcontroller
 
 
 .directive('fileModel', ['$parse', function ($parse) {

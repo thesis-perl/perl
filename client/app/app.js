@@ -1,4 +1,4 @@
-angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', 'Perl.session', 'Perl.studentDashboard', 'Perl.tutorFilter', 'Perl.chat', 'Perl.video', 'Perl.tutorProfile', 'Perl.tutorDashboard', 'Perl.landing', 'ui.router', 'ngMaterial', 'firebase', 'btford.socket-io', 'ui.codemirror'])
+angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', 'Perl.session',  'Perl.studentDashboard', 'Perl.tutorFilter', 'Perl.chat', 'Perl.video', 'Perl.tutorProfile', 'Perl.tutorDashboard', 'Perl.landing', 'ui.router', 'ngMaterial', 'firebase', 'btford.socket-io', 'ui.codemirror'])
 
 .run(function ($state, $firebase,$rootScope,$location,$window,$firebase,$firebaseAuth) {
   //instances and constants to be injected here
@@ -23,7 +23,8 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
   })
   $rootScope.signOutUser = function() {
     $rootScope.ref.unauth();
-		$state.go('signin');
+    $state.go('landing');
+		
 	}
 })
 
@@ -38,21 +39,21 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     authenticate: false
   })
 
-  .state('signup', {
-    cache: false,
-    url: '/signup',
-    templateUrl: '../auth/signup.html',
-    controller: 'authentication',
-    authenticate: false
-  })
+  // .state('signup', {
+  //   cache: false,
+  //   url: '/signup',
+  //   templateUrl: '../auth/signup.html',
+  //   controller: 'authentication',
+  //   authenticate: false
+  // })
 
-  .state('signin', {
-    cache: false,
-    url: '/signin',
-    templateUrl: '../auth/signin.html',
-    controller: 'authentication',
-    authenticate: false
-  })
+  // .state('signin', {
+  //   cache: false,
+  //   url: '/signin',
+  //   templateUrl: '../auth/signin.html',
+  //   controller: 'authentication',
+  //   authenticate: false
+  // })
 
   .state('session', {
     cache: false,
@@ -109,6 +110,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     controller: 'video',
     authenticate: true
   })
+ 
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/');

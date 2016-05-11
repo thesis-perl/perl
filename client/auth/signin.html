@@ -13,8 +13,11 @@
     <input type = 'password' ng-model="signinPassword" name="password"  required>
   </md-input-container>
 
-  <md-button type="submit" ng-click="signin()" value="Login" id ='signInbtn'> sign in </md-button>
-  <md-button type="submit" ng-click="cancel()" class="input" id = 'cancelSigin'> cancel</md-button>
+
+  <md-button type="submit"   ng-click="signin(); hide()"  value="Login" id ='signInbtn'> sign in </md-button>
+  <md-button class="input" id = 'cancelSignin' ng-click='hide()'> cancel</md-button>
+  <p class='signuphere'> Don't have an account? Sign up <span  ng-click='hide(); showsignup()'> here! </span> </p> 
+
 
 </form>
 </div>
