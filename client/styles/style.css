@@ -374,12 +374,13 @@ md-icon svg {
 .chatRoomSession {
   border: 1px solid black;
   border-radius: 3px;
-  width: 450px;
-  height: 300px;
+  height: 340px;
   margin-top: 50px;
-  left:20px;
-  bottom:0px;
+  left: 20px;
+  bottom: -30px;
   position: absolute;
+  width: 70%;
+  margin-left: 30%;
 }
 
 .chatRoomSession h1 {
@@ -393,7 +394,7 @@ md-icon svg {
 }
 
 .inputBoxSession {
-  width: 446px;
+  width: 230%;
 }
 
 
@@ -410,7 +411,8 @@ overflow: auto;
 .codeDiv {
   height: 700px;
   float:left;
-  width: 60%;
+  /*width: 60%;*/
+  margin-left: 6%;
 }
 div.CodeMirror-sizer{
   height: 550px !important;
@@ -434,7 +436,7 @@ div.CodeMirror-hscrollbar {
 }
 
 div.CodeMirror-scroll {
-  height: 90% !important;
+  height: 100% !important;
   margin: 0 !important;
 }
 
@@ -451,17 +453,22 @@ p.room.ng-binding {
 
 
 /** Video Chat **/
+.videoChat {
+  margin-left: 26%;
+}
+
 .videoChatContainer {
   float: right;
   width: 40%;
   height: 700px;
-  right: 0;
-  top: -30px;
+  right: 9.2%;
+  top: -55px;
   position: relative;
 }
 
 .video_container {
-  width: 350px;
+  margin: 0 auto;
+  width: 35%;
 }
 
 #quit {
@@ -558,9 +565,9 @@ select {
   padding: 8px;
   color: rgb(255,171,64);
   border-radius: 3px;
-   width: 640px;
+  /*width: 81.7%;*/
   height: 45px;
-  margin-left: 250px;
+  margin-left: 4.1%;
   text-align: center;
   position:relative;
 
