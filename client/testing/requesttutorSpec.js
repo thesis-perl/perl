@@ -26,7 +26,18 @@ describe('Login', function() {
     // waits for page to load and checks that the browser goes to the tutorFilter page
     browser.sleep(2000);    
 
-    // checks that the url is the profile page
-    expect(browser.getCurrentUrl()).toEqual('http://localhost:8000/#/tutorFilter');    
+    // checks that the url is the tutor filter page
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:8000/#/tutorFilter'); 
+
+  it('should student to pick a tutor on tutor filter page', function () {
+
+    //selects first tutor
+    element(by.repeater('tutor in tutors').row(0)).element(by.css('.md-button md-ink-ripple')).click()
+
+    // waits for page to load and checks that the browser goes to the tutorFilter page
+    browser.sleep(2000);    
+
+    // checks that the url is the profile page of chosen tutor
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:8000/#/tutorProfile');        
   })
 });
