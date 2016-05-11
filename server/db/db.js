@@ -9,7 +9,7 @@ var knex = require('knex') ({
   },
   pool: {
     min: 0,
-    max: 7
+    max: 8
   }
 });
 
