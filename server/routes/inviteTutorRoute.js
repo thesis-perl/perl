@@ -28,7 +28,7 @@ router.post('/', function(req, res) {
     } else {
       console.log('already invited', data[0].status, typeof data[0].status);
       if(data[0].status !== 1 && data[0].status !== 2) {
-        db('studentutor').where({sid: sid, tid: tid}).update({status: 1})
+        db('studentutor').where({sid: sid, tid: tid}).update({status: 1, time: time, date: date})
         .then(function(data) {
           console.log('updated', data);
           res.send(data);
