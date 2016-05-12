@@ -38,14 +38,14 @@
     </md-content>
   </div><!-- close ng-cloak -->
 
-  <div class="container" layout="row" layout-align="center" flex layout="vertical" layout-fill>
+  <div class="container" layout="row" layout-align="center" flex layout="vertical" layout-fill ng-cloak>
     <!-- Sidenav -->
     <!-- content -->
     <div flex="80" style="border-bottom: 1px solid #d9d9d9; ">
       <md-content ng-controller="tutorProfile">
         <md-tabs md-dynamic-height md-border-bottom>
           <md-tab label="{{name}}'s profile">
-            <md-content class="md-padding">
+            <!-- <md-content class="md-padding"> -->
             <md-content flex layout="row" layout-align="left">
                 <md-content flex="100" >
                   <div flex="85"  style='margin: 0; width: 80%; '>
@@ -58,10 +58,11 @@
                    </div> 
                      <div style='position: absolute; top: 20px; left: 450px; width: 50%'>
                      <p style="font-weight: bold; font-size: 20px; padding: 2px 5px; border-radius: 5px; color: #585454"> Topics we can cover during the session </p>
-                    <span  ng-if='javascript===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; font-size: 18px; color: #3C3636; margin-right: 10px;">Javascript</span>
-                    <span ng-if='python===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; color:#3C3636; font-size: 18px; margin-right: 10px;">Python</span>
-                    <span ng-if='ruby===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; color: #3C3636; font-size: 18px; margin-right: 10px;">Ruby</span>
-                    
+                    <div layout-align='center'>
+                      <span  ng-if='javascript===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; font-size: 18px; color: #3C3636; margin-right: 10px;">Javascript</span>
+                      <span ng-if='python===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; color:#3C3636; font-size: 18px; margin-right: 10px;">Python</span>
+                      <span ng-if='ruby===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; color: #3C3636; font-size: 18px; margin-right: 10px;">Ruby</span>
+                    </div>
                     <br>
                     <br>
                     <md-content layout="column" flex ng-controller="tutorProfile">
@@ -91,7 +92,7 @@
                     
                     </md-content>
                   </div>
-                </md-content>
+                <!-- </md-content> -->
               </md-content>
             </md-content>
           </md-tab>

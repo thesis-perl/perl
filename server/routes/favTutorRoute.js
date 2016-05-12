@@ -26,6 +26,15 @@ router.post('/', function(req, res) {
   })
 })
 
+router.get('/', function(req, res) {
+  db('studentutor').where({sid: req.headers.sid, fav: 1})
+  .rightJoin('users', 'studentutor.tid', 'users.id')
+  .then(function(data) {
+    console.log('fav', data)
+    res.send(data);
+  })
+})
+
 // export router
 module.exports = router;
 
