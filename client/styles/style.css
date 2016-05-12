@@ -1,7 +1,7 @@
 /*landing page */
 
 div.landing.ng-scope{
-  background-image: url('../assests/F15.jpg');
+  background-image: url(../assests/F15.jpg);
   background-size: 100%;
   height: 800px;
 }
@@ -14,6 +14,47 @@ left: 30px;
 
 }
 
+/*slideshowing background images in the landing page */
+/*.slideshow li span {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: transparent;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: none;
+    opacity: 0;
+    z-index: 0;
+    animation: imageAnimation 30s linear infinite 0s; 
+}
+
+.slideshow li:nth-child(1) span { 
+    background-image: url(../assests/F15.jpg);
+    animation-delay: 0s; 
+}
+
+.slideshow li:nth-child(2) span { 
+    background-image: url(../assests/landing3.jpg);
+    animation-delay: 5s; 
+}
+.slideshow li:nth-child(3) span { 
+    background-image: url(../assests/landing4.jpg);
+    animation-delay: 10s; 
+}
+.slideshow li:nth-child(4) span { 
+    background-image: url(../assests/landing5.jpg);
+    animation-delay: 15s; 
+}
+
+@keyframes imageAnimation { 
+    0% { opacity: 0; animation-timing-function: ease-in; }
+    8% { opacity: 1; animation-timing-function: ease-out; }
+    17% { opacity: 1 }
+    25% { opacity: 0 }
+    100% { opacity: 0 }
+}*/
 #landingPage h1 {
 
   position: absolute;
@@ -33,21 +74,22 @@ left: 30px;
   left: 370px;
   top: 450px;
   font-size: 27px;
+  border-radius: 20px;
   font-weight: bold;
+  color: #4d4d4d ;
 
 }
 
-.landSignin {
+
+
+.landSignup, .landSignin {
   position: absolute;
   top: 10px;
-  left: 1200px;
-
-}
-
-.landSignup {
-  position: absolute;
-  top: 10px;
-  left: 1200px;
+  left: 1100px;
+  margin-left: 50px !important;
+  font-size: 18px !important;
+  color: #4d4d4d !important;
+  font-weight: bold !important;
 }
 
 

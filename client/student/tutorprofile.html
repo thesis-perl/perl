@@ -41,48 +41,54 @@
   <div class="container" layout="row" layout-align="center" flex layout="vertical" layout-fill>
     <!-- Sidenav -->
     <!-- content -->
-    <div flex="80">
+    <div flex="80" style="border-bottom: 1px solid #d9d9d9; ">
       <md-content ng-controller="tutorProfile">
         <md-tabs md-dynamic-height md-border-bottom>
-          <md-tab label="Potential Session">
+          <md-tab label="{{name}}'s profile">
             <md-content class="md-padding">
-              <h1 class="md-display-2">Request tutor</h1>
-              <md-content flex layout="row" layout-align="center">
-                <md-content flex="50">
-                  <div flex="85" >
-                    <img ng-src="{{img}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
-                    <p>Tutor:</p>
-                    <p>{{name}}</p>
-                    <p style="margin-top: 20px; padding-right: 250px">{{bio}}</p>
-                    <span style="text-decoration:underline;">Language(s) / Framework(s) to cover during session:</span>
-                    <br>
-                    <br>
-                    <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Javascript</span>
-                    <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">Node.js</span>
-                    <span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;">AngularJS</span>
+            <md-content flex layout="row" layout-align="left">
+                <md-content flex="100" >
+                  <div flex="85"  style='margin: 0; width: 80%; '>
+                   <div style="background-color:#ccc; width: 35%; padding: 20px">
+                    <img ng-src="{{img}}" style="width: 50%; border-radius:100%; margin: auto, 10px" alt="image caption">
+                    
+                    <p style='font-weight: bold; font-size: 30px; color:  #3A3636'>{{name}}</p>
+                    <p style="margin-top: 30px; font-size: 18px; color: #3A3636">{{bio}}</p>
+                    <span> <ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{loc}} </span>
+                   </div> 
+                     <div style='position: absolute; top: 20px; left: 450px; width: 50%'>
+                     <p style="font-weight: bold; font-size: 20px; padding: 2px 5px; border-radius: 5px; color: #585454"> Topics we can cover during the session </p>
+                    <span  ng-if='javascript===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; font-size: 18px; color: #3C3636; margin-right: 10px;">Javascript</span>
+                    <span ng-if='python===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; color:#3C3636; font-size: 18px; margin-right: 10px;">Python</span>
+                    <span ng-if='ruby===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; color: #3C3636; font-size: 18px; margin-right: 10px;">Ruby</span>
+                    
                     <br>
                     <br>
                     <md-content layout="column" flex ng-controller="tutorProfile">
                       <div>
-                        <div class="dateTimeContent">
-                          <md-button class="md-raised md-warn" ng-click="showTimePicker($event)" aria-label="show picker">Time</md-button>
-                          <p>
-                            {{ currentTime | date:'HH:mm' }}
-                          </p>
+                        <div class="dateTimeContent" >
+                          <md-button style="border: 2px solid orange; margin-left: 50px; margin-top: 30px; color: #585454; font-weight: bold" ng-click="showTimePicker($event)" aria-label="show picker">Time</md-button>
+                          
                         </div>
                         <div class="dateTimeContent">
-                          <md-button class="md-raised md-warn" ng-click="showDatePicker($event)" aria-label="show picker">Date</md-button>
-                          <p>
-                            {{ currentDate | date:'shortDate' }}
-                          </p>
+                          <md-button style="border: 2px solid orange; margin-left: 50px; margin-top: 30px; color: #585454; font-weight: bold " ng-click="showDatePicker($event)" aria-label="show picker">Date</md-button>
+
                         </div>
-                      </div>
-                      <div class="requestSession">
-                        <md-button style="background-color: orange" ng-disabled="isDisabledRequest" ng-click="requestSession()">Request Session
+                        <p style="height: 20px">
+                           <span style ='margin-left: 70px; font-weight: bold'> {{ currentTime | date:'HH:mm' }} </span>  <span style ='margin-left: 100px; font-weight: bold'>{{ currentDate | date:'shortDate' }} </span>
+                          </p>
+                          
+                     </div>
+                     
+                    
+                     
+                        <md-button  ng-disabled="isDisabledRequest" style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; width: 45%; font-weight: bold; margin-left: 45px;" ng-click="requestSession()">Request Session
                         </md-button>
-                        <md-button style="background-color: green" ng-hide="hidden" ng-disabled="isDisabled"><a ui-sref="session({link: item.id})">Start Session</a>
-                        </md-button>
+                        <md-button style="border: 2px solid orange; float:right; font-size: 20px; color: #585454; font-weight: bold; width: 45%; margin-left: 45px;" ng-hide="hidden" ng-disabled="isDisabled"><a  style = 'text-decoration: none; color: #585454 ' ui-sref="session({link: item.id})">Start Session</a>
+                         </md-button>
                       </div>
+
+                    
                     </md-content>
                   </div>
                 </md-content>

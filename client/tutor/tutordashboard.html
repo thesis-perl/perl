@@ -54,7 +54,7 @@
 						<md-content class="md-padding">
 							<p ng-model='noInvite'>{{noInvite}}<p>
 
-								<div layout="rows" style="border-bottom: 1px solid #eee">
+								<div layout="rows" style="height: 100%; width: 170%; border-bottom: 1px solid #eee">
 									<!--  generating invitation list -->
 									<ul>
 										<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!invitedStudents.length">
@@ -71,13 +71,13 @@
 
 												<!-- info about student and session -->
 												<div flex="85" class='profile' >
-													<p>{{item.fullname}} 
-														<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
+													<p>{{item.fullname}} </p>
+													
 														<md-button style="border: 2px solid orange; float:right" ng-click='acceptInvitation()'>accept</md-button>
 														<md-button style="border: 2px solid orange; float:right" ng-click='rejectInvitation()'>reject</md-button>
 														<md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getStudentId(item.id)">Chat</md-button>
 														<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
-														<p> date: {{item.date}}  | time: {{item.time}}</p>
+														<p> date: {{item.date | limitTo: 10 }}  | time: {{item.time}}</p>
 
 														<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.javascript === 1">Javascript</span>
 														<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.python === 1">Python</span>
@@ -92,7 +92,7 @@
 								</md-tab>
 
 								<md-tab label="Scheduled Sessions"> <!-- start of scheduled sessions tab-->
-									<md-content class="md-padding">
+									<md-content class="md-padding" >
 										<p ng-model='noSession'>{{noSession}}<p>
 											<div layout="rows" style="border-bottom: 1px solid #eee">
 												<!--  generating shceduled student/session list -->
@@ -101,7 +101,7 @@
 														<div style="margin: 30px">You don't have any scheduled session yet!</div>
 													</div>
 													<li ng-repeat = 'item in acceptedStudents' class='sessions'>
-														<div layout="rows" style="height: 180px; border: 1px solid #eee">
+														<div layout="rows" style="height: 100%; width: 170%; border: 1px solid #eee">
 															<!-- image -->
 															<div flex="15" style="text-align: center; padding-top: 15px">
 																<img src="{{item.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
@@ -111,14 +111,14 @@
 
 															<!-- info about student and session -->
 															<div flex="85" class='profile' >
-																<p>{{item.fullname}}
+																<p>{{item.fullname}} </p>
 																
-																	<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
+																	
 																	<md-button style="border: 2px solid orange; float:right" ng-click='cancelSession()'>cancel</md-button>
 																	<md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getStudentId(item.id)">Chat</md-button>
-																	<md-button style="border: 2px solid orange; float:right"><a ui-sref="session({link: item.id})">start</a></md-button>
+																	<md-button style="border: 2px solid orange; float:right"><a ui-sref="session({link: item.id})" style='text-decoration: none; color: #222'>start</a></md-button>
 																	<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
-																	<p> date: {{item.date}}  | time: {{item.time}}</p>
+																	<p> date: {{item.date | limitTo: 10 }}  | time: {{item.time}}</p>
 
 
 																	<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.javascript === 1">Javascript</span>
@@ -145,7 +145,7 @@
 														<div style="margin: 30px">You don't have any cancelled session yet!</div>
 													</div>
 														<li ng-repeat = 'item in cancelledStudents' class='sessions'>
-															<div layout="rows" style="height: 180px; border: 1px solid #eee">
+															<div layout="rows" style="height: 100%; width: 170%;; border: 1px solid #eee">
 																<!-- image -->
 																<div flex="15" style="text-align: center; padding-top: 15px">
 																	<img src="{{item.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
@@ -155,11 +155,11 @@
 
 																<!-- info about student and session -->
 																<div flex="85" class='profile' >
-																	<p>{{item.fullname}}
+																	<p>{{item.fullname}} </p>
 																		
-																		<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
+																	
 																		<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
-																		<p> date: {{item.date}}  | time: {{item.time}}</p>
+																		<p> date: {{item.date | limitTo: 10 }}  | time: {{item.time}}</p>
 
 
 																		<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.javascript === 1">Javascript</span>
@@ -179,7 +179,7 @@
 									<md-tab label="Finished Sessions"> <!-- start of finished sessions tab-->
 										<md-content class="md-padding">
 											<p ng-model='noSession'>{{noSession}}<p>
-												<div layout="rows" style="border-bottom: 1px solid #eee">
+												<div layout="rows" style="height: 100%; width: 170%; border-bottom: 1px solid #eee">
 													<!--  generating finished session list -->
 													<ul>
 														<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!finishedStudents.length">
@@ -196,11 +196,11 @@
 
 																<!-- info about student and session -->
 																<div flex="85" class='profile' >
-																	<p>{{item.fullname}}
-																		{{item.id}}
-																		<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red"></ng-md-icon></span> </p>
+																	<p>{{item.fullname}}</p>
+																		
+																		 
 																		<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
-																		<p> date: {{item.date}}  | time: {{item.time}}</p>
+																		<p> date: {{item.date | limitTo: 10 }} | time: {{item.time}}</p>
 
 
 																		<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="item.javascript === 1">Javascript</span>
