@@ -68,6 +68,7 @@ angular.module('Perl.tutorProfile', [
 
   $scope.requestSession = function(){
     var studentId = JSON.parse(localStorage.getItem('userinfo')).id;
+    console.log('currentDate',$scope.currentDate, $scope.currentTime);
     var apptDate = $scope.currentDate.toString();
     var apptTime = $scope.currentTime.toString();
 
