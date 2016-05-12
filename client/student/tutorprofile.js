@@ -25,6 +25,9 @@ angular.module('Perl.tutorProfile', [
     $scope.loc = tutor.location;
     $scope.img = tutor.imgurl;
     $scope.studentTutorStatus = tutor.status; //status between student and tutor
+    $scope.javascript = tutor.javascript;
+    $scope.python = tutor.python;
+    $scope.ruby = tutor.ruby;
 
     if($scope.studentTutorStatus === 1){
       $mdToast.show(

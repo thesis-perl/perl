@@ -1,12 +1,23 @@
 <div id='landingPage'>
+
+  <ul class="slideshow">
+	 <li><span></span></li>
+	  <li><span></span></li>
+	 <li><span></span></li>
+	 <li><span></span></li>
+
+  </ul>
+
   <div class="landing" ng-controller="landing">
+  <div class='landingheader'>
     <img class='ourLogo' src="../assests/logo3.png">
     <md-button  ng-controller='authentication' ng-click='showsignin()' class='landSignin'> sign in </md-button>
     <md-button ng-controller = 'authentication' ng-click='showsignup()'class='landSignup'> sign up </md-button>
-
-
+   </div>
+    <div class='landingbody'> 
     <h1> Learn to Cod<span>i</span>fy </h1>
     <p> One-on-one tutoring to take you to the next level in programming</p>
+    </div>
   </div>
 </div>
 
