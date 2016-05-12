@@ -32,7 +32,7 @@ router.post('/', function(req, res) {
       }
     })
   }).then(function(data) {
-    resolve(data);
+    console.log(data);
   })
 });
 
