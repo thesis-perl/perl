@@ -66,7 +66,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
   .state('studentDashboard', {
     cache: false,
     url: '/studentDashboard',
-    templateUrl: '../student/studentDashboard.html',
+    templateUrl: '../student/studentdashboard.html',
     controller: 'studentDashboard',
     authenticate: true
   })
@@ -74,7 +74,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
   .state('tutorFilter', {
     cache: false,
     url: '/tutorFilter',
-    templateUrl: '../student/tutorFilter.html',
+    templateUrl: '../student/tutorfilter.html',
     controller: 'tutorFilter',
     authenticate: true
   })
@@ -82,7 +82,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
   .state('tutorProfile', {
     cache: false,
     url: '/tutorProfile/:id',
-    templateUrl: '../student/tutorProfile.html',
+    templateUrl: '../student/tutorprofile.html',
     controller: 'tutorProfile',
     authenticate: true
   })
@@ -90,7 +90,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
   .state('tutorDashboard', {
     cache: false,
     url: '/tutorDashboard',
-    templateUrl: '../tutor/tutorDashboard.html',
+    templateUrl: '../tutor/tutordashboard.html',
     controller: 'tutorDashboard',
     authenticate: true
   })
