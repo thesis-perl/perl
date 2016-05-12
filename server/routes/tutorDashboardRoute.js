@@ -11,7 +11,6 @@ router.get('/invited', function(req, res) {
   db('studentutor').where({ tid: id }).andWhere({ status: 1 })
   .leftJoin('users', 'users.id', 'studentutor.sid')
   .then(function(data){
-    console.log(data);
     for(var i = 0; i < data.length; i++) {
       if(data[i].fav == 1 && data[i].tid == id) {
         data[i].fav = 1;
@@ -29,7 +28,6 @@ router.get('/accepted', function(req, res) {
   db('studentutor').where({ tid: id }).andWhere({ status: 2 })
   .leftJoin('users', 'users.id', 'studentutor.sid')
   .then(function(data){
-    console.log('before',data)
     for(var i = 0; i < data.length; i++) {
       if(data[i].fav == 1 && data[i].tid == id) {
         data[i].fav = 1;

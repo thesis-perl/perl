@@ -29,7 +29,6 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
     // signup helper
   $scope.signupUser = function(info) {
     authFactory.signup(info).then(function(data){
-      console.log("signup user receiving this data: ", data);
       localStorage.setItem('userinfo', JSON.stringify(data.data));
       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
@@ -44,7 +43,6 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
 
   //upload profile pic
   $scope.uploadFile = function(){
-    console.log('in uploadFile');
     var file = $scope.myFile;
 
     var prefix = Date.now()
@@ -53,7 +51,6 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
       var params = {Key: prefix+file.name, ContentType: file.type, Body: file};
         bucket.upload(params, function(err, data) {
           if(err)  console.log(err)
-           console.log('data', data)
           //data.key is the photo file name
           $scope.signup(data.Location);
         });
@@ -76,18 +73,15 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
       ruby: $scope.subjectChecked($scope.rubyCheckbox),
       python: $scope.subjectChecked($scope.pythonCheckbox)
             };
-      console.log('userinfo', userInfo)
 
 
     //handling case when both student and tutor boxes are checked
     if($scope.studentCheckBox === true && $scope.tutorCheckBox === true) {
-          console.log('err, both student and tutor boxes checked')
           $scope.signuperror = 'you can only sign up either as a student or a tuitor';
 
     }
     //handling case when neither of student and tutor boxes is checked
     else if($scope.userChecked($scope.studentCheckBox) === 0 && $scope.userChecked($scope.tutorCheckBox) ===0) {
-      console.log('err, nor student neither tutor boxes checked')
       $scope.signuperror = 'please select if you are a tuitor or a student';
 
     }
@@ -96,15 +90,12 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
     else if($scope.tutorCheckBox === true || $scope.studentCheckBox === true) {
           if($scope.subjectChecked($scope.javascriptCheckbox) === 0 && $scope.subjectChecked($scope.rubyCheckbox) === 0 && $scope.subjectChecked($scope.pythonCheckbox) === 0) {
               $scope.signuperror= 'please select at least one subject';
-              console.log('no language selected');
           }
           else if($scope.username===undefined || $scope.fullname===undefined || $scope.password===undefined || $scope.bio===undefined || $scope.location === undefined) {
               $scope.signuperror = 'all fields must be filled in';
-               console.log('fields empty')
           }
           else {
 
-            console.log(' signing up a user', userInfo);
             $scope.signupUser(userInfo);
             $scope.hide();
         }

@@ -5,8 +5,6 @@ var router = express.Router();
 var db = require('../db/db').knex;
 
 router.put('/', function(req, res) {
-  console.log(req.body);
-  console.log(req.body);
   var sid = req.body.sid;
   var tid = req.body.tid;
 

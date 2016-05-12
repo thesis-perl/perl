@@ -55,7 +55,6 @@ angular.module('Perl.video', ['firebase'])
 
         for ( var i=0, max=members.length; i<max; i++ ) {
           // ... request a call
-          console.log('member', members[i]);
           bc.call( members[ i ].id, room, { "stream": stream } );
         }
 
@@ -139,7 +138,6 @@ angular.module('Perl.video', ['firebase'])
     // if "Conference Name" field is not empty ...
     if( roomToJoin ){
       // ... join the room
-      console.log(bc.joinRoom);
       bc.joinRoom( roomToJoin );
     }
     else{

@@ -68,8 +68,6 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
   //tutor cancels session
   $scope.cancelSession = function() {
    tutorFactory.cancelSession(currentUserId, this.item.id)
-   console.log('tutor', currentUserId);
-    console.log('student', this.item.id);
     $state.reload();
   };
 
@@ -82,19 +80,15 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
   }
 
   $scope.getInvitedStudents = function(id) {
-    console.log($scope.userinfo.id);
     tutorFactory.getInvitedStudents($scope.userinfo.id)
     .then(function(data) {
-      console.log('invited data', data);
       $scope.invitedStudents = data.data;
-      console.log('invitedStudents', $scope.invitedStudents);
     })
   };
 
   $scope.getAcceptedStudents = function(id) {
     tutorFactory.getAcceptedStudents($scope.userinfo.id)
     .then(function(data) {
-      console.log('accepted data', data);
       $scope.acceptedStudents = data.data;
     })
   };
@@ -102,7 +96,6 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
   $scope.getCancelledStudents = function(id) {
     tutorFactory.getCancelledStudents($scope.userinfo.id)
     .then(function(data) {
-      console.log('cancelled data', data);
       $scope.cancelledStudents = data.data;
     })
   };
@@ -110,7 +103,6 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
   $scope.getFinishedStudents = function(id) {
     tutorFactory.getFinishedStudents($scope.userinfo.id)
     .then(function(data) {
-      console.log('finished data', data);
       $scope.finishedStudents = data.data;
     })
   };
