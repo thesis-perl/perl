@@ -1,4 +1,4 @@
-angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', 'Perl.session',  'Perl.studentDashboard', 'Perl.tutorFilter', 'Perl.chat', 'Perl.video', 'Perl.tutorProfile', 'Perl.tutorDashboard', 'Perl.landing', 'ui.router', 'ngMaterial', 'firebase', 'btford.socket-io', 'ui.codemirror'])
+angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', 'Perl.session',  'Perl.studentDashboard', 'Perl.tutorFilter', 'Perl.favorites', 'Perl.chat', 'Perl.video', 'Perl.tutorProfile', 'Perl.tutorDashboard', 'Perl.landing', 'ui.router', 'ngMaterial', 'firebase', 'btford.socket-io', 'ui.codemirror'])
 
 .run(function ($state, $firebase,$rootScope,$location,$window,$firebase,$firebaseAuth) {
   //instances and constants to be injected here
@@ -10,7 +10,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
       if(authData) {
       } else {
         // event.preventDefault();
-        $state.go('signin');
+        $state.go('landing');
       }
     })
   }
@@ -77,6 +77,14 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     url: '/tutorFilter',
     templateUrl: '../student/tutorfilter.html',
     controller: 'tutorFilter',
+    authenticate: true
+  })
+
+  .state('favorites', {
+    cache: false,
+    url: '/favorites',
+    templateUrl: '../student/favorites.html',
+    controller: 'favorites',
     authenticate: true
   })
 
