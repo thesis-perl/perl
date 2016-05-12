@@ -37,10 +37,8 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
 
 
   $scope.getAllStatusTutors = function() {
-  	console.log('inside get Tutorinfo id', $scope.userinfo.id);
   	studentFactory.getAllStatusTutors($scope.userinfo.id)
   	.then(function(data){
-      console.log('all tutors', data.data)
       for(var i = 0; i < data.data.length; i++) {
         if(data.data[i].status == 1) {
           $scope.invitedTutors.push(data.data[i]);
@@ -105,7 +103,6 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
   }
 
   $scope.addFavorite = function(tid) {
-    console.log($scope.userinfo.id, tid);
     tutorFactory.addFavorite($scope.userinfo.id, tid);
   }
 

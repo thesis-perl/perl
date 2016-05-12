@@ -13,20 +13,13 @@ angular.module('Perl.chat', ['firebase'])
     $scope.tutorId = $scope.userinfo.id;
   }
   $rootScope.studentTutor = $scope.studentId + "&" + $scope.tutorId;
-  
-  console.log("my student id: ",$scope.studentId);
-  console.log("my tutor id: ",$scope.tutorId);
-  console.log("my studentTutor is: ", $rootScope.studentTutor)
-
 
   $scope.newChat = new Firebase($rootScope.ref + "chat/" + $rootScope.studentTutor);
   $scope.messages = new $firebaseArray($scope.newChat);
 
-  console.log($scope.newChat);
   $scope.newMessage = function(event) {
     if(event.keyCode === 13 && $scope.msg) {
       var userName = $scope.userinfo.fullname;
-      console.log("chat message sent: ", $scope.msg)
       $scope.messages.$add({from: userName, body: $scope.msg});
       $scope.msg = "";
     }

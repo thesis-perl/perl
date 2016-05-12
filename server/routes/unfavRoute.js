@@ -11,7 +11,6 @@ router.put('/', function(req, res) {
   db('studentutor').where({sid: sid, tid: tid}).whereNot({status: 0})
   .update({fav: 0})
   .then(function(data){
-    console.log('put', data);
     res.sendStatus(sid + " unfavorited " + tid);
   })
 

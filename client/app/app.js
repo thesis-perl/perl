@@ -23,6 +23,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
   })
   $rootScope.signOutUser = function() {
     $rootScope.ref.unauth();
+    localStorage.removeItem('userinfo');
     $state.go('landing');
 		
 	}

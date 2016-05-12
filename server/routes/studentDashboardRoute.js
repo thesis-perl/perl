@@ -18,7 +18,6 @@ router.get('/', function(req, res) {
         data[i].fav = 0;
       }
     }
-    console.log('in all', data)
     res.send(data);
   })
 })

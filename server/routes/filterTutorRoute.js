@@ -5,7 +5,6 @@ var router = express.Router();
 var db = require('../db/db').knex;
 
 router.get('/', function(req, res) {
-  console.log('sid', req.headers.sid)
   db.select('*').from('users').where('isTutor', 1).leftOuterJoin('studentutor', function(){
     this.on('users.id', "=", 'studentutor.tid')
   })
@@ -27,8 +26,7 @@ router.get('/', function(req, res) {
         }
       }
     }
-    console.log('data', data)
-    console.log('result', result)
+
     for(var k = 0; k < data.length; k++) {
       if(data[k].sid == req.headers.sid) {
         for(var q = 0; q < result.length; q++) {
@@ -48,21 +46,15 @@ router.get('/', function(req, res) {
       }
     }
 
-    // for(var i = 0; i < result.length; i++) {
-    //   result[i].fav = result[i].fav || 0;
-    // }
-
     res.send(result);
   })
 })
 
 
 router.get('/info', function(req, res) {
-  console.log(req.headers)
   var tid = req.headers.tid;
   var sid = req.headers.sid;
-  console.log('tid ', tid);
-  console.log('sid ', sid);
+
   db('studentutor').where({sid: sid, tid: tid})
   .rightOuterJoin('users', 'users.id', 'studentutor.tid')
 
@@ -70,11 +62,9 @@ router.get('/info', function(req, res) {
     if (!data[0]) {
       db('users').where({id: tid})
       .then(function(data) {
-        console.log('new filtertutourroute data',data);
         res.send({id: data[0].id, fullname: data[0].fullname, username: data[0].username, bio: data[0].bio, location: data[0].location, imgurl: data[0].imgurl, javascript: data[0].javascript, ruby: data[0].ruby, python: data[0].python})
       })
     } else {
-      console.log('existing filtertutourroute data',data);
       res.send({id: data[0].id, fullname: data[0].fullname, username: data[0].username, bio: data[0].bio, location: data[0].location, imgurl: data[0].imgurl, javascript: data[0].javascript, ruby: data[0].ruby, python: data[0].python, status: data[0].status})
     }
   })

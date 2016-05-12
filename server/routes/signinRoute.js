@@ -13,8 +13,6 @@ router.post('/', function(req, res) {
 
   db('users').where('username', user.username)
   .then(function(data) {
-    console.log('user password', user.password);
-    console.log('data password', data[0].password);
     bcrypt.compare(user.password, data[0].password, function(err, result) {
       if (err) {
         console.log('in err', err);

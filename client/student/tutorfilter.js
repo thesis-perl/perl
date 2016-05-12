@@ -16,7 +16,6 @@ angular.module('Perl.tutorFilter', [])
 		tutorFactory.getAllTutors(user.id)
 		.then(function(data){
 
-			console.log('tutors', data.data)
 			$scope.tutors = data.data;
 
 			for (var i=0; i<$scope.tutors.length; i++) {
@@ -41,7 +40,6 @@ angular.module('Perl.tutorFilter', [])
 	}
 
 	$scope.deleteFavorite = function(tid) {
-		console.log('tid', tid)
 		tutorFactory.deleteFavorite(user.id, tid);
 	}
 

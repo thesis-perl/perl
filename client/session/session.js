@@ -26,7 +26,6 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 
 	$scope.$on('socket:joined', function(event, data) {
 		$scope.hint = data + " just joined the session!";
-		console.log('get hint')
 		$scope.showSimpleToast();
 	})
 
@@ -46,13 +45,11 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 		var lastTypingTime = (new Date()).getTime();
 
 		setTimeout(function () {
-			console.log("setTimeout typing is ture or not:", typing)
 			var typingTimer = (new Date()).getTime();
 			var timeDiff = typingTimer - lastTypingTime;
 			if (timeDiff >= 400 && typing) {
 				perlSocket.emit('untyping');
 				typing = false;
-				console.log('see if it happen', $scope.typing)
 			}
 		}, 800);
 	}
@@ -84,9 +81,6 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 
 	//saving the lesson code in the database
 	$scope.saveCodeInDatabase = function() {
-		console.log('i',  user.id)
-		console.log('other', Number($stateParams.link))
-		console.log(user);
 
 		if (user.isTutor ===1) {
 			sessionFactory.saveCodeDB(user.id, Number($stateParams.link), $scope.sharedCode)
@@ -103,7 +97,6 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 
 	// pop up hint when a user joined.
 	$scope.showSimpleToast = function() {
-		console.log("in show")
 		$mdToast.show(
 			$mdToast.simple()
 			.textContent($scope.hint)
@@ -120,11 +113,9 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 	$scope.newChat = new Firebase($rootScope.ref + "chat/" + $rootScope.studentTutor);
 	$scope.messages = new $firebaseArray($scope.newChat);
 
-	console.log($scope.newChat);
 	$scope.newMessage = function(event) {
 		if(event.keyCode === 13 && $scope.msg) {
 			var username = user.fullname;
-			console.log("chat message sent: ", $scope.msg)
 			$scope.messages.$add({from: username, body: $scope.msg});
 			$scope.msg = "";
 		}
