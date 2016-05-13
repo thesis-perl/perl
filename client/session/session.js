@@ -21,6 +21,7 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 	});
 
 	$scope.$on('socket:broadcast', function(event, data) {
+		console.log('in broadcast', data)
 		$scope.sharedCode = data;
 	});
 

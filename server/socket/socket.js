@@ -2,7 +2,9 @@ module.exports = function (io) {
   io.on('connection', function (socket) {
     socket.broadcast.emit('user connected');
     socket.on('code changed', function(data) {
-      io.sockets.in(socket.room).emit('broadcast', data);
+      // io.sockets.in(socket.room).emit('broadcast', data);
+      socket.broadcast.to(socket.room).emit('broadcast', data);
+
     });
 
     socket.on('join', function(data) {
