@@ -72,7 +72,7 @@
 												<!-- info about student and session -->
 												<div flex="85" class='profile' >
 													<p>{{item.fullname}} </p>
-													
+
 														<md-button style="border: 2px solid orange; float:right" ng-click='acceptInvitation()'>accept</md-button>
 														<md-button style="border: 2px solid orange; float:right" ng-click='rejectInvitation()'>reject</md-button>
 														<md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getStudentId(item.id)">Chat</md-button>
@@ -112,11 +112,11 @@
 															<!-- info about student and session -->
 															<div flex="85" class='profile' >
 																<p>{{item.fullname}} </p>
-																
-																	
+
+
 																	<md-button style="border: 2px solid orange; float:right" ng-click='cancelSession()'>cancel</md-button>
 																	<md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getStudentId(item.id)">Chat</md-button>
-																	<md-button style="border: 2px solid orange; float:right"><a ui-sref="session({link: item.id})" style='text-decoration: none; color: #222'>start</a></md-button>
+																	<md-button style="border: 2px solid orange; float:right" ng-click="getStudentId(item.id)"><a ui-sref="session({link: item.id})" style='text-decoration: none; color: #222'>start</a></md-button>
 																	<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
 																	<p> date: {{item.date | limitTo: 10 }}  | time: {{item.time}}</p>
 
@@ -156,8 +156,8 @@
 																<!-- info about student and session -->
 																<div flex="85" class='profile' >
 																	<p>{{item.fullname}} </p>
-																		
-																	
+
+
 																		<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
 																		<p> date: {{item.date | limitTo: 10 }}  | time: {{item.time}}</p>
 
@@ -197,8 +197,8 @@
 																<!-- info about student and session -->
 																<div flex="85" class='profile' >
 																	<p>{{item.fullname}}</p>
-																		
-																		 
+
+
 																		<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
 																		<p> date: {{item.date | limitTo: 10 }} | time: {{item.time}}</p>
 

@@ -105,12 +105,26 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 		);
 	};
 
+  // $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
+  // console.log("this is my userinfo:", $scope.user);
+  $scope.studentId;
+  $scope.tutorId;
+
+  if ($scope.user.isStudent === 1) {
+    $scope.studentId = $scope.user.id;
+    $scope.tutorId = $rootScope.tid;
+  } else if ($scope.user.isTutor === 1) {
+    $scope.studentId = $rootScope.sid;
+    $scope.tutorId = $scope.user.id;
+  }
+  $scope.studentTutor = $scope.studentId + "-" + $scope.tutorId;
+
 	$scope.loadVideo = function() {
-		sessionFactory.loadVideo();
+		sessionFactory.loadVideo($scope.studentTutor);
 	};
 
 	//Chatroom
-	$scope.newChat = new Firebase($rootScope.ref + "chat/" + $rootScope.studentTutor);
+	$scope.newChat = new Firebase($rootScope.ref + "chat/" + $scope.studentId + "&" + $scope.tutorId);
 	$scope.messages = new $firebaseArray($scope.newChat);
 
 	$scope.newMessage = function(event) {

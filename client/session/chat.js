@@ -2,6 +2,7 @@ angular.module('Perl.chat', ['firebase'])
 
 .controller('chat', function($firebase,$rootScope,$scope, $firebaseArray, $firebaseAuth, $firebaseObject, studentFactory){
   $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
+  console.log("chat userInfo: ",$scope.userinfo)
   $scope.studentId;
   $scope.tutorId;
 
@@ -12,9 +13,8 @@ angular.module('Perl.chat', ['firebase'])
     $scope.studentId = $rootScope.sid;
     $scope.tutorId = $scope.userinfo.id;
   }
-  $rootScope.studentTutor = $scope.studentId + "&" + $scope.tutorId;
 
-  $scope.newChat = new Firebase($rootScope.ref + "chat/" + $rootScope.studentTutor);
+  $scope.newChat = new Firebase($rootScope.ref + "chat/" + $scope.studentId + "&" + $scope.tutorId);
   $scope.messages = new $firebaseArray($scope.newChat);
 
   $scope.newMessage = function(event) {
