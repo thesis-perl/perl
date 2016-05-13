@@ -5,6 +5,8 @@ module.exports = function (io) {
       socket.broadcast.to(socket.room).emit('broadcast', data);
     });
 
+    // socket.broadcast.to(socket.room).emit('broadcast', data);
+
     socket.on('join', function(data) {
       socket.room = data.link;
       socket.name = data.name;
