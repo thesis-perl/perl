@@ -16,9 +16,9 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 
 	perlSocket.emit('join', {link: link, name: user.fullname});
 
-	$scope.$watch('sharedCode', function(){
+	$scope.change = function() {
 		perlSocket.emit('code changed', $scope.sharedCode);
-	});
+	}
 
 	$scope.$on('socket:broadcast', function(event, data) {
 		console.log('in broadcast', data)
