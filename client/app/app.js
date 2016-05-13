@@ -6,7 +6,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
   $rootScope.authObj = $firebaseAuth($rootScope.ref);
   $rootScope.checkAuthentication = function() {
     $rootScope.authObj.$onAuth(function(authData) {
-      console.log('authdata', authData);
+      // console.log('authdata', authData);
       if(authData) {
       } else {
         // event.preventDefault();
@@ -25,7 +25,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     $rootScope.ref.unauth();
     localStorage.removeItem('userinfo');
     $state.go('landing');
-		
+
 	}
 })
 
@@ -119,7 +119,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     controller: 'video',
     authenticate: true
   })
- 
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/');

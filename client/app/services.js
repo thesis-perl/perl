@@ -194,7 +194,7 @@ angular.module('Perl.services', ['btford.socket-io'])
   var members;
   var localStream
 
-  var onBistriConferenceReady = function () {
+  var onBistriConferenceReady = function (roomNum) {
     // test if the browser is WebRTC compatible
     if ( !bc.isCompatible() ) {
       // if the browser is not compatible, display an alert
@@ -202,6 +202,8 @@ angular.module('Perl.services', ['btford.socket-io'])
       // then stop the script execution
       return;
     }
+    console.log("got this roomNum: ",roomNum);
+    room = roomNum;
 
     bc.init( {
       "appId": bistriAppId,
@@ -244,7 +246,6 @@ angular.module('Perl.services', ['btford.socket-io'])
 
         for ( var i=0; i<1; i++ ) {
           // ... request a call
-          console.log('member', members[i]);
           bc.call( members[ i ].id, room, { "stream": stream } );
         }
 
@@ -315,7 +316,8 @@ angular.module('Perl.services', ['btford.socket-io'])
 
   // when button "Join Conference Room" has been clicked
   var joinConference = function (){
-    var stringName = String($rootScope.studentTutor);
+    var stringName = String(room);
+    console.log("joining this room: ", stringName);
     var roomToJoin = stringName;
     // if "Conference Name" field is not empty ...
     if( roomToJoin ){

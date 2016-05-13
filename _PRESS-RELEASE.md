@@ -18,11 +18,11 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
-  Mentor.me (Name Pending)
+  Codify (Name Pending)
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-  Mentor.me is a one of a kind website designed to connect professional coding tutors to students looking to learn or improve their coding abilities.
+  Codify is a one of a kind website designed to connect professional coding tutors to students looking to learn or improve their coding abilities.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
@@ -37,9 +37,9 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
-    Mentor.me helps connect eager students to professional coders in order to foster positive and productive learning experiences. Students are given live coding instruction via webcam and a shared text editor. Students
+    Codify helps connect eager students to professional coders in order to foster positive and productive learning experiences. Students are given live coding instruction via webcam and a shared text editor. Students
     can save their work for future reference.
-    
+
 ## Quote from You ##
   > A quote from a spokesperson in your company.
   "Learning to code has never been easier!"
@@ -50,8 +50,8 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
-  "Mentor.me has been a great help in building my coding ability. I feel much more confident when attempting problems and I know my mentor will always have my back in case I need help."
+  "Codify has been a great help in building my coding ability. I feel much more confident when attempting problems and I know my mentor will always have my back in case I need help."
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
-  "Whether you are a mentor looking to help out the coding community or an eager student looking to get a head start in the coding world, checkout Mentor.me!"
+  "Whether you are a mentor looking to help out the coding community or an eager student looking to get a head start in the coding world, checkout Codify!"
