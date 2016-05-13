@@ -316,8 +316,8 @@ angular.module('Perl.services', ['btford.socket-io'])
 
   // when button "Join Conference Room" has been clicked
   var joinConference = function (){
-    var stringName = String($rootScope.studentTutor);
-    console.log('roomToJoin', stringName);
+    var stringName = String(room);
+    console.log("joining this room: ", stringName);
     var roomToJoin = stringName;
     // if "Conference Name" field is not empty ...
     if( roomToJoin ){
