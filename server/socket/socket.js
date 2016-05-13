@@ -8,12 +8,12 @@ module.exports = function (io) {
     socket.on('join', function(data) {
       socket.room = data.link;
       socket.name = data.name;
-      socket.join(socket.room); 
-      io.sockets.in(socket.room).emit('joined', socket.name)        
+      socket.join(socket.room);
+      io.sockets.in(socket.room).emit('joined', socket.name)
     })
 
     socket.on('endSession', function() {
-      socket.leave(socket.room);  
+      socket.leave(socket.room);
     });
 
     socket.on('typing', function (data) {

@@ -192,7 +192,7 @@ angular.module('Perl.services', ['btford.socket-io'])
 
   var room;
   var members;
-  var localStream
+  var localStream;
 
   var onBistriConferenceReady = function (roomNum) {
     // test if the browser is WebRTC compatible
@@ -316,8 +316,8 @@ angular.module('Perl.services', ['btford.socket-io'])
 
   // when button "Join Conference Room" has been clicked
   var joinConference = function (){
-    var stringName = String(room);
-    console.log("joining this room: ", stringName);
+    var stringName = String($rootScope.studentTutor);
+    console.log('roomToJoin', stringName);
     var roomToJoin = stringName;
     // if "Conference Name" field is not empty ...
     if( roomToJoin ){
