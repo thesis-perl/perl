@@ -10,7 +10,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
       if(authData) {
       } else {
         // event.preventDefault();
-        $state.go('landing');
+        //$state.go('signin');
       }
     })
   }
