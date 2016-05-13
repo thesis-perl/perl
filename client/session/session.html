@@ -7,7 +7,7 @@
     </md-toast>
     <br>
     <div class="codeDiv">
-      <div ui-codemirror="cmOption" ng-model="sharedCode" ng-keydown="typingUpdate()" id='codeDiv'>{{sharedCode}}</div>
+      <div ui-codemirror="cmOption" ng-model="sharedCode" ng-keydown="change(); typingUpdate()" id='codeDiv'>{{sharedCode}}</div>
       <div class='chooselanguage'>
         <div class="languageBtn"> Choose Language  <select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select> </div>
         <div class="sessionBtns"><md-button class='endsessionBtn' type='submit' ng-click="endSession()"> End Session </md-button></div>
