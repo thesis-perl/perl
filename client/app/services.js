@@ -192,7 +192,7 @@ angular.module('Perl.services', ['btford.socket-io'])
 
   var room;
   var members;
-  var localStream
+  var localStream;
 
   var onBistriConferenceReady = function (roomNum) {
     // test if the browser is WebRTC compatible

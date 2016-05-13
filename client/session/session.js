@@ -1,6 +1,6 @@
 angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial', 'material.svgAssetsCache' , 'ngMessages'])
 
-.controller('session',function($log, $scope, perlSocket, $stateParams, $state, $rootScope, sessionFactory, $mdToast, $firebaseArray, $firebaseAuth, $firebaseObject){
+.controller('session',function($log, $scope, perlSocket, $stateParams, $state, $rootScope, sessionFactory, $mdToast, $firebaseArray, $firebaseAuth, $firebaseObject, $timeout){
     var typing = false;
 
 
@@ -17,7 +17,9 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 	perlSocket.emit('join', {link: link, name: user.fullname});
 
 	$scope.change = function() {
-		perlSocket.emit('code changed', $scope.sharedCode);
+		$timeout(function() {
+			perlSocket.emit('code changed', $scope.sharedCode);
+		}, 100);
 	}
 
 	$scope.$on('socket:broadcast', function(event, data) {
