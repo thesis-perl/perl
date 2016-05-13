@@ -1,25 +1,24 @@
 
 <div class='body'>
 <div class="signIn" id='signin'>
-<h1> sign in </h1>
-<form>
-  <md-input-container class="input">
-    <label for="username">username</label>
-    <input ng-model="signinUsername" name="username" required>
-  </md-input-container>
+  <h1> sign in </h1>
+    <form>
+  
+      <md-input-container class="input">
+        <label for="username">username</label>
+        <input ng-model="signinUsername" name="username" required>
+      </md-input-container>
 
-  <md-input-container class="input">
-    <label for="password">Password</label>
-    <input type = 'password' ng-model="signinPassword" name="password"  required>
-  </md-input-container>
+      <md-input-container class="input">
+        <label for="password">Password</label>
+        <input type = 'password' ng-model="signinPassword" name="password"  required>
+      </md-input-container>
 
-
-  <md-button type="submit"   ng-click="signin(); hide()"  value="Login" id ='signInbtn'> sign in </md-button>
-  <md-button class="input" id = 'cancelSignin' ng-click='hide()'> cancel</md-button>
-  <p class='signuphere'> Don't have an account? Sign up <span  ng-click='hide(); showsignup()'> here! </span> </p> 
-
-
-</form>
+      <md-button type="submit"   ng-click="signin()"  value="Login" id ='signInbtn'> sign in </md-button>
+      <md-button class="input" id = 'cancelSignin' ng-click='hide()'> cancel</md-button>
+      <p class='signuphere'> Don't have an account? Sign up <span  ng-click='hide(); showsignup()'> here! </span> </p> 
+      <p ng-model='signinerror' style='color:red'> {{signinerror}}</p>
+    </form>
 </div>
 </div>
 

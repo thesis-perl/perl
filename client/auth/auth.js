@@ -29,24 +29,30 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
     // signup helper
   $scope.signupUser = function(info) {
     authFactory.signup(info).then(function(data){
+      console.log("signup user receiving this data: ", data);
+      if(data.data===false) {
+        $scope.userexists = 'The username "' + $scope.username + '" is taken, please sign up with another one.'
+      }
+      else {
       localStorage.setItem('userinfo', JSON.stringify(data.data));
       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
         if(data.data.isStudent === 1) {
           $state.go('studentDashboard');
+          $scope.hide();
         }
         else if (data.data.isTutor === 1){
          $state.go('tutorDashboard');
+         $scope.hide();
         }
       })
+    }
     });
   };
 
   //upload profile pic
   $scope.uploadFile = function(){
     var file = $scope.myFile;
-
     var prefix = Date.now()
-
     if(file) {
       var params = {Key: prefix+file.name, ContentType: file.type, Body: file};
         bucket.upload(params, function(err, data) {
@@ -59,6 +65,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
     }
   };
 
+  //signup
   $scope.signup = function(image) {
     var userInfo = {
       tutor: $scope.userChecked($scope.tutorCheckBox),
@@ -72,67 +79,68 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
       javascript: $scope.subjectChecked($scope.javascriptCheckbox),
       ruby: $scope.subjectChecked($scope.rubyCheckbox),
       python: $scope.subjectChecked($scope.pythonCheckbox)
-            };
 
+    };
 
-    //handling case when both student and tutor boxes are checked
+  //handling case when both student and tutor boxes are checked
     if($scope.studentCheckBox === true && $scope.tutorCheckBox === true) {
-          $scope.signuperror = 'you can only sign up either as a student or a tuitor';
-
+      $scope.signuperror = 'You can only sign up either as a student or a tuitor.';
     }
     //handling case when neither of student and tutor boxes is checked
     else if($scope.userChecked($scope.studentCheckBox) === 0 && $scope.userChecked($scope.tutorCheckBox) ===0) {
-      $scope.signuperror = 'please select if you are a tuitor or a student';
-
+      $scope.signuperror = 'Please select if you are a tuitor or a student.';
     }
-
     //signing up a user
     else if($scope.tutorCheckBox === true || $scope.studentCheckBox === true) {
           if($scope.subjectChecked($scope.javascriptCheckbox) === 0 && $scope.subjectChecked($scope.rubyCheckbox) === 0 && $scope.subjectChecked($scope.pythonCheckbox) === 0) {
-              $scope.signuperror= 'please select at least one subject';
+            $scope.signuperror= 'Please select at least one subject.';
           }
           else if($scope.username===undefined || $scope.fullname===undefined || $scope.password===undefined || $scope.bio===undefined || $scope.location === undefined) {
-              $scope.signuperror = 'all fields must be filled in';
+            $scope.signuperror = 'All fields must be filled in.';
           }
           else {
-
-            $scope.signupUser(userInfo);
-            $scope.hide();
-        }
+           $scope.signupUser(userInfo);
+          }
     }
-};
+ };
 
- 
-  $scope.signin = function()  {
    //sign in as user (tutor or student)
+  $scope.signin = function()  {
     var userInfo = {
       username: $scope.signinUsername,
       password: $scope.signinPassword
     };
     $scope.signinUser(userInfo);
-  }
+  };
 
   $scope.cancel = function () {
     $state.go('landing');
-  }
+  };
 
-  //user signin helper
-    $scope.signinUser = function(info) {
+   //user signin helper
+  $scope.signinUser = function(info) {
     authFactory.signin(info).then(function(data) {
-    localStorage.setItem('userinfo', JSON.stringify(data.data));
-    $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
-       if(data.data.isStudent === 1) {
-          $state.go('studentDashboard');
+      if(data.data === 'no user with this username') {
+        $scope.signinerror = 'There is no user with "' + $scope.signinUsername + '" username.';
+      }
+      else if(data.data === 'password doesn\'t match') {
+        $scope.signinerror = 'The password doesn\'t match the username.';
+      }
+      else {
+       localStorage.setItem('userinfo', JSON.stringify(data.data));
+       $scope.ref.authWithCustomToken(data.data.token, function(error, authData) {
+        if(data.data.isStudent === 1) {
+           $state.go('studentDashboard');
+           $scope.hide();
         }
         else if (data.data.isTutor === 1) {
             $state.go('tutorDashboard');
-
+             $scope.hide();
         }
-        
-      })
-    
+      });
+    }
     });
-  }
+  };
  
  //make signin and a signup a box popping up on the landing page
   $scope.status = '  ';
