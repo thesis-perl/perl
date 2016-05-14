@@ -13,8 +13,8 @@ angular.module('Perl.tutorFilter', [])
 	$scope.getAllTutors = function() {
 		tutorFactory.getAllTutors($scope.userinfo.id)
 		.then(function(data){
-
-			$scope.tutors = data;
+			console.log('data', data)
+			$scope.tutors = data.data;
 
 			for (var i=0; i<$scope.tutors.length; i++) {
 				if($scope.tutors[i].javascript === 1) {
