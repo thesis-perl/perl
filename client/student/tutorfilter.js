@@ -11,7 +11,7 @@ angular.module('Perl.tutorFilter', [])
 	//need to send data of array of all tutors
 	//need to send tutors fullname
 	$scope.getAllTutors = function() {
-		tutorFactory.getAllTutors()
+		tutorFactory.getAllTutors($scope.userinfo.id)
 		.then(function(data){
 
 			$scope.tutors = data;
