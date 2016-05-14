@@ -68,11 +68,11 @@
                     <md-content layout="column" flex ng-controller="tutorProfile">
                       <div>
                         <div class="dateTimeContent" >
-                          <md-button style="border: 2px solid orange; margin-left: 50px; margin-top: 30px; color: #585454; font-weight: bold" ng-click="showTimePicker($event)" aria-label="show picker">Time</md-button>
+                          <md-button class="time" style="border: 2px solid orange; margin-left: 50px; margin-top: 30px; color: #585454; font-weight: bold" ng-click="showTimePicker($event)" aria-label="show picker">Time</md-button>
                           
                         </div>
                         <div class="dateTimeContent">
-                          <md-button style="border: 2px solid orange; margin-left: 50px; margin-top: 30px; color: #585454; font-weight: bold " ng-click="showDatePicker($event)" aria-label="show picker">Date</md-button>
+                          <md-button class="date" style="border: 2px solid orange; margin-left: 50px; margin-top: 30px; color: #585454; font-weight: bold " ng-click="showDatePicker($event)" aria-label="show picker">Date</md-button>
 
                         </div>
                         <p style="height: 20px">
@@ -83,7 +83,7 @@
                      
                     
                      
-                        <md-button  ng-disabled="isDisabledRequest" style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; width: 45%; font-weight: bold; margin-left: 45px;" ng-click="requestSession()">Request Session
+                        <md-button  ng-disabled="isDisabledRequest" style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; width: 45%; font-weight: bold; margin-left: 45px;" class='request' ng-click="requestSession()">Request Session
                         </md-button>
                         <md-button style="border: 2px solid orange; float:right; font-size: 20px; color: #585454; font-weight: bold; width: 45%; margin-left: 45px;" ng-hide="hidden" ng-disabled="isDisabled"><a  style = 'text-decoration: none; color: #585454 ' ui-sref="session({link: item.id})">Start Session</a>
                          </md-button>
