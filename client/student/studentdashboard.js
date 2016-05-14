@@ -1,7 +1,13 @@
 angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'ngMessages', 'material.svgAssetsCache'])
 
 .controller('studentDashboard',function($mdMedia, $mdDialog, $scope, $state, $rootScope, studentFactory, authFactory, tutorFactory){
-	$scope.invitedTutors = [];
+	//testing
+  $scope.sum = function() {
+    $scope.z = $scope.x + $scope.y;
+  };
+
+
+  $scope.invitedTutors = [];
   $scope.acceptedTutors = [];
   $scope.tutorHistory = [];
   $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
