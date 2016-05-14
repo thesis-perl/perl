@@ -27,28 +27,28 @@ left: 30px;
     background-repeat: none;
     opacity: 0;
     z-index: 0;
-    animation: imageAnimation 30s linear infinite 0s; 
+    animation: imageAnimation 30s linear infinite 0s;
 }
 
-.slideshow li:nth-child(1) span { 
+.slideshow li:nth-child(1) span {
     background-image: url(../assests/F15.jpg);
-    animation-delay: 0s; 
+    animation-delay: 0s;
 }
 
-.slideshow li:nth-child(2) span { 
+.slideshow li:nth-child(2) span {
     background-image: url(../assests/landing3.jpg);
-    animation-delay: 5s; 
+    animation-delay: 5s;
 }
-.slideshow li:nth-child(3) span { 
+.slideshow li:nth-child(3) span {
     background-image: url(../assests/landing4.jpg);
-    animation-delay: 10s; 
+    animation-delay: 10s;
 }
-.slideshow li:nth-child(4) span { 
+.slideshow li:nth-child(4) span {
     background-image: url(../assests/landing5.jpg);
-    animation-delay: 15s; 
+    animation-delay: 15s;
 }
 
-@keyframes imageAnimation { 
+@keyframes imageAnimation {
     0% { opacity: 0; animation-timing-function: ease-in; }
     8% { opacity: 1; animation-timing-function: ease-out; }
     17% { opacity: 1 }
@@ -135,8 +135,8 @@ label {
                 0px 1px 0px 0px rgba(250, 250, 250, 0.5) ;
 }
 .loginform input[type=submit] {
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    background: #64c8ef; /* Old browsers */
+    border: 10px solid rgba(0, 0, 0, 0.3);
+    background: #64c8ef;
     background: -moz-linear-gradient(top,  #64c8ef 0%, #00a2e2 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#64c8ef), color-stop(100%,#00a2e2)); /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top,  #64c8ef 0%,#00a2e2 100%); /* Chrome10+,Safari5.1+ */
@@ -234,8 +234,8 @@ margin-top: 0;
 
 .signUp, .signIn {
   width: 470px;
-  color: #5C4F3E;
-  background-color: #E6DCD1;
+  color: #666f77;
+  background-color: white;
   height: 100%;
   padding: 20px;
   margin: 0 auto;
@@ -258,6 +258,10 @@ margin-top: 0;
   color: #5E493E;
 }
 
+.signups {
+  display:inline-block !important;
+}
+
 #signUpbtn, #cancelSignup, #signInbtn, #cancelSigin{
 
   background-color: #4d4d4d ;
@@ -275,7 +279,7 @@ margin-top: 0;
   margin-top: 13px;
   height: 40px;
   color: white;
-  background-color: #5C4F3E;
+  background-color: #597D78;
 
 }
 
