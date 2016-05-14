@@ -5,10 +5,8 @@ angular.module('Perl.tutorFilter', [])
 	var user = JSON.parse(localStorage.getItem('userinfo'));
 	$scope.selectedItem;
 	$scope.language;
-	// $scope.tutors = [];
+	$scope.tutors = [];
 	$scope.userinfo = user;
-
-
 
 	//need to send data of array of all tutors
 	//need to send tutors fullname

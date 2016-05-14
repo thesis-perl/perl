@@ -6,12 +6,11 @@ describe('tutorFilter module', function () {
   	'tutorFactory': {
   		 	getAllTutors: function() {
   		 	return new Promise(function(resolve, reject) {
-  		 		return "hello"
+  		 		return { data: [{id: 2, fullname: "Tom Jackson"}, {id: 276, fullname: "Stephanie Jones"}] };
   		 	});
   		 }
   	}
   }));
-//{ data: [{id: 2, fullname: "Tom Jackson"}, {id: 276, fullname: "Stephanie Jones"}] };
   var $controller;
 
   beforeEach(inject(function(_$controller_){
@@ -24,7 +23,7 @@ describe('tutorFilter module', function () {
   		var controller = $controller('tutorFilter', {$scope: $scope});
   		$scope.getAllTutors();
   		console.log('totor', $scope.tutors)
-  		expect($scope.tutors).not.toBe(null);
+  		expect($scope.tutors).not.toBe(undefined);
   	});
 
   });
