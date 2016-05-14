@@ -33,18 +33,6 @@ angular.module('Perl.services', ['btford.socket-io'])
     return $http.get('/api/student_dashboard/', { headers: { 'id': id } });
   };
 
-  // var getAcceptedTutors = function(id) {
-  //   return $http.get('/api/student_dashboard/accepted', { headers: { 'id': id } });
-  // }
-
-  // var getCancelledTutors = function(id) {
-  //   return $http.get('/api/student_dashboard/cancelled', { headers: { 'id': id } });
-  // }
-
-  // var getFinishedTutors = function(id) {
-  //   return $http.get('/api/student_dashboard/finished', { headers: { 'id': id } });
-  // }
-
   var getTutorInfo = function (tutorInfo, sid) {
     return $http.get('/api/filter_tutor/info',{ headers: { 'tid': tutorInfo.tutorId, 'sid': sid }});
   };
@@ -64,9 +52,6 @@ angular.module('Perl.services', ['btford.socket-io'])
   return {
     getTutorId: getTutorId,
     getAllStatusTutors: getAllStatusTutors,
-    // getAcceptedTutors: getAcceptedTutors,
-    // getCancelledTutors: getCancelledTutors,
-    // getFinishedTutors: getFinishedTutors,
     getTutorInfo: getTutorInfo,
     cancelInvitation: cancelInvitation,
     cancelSession: cancelSession,
@@ -88,9 +73,6 @@ angular.module('Perl.services', ['btford.socket-io'])
   var getFavorites = function(sid){
     return $http.get('/api/fav_tutor', {headers: {sid: sid}});
   }
-  // var findTutorsByLanguage = function(language) {
-  //   return $http.get('/api/filter_tutor/search_language', { headers: {'sid': sid}})
-  // }
 
   var getInvitedStudents = function(id) {
     return $http.get('/api/tutor_dashboard/invited', { headers: {'id': id }});
@@ -126,12 +108,6 @@ angular.module('Perl.services', ['btford.socket-io'])
     };
     $http.put('api/reject_invite', ids);
   };
-
-  // var startSession = function(code){
-
-  //   //return $http.get('/startsession', {headers: {'code': code}})
-
-  // };
 
   var cancelSession = function(tutorId, studentId) {
     $http.put('/api/cancel_session', {'tid': tutorId, 'sid': studentId});

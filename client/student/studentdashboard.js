@@ -1,11 +1,6 @@
 angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'ngMessages', 'material.svgAssetsCache'])
 
 .controller('studentDashboard',function($mdMedia, $mdDialog, $scope, $state, $rootScope, studentFactory, authFactory, tutorFactory){
-	//testing
-  $scope.sum = function() {
-    $scope.z = $scope.x + $scope.y;
-  };
-
 
   $scope.invitedTutors = [];
   $scope.acceptedTutors = [];
@@ -57,27 +52,6 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
   	})
   }
 
-  // $scope.getAcceptedTutors = function() {
-  // 	studentFactory.getAcceptedTutors($scope.userinfo.id)
-  // 	.then(function(data){
-  // 		$scope.acceptedTutors = data.data;
-  // 	})
-  // }
-
-  // $scope.getCancelledTutors = function() {
-  //   studentFactory.getCancelledTutors($scope.userinfo.id)
-  //   .then(function(data) {
-  //     $scope.cancelledTutors = data.data;
-  //   })
-  // }
-
-  // $scope.getFinishedTutors = function() {
-  //   studentFactory.getFinishedTutors($scope.userinfo.id)
-  //   .then(function(data) {
-  //     $scope.finishedTutors = data.data;
-  //   })
-  // }
-
   $scope.findTutors = function() {
   	$state.go('tutorFilter');
   }
@@ -117,7 +91,4 @@ angular.module('Perl.studentDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 
   }
 
   $scope.getAllStatusTutors();
-  // $scope.getAcceptedTutors();
-  // $scope.getCancelledTutors();
-  // $scope.getFinishedTutors();
 })

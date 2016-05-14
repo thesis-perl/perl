@@ -16,9 +16,11 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'bower_components/angular/angular.min.js',
+      'bower_components/angular-socket-io/socket.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      'student/studentDashboard.js',
-      'testing/studentDashboardSpec.js'
+      'app/services.js',
+      'student/tutorfilter.js',
+      'testing/tutorfilterSpec.js'
     ],
 
 
