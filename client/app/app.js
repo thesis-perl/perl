@@ -10,7 +10,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
       if(authData) {
       } else {
         // event.preventDefault();
-        //$state.go('signin');
+        $state.go('landing');
       }
     })
   }
@@ -25,7 +25,6 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     $rootScope.ref.unauth();
     localStorage.removeItem('userinfo');
     $state.go('landing');
-
 	}
 })
 
