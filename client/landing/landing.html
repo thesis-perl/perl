@@ -1,31 +1,89 @@
-<div id='landingPage'>
+<html>
+<head>
+  <title>Codify</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <link rel="stylesheet" href="../styles/landing.css" />
+  <link rel="stylesheet" href="../styles/skel.css" />
+  <!-- <link href="./styles/style.css" rel="stylesheet"> -->
+</head>
+<body id="top">
+  <!-- Header -->
+  <header id="header" class="skel-layers-fixed">
+    <h1><a href="#">Codify</a></h1>
+  </header>
 
-  <ul class="slideshow">
-	 <li><span></span></li>
-	  <li><span></span></li>
-	 <li><span></span></li>
-	 <li><span></span></li>
-
-  </ul>
-
-  <div class="landing" ng-controller="landing">
-  <div class='landingheader'>
-    <img class='ourLogo' src="../assests/logo3.png">
-    <md-button  ng-controller='authentication' ng-click='showsignin()' class='landSignin'> sign in </md-button>
-    <md-button ng-controller = 'authentication' ng-click='showsignup()'class='landSignup'> sign up </md-button>
-   </div>
-    <div class='landingbody'> 
-    <h1> Learn to Cod<span>i</span>fy </h1>
-    <p> One-on-one tutoring to take you to the next level in programming</p>
+  <!-- Banner -->
+  <section id="banner">
+    <div class="bannerBg"></div>
+    <div class="inner">
+      <h2>Codify</h2>
+      <p>Learn to code on your own time</p>
+      <ul class="actions">
+        <li><a class="button big special signup" ng-controller='authentication' ng-click="showsignin()"> Sign In </a></li>
+        <li><a class="button big alt" ng-controller='authentication' ng-click="showsignup()"> Sign Up </a></li>
+      </ul>
     </div>
-  </div>
-</div>
+  </section>
 
+  <!-- One -->
+  <section id="one" class="wrapper style1">
+    <header class="major">
+      <h2>A tutoring platform catered to you</h2>
+      <p>Your resource for live coding instruction</p>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="4u">
+          <section class="special box">
+            <i class="icon fa-area-chart major"></i>
+            <h3>Choose your Language</h3>
+            <p>Learn Javascript, Python or Ruby at your own pace.</p>
+          </section>
+        </div>
+        <div class="4u">
+          <section class="special box">
+            <i class="icon fa-refresh major"></i>
+            <h3>Choose your own tutor</h3>
+            <p>No matter your difficulty level, qualified instructors are readily available to assist you.</p>
+          </section>
+        </div>
+        <div class="4u">
+          <section class="special box">
+            <i class="icon fa-cog major"></i>
+            <h3>One on One instruction</h3>
+            <p>Supplement your learning experience with our video chat and live code sharing wall.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
 
-
-
-
-
-
-
-
+  <!-- Two -->
+  <section id="two" class="wrapper style2">
+    <header class="major">
+      <h2>Coding for Everyone</h2>
+      <p>Amet nisi nunc lorem accumsan</p>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="6u">
+          <section class="special">
+            <a href="#" class="image fit"><img src="../assests/laptopCoffee.jpg" alt="" /></a>
+            <h3>Mollis adipiscing nisl</h3>
+            <p>Eget mi ac magna cep lobortis faucibus accumsan enim lacinia adipiscing metus urna adipiscing cep commodo id. Ac quis arcu amet. Arcu nascetur lorem adipiscing non faucibus odio nullam arcu lobortis. Aliquet ante feugiat. Turpis aliquet ac posuere volutpat lorem arcu aliquam lorem.</p>
+          </section>
+        </div>
+        <div class="6u">
+          <section class="special">
+            <a href="#" class="image fit"><img src="../assests/CodingSnippet.jpg" alt="" /></a>
+            <h3>Neque ornare adipiscing</h3>
+            <p>Eget mi ac magna cep lobortis faucibus accumsan enim lacinia adipiscing metus urna adipiscing cep commodo id. Ac quis arcu amet. Arcu nascetur lorem adipiscing non faucibus odio nullam arcu lobortis. Aliquet ante feugiat. Turpis aliquet ac posuere volutpat lorem arcu aliquam lorem.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
