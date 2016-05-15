@@ -9,6 +9,7 @@
 /server/node_modules
 
 /client/bower_components
+/client/node_modules
 
 npm-debug.log
 
