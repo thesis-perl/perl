@@ -40,6 +40,10 @@
 
 	<!-- tutors list -->
 	<div layout-padding layout="column">
+		<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!favorites.length">
+			<div style="margin: 30px">You don't have favorite tutors yet!</div>
+			<md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
+		</div>
 		<div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-repeat="tutor in favorites">
 			<!-- image -->
 			<div flex="15" style="text-align: center; padding-top: 15px">
