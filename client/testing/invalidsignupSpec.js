@@ -6,7 +6,7 @@ describe('SignUp', function() {
     browser.get('http://localhost:8000/#/');
 
     //select signup to load signup modal overlay
-    element(by.css('.landSignup')).click();
+    element(by.css('[ng-click="showsignup()"]')).click();
 
     // fills in username but not password
     element(by.model('username')).sendKeys('wingz');

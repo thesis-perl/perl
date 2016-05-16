@@ -5,7 +5,7 @@ describe('Login', function() {
     browser.get('http://localhost:8000/#/');
 
     //select signup to load signup modal overlay
-    element(by.css('.landSignin')).click();    
+    element(by.css('[ng-click="showsignin()"]')).click();
 
     // fills in the sign in form fields (user is a student)
     element(by.model('signinUsername')).sendKeys('fish');
