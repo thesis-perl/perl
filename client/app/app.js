@@ -123,8 +123,28 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/');
 
+  var customPrimary = {
+          '50': '#597D78',
+          '100': '#597D78',
+          '200': '#597D78',
+          '300': '#597D78',
+          '400': '#597D78',
+          '500': '#597D78',
+          '600': '#597D78',
+          '700': '#597D78',
+          '800': '#597D78',
+          '900': '#597D78',
+          'A100': '#597D78',
+          'A200': '#597D78',
+          'A400': '#597D78',
+          'A700': '#597D78'
+      };
+      $mdThemingProvider
+          .definePalette('customPrimary', 
+                          customPrimary);
+
   $mdThemingProvider.theme('default')
-  .primaryPalette('blue-grey')
+  .primaryPalette('customPrimary')
   .accentPalette('orange');
 
   $mdDateLocaleProvider.formatDate = function(date) {

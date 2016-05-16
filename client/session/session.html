@@ -1,11 +1,44 @@
+<div>
+<div ng-cloak>
+    <md-content>
+      <md-toolbar>
+        <div class="md-toolbar-tools" >
+        <!-- logo -->
+          <h2>
+            <span>Codify</span>
+          </h2>
+          <span flex></span>
+          <!-- menu button -->
+          <span style="font-size: .8em">Welcome, {{user.fullname}}!</span>
+          <md-menu md-offset="0 50">
+            <md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
+              <md-icon md-svg-icon="../assests/list.svg" style="color:white"></md-icon>
+            </md-button>
+            <md-menu-content width="2">
+              <md-menu-item>
+                <md-button ng-click="">
+                  <div ng-click="endSession()">End Session</div>
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="signOutUser()">
+                  <div id="signOut">Sign Out</div>
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </div>
+      </md-toolbar>
+    </md-content>
+  </div><!-- close ng-cloak -->
+
+
 <div id='session' data-ng-init="loadVideo()">
-  <div class='sessionHeader'>
-    <h1>Session Header</h1>
-  </div>
   <div class='sessionBody'>
     <md-toast>
     </md-toast>
     <br>
+    <h2 class="edit">Edit your code here!</h2>
     <div class="codeDiv">
       <div ui-codemirror="cmOption" ng-model="sharedCode" ng-keydown="change(); typingUpdate()" id='codeDiv'>{{sharedCode}}</div>
       <div class='chooselanguage'>
@@ -31,20 +64,22 @@
         </div>
       </div>
       <div class="chatRoomSession">
-        <div>
-          <div>
-            <h1>Chatroom</h1>
+        <div class="chatRoom">
+          <div class="chatSession">
+            <div>
+              <h1>Chatroom</h1>
+            </div>
+            <div>
+              <ul class="chatMsg">
+                <li ng-repeat="msg in messages">
+                  <strong>{{msg.from}}: </strong>{{msg.body}}
+                </li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <ul class="chatMsg">
-              <li ng-repeat="msg in messages">
-                <strong>{{msg.from}}: </strong>{{msg.body}}
-              </li>
-            </ul>
+          <div class="messageSession">
+            <input ng-model="msg" ng-keydown="newMessage($event)" type="text" class="inputBoxSession" placeholder="Type a message...">
           </div>
-        </div>
-        <div class="messageSession">
-          <input ng-model="msg" ng-keydown="newMessage($event)" type="text" id="messageInput" class="inputBoxSession" placeholder="Type a message...">
         </div>
       </div>
     </div>
@@ -52,4 +87,5 @@
     <br>
     <br>
   </div>
+</div>
 </div>
