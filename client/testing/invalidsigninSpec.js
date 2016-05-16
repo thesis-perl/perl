@@ -2,7 +2,10 @@ describe('Login', function() {
   it('should not let user sign in if missing field or provides incorrect info', function() {
     // navigates to the sign in page
     browser.ignoreSynchronization = true;
-    browser.get('http://localhost:8000/#/signin');
+    browser.get('http://localhost:8000/#/');
+
+    //select signup to load signup modal overlay
+    element(by.css('[ng-click="showsignin()"]')).click();    
 
     // fills in username but not password
     element(by.model('signinUsername')).sendKeys('fish');

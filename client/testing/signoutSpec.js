@@ -2,7 +2,10 @@ describe('Login ', function() {
   it('should successfully sign a user out', function() {
     // navigates to the sign in page
     browser.ignoreSynchronization = true;
-    browser.get('http://localhost:8000/#/signin');
+    browser.get('http://localhost:8000/#/');
+
+    //select signup to load signup modal overlay
+    element(by.css('[ng-click="showsignin()"]')).click();    
 
     // fills in the sign in form fields
     element(by.model('signinUsername')).sendKeys('fish');
@@ -32,7 +35,7 @@ describe('Login ', function() {
     // waits for page to load and checks that the browser redirects to sign in
     browser.sleep(2000);    
 
-    // checks that the url is the sign in page
-    expect(browser.getCurrentUrl()).toEqual('http://localhost:8000/#/signin');    
+    // checks that the url is the landing page
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:8000/#/');    
   })
 });

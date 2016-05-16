@@ -2,7 +2,10 @@ describe('Login', function() {
   it('should successfully sign a user in', function() {
     // navigates to the sign in page
     browser.ignoreSynchronization = true;
-    browser.get('http://localhost:8000/#/signin');
+    browser.get('http://localhost:8000/#/');
+
+    //select signup to load signup modal overlay
+    element(by.css('[ng-click="showsignin()"]')).click();    
 
     // fills in the sign in form fields (user is a student)
     element(by.model('signinUsername')).sendKeys('fish');
