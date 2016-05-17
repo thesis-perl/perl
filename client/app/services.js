@@ -211,6 +211,7 @@ angular.module('Perl.services', ['btford.socket-io'])
       // display an alert message
       alert( error.text + " (" + error.code + ")" );
     } );
+  var user = JSON.parse(localStorage.getItem('userinfo'));
 
     // when the user has joined a room
     bc.signaling.bind( "onJoinedRoom", function ( data ) {
