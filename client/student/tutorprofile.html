@@ -42,59 +42,50 @@
           <md-tab label="{{name}}'s profile">
             <!-- <md-content class="md-padding"> -->
             <md-content flex layout="row" layout-align="left">
-                <!-- <md-content flex="100" ng-cloak > -->
-                  <!-- <div flex="85"  style='margin: 0; width: 80%;'> -->
-
               <!-- tutor profile -->
-              <div flex="40" style="background-color:#363B3F; width: 40%; padding: 35px; color: #ccc; text-align: center">
+              <div flex="35" style="background-color:#363B3F; width: 40%; padding: 35px; color: #ccc; text-align: center">
                 <img ng-src="{{img}}" style="width: 100px; border-radius:100%; margin: auto, 10px;" alt="image caption">
 
                 <p style='font-weight: bold; font-size: 30px'>{{name}}</p>
                    <span> <ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{loc}} </span>
                 <p style="margin-top: 25px; font-size: 18px; padding: 0; text-align: left">{{bio}}</p>
               </div> 
-
-              <div flex="60">
-               <p style="font-weight: bold; font-size: 20px; padding: 2px 50px; border-radius: 5px; color: #585454"> Topics we can cover during the session </p>
-              <div layout-align='center' style="padding-left: 50px">
-                <span  ng-if='javascript===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; font-size: 18px; color: #3C3636; margin-right: 10px;">Javascript</span>
-                <span ng-if='python===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; color:#3C3636; font-size: 18px; margin-right: 10px;">Python</span>
-                <span ng-if='ruby===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; color: #3C3636; font-size: 18px; margin-right: 10px;">Ruby</span>
-              </div>
-              <br>
-              <br>
-              <md-content layout="column" flex ng-controller="tutorProfile">
-                <div style="width: 70%">
-                  <div class="dateTimeContent" style=' margin-left: 18%'>
-                    <md-button class="time" style="border: 2px solid orange; margin-left: 50px; margin-top: 30px; color: #585454; font-weight: bold;" ng-click="showTimePicker($event)" aria-label="show picker">Time</md-button>
-                    
+              <!-- book session -->
+              <div flex="65" style="margin-left: 100px">
+                <div>
+                  <p style="font-weight: bold; font-size: 20px; color: #585454"> Topics we can cover during the session </p>
+                  <div style="height: 30px">
+                    <span  ng-if='javascript===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; font-size: 18px; color: #3C3636; margin-right: 10px;">Javascript</span>
+                    <span ng-if='python===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; color:#3C3636; font-size: 18px; margin-right: 10px;">Python</span>
+                    <span ng-if='ruby===1'class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px; color: #3C3636; font-size: 18px; margin-right: 10px;">Ruby</span>
                   </div>
-                  <div class="dateTimeContent">
-                    <md-button class="date" style="border: 2px solid orange; margin-left: 50px; margin-top: 30px; color: #585454; font-weight: bold " ng-click="showDatePicker($event)" aria-label="show picker">Date</md-button>
-
-                  </div>
-                  <p style="height: 20px">
-                     <span style ='margin-left: 28%; font-weight: bold'> {{ currentTime | date:'HH:mm' }} </span>  <span style ='margin-left: 100px; font-weight: bold'>{{ currentDate | date:'shortDate' }} </span>
-                    </p>
-                    
-               </div>
-               
-              
-               
-                  <md-button  ng-disabled="isDisabledRequest" style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; width: 45%; font-weight: bold; margin-left: 5%; margin-bottom: 20px" class='request' ng-click="requestSession()">Request Session
-                  </md-button>
-
-                  <md-button style="border: 2px solid orange; float:right; font-size: 20px; color: #585454; font-weight: bold; width: 45%; margin-left: 5%;" ng-hide="hidden" ng-disabled="isDisabled"><a style = 'text-decoration: none; color: #585454 ' ui-sref="session({link: item.id})">Start Session</a>
-
-                   </md-button>
-                   <p ng-model='picktime' style="color:red">{{picktime}}</p>
                 </div>
+                <md-content layout="column" flex>
+                  <div style="margin-top: 50px; margin-left: -8px">
+                      <div class="dateTimeContent">
+                        <md-button class="time" style="border: 2px solid orange; color: #585454; font-weight: bold;" ng-click="showTimePicker($event)" aria-label="show picker">Time</md-button>
+                        
+                      </div>
+                      <div class="dateTimeContent">
+                        <md-button class="date" style="border: 2px solid orange; color: #585454; font-weight: bold " ng-click="showDatePicker($event)" aria-label="show picker">Date</md-button>
 
-              
-              </md-content>
-                  <!-- </div> -->
-                <!-- </md-content> -->
-              <!-- </md-content> -->
+                      </div>
+                      <p style="height: 20px">
+                         <span style ='font-weight: bold; padding-left: 35px'> {{ currentTime | date:'HH:mm' }} </span>  <span style ='margin-left: 58px; font-weight: bold'>{{ currentDate | date:'shortDate' }} </span>
+                        </p>          
+                  </div>
+                  <div>       
+                      <md-button  ng-disabled="isDisabledRequest" style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; width: 45%; font-weight: bold; margin-bottom: 20px" class='request' ng-click="requestSession()">Request Session
+                      </md-button>
+
+                      <md-button style="border: 2px solid orange; float:right; font-size: 20px; color: #585454; font-weight: bold; width: 45%;" ng-hide="hidden" ng-disabled="isDisabled"><a style = 'text-decoration: none; color: #585454 ' ui-sref="session({link: item.id})">Start Session</a>
+
+                       </md-button>
+                       <p ng-model='picktime' style="color:red">{{picktime}}</p>
+                  </div>     
+                </md-content>
+              </div>
+
             </md-content>
           </md-tab>
           <md-tab label="{{name}}'s reviews">
