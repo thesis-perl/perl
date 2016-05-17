@@ -29,7 +29,7 @@ knex.schema.createTableIfNotExists('users', function (user) {
   user.integer('python');
   // for all integer, 0: false, 1: true
 }).then(function() {
-  console.log('tutor table created');
+  console.log('users table created');
 });
 
 knex.schema.createTableIfNotExists('studentutor', function(join) {
@@ -46,6 +46,17 @@ knex.schema.createTableIfNotExists('studentutor', function(join) {
   join.foreign('tid').references('id').inTable('users');
 }).then(function() {
  console.log('invited join table created');
+});
+
+knex.schema.createTableIfNotExists('reviews', function(join) {
+  join.increments('ID').primary();
+  join.integer('sid').unsigned();
+  join.integer('tid').unsigned();
+  join.varchar('review');
+  join.foreign('sid').references('id').inTable('users');
+  join.foreign('tid').references('id').inTable('users');
+}).then(function() {
+ console.log('reviews join table created');
 });
 
 module.exports = {

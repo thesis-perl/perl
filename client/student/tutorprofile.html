@@ -22,11 +22,6 @@
                 </md-button>
               </md-menu-item>
               <md-menu-item>
-                <md-button ng-click="">
-                  <div>Profile</div>
-                </md-button>
-              </md-menu-item>
-              <md-menu-item>
                 <md-button ng-click="signOutUser()">
                   <div id="signOut">Sign Out</div>
                 </md-button>
@@ -96,8 +91,32 @@
               </md-content>
             </md-content>
           </md-tab>
+          <md-tab label="{{name}}'s reviews">
+            <div layout="column">
+              <!-- show if no review -->
+              <div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!reviews.length">
+                <div style="margin: 30px">Tutor {{name}} has no review yet!</div>
+                <md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
+              </div>
+              <!-- show if has reviews -->
+              <div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-repeat="review in reviews" ng-if="reviews.length">
+                <div flex="15" style="text-align: center; padding-top: 15px">
+                  <img ng-src="{{review.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
+                  <p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{review.location}}</p>
+                </div>
+                <!-- bio -->
+                <div flex="85" >
+                  <p>{{review.fullname}}</p>
+                  <p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
+                  <p>{{review.review}}</p>
+                </div>
+              </div>
+            </div>
+          </md-tab>
         </md-tabs>
       </md-content>
     </div>
   </div>
 </div>
+
+

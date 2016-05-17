@@ -6,11 +6,11 @@
 				<div class="md-toolbar-tools" >
 				<!-- logo -->
 					<h2>
-						<span>Codify</span>
+						<span id="logo" style="display: inline-block; background-color: #fff; width: 80px; border-radius: 20px; color: #597D78; font-weight: bold; text-align: center; margin-left: 80px">Codify</span>
 					</h2>
 					<span flex></span>
-					<!-- menu button -->
-					<span style="font-size: .8em">Welcome, {{userinfo.fullname}}!</span>
+					<!-- right top menu button -->
+					<span style="font-size: .8em; color: #fff">Welcome, {{userinfo.fullname}}!</span>
 					<md-menu md-offset="0 50">
 						<md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
 							<md-icon md-svg-icon="../assests/list.svg" style="color:white"></md-icon>
@@ -39,24 +39,27 @@
 	</div><!-- close ng-cloak -->
 
 	<div class="container" layout="row" flex layout="vertical" layout-fill>
-		<!-- Sidenav -->
+		<!-- Sidebar for user info -->
 		<div flex="20" style="background-color:#363B3F; height: 100vw; color: #ccc; text-align: center" layout-fill>
 			<br>
 			<br>
+			<!-- user image -->
 			<center><img ng-src="{{userinfo.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%"></center>
 			<md-card-content>
 				<p>{{userinfo.fullname}}</p>
 			</md-card-content>
+			<!-- user location -->
 			<md-card-footer>
 				<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{userinfo.location}}</p>
 			</md-card-footer>
+			<!-- user bio -->
 			<md-card-footer style="padding: 20px; text-align: center">
 				<p>My Bio</p>
 				<p>{{userinfo.bio}}</p>
 			</md-card-footer>
 			<md-button class="md-accent" ng-click="findTutors()">Find Tutors</md-button>
 		</div>
-	<!-- content -->
+	<!-- main content -->
 	<div flex="80">
 		<md-content>
 			<h1 style="color:#363B3F; padding-left:20px">Dashboard</h1>
@@ -64,93 +67,105 @@
 				<md-tab label="Invited Tutors">
 
 					<div layout="column">
+						<!-- shows if no invited tutors -->
 						<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!invitedTutors.length">
 							<div style="margin: 30px">You haven't invited any tutors yet!</div>
 							<md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
 						</div>
+						<!-- shows if has invited tutors -->
 						<div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-if="invitedTutors.length" ng-repeat="tutor in invitedTutors" flex="100">
 							<!-- image -->
 							<div flex="15" style="text-align: center; padding-top: 15px">
-							<img ng-src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
-							<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
-						</div>
-						<!-- bio -->
-						<div flex="85" >
-							<p>{{tutor.fullname}}
-								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red" ng-if="tutor.fav == 0" ng-click="tutor.fav = !tutor.fav; addFavorite(tutor.id)"></ng-md-icon><ng-md-icon icon="favorite" size="18px" style="fill:red" ng-if="tutor.fav == 1" ng-click="tutor.fav = !tutor.fav; deleteFavorite(tutor.id)"></ng-md-icon></span>
-								<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none; color: #222">View Profile</a></md-button>
-						    <md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getTutorId(tutor.id)">Chat</md-button>
-								<md-button style="border: 2px solid orange; float:right" ng-click="cancelInvitation(tutor.id)">Cancel</md-button>
-							</p>
-							<p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
-							<p><span>date: {{tutor.date | limitTo: 10}} | time: {{tutor.time}}</span></p>
-							<p>
-								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.javascript === 1">Javascript</span>
-								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.python === 1">Python</span>
-								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.ruby === 1">Ruby</span>
-							</p>
-						</div>
+								<img ng-src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
+								<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{tutor.location}}</p>
+							</div>
+							<!-- bio -->
+							<div flex="85" >
+								<p>{{tutor.fullname}}
+									<!-- favorite or unfavorite tutor button -->
+									<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red" ng-if="tutor.fav == 0" ng-click="tutor.fav = !tutor.fav; addFavorite(tutor.id)"></ng-md-icon><ng-md-icon icon="favorite" size="18px" style="fill:red" ng-if="tutor.fav == 1" ng-click="tutor.fav = !tutor.fav; deleteFavorite(tutor.id)"></ng-md-icon></span>
+									<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none; color: #222">View Profile</a></md-button>
+							    <md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getTutorId(tutor.id)">Chat</md-button>
+									<md-button style="border: 2px solid orange; float:right" ng-click="cancelInvitation(tutor.id)">Cancel</md-button>
+								</p>
+								<p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
+								<p><span>date: {{tutor.date | limitTo: 10}} | time: {{tutor.time}}</span></p>
+								<p>
+									<!-- display languages -->
+									<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.javascript === 1">Javascript</span>
+									<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.python === 1">Python</span>
+									<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.ruby === 1">Ruby</span>
+								</p>
+							</div>
 					</div>
 				</md-tab>
 				<md-tab label="Scheduled Tutors">
 					<div layout="column">
+						<!-- shows if no scheduled tutors -->
 						<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!acceptedTutors.length">
 							<div style="margin: 30px">You haven't scheduled any tutor yet!</div>
 							<md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
 						</div>
+						<!-- shows if has scheduled tutors -->
 						<div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-if="acceptedTutors.length" ng-repeat="tutor in acceptedTutors">
 							<!-- image -->
 							<div flex="15" style="text-align: center; padding-top: 15px">
-							<img ng-src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
-							<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
+								<img ng-src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
+								<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
+							</div>
+							<!-- bio -->
+							<div flex="85" >
+								<p>{{tutor.fullname}}
+									<!-- favorite or unfavorite tutor button -->
+									<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red" ng-if="tutor.fav == 0" ng-click="tutor.fav = !tutor.fav; addFavorite(tutor.id)"></ng-md-icon><ng-md-icon icon="favorite" size="18px" style="fill:red" ng-if="tutor.fav == 1" ng-click="tutor.fav = !tutor.fav; deleteFavorite(tutor.id)"></ng-md-icon></span>
+									<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none; color: #222">View Profile</a></md-button>
+							    <md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getTutorId(tutor.id)">Chat</md-button>
+									<md-button style="border: 2px solid orange; float:right" ng-click="getTutorId(tutor.id)"><a ui-sref="session({link: tutor.id})" style="text-decoration: none; color: #222">Start</a></md-button>
+									<md-button style="border: 2px solid orange; float:right" ng-click="cancelSession(tutor.id)">Cancel</md-button>
+								</p>
+								<p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
+								<p><span>date: {{tutor.date | limitTo: 10}} | time: {{tutor.time}}</span></p>
+								<p>
+									<!-- display languages -->
+									<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.javascript === 1">Javascript</span>
+									<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.python === 1">Python</span>
+									<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.ruby === 1">Ruby</span>
+								</p>
+							</div>
 						</div>
-						<!-- bio -->
-						<div flex="85" >
-							<p>{{tutor.fullname}}
-								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red" ng-if="tutor.fav == 0" ng-click="tutor.fav = !tutor.fav; addFavorite(tutor.id)"></ng-md-icon><ng-md-icon icon="favorite" size="18px" style="fill:red" ng-if="tutor.fav == 1" ng-click="tutor.fav = !tutor.fav; deleteFavorite(tutor.id)"></ng-md-icon></span>
-								<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none; color: #222">View Profile</a></md-button>
-						    <md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getTutorId(tutor.id)">Chat</md-button>
-								<md-button style="border: 2px solid orange; float:right" ng-click="getTutorId(tutor.id)"><a ui-sref="session({link: tutor.id})" style="text-decoration: none; color: #222">Start</a></md-button>
-								<md-button style="border: 2px solid orange; float:right" ng-click="cancelSession(tutor.id)">Cancel</md-button>
-							</p>
-							<p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
-							<p><span>date: {{tutor.date | limitTo: 10}} | time: {{tutor.time}}</span></p>
-							<p>
-								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.javascript === 1">Javascript</span>
-								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.python === 1">Python</span>
-								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.ruby === 1">Ruby</span>
-							</p>
-						</div>
-					</div>
 				</md-tab>
 				<md-tab label="Tutor History">
 					<div layout="column">
+						<!-- shows if no tutor history -->
 						<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!tutorHistory.length">
 							<div style="margin: 30px">You don't have any tutor history!</div>
 							<md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
 						</div>
+						<!-- shows if has tutor history -->
 						<div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-if="tutorHistory.length" ng-repeat="tutor in tutorHistory">
 							<!-- image -->
 							<div flex="15" style="text-align: center; padding-top: 15px">
-							<img ng-src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
-							<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
-						</div>
-						<!-- bio -->
-						<div flex="85" >
-							<p>{{tutor.fullname}}
-								<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red" ng-if="tutor.fav == 0" ng-click="tutor.fav = !tutor.fav; addFavorite(tutor.id)"></ng-md-icon><ng-md-icon icon="favorite" size="18px" style="fill:red" ng-if="tutor.fav == 1" ng-click="tutor.fav = !tutor.fav; deleteFavorite(tutor.id)"></ng-md-icon></span>
-								<span ng-if="tutor.status == 5" style="background: red; color: white; padding: 5px; margin-left: 10px;border-radius: 5px">Rejected</span><span ng-if="tutor.status == 3" style="background: orange; color: white; padding: 5px; margin-left: 10px;border-radius: 5px">Cancelled</span><span ng-if="tutor.status == 4" style="background: grey; color: white; padding: 5px; padding-left: 15px; padding-right: 15px; margin-left: 10px;border-radius: 5px">Ended</span>
-								<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none; color: #222">View Profile</a></md-button>
-						    <md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getTutorId(tutor.id)">Chat</md-button>
-							</p>
-							<p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
-							<p><span>date: {{tutor.date | limitTo: 10}} | time: {{tutor.time}}</span></p>
-							<p>
-								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.javascript === 1">Javascript</span>
-								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.python === 1">Python</span>
-								<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.ruby === 1">Ruby</span>
-							</p>
-						</div>
+								<img ng-src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
+								<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
+							</div>
+							<!-- bio -->
+							<div flex="85" >
+								<p>{{tutor.fullname}}
+									<!-- favorite or unfavorite tutor button  -->
+									<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red" ng-if="tutor.fav == 0" ng-click="tutor.fav = !tutor.fav; addFavorite(tutor.id)"></ng-md-icon><ng-md-icon icon="favorite" size="18px" style="fill:red" ng-if="tutor.fav == 1" ng-click="tutor.fav = !tutor.fav; deleteFavorite(tutor.id)"></ng-md-icon></span>
+									<span ng-if="tutor.status == 5" style="background: red; color: white; padding: 5px; margin-left: 10px;border-radius: 5px">Rejected</span><span ng-if="tutor.status == 3" style="background: orange; color: white; padding: 5px; margin-left: 10px;border-radius: 5px">Cancelled</span><span ng-if="tutor.status == 4" style="background: grey; color: white; padding: 5px; padding-left: 15px; padding-right: 15px; margin-left: 10px;border-radius: 5px">Ended</span>
+									<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none; color: #222">View Profile</a></md-button>
+							    <md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getTutorId(tutor.id)">Chat</md-button>
+								</p>
+								<p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
+								<p><span>date: {{tutor.date | limitTo: 10}} | time: {{tutor.time}}</span></p>
+								<p>
+									<!-- display languages -->
+									<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.javascript === 1">Javascript</span>
+									<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.python === 1">Python</span>
+									<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.ruby === 1">Ruby</span>
+								</p>
+							</div>
 					</div>
 				</md-tab>
 			</md-tabs>
