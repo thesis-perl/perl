@@ -1,12 +1,12 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
-var options = {
-  key: fs.readFileSync('./server/server.key'),
-  cert: fs.readFileSync('./server/server.crt')
-};
+// var options = {
+//   key: fs.readFileSync('./server/server.key'),
+//   cert: fs.readFileSync('./server/server.crt')
+// };
 var http = require('http').Server(app);
-var https = require('https').Server(options, app);
+// var https = require('https').Server(options, app);
 var io = require('socket.io')(http);
 // var io = require('socket.io')(https);
 var port = process.env.PORT || 8000;
@@ -65,7 +65,7 @@ http.listen(port, function() {
   console.log('Listening on port ' + port);
 });
 
-https.listen(8080, function() {
-// https.listen(port, function() {
-  console.log('Listening on port https://' + 8100);
-});
+// https.listen(8080, function() {
+// // https.listen(port, function() {
+//   console.log('Listening on port https://' + 8100);
+// });
