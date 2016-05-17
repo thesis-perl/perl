@@ -1,3 +1,11 @@
+/* logo */
+{
+  display: inline-block;
+  background-color: #fff;
+  width: 30px;
+  color: #fff;
+}
+
 /*landing page */
 
 div.landing.ng-scope{
@@ -452,6 +460,11 @@ md-icon svg {
 
 .chatSession h1 {
   text-align: center;
+}
+
+.chatMsg {
+  height: 180px;
+  overflow: scroll;
 }
 
 .messageSession {

@@ -5,11 +5,12 @@ angular.module('Perl.tutorProfile', [
     "ngMessages",
     "mdPickers"])
 
-.controller('tutorProfile', ['$scope', '$mdpDatePicker', '$mdpTimePicker', '$stateParams', '$location', 'studentFactory', '$state', '$mdToast',function($scope, $mdpDatePicker, $mdpTimePicker, $stateParams, $location, studentFactory, $state, $mdToast){
+.controller('tutorProfile', ['$scope', '$mdpDatePicker', '$mdpTimePicker', '$stateParams', '$location', 'studentFactory', '$state', '$mdToast', 'tutorFactory',function($scope, $mdpDatePicker, $mdpTimePicker, $stateParams, $location, studentFactory, $state, $mdToast, tutorFactory){
   //stores status between student and this tutor
   $scope.studentTutorStatus = "";
   //hides start session button
   $scope.hidden = true;
+  $scope.reviews = [];
 
   var tutorInfo = {
     tutorId: parseInt($stateParams.id)
@@ -73,6 +74,7 @@ angular.module('Perl.tutorProfile', [
       $scope.picktime = 'Please select date and time';
     }
     else {
+
     var apptDate = $scope.currentDate.toString();
     var apptTime = $scope.currentTime.toString();
 
@@ -87,7 +89,15 @@ angular.module('Perl.tutorProfile', [
     studentFactory.postInvite(studentId,tutorInfo.tutorId, date, time).then(function(data){
         $state.go('studentDashboard');
     }).catch(function(error){console.log('error',error)});
-     }
+
   };
 
+  $scope.getReviews = function() {
+    tutorFactory.getReviews(tutorInfo.tutorId)
+    .then(function(data) {
+      $scope.reviews = data.data;
+    })
+  }
+
+  $scope.getReviews();
 }]);
