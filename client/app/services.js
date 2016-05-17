@@ -165,6 +165,10 @@ angular.module('Perl.services', ['btford.socket-io'])
     $http.post('save_code', sessionInfo);
   };
 
+  var postReview = function(review)  {
+    $http.post('api/review', review);
+  }
+
   var endSession = function(sid, tid) {
     console.log('in service endSession', tid, sid)
     return $http.put('/api/end_session', {'tid': tid, 'sid': sid});
@@ -337,6 +341,7 @@ angular.module('Perl.services', ['btford.socket-io'])
     joinConference: joinConference,
     quitConference: quitConference,
     showPanel: showPanel,
-    q: q
+    q: q,
+    postReview: postReview
   }
 })

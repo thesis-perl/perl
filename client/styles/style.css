@@ -245,7 +245,7 @@ margin-top: 0;
 
 }*/
 
-.signUp, .signIn {
+.signUp, .signIn, .reviewBox {
   width: 470px;
   color: #666f77;
   background-color: white;
@@ -255,7 +255,7 @@ margin-top: 0;
 }
 
 
-.signIn h1, .signUp h1 {
+.signIn h1, .signUp h1, .reviewBox {
   padding-bottom: -5px;
   font-size: 200%;
   text-align: center;
@@ -267,7 +267,7 @@ margin-top: 0;
 .signUp h3 {
   margin: 0 0 15px;
 }
- .signUp label, .signIn label {
+ .signUp label, .signIn label, .reviewBox label {
   color: #5E493E;
 }
 
@@ -275,7 +275,7 @@ margin-top: 0;
   display:inline-block !important;
 }
 
-#signUpbtn, #cancelSignup, #signInbtn, #cancelSigin{
+#signUpbtn, #cancelSignup, #signInbtn, #cancelSigin, #reviewBtn{
 
   background-color: #4d4d4d ;
   color: white;
@@ -284,7 +284,7 @@ margin-top: 0;
   margin: 30px;
   margin-left: 80px;
 }
-#signUpbtn, #signInbtn,  #cancelSignin, #cancelSignup {
+#signUpbtn, #signInbtn,  #cancelSignin, #cancelSignup,  #reviewBtn {
   margin-left: 65px;
   width: 120px;
   font-size: 14px;
@@ -300,6 +300,10 @@ margin-top: 0;
   margin-bottom: 0;
 }
 
+#reviewBtn:hover {
+  color: #597D78;
+  background-color: #a5c0bc;
+}
 #signUpbtn:hover, #signInbtn:hover, #cancelSignin:hover, #cancelSignup:hover {
     color: #BF6C43;
 
@@ -386,6 +390,7 @@ md-icon svg {
 
 
 }
+
 .sessions {
   margin-bottom: 10px;
   width: 80%;
@@ -587,7 +592,10 @@ p.room.ng-binding {
   margin: 0 auto;
   width: 35%;
 }
+.reviewArea{
+ border: 2px solid #597D78;
 
+}
 #quit {
   /*margin-right: 50px;*/
 }
