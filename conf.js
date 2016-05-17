@@ -8,6 +8,6 @@ exports.config = {
     shardTestFiles: true,
     maxInstances: 2
   }
-}
 
+};
 

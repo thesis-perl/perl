@@ -43,16 +43,16 @@
 		<div flex="20" style="background-color:#363B3F; height: 100vw; color: #ccc; text-align: center" layout-fill>
 			<br>
 			<br>
-			<center><img ng-src="{{userinfo.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%"></center>
+			<center><img ng-src="{{userinfo.imgurl}}" class="md-card-image" alt="image caption" style="width: 150px; border-radius: 50%"></center>
 			<md-card-content>
-				<p>{{userinfo.fullname}}</p>
+				<p style="font-size: 30px">{{userinfo.fullname}}</p>
 			</md-card-content>
 			<md-card-footer>
 				<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{userinfo.location}}</p>
 			</md-card-footer>
 			<md-card-footer style="padding: 20px; text-align: center">
-				<p>My Bio</p>
-				<p>{{userinfo.bio}}</p>
+				
+				<p style="font-size: 20px; padding-left: 3px">{{userinfo.bio}}</p>
 			</md-card-footer>
 			<md-button class="md-accent" ng-click="findTutors()">Find Tutors</md-button>
 		</div>
@@ -68,11 +68,11 @@
 							<div style="margin: 30px">You haven't invited any tutors yet!</div>
 							<md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
 						</div>
-						<div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-if="invitedTutors.length" ng-repeat="tutor in invitedTutors" flex="100">
+						<div layout="rows" style="height: 180px; border: 1px solid #eee; width: 98%" ng-if="invitedTutors.length" ng-repeat="tutor in invitedTutors" flex="100">
 							<!-- image -->
 							<div flex="15" style="text-align: center; padding-top: 15px">
 							<img ng-src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
-							<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
+							<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{tutor.location}}</p>
 						</div>
 						<!-- bio -->
 						<div flex="85" >

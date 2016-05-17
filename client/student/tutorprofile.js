@@ -28,7 +28,7 @@ angular.module('Perl.tutorProfile', [
     $scope.javascript = tutor.javascript;
     $scope.python = tutor.python;
     $scope.ruby = tutor.ruby;
-
+  
     if($scope.studentTutorStatus === 1){
       $mdToast.show(
          $mdToast.simple()
@@ -68,7 +68,11 @@ angular.module('Perl.tutorProfile', [
 
   $scope.requestSession = function(){
     var studentId = JSON.parse(localStorage.getItem('userinfo')).id;
-    console.log('currentDate',$scope.currentDate, $scope.currentTime);
+   
+    if($scope.currentDate===undefined || $scope.currentTime===undefined) {
+      $scope.picktime = 'Please select date and time';
+    }
+    else {
     var apptDate = $scope.currentDate.toString();
     var apptTime = $scope.currentTime.toString();
 
@@ -83,6 +87,7 @@ angular.module('Perl.tutorProfile', [
     studentFactory.postInvite(studentId,tutorInfo.tutorId, date, time).then(function(data){
         $state.go('studentDashboard');
     }).catch(function(error){console.log('error',error)});
-
+     }
   };
+
 }]);
