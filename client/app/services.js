@@ -121,6 +121,9 @@ angular.module('Perl.services', ['btford.socket-io'])
     return $http.put('/api/unfavorite', {'tid': tid, 'sid': sid});
   }
 
+  var getReviews = function(tid) {
+    return $http.get('/api/review', { headers: { 'tid': tid } });
+  }
 
   return {
     getStudentId: getStudentId,
@@ -134,7 +137,8 @@ angular.module('Perl.services', ['btford.socket-io'])
     reject: rejectInvitation,
     cancelSession: cancelSession,
     addFavorite: addFavorite,
-    deleteFavorite: deleteFavorite
+    deleteFavorite: deleteFavorite,
+    getReviews: getReviews
   }
 })
 

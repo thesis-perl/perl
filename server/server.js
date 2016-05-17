@@ -43,6 +43,7 @@ app.use('/api/tutor_dashboard', require('./routes/tutorDashboardRoute.js'));
 app.use('/api/filter_tutor', require('./routes/filterTutorRoute.js'));
 app.use('/api/cancel_history', require('./routes/cancelSessionRoute.js'));
 app.use('/api/end_session', require('./routes/endSessionRoute.js'));
+app.use('/api/review', require('./routes/review.js'));
 
 // cors
 app.use(cors());
