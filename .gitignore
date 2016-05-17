@@ -1,4 +1,5 @@
 .env
+*.pem
 
 /client/apiKey.js
 /client/apiKeys.js

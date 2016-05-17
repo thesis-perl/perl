@@ -90,9 +90,9 @@
 										</div>
 									</md-content>
 								</md-tab>
-                               
+
 								<md-tab label="Scheduled Sessions" id='scheduleTab' > <!-- start of scheduled sessions tab-->
-						         
+
 									<md-content class="md-padding">
 										<p ng-model='noSession'>{{noSession}}<p>
 											<div layout="rows" style="border-bottom: 1px solid #eee;">
@@ -102,9 +102,9 @@
 													</div>
 												<!--  generating shceduled student/session list -->
 
-											
-													
-													
+
+
+
 														<div ng-repeat = 'item in acceptedStudents' class='sessions' layout="rows" style="height: 100%; border: 1px solid #eee;">
 															<!-- image -->
 															<div flex="15" style="text-align: center; padding-top: 15px">
@@ -136,7 +136,7 @@
 															</div>
 
 														</div>	 <!--end of ng-repeat-->
-												
+
 												</md-content>
 											</md-tab> <!-- end of scheduled  sessions tab-->
 
@@ -187,7 +187,7 @@
 											<p ng-model='noSession'>{{noSession}}<p>
 												<div layout="rows" style="height: 100%; width: 170%; border-bottom: 1px solid #eee">
 													<!--  generating finished session list -->
-													<div class="sessionlist"> 
+													<div class="sessionlist">
 														<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!finishedStudents.length">
 															<div style="margin: 30px">You don't have any finished session yet!</div>
 														</div>

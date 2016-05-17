@@ -23,6 +23,7 @@
     "firebase-token-generator": "^2.0.0",
     "knex": "^0.10.0",
     "mysql": "^2.10.2",
-    "socket.io": "^1.4.6"
+    "socket.io": "^1.4.6",
+    "ssl-root-cas": "^1.1.10"
   }
 }
