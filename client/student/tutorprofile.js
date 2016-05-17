@@ -89,7 +89,7 @@ angular.module('Perl.tutorProfile', [
     studentFactory.postInvite(studentId,tutorInfo.tutorId, date, time).then(function(data){
         $state.go('studentDashboard');
     }).catch(function(error){console.log('error',error)});
-
+  }
   };
 
   $scope.getReviews = function() {
