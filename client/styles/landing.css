@@ -1108,3 +1108,13 @@ input[type="button"]:disabled,
 #footer .icons a {
 	color: #bbb;
 }
+
+.specialBox {
+  height: 186px;
+  width: 208px;
+  padding-bottom: 10px;
+}
+
+.specialBoxDesc {
+  padding-bottom: 10px; 
+}
