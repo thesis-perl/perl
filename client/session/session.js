@@ -8,9 +8,9 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 	$scope.user = user;
 	var link;
     if(user.isTutor === 0) {
-		link = user.id + "/" + $stateParams.link;
+		link = user.id + "-" + $stateParams.link;
 	} else {
-		link = $stateParams.link + "/" + user.id;
+		link = $stateParams.link + "-" + user.id;
 	}
 
 
@@ -63,7 +63,7 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
           review: $scope.reviewBox,
           tid: Number($stateParams.link),
           sid: user.id
-          
+
         };
        console.log("review", userReview)
        sessionFactory.postReview(userReview);
@@ -72,7 +72,7 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 
   $scope.status = '  ';
   $scope.customFullscreen = $mdMedia('ls') || $mdMedia('sm');
-   
+
    //review pop-up box on session page
    $scope.showReviewBox = function(ev) {
     if(user.isStudent===1) {
@@ -94,8 +94,8 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
       $mdDialog.hide();
        $scope.endSession()
     }
-  
-  //end the live session 
+
+  //end the live session
   $scope.endSession = function() {
 		perlSocket.emit('endSession');
 
@@ -162,7 +162,8 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
   $scope.studentTutor = $scope.studentId + "-" + $scope.tutorId;
 
 	$scope.loadVideo = function() {
-		sessionFactory.loadVideo($scope.studentTutor);
+    // sessionFactory.loadVideo($scope.studentTutor);
+		sessionFactory.loadVideo(link);
 	};
 
 	//Chatroom
