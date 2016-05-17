@@ -36,7 +36,8 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     url: '/',
     templateUrl: '../landing/landing.html',
     controller: 'landing',
-    authenticate: false
+    authenticate: false,
+    resolve: Perl.landing.resolve
   })
 
   // .state('signup', {
@@ -140,7 +141,7 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
           'A700': '#597D78'
       };
       $mdThemingProvider
-          .definePalette('customPrimary', 
+          .definePalette('customPrimary',
                           customPrimary);
 
   $mdThemingProvider.theme('default')
