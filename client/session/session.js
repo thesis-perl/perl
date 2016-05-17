@@ -1,6 +1,6 @@
 angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial', 'material.svgAssetsCache' , 'ngMessages'])
 
-.controller('session',function($log, $scope, perlSocket, $stateParams, $state, $rootScope, sessionFactory, $mdToast, $firebaseArray, $firebaseAuth, $firebaseObject, $timeout){
+.controller('session',function($log, $scope, perlSocket, $stateParams, $state, $rootScope, sessionFactory, $mdToast, $firebaseArray, $firebaseAuth, $firebaseObject, $timeout, $mdMedia, $mdDialog){
     var typing = false;
 
 
@@ -57,7 +57,46 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 		}, 800);
 	}
 
-	$scope.endSession = function() {
+   //student reviews tutor
+   $scope.review = function() {
+      var userReview = {
+          review: $scope.reviewBox,
+          tid: Number($stateParams.link),
+          sid: user.id
+          
+        };
+       console.log("review", userReview)
+       sessionFactory.postReview(userReview);
+       $scope.hideReviewBox();
+    };
+
+  $scope.status = '  ';
+  $scope.customFullscreen = $mdMedia('ls') || $mdMedia('sm');
+   
+   //review pop-up box on session page
+   $scope.showReviewBox = function(ev) {
+    if(user.isStudent===1) {
+      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+        $mdDialog.show({
+        templateUrl: 'session/reviewBox.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        fullscreen: useFullScreen
+      })
+    }
+    else {
+       $scope.hideReviewBox();
+    }
+  }
+  //hide review pop up box on session page
+  $scope.hideReviewBox  = function() {
+      $mdDialog.hide();
+       $scope.endSession()
+    }
+  
+  //end the live session 
+  $scope.endSession = function() {
 		perlSocket.emit('endSession');
 
 		if(user.isTutor === 0) {

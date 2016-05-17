@@ -172,7 +172,7 @@ angular.module('Perl.authentication', ['ngMaterial', 'firebase'])
 
    $scope.hide  = function() {
     $mdDialog.hide();
- }
+   }
 
 
 }) // end of authcontroller
