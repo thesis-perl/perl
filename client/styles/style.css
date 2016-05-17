@@ -13,7 +13,9 @@ top: 10px;
 left: 30px;
 
 }
-
+.toolBar {
+  background-color: #597D78 !important;
+}
 /*slideshowing background images in the landing page */
 /*.slideshow li span {
     width: 100%;
@@ -80,8 +82,6 @@ left: 30px;
 
 }
 
-
-
 .landSignup, .landSignin {
   position: absolute;
   top: 10px;
@@ -92,6 +92,9 @@ left: 30px;
   font-weight: bold !important;
 }
 
+.landSignin input[type="password"]:focus {
+  border-shadow: none;
+}
 
 .tutorInfo{
   display: inline-block;
@@ -106,6 +109,7 @@ left: 30px;
   justify-content: center;
   align-items: center;
   height: 100%;
+
 }
 .loginform {
   width: 20%;
@@ -122,9 +126,10 @@ left: 30px;
     display: inline;
     float: left;
 }
-label {
+.signIn label, .signUp label {
     display: block;
     color: #999;
+    font-weight: bold;
 }
 .loginform input:not([type=submit]) {
     padding: 5px;
@@ -364,12 +369,19 @@ md-icon svg {
   float: left;
   margin: 5px;
 
-}
 
+}
+.sessionlist {
+  width: 70%;
+  margin-left: -15px;
+
+
+
+}
 .sessions {
   margin-bottom: 10px;
-
-
+  width: 80%;
+  border-bottom: 1px solid #eee;
 }
 .profile {
   margin-left: 100px;

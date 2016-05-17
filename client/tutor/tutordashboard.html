@@ -2,7 +2,7 @@
 <div layout="column" onload='uploadTutorDashboard()'>
 	<div ng-cloak>
 		<md-content>
-			<md-toolbar>
+			<md-toolbar class='toolBar'>
 				<div class="md-toolbar-tools" >
 					<!-- logo -->
 					<h2>
@@ -34,15 +34,15 @@
 		<!-- Sidenav -->
 		<div flex="20" style="background-color:#363B3F; height: 100vw; color: #ccc; text-align: center" layout-fill>
 			<br>
-			<center><img src="{{userinfo.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption"></center>
+			<center><img src="{{userinfo.imgurl}}" style="width: 150px; border-radius:100%; margin: auto, 10px" alt="image caption"></center>
 			<md-card-content>
-				<p>{{userinfo.fullname}}</p>
+				<p style="font-size: 30px">{{userinfo.fullname}}</p>
 			</md-card-content>
 			<md-card-footer>
-				<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{userinfo.location}}</p>
+				<p><ng-md-icon icon="location_on" style="18px"></ng-md-icon>{{userinfo.location}}</p>
 			</md-card-footer>
 			<md-card-footer>
-				<p>{{userinfo.bio}}</p>
+				<p style="font-size: 20px; padding-left: 3px">{{userinfo.bio}}</p>
 			</md-card-footer>
 		</div>
 		<!-- content -->
@@ -56,12 +56,12 @@
 
 								<div layout="rows" style="height: 100%; width: 170%; border-bottom: 1px solid #eee">
 									<!--  generating invitation list -->
-									<ul>
+									<div class='sessionlist'>
 										<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!invitedStudents.length">
 											<div style="margin: 30px">You don't have any invitation yet!</div>
 										</div>
-										<li ng-repeat = 'item in invitedStudents' class='sessions'>
-											<div layout="rows" style="height: 180px; border: 1px solid #eee">
+										<div ng-repeat = 'item in invitedStudents' class='sessions'>
+											<div layout="rows" style="height: 180px; border: 1px solid #eee;">
 												<!-- image -->
 												<div flex="15" style="text-align: center; padding-top: 15px">
 													<img src="{{item.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
@@ -73,9 +73,9 @@
 												<div flex="85" class='profile' >
 													<p>{{item.fullname}} </p>
 
-														<md-button style="border: 2px solid orange; float:right" ng-click='acceptInvitation()'>accept</md-button>
+														<md-button style="border: 2px solid orange; float:right" ng-click='acceptInvitation()' class='acceptInvitation'>accept</md-button>
 														<md-button style="border: 2px solid orange; float:right" ng-click='rejectInvitation()'>reject</md-button>
-														<md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getStudentId(item.id)">Chat</md-button>
+														<md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getStudentId(item.id)" class='invitionChat'>Chat</md-button>
 														<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
 														<p> date: {{item.date | limitTo: 10 }}  | time: {{item.time}}</p>
 
@@ -86,25 +86,29 @@
 													</div>
 												</div>
 
-											</li>	 <!--end of ng-repeat-->
-										</ul>
+											</div>	 <!--end of ng-repeat-->
+										</div>
 									</md-content>
 								</md-tab>
-
-								<md-tab label="Scheduled Sessions"> <!-- start of scheduled sessions tab-->
-									<md-content class="md-padding" >
+                               
+								<md-tab label="Scheduled Sessions" id='scheduleTab' > <!-- start of scheduled sessions tab-->
+						         
+									<md-content class="md-padding">
 										<p ng-model='noSession'>{{noSession}}<p>
-											<div layout="rows" style="border-bottom: 1px solid #eee">
-												<!--  generating shceduled student/session list -->
-												<ul>
-													<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!acceptedStudents.length">
-														<div style="margin: 30px">You don't have any scheduled session yet!</div>
+											<div layout="rows" style="border-bottom: 1px solid #eee;">
+												<div class='sessionlist' style='width: 150%'>
+											<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!acceptedStudents.length">
+														<p style="margin: 30px">You don't have any scheduled session yet!</p>
 													</div>
-													<li ng-repeat = 'item in acceptedStudents' class='sessions'>
-														<div layout="rows" style="height: 100%; width: 170%; border: 1px solid #eee">
+												<!--  generating shceduled student/session list -->
+
+											
+													
+													
+														<div ng-repeat = 'item in acceptedStudents' class='sessions' layout="rows" style="height: 100%; border: 1px solid #eee;">
 															<!-- image -->
 															<div flex="15" style="text-align: center; padding-top: 15px">
-																<img src="{{item.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%">
+																<img src="{{item.imgurl}}" class="md-card-image" alt="image caption" style="width: 100px; border-radius: 50%; padding-left: 20px">
 																<!--location -->
 																<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{item.location}}</p>
 															</div>
@@ -116,7 +120,7 @@
 
 																	<md-button style="border: 2px solid orange; float:right" ng-click='cancelSession()'>cancel</md-button>
 																	<md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getStudentId(item.id)">Chat</md-button>
-																	<md-button style="border: 2px solid orange; float:right" ng-click="getStudentId(item.id)"><a ui-sref="session({link: item.id})" style='text-decoration: none; color: #222'>start</a></md-button>
+																	<md-button style="border: 2px solid orange; float:right" ng-click="getStudentId(item.id)" class='sessionStart'><a ui-sref="session({link: item.id})" style='text-decoration: none; color: #222'>start</a></md-button>
 																	<p style="margin-top: 20px; padding-right: 250px">bio: {{item.bio}}</p>
 																	<p> date: {{item.date | limitTo: 10 }}  | time: {{item.time}}</p>
 
@@ -129,22 +133,23 @@
 
 																</div>
 															</div>
+															</div>
 
-														</li>	 <!--end of ng-repeat-->
-													</ul>
+														</div>	 <!--end of ng-repeat-->
+												
 												</md-content>
 											</md-tab> <!-- end of scheduled  sessions tab-->
 
 									<md-tab label="Cancelled Sessions"> <!-- start of cancelled sessions tab-->
 										<md-content class="md-padding">
 											<p ng-model='noSession'>{{noSession}}<p>
-												<div layout="rows" style="border-bottom: 1px solid #eee">
+												<div layout="rows">
 													<!--  generating canceled student/session list -->
-													<ul>
+													<div class="sessionList">
 													<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!cancelledStudents.length">
 														<div style="margin: 30px">You don't have any cancelled session yet!</div>
 													</div>
-														<li ng-repeat = 'item in cancelledStudents' class='sessions'>
+														<div ng-repeat = 'item in cancelledStudents' class='sessions'>
 															<div layout="rows" style="height: 100%; width: 170%;; border: 1px solid #eee">
 																<!-- image -->
 																<div flex="15" style="text-align: center; padding-top: 15px">
@@ -171,8 +176,9 @@
 																	</div>
 																</div>
 
-															</li>	 <!--end of ng-repeat-->
-														</ul>
+															</div>	 <!--end of ng-repeat-->
+														</div>
+														</div>
 													</md-content>
 												</md-tab> <!-- end of canceled  sessions tab-->
 
@@ -181,11 +187,11 @@
 											<p ng-model='noSession'>{{noSession}}<p>
 												<div layout="rows" style="height: 100%; width: 170%; border-bottom: 1px solid #eee">
 													<!--  generating finished session list -->
-													<ul>
+													<div class="sessionlist"> 
 														<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!finishedStudents.length">
 															<div style="margin: 30px">You don't have any finished session yet!</div>
 														</div>
-														<li ng-repeat = 'item in finishedStudents' class='sessions'>
+														<div  class='sessions' ng-repeat = 'item in finishedStudents' class='sessions'>
 															<div layout="rows" style="height: 180px; border: 1px solid #eee">
 																<!-- image -->
 																<div flex="15" style="text-align: center; padding-top: 15px">
@@ -212,8 +218,8 @@
 																	</div>
 																</div>
 
-															</li>	 <!--end of ng-repeat-->
-														</ul>
+															</div>	 <!--end of ng-repeat-->
+														</div>
 													</md-content>
 												</md-tab> <!-- end of finished  sessions tab-->
 										</md-tabs>
