@@ -1,4 +1,9 @@
-.env
+*.env
+*.pem
+*.crt
+*.csr
+*.key
+*.org
 
 /client/apiKey.js
 /client/apiKeys.js

@@ -1,7 +1,14 @@
 var express = require('express');
 var app = express();
+var fs = require('fs');
+var options = {
+  key: fs.readFileSync('./server/server.key'),
+  cert: fs.readFileSync('./server/server.crt')
+};
 var http = require('http').Server(app);
+var https = require('https').Server(options, app);
 var io = require('socket.io')(http);
+// var io = require('socket.io')(https);
 var port = process.env.PORT || 8000;
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -13,7 +20,11 @@ var FirebaseTokenGenerator = require('firebase-token-generator');
 var key = require('./key');
 var tokenGenerator = new FirebaseTokenGenerator(key.fireSecret);
 
+// var sslRootCas = require('ssl-root-cas/latest');
 
+// inject certificate
+// sslRootCas.inject();
+// sslRootCas.addFile(__dirname + '/server.includesprivatekey.pem');
 
 // set up our socket server
 require('./socket/socket')(io);
@@ -49,6 +60,12 @@ app.use('/api/review', require('./routes/review.js'));
 app.use(cors());
 
 
+
 http.listen(port, function() {
   console.log('Listening on port ' + port);
+});
+
+https.listen(8080, function() {
+// https.listen(port, function() {
+  console.log('Listening on port https://' + 8100);
 });
