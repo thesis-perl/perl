@@ -36,8 +36,8 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     url: '/',
     templateUrl: '../landing/landing.html',
     controller: 'landing',
-    authenticate: false,
-    resolve: Perl.landing.resolve
+    authenticate: false
+    // resolve: Perl.landing.resolve
   })
 
   // .state('signup', {
