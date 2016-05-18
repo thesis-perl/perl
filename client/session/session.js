@@ -6,6 +6,9 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 
 	var user = JSON.parse(localStorage.getItem('userinfo'));
 	$scope.user = user;
+	$scope.rating = 5;
+	$scope.studentRating;
+
 	var link;
     if(user.isTutor === 0) {
 		link = user.id + "-" + $stateParams.link;
@@ -57,15 +60,24 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 		}, 800);
 	}
 
+
+	// rating system
+
+	$scope.rateFunction = function(rating) {
+		$scope.studentRating = rating;
+		console.log('$scope.rating', $scope.studentRating)
+	};
+
    //student reviews tutor
    $scope.review = function() {
       var userReview = {
           review: $scope.reviewBox,
+          rating: $scope.studentRating,
           tid: Number($stateParams.link),
           sid: user.id
 
         };
-       console.log("review", userReview)
+        console.log('userReview', userReview)
        sessionFactory.postReview(userReview);
        $scope.hideReviewBox();
     };
@@ -178,4 +190,49 @@ angular.module('Perl.session', ['btford.socket-io', 'ui.codemirror', 'ngMaterial
 		}
 	}
 
-});
+})
+// 5 star rating directive
+.directive('starRating', function() {
+  return {
+    restrict: 'EA',
+    template:
+      '<ul class="star-rating" ng-class="{readonly: readonly}">' +
+      '  <li ng-repeat="star in stars" class="star" ng-class="{filled: star.filled}" ng-click="toggle($index)">' +
+      '    <i class="fa fa-star">&#9733</i>' + // or &#9733
+      '  </li>' +
+      '</ul>',
+    scope: {
+      ratingValue: '=ngModel',
+      max: '=?', // optional (default is 5)
+      onRatingSelect: '&?',
+      readonly: '=?'
+    },
+    link: function(scope, element, attributes) {
+      if (scope.max == undefined) {
+        scope.max = 5;
+      }
+      function updateStars() {
+        scope.stars = [];
+        for (var i = 0; i < scope.max; i++) {
+          scope.stars.push({
+            filled: i < scope.ratingValue
+          });
+        }
+      };
+      scope.toggle = function(index) {
+        if (scope.readonly == undefined || scope.readonly === false){
+          scope.ratingValue = index + 1;
+          scope.onRatingSelect({
+            rating: index + 1
+          });
+        }
+      };
+      scope.$watch('ratingValue', function(oldValue, newValue) {
+        if (newValue) {
+          updateStars();
+        }
+      });
+    }
+  };
+});;
+

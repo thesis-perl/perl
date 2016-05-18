@@ -11,6 +11,9 @@ angular.module('Perl.tutorProfile', [
   //hides start session button
   $scope.hidden = true;
   $scope.reviews = [];
+  $scope.aveRating;
+  $scope.isReadonly = true;
+
 
   var tutorInfo = {
     tutorId: parseInt($stateParams.id)
@@ -100,8 +103,19 @@ angular.module('Perl.tutorProfile', [
     tutorFactory.getReviews(tutorInfo.tutorId)
     .then(function(data) {
       $scope.reviews = data.data;
+      var total = 0;
+      for(var i = 0; i < $scope.reviews.length; i++) {
+        total += $scope.reviews[i].rating;
+
+      }
+      $scope.aveRating = Math.round(total/$scope.reviews.length);
+      console.log('ave', $scope.aveRating)
     })
   }
 
-  $scope.getReviews();
+  $scope.getReviews();  
+
+  $scope.rateFunction = function(rating) {
+       console.log('Rating selected: ' + rating);
+  }; 
 }]);
