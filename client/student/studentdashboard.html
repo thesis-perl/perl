@@ -2,11 +2,11 @@
 	<!-- Header -->
 	<div ng-cloak>
 		<md-content>
-			<md-toolbar>
+			<md-toolbar class="toolBar">
 				<div class="md-toolbar-tools" >
 					<!-- logo -->
 					<h2>
-						<span>Codify</span>
+						<span class="head">Codify</span>
 					</h2>
 					<span flex></span>
 					<!-- right top menu button -->
@@ -53,7 +53,7 @@
 				<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{userinfo.location}}</p>
 			</md-card-footer>
 			<!-- user bio -->
-			<md-card-footer style="padding: 20px; text-align: center">
+			<md-card-footer style="text-align: center">
 				<p style="font-size: 20px; padding-left: 3px">{{userinfo.bio}}</p>
 			</md-card-footer>
 			<md-button class="md-accent" ng-click="findTutors()">Find Tutors</md-button>
@@ -104,7 +104,7 @@
 						<div layout="column">
 							<!-- shows if no scheduled tutors -->
 							<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!acceptedTutors.length">
-								<div style="margin: 30px">You haven't scheduled any tutor yet!</div>
+								<div style="margin: 30px">You haven't scheduled any tutors yet!</div>
 								<md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
 							</div>
 							<!-- shows if has scheduled tutors -->
@@ -140,7 +140,7 @@
 						<div layout="column">
 							<!-- shows if no tutor history -->
 							<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!tutorHistory.length">
-								<div style="margin: 30px">You don't have any tutor history!</div>
+								<div style="margin: 30px">You don't have any tutor histories!</div>
 								<md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
 							</div>
 							<!-- shows if has tutor history -->

@@ -2,11 +2,11 @@
 <div layout="column">
   <div ng-cloak>
     <md-content>
-      <md-toolbar>
+      <md-toolbar class="toolBar">
         <div class="md-toolbar-tools" >
           <!-- logo -->
           <h2>
-            <span>Codify</span>
+            <span class="head">Codify</span>
           </h2>
           <span flex></span>
           <span style="font-size: .8em">Welcome, {{userinfo.fullname}}!</span>
@@ -18,7 +18,7 @@
             <md-menu-content width="2">
               <md-menu-item>
                 <md-button ng-click="">
-                  <div><a ui-sref="studentDashboard" style="text-decoration: none; color: #222">Student dashboard</a></div>
+                  <div><a ui-sref="studentDashboard" style="text-decoration: none; color: #222">Student Dashboard</a></div>
                 </md-button>
               </md-menu-item>
               <md-menu-item>
@@ -46,12 +46,12 @@
                   <div flex="85"  style='margin: 0; width: 80%;'>
                    <div style="background-color:#ccc; width: 27%; padding: 35px">
                     <img ng-src="{{img}}" style="width: 50%; border-radius:100%; margin: auto, 10px;" alt="image caption">
-                    
+
                     <p style='font-weight: bold; font-size: 30px; color:  #3A3636;'>{{name}}</p>
                        <span> <ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{loc}} </span>
                     <p style="margin-top: 25px; font-size: 18px; color: #3A3636; padding: 0;">{{bio}}</p>
-                 
-                   </div> 
+
+                   </div>
                 <div style='position: absolute; top: 20px; left: 450px; width: 70%; '>
                      <p style="font-weight: bold; font-size: 20px; padding: 2px 50px; border-radius: 5px; color: #585454"> Topics we can cover during the session </p>
                     <div layout-align='center' style="padding-left: 50px">
@@ -65,7 +65,7 @@
                       <div style="width: 70%">
                         <div class="dateTimeContent" style=' margin-left: 18%'>
                           <md-button class="time" style="border: 2px solid orange; margin-left: 50px; margin-top: 30px; color: #585454; font-weight: bold;" ng-click="showTimePicker($event)" aria-label="show picker">Time</md-button>
-                          
+
                         </div>
                         <div class="dateTimeContent">
                           <md-button class="date" style="border: 2px solid orange; margin-left: 50px; margin-top: 30px; color: #585454; font-weight: bold " ng-click="showDatePicker($event)" aria-label="show picker">Date</md-button>
@@ -74,11 +74,11 @@
                         <p style="height: 20px">
                            <span style ='margin-left: 28%; font-weight: bold'> {{ currentTime | date:'HH:mm' }} </span>  <span style ='margin-left: 100px; font-weight: bold'>{{ currentDate | date:'shortDate' }} </span>
                           </p>
-                          
+
                      </div>
-                     
-                    
-                     
+
+
+
                         <md-button  ng-disabled="isDisabledRequest" style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; width: 45%; font-weight: bold; margin-left: 5%; margin-bottom: 20px" class='request' ng-click="requestSession()">Request Session
                         </md-button>
 
@@ -88,7 +88,7 @@
                          <p ng-model='picktime' style="color:red">{{picktime}}</p>
                       </div>
 
-                    
+
                     </md-content>
                   </div>
                 <!-- </md-content> -->
@@ -99,7 +99,7 @@
             <div layout="column">
               <!-- show if no review -->
               <div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!reviews.length">
-                <div style="margin: 30px">Tutor {{name}} has no review yet!</div>
+                <div style="margin: 30px">Tutor {{name}} has no reviews yet!</div>
                 <md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
               </div>
               <!-- show if has reviews -->
@@ -122,5 +122,3 @@
     </div>
   </div>
 </div>
-
-
