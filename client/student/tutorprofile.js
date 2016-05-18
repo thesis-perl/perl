@@ -92,6 +92,10 @@ angular.module('Perl.tutorProfile', [
   }
   };
 
+  $scope.reload = function() {
+    $state.reload();
+  }
+
   $scope.getReviews = function() {
     tutorFactory.getReviews(tutorInfo.tutorId)
     .then(function(data) {

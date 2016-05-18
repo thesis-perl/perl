@@ -114,6 +114,7 @@ angular.module('Perl.services', ['btford.socket-io'])
   };
 
   var addFavorite = function(sid, tid) {
+    
     return $http.post('/api/fav_tutor', {'tid': tid, 'sid': sid});
   }
 
