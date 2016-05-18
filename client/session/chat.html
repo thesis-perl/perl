@@ -1,7 +1,7 @@
-<div class="chatRoom">
-  <div>
+<div class="chatRoom" style="width: 500px">
+  <div class="chatRoom">
     <div>
-      <h1>Chatroom</h1>
+      <h1 style="text-align: center">Chatroom</h1>
     </div>
     <div>
       <ul class="chatMsg">
@@ -11,7 +11,7 @@
       </ul>
     </div>
   </div>
-  <div id="msg">
+  <div id="msg" class="messageSession">
     <input ng-model="msg" ng-keydown="newMessage($event)" type="text" id="messageInput" class="inputBox" placeholder="Type a message...">
   </div>
 </div>
