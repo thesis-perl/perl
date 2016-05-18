@@ -18,7 +18,12 @@
             <md-menu-content width="2">
               <md-menu-item>
                 <md-button ng-click="">
-                  <div><a ui-sref="studentDashboard" style="text-decoration: none; color: #222">Student dashboard</a></div>
+                  <div><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Find Tutors</a></div>
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="">
+                  <div><a ui-sref="studentDashboard" style="text-decoration: none; color: #222">My dashboard</a></div>
                 </md-button>
               </md-menu-item>
               <md-menu-item>
@@ -48,6 +53,7 @@
 
                 <p style='font-weight: bold; font-size: 30px'>{{name}}</p>
                    <span> <ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{loc}} </span>
+                <p><star-rating ng-model="aveRating" readonly=true></star-rating></p>
                 <p style="margin-top: 25px; font-size: 18px; padding: 0; text-align: left">{{bio}}</p>
               </div> 
               <!-- book session -->
@@ -78,7 +84,8 @@
                       <md-button  ng-disabled="isDisabledRequest" style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; width: 45%; font-weight: bold; margin-bottom: 20px" class='request' ng-click="requestSession()">Request Session
                       </md-button>
 
-                      <md-button style="border: 2px solid orange; float:right; font-size: 20px; color: #585454; font-weight: bold; width: 45%;" ng-hide="hidden" ng-disabled="isDisabled"><a style = 'text-decoration: none; color: #585454 ' ui-sref="session({link: item.id})">Start Session</a>
+                      <br>
+                      <md-button style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; font-weight: bold; width: 45%;" ng-hide="hidden" ng-disabled="isDisabled"><a style = 'text-decoration: none; color: #585454 ' ui-sref="session({link: item.id})">Start Session</a>
 
                        </md-button>
                        <p ng-model='picktime' style="color:red">{{picktime}}</p>
@@ -93,7 +100,7 @@
               <!-- show if no review -->
               <div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!reviews.length">
                 <div style="margin: 30px">Tutor {{name}} has no review yet!</div>
-                <md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
+                <md-button style="border: 2px solid orange" ng-click="reload()">Get Startet</md-button>
               </div>
               <!-- show if has reviews -->
               <div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-repeat="review in reviews" ng-if="reviews.length">
@@ -104,6 +111,9 @@
                 <!-- bio -->
                 <div flex="85" >
                   <p>{{review.fullname}}</p>
+
+                    <star-rating ng-model="review.rating" readonly=true></star-rating>
+
                   <p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
                   <p>{{review.review}}</p>
                 </div>
@@ -115,5 +125,6 @@
     </div>
   </div>
 </div>
+
 
 

@@ -6,7 +6,7 @@
 				<div class="md-toolbar-tools" >
 				<!-- logo -->
 					<h2>
-						<span id="logo" style="display: inline-block; background-color: #fff; width: 80px; border-radius: 20px; color: #597D78; font-weight: bold; text-align: center; margin-left: 80px">Codify</span>
+						<span>Codify</span>
 					</h2>
 					<span flex></span>
 					<!-- right top menu button -->
@@ -54,7 +54,6 @@
 			</md-card-footer>
 			<!-- user bio -->
 			<md-card-footer style="padding: 20px; text-align: center">
-				
 				<p style="font-size: 20px; padding-left: 3px">{{userinfo.bio}}</p>
 			</md-card-footer>
 			<md-button class="md-accent" ng-click="findTutors()">Find Tutors</md-button>
@@ -111,7 +110,7 @@
 							<!-- image -->
 							<div flex="15" style="text-align: center; padding-top: 15px">
 								<img ng-src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
-								<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
+								<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{tutor.location}}</p>
 							</div>
 							<!-- bio -->
 							<div flex="85" >
@@ -146,7 +145,7 @@
 							<!-- image -->
 							<div flex="15" style="text-align: center; padding-top: 15px">
 								<img ng-src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
-								<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>Los Angeles</p>
+								<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{tutor.location}}</p>
 							</div>
 							<!-- bio -->
 							<div flex="85" >

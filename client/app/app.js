@@ -35,9 +35,9 @@ angular.module('Perl', ['Perl.config', 'Perl.authentication', 'Perl.services', '
     cache: false,
     url: '/',
     templateUrl: '../landing/landing.html',
-    controller: 'landing',
-    authenticate: false
-    // resolve: Perl.landing.resolve
+    // controller: 'landing',
+    authenticate: false,
+    resolve: '../style/landing.css'.resolve
   })
 
   // .state('signup', {
