@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Passion+One);
+
 /* logo */
 {
   display: inline-block;
@@ -23,6 +25,12 @@ left: 30px;
 }
 .toolBar {
   background-color: #597D78 !important;
+  color: white !important;
+}
+
+.toolBar .head {
+  font-size: 40px;
+  font-family: 'Passion One', cursive;
 }
 /*slideshowing background images in the landing page */
 /*.slideshow li span {

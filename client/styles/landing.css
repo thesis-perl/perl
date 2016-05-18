@@ -1,6 +1,7 @@
 @charset "UTF-8";
-@import url(font-awesome.min.css);
-@import url("http://fonts.googleapis.com/css?family=Roboto:500,300");
+@import url(https://fonts.googleapis.com/css?family=Passion+One);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:700italic);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 /* Basic */
 
@@ -11,7 +12,7 @@ body {
 
 body, input, select, textarea {
 	color: #555f66;
-	font-family: "Roboto", Helvetica, sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 14pt;
 	font-weight: 300;
 	line-height: 1.75em;
@@ -45,7 +46,6 @@ h1, h2, h3, h4, h5, h6 {
 	line-height: 1em;
 	margin: 0 0 1em 0;
 	text-transform: uppercase;
-	letter-spacing: 0.125em;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -394,6 +394,12 @@ input[type="radio"] + label:before {
 }
 
 /* Box */
+
+.head {
+	font-size: 36px;
+	font-family: 'Passion One', cursive;
+	margin-left: -10px;
+}
 
 .box {
 	border-radius: 6px;
@@ -897,7 +903,7 @@ input[type="button"]:disabled,
 	height: inherit;
 	left: 1.25em;
 	line-height: inherit;
-	margin: 0;
+	margin: 0px 0px 0px -30px;
 	padding: 0;
 	position: absolute;
 	top: 0;
@@ -1038,11 +1044,14 @@ input[type="button"]:disabled,
 }
 
 #banner h2 {
-	font-size: 4em;
+	font-size: 10em;
 	line-height: 1em;
-	margin: 0 0 0.5em 0;
+	margin: 0 0 0.1em 0;
 	padding: 0;
-	font-weight: 500;
+	font-weight: 600;
+	font-style:italic;
+	letter-spacing: 4px;
+	font-family: 'Roboto Condensed', sans-serif;
 }
 
 #banner p {
@@ -1051,6 +1060,7 @@ input[type="button"]:disabled,
 	color: #4BFFC6;
 	font-weight: 400;
 	letter-spacing: 1px;
+	font-family: 'Open Sans', sans-serif;
 }
 
 #banner p a {
@@ -1103,4 +1113,15 @@ input[type="button"]:disabled,
 
 .specialBoxDesc {
   padding-bottom: 10px;
+	font-weight: 600;
+	font-size: 19px;
+}
+
+.special h3 {
+	font-size: 19px;
+	font-weight: 600;
+}
+
+.inner p {
+	font-family: 'Open Sans', sans-serif;
 }

@@ -6,7 +6,7 @@
 				<div class="md-toolbar-tools" >
 					<!-- logo -->
 					<h2>
-						<span>Codify</span>
+						<span class="head">Codify</span>
 					</h2>
 					<span flex></span>
 					<span style="font-size: .8em">Welcome, {{userinfo.fullname}}!</span>
@@ -43,14 +43,14 @@
 				<p><ng-md-icon icon="location_on" style="18px"></ng-md-icon>{{userinfo.location}}</p>
 			</md-card-footer>
 			<!-- user bio -->
-			<md-card-footer style="padding: 20px; text-align: center">
+			<md-card-footer style="text-align: center">
 				<p style="font-size: 20px; padding-left: 3px">{{userinfo.bio}}</p>
 			</md-card-footer>
 		</div>
 		<!-- main content -->
 		<div flex="80">
 			<md-content>
-				<h1 style="color:#363B3F; padding-left:20px"> Tutor Dashboard</h1>
+				<h1 style="color:#363B3F; padding-left:20px">Tutor Dashboard</h1>
 				<md-tabs md-dynamic-height md-border-bottom>
 					<md-tab label="Session Invitations">
 						<div layout="column">
@@ -118,7 +118,7 @@
 					<md-tab label="Cancelled Sessions">
 						<div layout="column">
 							<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!cancelledStudents.length">
-								<div style="margin: 30px">You don't have any cancelled session yet!</div>
+								<div style="margin: 30px">You don't have any cancelled sessions yet!</div>
 							</div>
 							<div layout="rows" style="height: 180px; width: 100%; border: 1px solid #eee" ng-if="cancelledStudents.length" ng-repeat="item in cancelledStudents">
 								<!-- image -->
