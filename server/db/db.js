@@ -53,6 +53,7 @@ knex.schema.createTableIfNotExists('reviews', function(join) {
   join.integer('sid').unsigned();
   join.integer('tid').unsigned();
   join.varchar('review');
+  join.integer('rating');
   join.foreign('sid').references('id').inTable('users');
   join.foreign('tid').references('id').inTable('users');
 }).then(function() {

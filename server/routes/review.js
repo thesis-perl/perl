@@ -17,8 +17,10 @@ router.post('/', function(req, res) {
   var sid = req.body.sid;
   var tid = req.body.tid;
   var review = req.body.review;
+  var rating = req.body.rating;
+  console.log('rating', review, rating)
 
-  db('reviews').insert({sid: sid, tid: tid, review: review})
+  db('reviews').insert({sid: sid, tid: tid, review: review, rating: rating})
   .then(function(data) {
     res.status(201).send(data);
   })

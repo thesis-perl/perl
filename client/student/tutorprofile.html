@@ -18,7 +18,12 @@
             <md-menu-content width="2">
               <md-menu-item>
                 <md-button ng-click="">
-                  <div><a ui-sref="studentDashboard" style="text-decoration: none; color: #222">Student dashboard</a></div>
+                  <div><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Find Tutors</a></div>
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="">
+                  <div><a ui-sref="studentDashboard" style="text-decoration: none; color: #222">My dashboard</a></div>
                 </md-button>
               </md-menu-item>
               <md-menu-item>
@@ -104,6 +109,16 @@
                 <!-- bio -->
                 <div flex="85" >
                   <p>{{review.fullname}}</p>
+
+<!-- 
+                    <star-rating ng-model="rating2" readonly="isReadonly"></star-rating>
+                    <label>
+                      <input type="checkbox" ng-model="isReadonly"/>
+                      Is Readonly
+                    </label>
+
+ -->
+
                   <p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
                   <p>{{review.review}}</p>
                 </div>
@@ -125,7 +140,7 @@
     <input type="checkbox" ng-model="isReadonly"/>
     Is Readonly
   </label>
-</div>
- -->
+</div> -->
+
 
 
