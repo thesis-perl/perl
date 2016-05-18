@@ -530,8 +530,7 @@ overflow: auto;
 .codeDiv {
   height: 500px;
   float:left;
-  /*width: 60%;*/
-  /*margin-left: 6%;*/
+  position: relative;
 }
 div.CodeMirror-sizer{
   height: 550px !important;
@@ -568,6 +567,13 @@ p.room.ng-binding {
   display:inline-block;
   width: 120px;
   height: 100%;
+}
+
+.typing {
+  color: orange;
+  position: relative;
+  bottom: 110px;
+  left: -220px;
 }
 
 
@@ -724,4 +730,51 @@ select {
     margin: 20px;
     text-align: center;
     width: 450px;
+}
+
+/* rating */
+/*@import "compass/css3";
+
+.star-rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  
+  .star {
+    padding: 1px;
+    color: #ddd;
+    font-size: 20px;
+    text-shadow: .05em .05em #aaa;
+    list-style-type: none;
+    display: inline-block;
+    cursor: pointer;
+
+    &.filled {
+      color: #fd0;
+    }
+  }
+
+  &.readonly .star.filled {
+    color: #666;
+  }
+}*/
+.star-rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+.star-rating .star {
+  padding: 1px;
+  color: #ddd;
+  font-size: 20px;
+  text-shadow: .05em .05em #aaa;
+  list-style-type: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.star-rating .star.filled {
+  color: #fd0;
+}
+.star-rating.readonly .star.filled {
+  color: #666;
 }
