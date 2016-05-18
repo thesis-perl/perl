@@ -56,16 +56,6 @@ app.use('/api/cancel_history', require('./routes/cancelSessionRoute.js'));
 app.use('/api/end_session', require('./routes/endSessionRoute.js'));
 app.use('/api/review', require('./routes/review.js'));
 
-// cors
-app.use(cors());
-
-
-
 http.listen(port, function() {
   console.log('Listening on port ' + port);
 });
-
-// https.listen(8080, function() {
-// // https.listen(port, function() {
-//   console.log('Listening on port https://' + 8100);
-// });

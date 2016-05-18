@@ -6,9 +6,7 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
 
 })
 
-
 .controller('tutorDashboard',function($scope, tutorFactory, $rootScope, authFactory, $state, $mdDialog, $mdMedia){
-
 
   $scope.userinfo = JSON.parse(localStorage.getItem('userinfo'));
 
@@ -20,7 +18,6 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
   $scope.acceptedStudents;
   $scope.cancelledStudents;
   $scope.finishedStudents;
-
 
   $scope.showAdvanced = function(ev) {
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
@@ -39,14 +36,11 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
       $scope.status = 'You cancelled the dialog.';
     });
 
-
-
     $scope.$watch(function() {
       return $mdMedia('xs') || $mdMedia('sm');
     }, function(wantsFullScreen) {
       $scope.customFullscreen = (wantsFullScreen === true);
     });
-
   };
 
   var currentObject = localStorage.getItem("userinfo");
@@ -64,10 +58,10 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
     $state.reload();
   };
 
- 
+
   //tutor cancels session
   $scope.cancelSession = function() {
-   tutorFactory.cancelSession(currentUserId, this.item.id)
+    tutorFactory.cancelSession(currentUserId, this.item.id)
     $state.reload();
   };
 
@@ -89,6 +83,7 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
   $scope.getAcceptedStudents = function(id) {
     tutorFactory.getAcceptedStudents($scope.userinfo.id)
     .then(function(data) {
+      console.log("receiving accepted students data:", data)
       $scope.acceptedStudents = data.data;
     })
   };
@@ -96,6 +91,7 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
   $scope.getCancelledStudents = function(id) {
     tutorFactory.getCancelledStudents($scope.userinfo.id)
     .then(function(data) {
+      console.log("receiving cancelled students data:", data)
       $scope.cancelledStudents = data.data;
     })
   };
@@ -103,10 +99,10 @@ angular.module('Perl.tutorDashboard', ['ngMaterial', 'ngMdIcons', 'firebase', 'n
   $scope.getFinishedStudents = function(id) {
     tutorFactory.getFinishedStudents($scope.userinfo.id)
     .then(function(data) {
+      console.log("receiving finished students data:", data)
       $scope.finishedStudents = data.data;
     })
   };
-
 
   $scope.getInvitedStudents();
   $scope.getAcceptedStudents();
