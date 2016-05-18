@@ -2,14 +2,14 @@
 <div layout="column">
 	<div ng-cloak>
 	  <md-content>
-	    <md-toolbar>
+	    <md-toolbar class="toolBar">
 	      <div class="md-toolbar-tools" >
 	      	<!-- logo -->
 	        <h2>
-	          <span>Codify</span>
+	          <span class="head">Codify</span>
 	        </h2>
 	        <span flex></span>
-					<span style="font-size: .8em">Welcome, {{userinfo.fullname}}!</span>
+					<span style="font-size: .8em; color: #fff">Welcome, {{userinfo.fullname}}!</span>
 	      	<!-- navbar button -->
     	 		<md-menu md-offset="0 50">
     	      <md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
@@ -47,7 +47,7 @@
 		<div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-repeat="tutor in favorites">
 			<!-- image -->
 			<div flex="15" style="text-align: center; padding-top: 15px">
-			<img ng-src="{{tutor.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption" alt="image caption">
+			<img ng-src="{{tutor.imgurl}}" style="width: 100px; height: 100px; border-radius:100%; margin: auto, 10px" alt="image caption" alt="image caption">
 			<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{tutor.location}}</p>
 		</div>
 		<!-- bio -->
