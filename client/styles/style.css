@@ -8,6 +8,7 @@
   color: #fff;
 }
 
+
 /*landing page */
 
 div.landing.ng-scope{
@@ -451,13 +452,14 @@ md-icon svg {
   width: 600px;
 }*/
 .chatRoomSession {
-  height: 340px;
+  height: 330px;
   background-color: #597D78;
   position: absolute;
   width: 500px;
   bottom: -31px;
   left: 80px;
   border-radius: 8px;
+  margin: 0 auto;
 }
 
 .chatSession {
@@ -472,15 +474,10 @@ md-icon svg {
   text-align: center;
 }
 
-.chatMsg {
-  height: 180px;
-  overflow: scroll;
-}
-
 .messageSession {
   position: absolute;
   width: 500px;
-  bottom: 10px;
+  bottom: 25px;
   text-align: center;
 }
 
@@ -536,13 +533,13 @@ overflow: auto;
 
 
 .codeDiv {
-  height: 500px;
+  margin-left: 2%;
   float:left;
-  /*width: 60%;*/
-  /*margin-left: 6%;*/
+  margin-bottom: 10px;
+
 }
 div.CodeMirror-sizer{
-  height: 550px !important;
+  height: 550px !2mportant;
   width:100% !important;
 
   /*margin-left: 60px !important;*/
@@ -581,7 +578,7 @@ p.room.ng-binding {
 
 /** Video Chat **/
 .videoChat {
-  margin-left: 26%;
+  margin-left: 12%;
 }
 
 .videoChatContainer {
@@ -601,9 +598,13 @@ p.room.ng-binding {
  border: 2px solid #597D78;
 
 }
-#quit {
-  /*margin-right: 50px;*/
+#quit, #join {
+  background-color: silver;
+  color: #444;
+  font-weight: bold;
 }
+
+
 
 video {
   height: 300px;

@@ -5,7 +5,9 @@
         <div class="md-toolbar-tools" >
         <!-- logo -->
           <h2>
+
             <span class="head">Codify</span>
+
           </h2>
           <span flex></span>
           <!-- menu button -->
@@ -16,8 +18,8 @@
             </md-button>
             <md-menu-content width="2">
               <md-menu-item>
-                <md-button ng-click="">
-                  <div ng-click="showReviewBox()">End Session</div>
+                <md-button ng-click="showReviewBox()">
+                  <div ng-click="">End Session</div>
                 </md-button>
               </md-menu-item>
               <md-menu-item>
@@ -38,7 +40,7 @@
     <md-toast>
     </md-toast>
     <br>
-    <h2 class="edit">Edit your code here!</h2>
+    <h2 class="edit" style='margin-left: 15%'>Edit your code here!</h2>
     <div class="codeDiv">
       <div ui-codemirror="cmOption" ng-model="sharedCode" ng-keydown="change(); typingUpdate()" id='codeDiv'>{{sharedCode}}</div>
       <div class='chooselanguage'>
@@ -66,9 +68,9 @@
       <div class="chatRoomSession">
         <div class="chatRoom">
           <div class="chatSession">
-            <div>
+            
               <h1>Chatroom</h1>
-            </div>
+            
             <div>
               <ul class="chatMsg">
                 <li ng-repeat="msg in messages">
