@@ -108,7 +108,7 @@ angular.module('Perl.tutorProfile', [
         total += $scope.reviews[i].rating;
       }
       $scope.aveRating = Math.round(total/$scope.reviews.length);
-      console.log('ave', $scope.aveRating)
+      console.log('aveRating', typeof $scope.aveRating, $scope.aveRating)
     })
   }
 
