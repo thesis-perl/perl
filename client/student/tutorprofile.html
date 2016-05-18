@@ -72,12 +72,16 @@
                       <span style ='font-weight: bold; padding-left: 35px'> {{ currentTime | date:'HH:mm' }} </span>  <span style ='margin-left: 58px; font-weight: bold'>{{ currentDate | date:'shortDate' }} </span>
                     </p>
                   </div>
-                  <div>
-                    <md-button  ng-disabled="isDisabledRequest" style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; width: 45%; font-weight: bold; margin-bottom: 20px" class='request' ng-click="requestSession()">Request Session</md-button>
-                    <md-button style="border: 2px solid orange; float:right; font-size: 20px; color: #585454; font-weight: bold; width: 45%;" ng-hide="hidden" ng-disabled="isDisabled"><a style = 'text-decoration: none; color: #585454 ' ui-sref="session({link: item.id})">Start Session</a>
-                    </md-button>
-                    <p ng-model='picktime' style="color:red">{{picktime}}</p>
-                  </div>
+
+                  <div>       
+                      <md-button  ng-disabled="isDisabledRequest" style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; width: 45%; font-weight: bold; margin-bottom: 20px" class='request' ng-click="requestSession()">Request Session
+                      </md-button>
+                      <br>
+                      <md-button style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; font-weight: bold; width: 45%;" ng-hide="hidden" ng-disabled="isDisabled"><a style = 'text-decoration: none; color: #585454 ' ui-sref="session({link: item.id})">Start Session</a>
+
+                       </md-button>
+                       <p ng-model='picktime' style="color:red">{{picktime}}</p>
+                  </div>     
                 </md-content>
               </div>
             </md-content>
@@ -109,3 +113,4 @@
     </div>
   </div>
 </div>
+
