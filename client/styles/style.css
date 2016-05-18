@@ -785,6 +785,4 @@ select {
 .star-rating .star.filled {
   color: #fd0;
 }
-.star-rating.readonly .star.filled {
-  color: #666;
-}
+

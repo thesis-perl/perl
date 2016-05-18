@@ -50,9 +50,9 @@
               <!-- tutor profile -->
               <div flex="35" style="background-color:#363B3F; width: 40%; padding: 35px; color: #ccc; text-align: center">
                 <img ng-src="{{img}}" style="width: 200px; border-radius:100%; margin: auto, 10px;" alt="image caption">
-
                 <p style='font-weight: bold; font-size: 30px'>{{name}}</p>
                 <span> <ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{loc}} </span>
+                <p><star-rating ng-model="aveRating" readonly=true></star-rating></p>
                 <p style="margin-top: 25px; font-size: 18px; padding: 0; text-align: left">{{bio}}</p>
               </div>
               <!-- book session -->
@@ -81,6 +81,7 @@
                   <div>       
                       <md-button  ng-disabled="isDisabledRequest" style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; width: 45%; font-weight: bold; margin-bottom: 20px" class='request' ng-click="requestSession()">Request Session
                       </md-button>
+
                       <br>
                       <md-button style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; font-weight: bold; width: 45%;" ng-hide="hidden" ng-disabled="isDisabled"><a style = 'text-decoration: none; color: #585454 ' ui-sref="session({link: item.id})">Start Session</a>
 
@@ -107,16 +108,8 @@
                 <!-- bio -->
                 <div flex="85" >
                   <p>{{review.fullname}}</p>
-
-<!-- 
-                    <star-rating ng-model="rating2" readonly="isReadonly"></star-rating>
-                    <label>
-                      <input type="checkbox" ng-model="isReadonly"/>
-                      Is Readonly
-                    </label>
-
- -->
-
+                  <!-- rating system -->
+                  <star-rating ng-model="review.rating" readonly=true></star-rating>
                   <p style="margin-top: 20px; padding-right: 250px">{{tutor.bio}}</p>
                   <p>{{review.review}}</p>
                 </div>
@@ -128,4 +121,5 @@
     </div>
   </div>
 </div>
+
 

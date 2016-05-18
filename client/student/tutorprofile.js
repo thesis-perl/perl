@@ -11,6 +11,9 @@ angular.module('Perl.tutorProfile', [
   //hides start session button
   $scope.hidden = true;
   $scope.reviews = [];
+  $scope.aveRating;
+  $scope.isReadonly = true;
+
 
   var tutorInfo = {
     tutorId: parseInt($stateParams.id)
@@ -100,59 +103,19 @@ angular.module('Perl.tutorProfile', [
     tutorFactory.getReviews(tutorInfo.tutorId)
     .then(function(data) {
       $scope.reviews = data.data;
+      var total = 0;
+      for(var i = 0; i < $scope.reviews.length; i++) {
+        total += $scope.reviews[i].rating;
+
+      }
+      $scope.aveRating = Math.round(total/$scope.reviews.length);
+      console.log('ave', $scope.aveRating)
     })
   }
 
   $scope.getReviews();  
 
-  // // 5 star rating system
-  // $scope.rating2 = 3;
-  // $scope.isReadonly = true;
-  // $scope.rateFunction = function(rating) {
-  //      console.log('Rating selected: ' + rating);
-  // }; 
-}])
-
-// .directive('starRating', function() {
-//   return {
-//     restrict: 'EA',
-//     template:
-//       '<ul class="star-rating" ng-class="{readonly: readonly}">' +
-//       '  <li ng-repeat="star in stars" class="star" ng-class="{filled: star.filled}" ng-click="toggle($index)">' +
-//       '    <i class="fa fa-star">&#9733</i>' + // or &#9733
-//       '  </li>' +
-//       '</ul>',
-//     scope: {
-//       ratingValue: '=ngModel',
-//       max: '=?', // optional (default is 5)
-//       onRatingSelect: '&?',
-//       readonly: '=?'
-//     },
-//     link: function(scope, element, attributes) {
-//       if (scope.max == undefined) {
-//         scope.max = 5;
-//       }
-//       function updateStars() {
-//         scope.stars = [];
-//         for (var i = 0; i < scope.max; i++) {
-//           scope.stars.push({
-//             filled: i < scope.ratingValue
-//           });
-//         }
-//       };
-//       scope.toggle = function(index) {
-//         if (scope.readonly == undefined || scope.readonly === false){
-//           scope.ratingValue = index + 1;
-//           scope.onRatingSelect({
-//             rating: index + 1
-//           });
-//         }
-//       };
-//       scope.$watch('ratingValue', function(oldValue, newValue) {
-//         if (newValue) {
-//           updateStars();
-//         }
-//       });
-//     }
-//   };
-// });;
+  $scope.rateFunction = function(rating) {
+       console.log('Rating selected: ' + rating);
+  }; 
+}]);
