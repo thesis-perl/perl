@@ -2,11 +2,11 @@
 <div layout="column">
   <div ng-cloak>
     <md-content>
-      <md-toolbar>
+      <md-toolbar class="toolBar">
         <div class="md-toolbar-tools" >
           <!-- logo -->
           <h2>
-            <span>Codify</span>
+            <span class="head">Codify</span>
           </h2>
           <span flex></span>
           <span style="font-size: .8em">Welcome, {{userinfo.fullname}}!</span>
@@ -18,7 +18,7 @@
             <md-menu-content width="2">
               <md-menu-item>
                 <md-button ng-click="">
-                  <div><a ui-sref="studentDashboard" style="text-decoration: none; color: #222">Student dashboard</a></div>
+                  <div><a ui-sref="studentDashboard" style="text-decoration: none; color: #222">Student Dashboard</a></div>
                 </md-button>
               </md-menu-item>
               <md-menu-item>
@@ -44,12 +44,12 @@
             <md-content flex layout="row" layout-align="left">
               <!-- tutor profile -->
               <div flex="35" style="background-color:#363B3F; width: 40%; padding: 35px; color: #ccc; text-align: center">
-                <img ng-src="{{img}}" style="width: 100px; border-radius:100%; margin: auto, 10px;" alt="image caption">
+                <img ng-src="{{img}}" style="width: 200px; border-radius:100%; margin: auto, 10px;" alt="image caption">
 
                 <p style='font-weight: bold; font-size: 30px'>{{name}}</p>
-                   <span> <ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{loc}} </span>
+                <span> <ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{loc}} </span>
                 <p style="margin-top: 25px; font-size: 18px; padding: 0; text-align: left">{{bio}}</p>
-              </div> 
+              </div>
               <!-- book session -->
               <div flex="65" style="margin-left: 100px">
                 <div>
@@ -62,38 +62,32 @@
                 </div>
                 <md-content layout="column" flex>
                   <div style="margin-top: 50px; margin-left: -8px">
-                      <div class="dateTimeContent">
-                        <md-button class="time" style="border: 2px solid orange; color: #585454; font-weight: bold;" ng-click="showTimePicker($event)" aria-label="show picker">Time</md-button>
-                        
-                      </div>
-                      <div class="dateTimeContent">
-                        <md-button class="date" style="border: 2px solid orange; color: #585454; font-weight: bold " ng-click="showDatePicker($event)" aria-label="show picker">Date</md-button>
-
-                      </div>
-                      <p style="height: 20px">
-                         <span style ='font-weight: bold; padding-left: 35px'> {{ currentTime | date:'HH:mm' }} </span>  <span style ='margin-left: 58px; font-weight: bold'>{{ currentDate | date:'shortDate' }} </span>
-                        </p>          
+                    <div class="dateTimeContent">
+                      <md-button class="time" style="border: 2px solid orange; color: #585454; font-weight: bold;" ng-click="showTimePicker($event)" aria-label="show picker">Time</md-button>
+                    </div>
+                    <div class="dateTimeContent">
+                      <md-button class="date" style="border: 2px solid orange; color: #585454; font-weight: bold " ng-click="showDatePicker($event)" aria-label="show picker">Date</md-button>
+                    </div>
+                    <p style="height: 20px">
+                      <span style ='font-weight: bold; padding-left: 35px'> {{ currentTime | date:'HH:mm' }} </span>  <span style ='margin-left: 58px; font-weight: bold'>{{ currentDate | date:'shortDate' }} </span>
+                    </p>
                   </div>
-                  <div>       
-                      <md-button  ng-disabled="isDisabledRequest" style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; width: 45%; font-weight: bold; margin-bottom: 20px" class='request' ng-click="requestSession()">Request Session
-                      </md-button>
-
-                      <md-button style="border: 2px solid orange; float:right; font-size: 20px; color: #585454; font-weight: bold; width: 45%;" ng-hide="hidden" ng-disabled="isDisabled"><a style = 'text-decoration: none; color: #585454 ' ui-sref="session({link: item.id})">Start Session</a>
-
-                       </md-button>
-                       <p ng-model='picktime' style="color:red">{{picktime}}</p>
-                  </div>     
+                  <div>
+                    <md-button  ng-disabled="isDisabledRequest" style="border: 2px solid orange; margin: 0; font-size: 20px; color: #585454; width: 45%; font-weight: bold; margin-bottom: 20px" class='request' ng-click="requestSession()">Request Session</md-button>
+                    <md-button style="border: 2px solid orange; float:right; font-size: 20px; color: #585454; font-weight: bold; width: 45%;" ng-hide="hidden" ng-disabled="isDisabled"><a style = 'text-decoration: none; color: #585454 ' ui-sref="session({link: item.id})">Start Session</a>
+                    </md-button>
+                    <p ng-model='picktime' style="color:red">{{picktime}}</p>
+                  </div>
                 </md-content>
               </div>
-
             </md-content>
           </md-tab>
           <md-tab label="{{name}}'s reviews">
             <div layout="column">
               <!-- show if no review -->
               <div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!reviews.length">
-                <div style="margin: 30px">Tutor {{name}} has no review yet!</div>
-                <md-button style="border: 2px solid orange" ng-click="reload()">Get Startet</md-button>
+                <div style="margin: 30px">Tutor {{name}} has no reviews yet!</div>
+                <md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
               </div>
               <!-- show if has reviews -->
               <div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-repeat="review in reviews" ng-if="reviews.length">
@@ -115,5 +109,3 @@
     </div>
   </div>
 </div>
-
-
