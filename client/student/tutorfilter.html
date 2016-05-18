@@ -62,7 +62,7 @@
 			<p>{{tutor.fullname}}
 				<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red" ng-if="tutor.fav == 0"  ng-click="tutor.fav = !tutor.fav; addFavorite(tutor.id)"></ng-md-icon><ng-md-icon icon="favorite" size="18px" style="fill:red" ng-if="tutor.fav == 1" ng-click="tutor.fav = !tutor.fav; deleteFavorite(tutor.id)"></ng-md-icon></span>
 				<md-button style="border: 2px solid orange; float:right" id="viewProfile"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none; color: #222">View Profile</a></md-button>
-				<md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getTutorId(tutor.id)">Message</md-button>
+				<md-button style="border: 2px solid orange; float:right" ng-click="showAdvanced($event); getTutorId(tutor.id)">Chat</md-button>
 			</p>
     	<p style="margin-top: 20px; padding-right: 250px" ng-init="limit = 180; moreShown = false">{{tutor.bio | limitTo: limit}}<a ui-sref="tutorProfile({id: {{tutor.id}}})" style="color:orange" ng-show="tutor.bio.length > limit">...More</a></p>
 			<p>

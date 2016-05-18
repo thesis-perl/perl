@@ -93,7 +93,7 @@
               <!-- show if no review -->
               <div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!reviews.length">
                 <div style="margin: 30px">Tutor {{name}} has no review yet!</div>
-                <md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
+                <md-button style="border: 2px solid orange" ng-click="reload()">Get Startet</md-button>
               </div>
               <!-- show if has reviews -->
               <div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-repeat="review in reviews" ng-if="reviews.length">
