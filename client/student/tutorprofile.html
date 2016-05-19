@@ -52,6 +52,7 @@
                 <img ng-src="{{img}}" style="width: 200px; border-radius:100%; margin: auto, 10px;" alt="image caption">
                 <p style='font-weight: bold; font-size: 30px'>{{name}}</p>
                 <span> <ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{loc}} </span>
+                <!-- show rating -->
                 <p><star-rating ng-model="aveRating" readonly=true></star-rating></p>
                 <p style="margin-top: 25px; font-size: 18px; padding: 0; text-align: left">{{bio}}</p>
               </div>
@@ -102,7 +103,7 @@
               <!-- show if has reviews -->
               <div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-repeat="review in reviews" ng-if="reviews.length">
                 <div flex="15" style="text-align: center; padding-top: 15px">
-                  <img ng-src="{{review.imgurl}}" style="width: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
+                  <img ng-src="{{review.imgurl}}" style="width: 100px; height: 100px; border-radius:100%; margin: auto, 10px" alt="image caption">
                   <p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{review.location}}</p>
                 </div>
                 <!-- bio -->

@@ -11,7 +11,7 @@ angular.module('Perl.tutorProfile', [
   //hides start session button
   $scope.hidden = true;
   $scope.reviews = [];
-  $scope.aveRating;
+  $scope.aveRating = 1;
   $scope.isReadonly = true;
 
 
@@ -106,16 +106,20 @@ angular.module('Perl.tutorProfile', [
       var total = 0;
       for(var i = 0; i < $scope.reviews.length; i++) {
         total += $scope.reviews[i].rating;
-
       }
       $scope.aveRating = Math.round(total/$scope.reviews.length);
-      console.log('ave', $scope.aveRating)
+      console.log('aveRating', typeof $scope.aveRating, $scope.aveRating)
     })
   }
 
   $scope.getReviews();  
 
-  $scope.rateFunction = function(rating) {
-       console.log('Rating selected: ' + rating);
-  }; 
+  $scope.calculateAve = function(reviews) {
+    var total = 0;
+    for(var i = 0; i < reviews.length; i++) {
+      total += reviews[i].rating;
+    }
+    return Math.round(total/reviews.length);
+  }
+
 }]);
