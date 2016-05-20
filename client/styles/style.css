@@ -314,7 +314,7 @@ margin-top: 0;
   background-color: #a5c0bc;
 }
 #signUpbtn:hover, #signInbtn:hover, #cancelSignin:hover, #cancelSignup:hover {
-    color: #BF6C43;
+    color: #white;
 
 }
 
@@ -576,7 +576,7 @@ p.room.ng-binding {
 }
 
 .typing {
-  color: orange;
+  color: black;
   position: relative;
   bottom: 110px;
   left: -220px;
@@ -651,7 +651,7 @@ video {
   margin: 30px !important;
   border: 1px solid #ccc;
   box-shadow: 10px 10px 10px #888888;
-  background-color:#1f1f14;
+  background-color:#D6D6D6;
   color: white;
   font-weight: bold;
   font-size: 18px;
@@ -699,10 +699,11 @@ select {
   background-color: #595F65 !important;
 }*/
 .chooselanguage {
-  background-color: #1f1f14;
+  background-color: #D6D6D6;
   padding: 8px;
-  color: rgb(255,171,64);
+  color: black;
   border-radius: 3px;
+  font-size: 17px;
   /*width: 81.7%;*/
   height: 45px;
   margin-left: 4.1%;
@@ -749,7 +750,7 @@ select {
   margin: 0;
   padding: 0;
   display: inline-block;
-  
+
   .star {
     padding: 1px;
     color: #ddd;
@@ -785,4 +786,3 @@ select {
 .star-rating .star.filled {
   color: #fd0;
 }
-
