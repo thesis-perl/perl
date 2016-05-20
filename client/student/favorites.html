@@ -1,0 +1,70 @@
+<!-- Header -->
+<div layout="column">
+	<div ng-cloak>
+	  <md-content>
+	    <md-toolbar class="toolBar">
+	      <div class="md-toolbar-tools" >
+	      	<!-- logo -->
+	        <h2>
+	          <span class="head">Codify</span>
+	        </h2>
+	        <span flex></span>
+					<span style="font-size: .8em; color: #fff">Welcome, {{userinfo.fullname}}!</span>
+	      	<!-- navbar button -->
+    	 		<md-menu md-offset="0 50">
+    	      <md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdOpenMenu($event)">
+    	        <md-icon md-svg-icon="../assests/list.svg"></md-icon>
+    	      </md-button>
+    	      <md-menu-content width="2">
+							<md-menu-item>
+							 	<md-button ng-click="">
+							  <div><a ui-sref="studentDashboard" style="text-decoration: none; color: #222">My Dashboard</a></div>
+							 	</md-button>
+							</md-menu-item>
+							<md-menu-item>
+							 	<md-button ng-click="">
+							  <div><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Find Tutors</a></div>
+							 	</md-button>
+							</md-menu-item>
+    	        <md-menu-item>
+    	          <md-button ng-click="signOutUser()">
+    	            <div id="signOut">Sign Out</div>
+    	          </md-button>
+    	        </md-menu-item>
+    	      </md-menu-content>
+    	     </md-menu>
+	      </div>
+	    </md-toolbar>
+	  </md-content>
+	</div>
+
+	<!-- tutors list -->
+	<div layout-padding layout="column">
+		<div style="text-align: center; margin: 30px; font-size: 1.2em" ng-if="!favorites.length">
+			<div style="margin: 30px">You don't have favorite tutors yet!</div>
+			<md-button style="border: 2px solid orange"><a ui-sref="tutorFilter" style="text-decoration: none; color: #222">Get Started</a></md-button>
+		</div>
+		<div layout="rows" style="height: 180px; border: 1px solid #eee; width: 100%" ng-repeat="tutor in favorites">
+			<!-- image -->
+			<div flex="15" style="text-align: center; padding-top: 15px">
+			<img ng-src="{{tutor.imgurl}}" style="width: 100px; height: 100px; border-radius:100%; margin: auto, 10px" alt="image caption" alt="image caption">
+			<p><ng-md-icon icon="location_on" size="18px"></ng-md-icon>{{tutor.location}}</p>
+		</div>
+		<!-- bio -->
+		<div flex="85" >
+			<p>{{tutor.fullname}}
+				<span style="display: inline-block;text-align: right;"><ng-md-icon icon="favorite_border" size="18px" style="fill:red" ng-if="tutor.fav == 0"  ng-click="tutor.fav = !tutor.fav; addFavorite(tutor.id)"></ng-md-icon><ng-md-icon icon="favorite" size="18px" style="fill:red" ng-if="tutor.fav == 1" ng-click="tutor.fav = !tutor.fav; deleteFavorite(tutor.id)"></ng-md-icon></span>
+				<md-button style="border: 2px solid orange; float:right"><a ui-sref="tutorProfile({id: {{tutor.id}}})" style="text-decoration: none; color: #222">View Profile</a></md-button>
+				<md-button style="border: 2px solid orange; float:right">Chat</md-button>
+			</p>
+			<p style="margin-top: 20px; padding-right: 250px" ng-init="limit = 180; moreShown = false">{{tutor.bio | limitTo: limit}}<a ng-show="tutor.bio.length > limit"
+       href ng-click="limit=text.length; moreShown = true" style="color:orange">...More
+    </a></p>
+			<p>
+				<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.javascript == 1">Javascript</span>
+				<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.python == 1">Python</span>
+				<span class="languages" style="background-color:#ccc; padding: 2px 5px; border-radius: 5px;" ng-if="tutor.ruby == 1">Ruby</span>
+			</p>
+		</div>
+	</div>
+</div>

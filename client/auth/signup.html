@@ -1,0 +1,88 @@
+<div class='body'>
+  <div id="signup" class='signUp'>
+    <h1>sign up</h1>
+    <p ng-model='userexists' style='color: red'>{{userexists}} </p>
+    <form>
+
+      <!--tutor checkbox -->
+      <md-checkbox class = 'check' ng-model = 'tutorCheckBox'>  <label>tutor</label></md-checkbox>
+
+      <!--student checkbox -->
+      <md-checkbox ng-model = 'studentCheckBox'> <label> student</label> </md-checkbox>
+      <br>
+
+      <!-- username input -->
+      <md-input-container class="input">
+        <label for="username">username</label>
+        <input id="username" type="text" name="username" ng-model="username" class="validate" required>
+      </md-input-container>
+      <br>
+
+
+      <!-- username input -->
+      <md-input-container class="input">
+        <label for="fullname">full name</label>
+        <input id="fullname" type="text" name="fullname" ng-model="fullname" class="validate" required>
+      </md-input-container>
+      <br>
+
+      <!-- password input -->
+      <md-input-container class="input">
+        <label for="password">password</label>
+        <input id="password" type="password" name="password" ng-model="password" class="validate" required>
+      </md-input-container>
+      <br>
+
+      <!-- location input -->
+      <md-input-container class="input">
+        <label for="location">location</label>
+        <input id="location" type="text" name="location" ng-model="location"  class="validate" required>
+      </md-input-container>
+      <br>
+
+      <!-- bio input -->
+      <md-input-container class="input">
+        <label for="password">bio</label>
+        <input id="password" type="text" name="password" ng-model="bio"  class="validate" required>
+      </md-input-container>
+      <br>
+      <br>
+      <!--list of subjects to teach/learn -->
+      <h3> subjects</h3>
+      <!--javascript-->
+      <md-checkbox ng-model = 'javascriptCheckbox'>
+        <label>javascript</label>
+      </md-checkbox>
+      <!--ruby -->
+      <md-checkbox ng-model = 'rubyCheckbox'>
+        <label>ruby</label>
+      </md-checkbox>
+      <!--phython -->
+      <md-checkbox ng-model = 'pythonCheckbox'>
+        <label>python</label>
+      </md-checkbox>
+      <br>
+
+      <!--upload photo -->
+      <div>
+        <input type = "file" file-model = "myFile"/>
+      </div>
+
+      <!--signup button-->
+        <div style="display:inline-block; float: right">
+          <md-button type="submit"  class="signups" id='signUpbtn' ng-click = 'uploadFile()' style="display:inline-block" style="float:right;"> sign up</md-button>
+        </div>
+        <div style="display:inline-block;">
+          <md-button  class="signups" id = 'cancelSignup' ng-click='hide()' style="display:inline-block"> cancel </md-button>
+        </div>
+
+
+    </form>
+    <br>
+    <p class='signinhere'>  Already have an account? Sign in <span ng-click='hide(); showsignin()'> here! </span> </p>
+    <p ng-model='signuperror' style="color: red"> {{signuperror}} </p>
+
+
+
+  </div>
+</div>

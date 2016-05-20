@@ -1,0 +1,13 @@
+<div class='body' ng-controller='session'>
+  <div class="reviewBox" style='height: 350px; width: 500px; boder-radius: 20'>
+    <h5 style='margin-bottom: 20px;  margin-top: 10px'>Give your tutor a review!</h5>
+    <p style="font-size: 16px">Select the stars: <span star-rating ng-model="rating" max="5" on-rating-select="rateFunction(rating)"></span></p>
+
+    <form>
+       <textarea class = 'reviewArea' ng-model="reviewBox" rows = "10" cols = '45' style='font-size: 14px'> </textarea> 
+        <br>
+        <md-button  id='reviewBtn' ng-controller='session' ng-click="review()" style='margin-left: 40px'> Review </md-button>
+       <md-button id='reviewBtn' ng-controller='session' ng-click='hideReviewBox(); endSession()' > No, thanks!</md-button>
+    </form>
+  </div>
+

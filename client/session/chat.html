@@ -1,0 +1,17 @@
+<div class="chatRoom" style="width: 500px; height: 400px">
+  <div class="chatRoom">
+    <div>
+      <h1 style="text-align: center">Chatroom</h1>
+    </div>
+    <div>
+      <ul class="chatMsg">
+        <li ng-repeat="msg in messages">
+          <strong>{{msg.from}}: </strong>{{msg.body}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="msg" class="messageSession">
+    <input ng-model="msg" ng-keydown="newMessage($event)" type="text" id="messageInput" class="inputBox" placeholder="Type a message...">
+  </div>
+</div>

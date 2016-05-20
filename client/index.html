@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <!-- Angular/CSS scripts -->
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="./bower_components/angular-material/angular-material.min.css" rel="stylesheet">
+    <link href="./bower_components/angular-material-icons/angular-material-icons.css" rel="stylesheet">
+    <!-- codemirror css -->
+    <link href="./bower_components/codemirror/lib/codemirror.css" rel="stylesheet">
+    <!-- socket io -->
+    <script src="./bower_components/socket.io-client/socket.io.js"></script>
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="./bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="./bower_components/angular-material/angular-material.min.js"></script>
+    <script src="./bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="./bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!-- socket io -->
+    <script src="./bower_components/angular-socket-io/socket.js"></script>
+    <!-- codemirror -->
+    <script src="./bower_components/codemirror/lib/codemirror.js"></script>
+    <script src="./bower_components/angular-ui-codemirror/ui-codemirror.js"></script>
+
+    <script src="./bower_components/codemirror/mode/javascript/javascript.js"></script>
+    <script src="./bower_components/codemirror/mode/python/python.js"></script>
+    <script src="./bower_components/codemirror/mode/ruby/ruby.js"></script>
+
+    <script src="https://rawgithub.com/angular-ui/ui-codemirror/bower/ui-codemirror.min.js"></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+    <script src="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.js"></script>
+    <link href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css" rel="stylesheet">
+    <script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+    <script src="https://cdn.rawgit.com/alenaksu/mdPickers/0.7.2/dist/mdPickers.min.js"></script>
+
+    <!-- Bistri -->
+    <script type="text/javascript" src="https://api.bistri.com/bistri.conference.min.js"></script>
+
+    <!-- This caused error. For now, minified css inserted directly into .css file -->
+    <!-- <script src="https://cdn.rawgit.com/alenaksu/mdPickers/0.7.2/dist/mdPickers.min.css"></script> -->
+
+    <!-- AWS -->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.3.7.min.js"></script>
+
+    <!-- your app's js -->
+    <script src="./app/app.js"></script>
+    <script src="./app/config.js"></script>
+    <script src="./app/services.js"></script>
+    <script src="./apiKey.js"></script>
+
+    <!-- Controllers -->
+    <script src="./auth/auth.js"></script>
+    <script src="./landing/landing.js"></script>
+    <script src="./session/session.js"></script>
+    <script src="./session/chat.js"></script>
+    <script src="./session/video.js"></script>
+    <script src="./student/studentdashboard.js"></script>
+    <script src="./student/tutorfilter.js"></script>
+    <script src="./student/favorites.js"></script>
+    <script src="./student/tutorprofile.js"></script>
+    <script src="./tutor/tutordashboard.js"></script>
+
+    <!-- Oauth -->
+
+    <!-- Firebase -->
+     <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <!-- AngularFire -->
+     <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+
+  </head>
+  <body ng-app="Perl">
+    <ui-view></ui-view>
+  </body>
+</html>
