@@ -1,5 +1,5 @@
 
-![Codify Demo](http://i.imgur.com/tZXANZS.gif)
+![](http://i.imgur.com/pjDmtOm.gif)
 
 
 Learn to code on your own time: [Codify](http://codifyme.prom "Codify")
