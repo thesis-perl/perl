@@ -239,12 +239,12 @@ textarea:focus {
 
 }
 #banner  .button:hover {
-	background-color: #d9d9d9;
+	background-color: rgba(199, 241, 237, 0.65);
 	color: #666f77 !important;
 }
 
 #banner .button.alt:hover {
-	background-color: #597D78 !important;
+	background-color: rgba(211, 239, 235, 0.41);
 	color: #ffffff !important;
 }
 .select-wrapper {

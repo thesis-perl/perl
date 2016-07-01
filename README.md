@@ -1,5 +1,5 @@
 
-![alt text](https://s3.amazonaws.com/perlproject/Screen+Shot+2016-05-20+at+4.28.25+PM.png "Logo Title Text 1")
+![](http://i.imgur.com/pjDmtOm.gif)
 
 
 Learn to code on your own time: [Codify](http://codifyme.prom "Codify")
@@ -8,9 +8,12 @@ Learn to code on your own time: [Codify](http://codifyme.prom "Codify")
 # About
   Coding is hard. Finding a tutor is easy. Start learning today at Codify. Codify is an app that connects tutors and students, providing a feature-rich environment via video, code share, and text chat.
 
+  Inline-style:
+![alt text](https://s3.amazonaws.com/perlproject/Animation.gif "Logo Title Text 1")
+
 # Getting Started
-* Fork a copy of the repo. Clone it to your local machine. 
-  
+* Fork a copy of the repo. Clone it to your local machine.
+
 * Next, you'll need to install our dependencies on your terminal:
 
 ```
@@ -26,18 +29,18 @@ $ bower install (cd into server folder)
   client/apiKey.js
 
   var accessKeyId = "insert key"; (AWS Key);
-  var secretAccessKey = "insert secret"; 
-  var bistriAppId = "insert id"; 
+  var secretAccessKey = "insert secret";
+  var bistriAppId = "insert id";
   var bistriAppKey = "insert key";
 ```
-* And a MySQL database account: 
+* And a MySQL database account:
 
   https://www.mysql.com/
 
 To start the server and view the app on localhost:8000:
 
 ```
-$ node server/server.js 
+$ node server/server.js
 ```
 
 # Milestones
