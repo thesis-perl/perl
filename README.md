@@ -1,5 +1,5 @@
 
-![alt text](https://s3.amazonaws.com/perlproject/Screen+Shot+2016-05-20+at+4.28.25+PM.png "Logo Title Text 1")
+![Codify Demo](http://i.imgur.com/tZXANZS.gif)
 
 
 Learn to code on your own time: [Codify](http://codifyme.prom "Codify")
